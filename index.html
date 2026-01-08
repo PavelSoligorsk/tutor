@@ -110,6 +110,35 @@
             color: #3498db;
         }
 
+        /* Стили для защищенных ссылок */
+        .file-item a.secured-link {
+            color: #95a5a6;
+            cursor: not-allowed;
+            position: relative;
+        }
+
+        .file-item a.secured-link:hover {
+            color: #95a5a6;
+        }
+
+        .file-item a.secured-link::after {
+            content: "🔒";
+            margin-left: 8px;
+            font-size: 0.9rem;
+        }
+
+        .file-item a.unlocked-link {
+            color: #2c3e50;
+            cursor: pointer;
+        }
+
+        .file-item a.unlocked-link::after {
+            content: "🔓";
+            margin-left: 8px;
+            font-size: 0.9rem;
+            color: #27ae60;
+        }
+
         .footer {
             text-align: center;
             padding: 25px;
@@ -149,6 +178,165 @@
             margin: 0;
             color: #8a6d3b;
         }
+
+        /* Стили для системы авторизации */
+        .auth-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 25px;
+            margin: 0 30px 30px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .auth-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .auth-title::before {
+            content: "🔐";
+            font-size: 1.5rem;
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .auth-input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .auth-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .auth-input:focus {
+            outline: none;
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+        }
+
+        .auth-button {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .auth-button:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        .auth-status {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        .auth-success {
+            background-color: rgba(46, 204, 113, 0.2);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            display: block;
+        }
+
+        .auth-error {
+            background-color: rgba(231, 76, 60, 0.2);
+            border: 1px solid rgba(231, 76, 60, 0.3);
+            display: block;
+        }
+
+        .auth-info {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+
+        /* Стили для кодового редиректа */
+        .code-redirect-container {
+            background-color: #e8f4fc;
+            padding: 20px;
+            margin: 0 30px 30px;
+            border-radius: 10px;
+            border: 2px solid #3498db;
+        }
+
+        .code-redirect-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .code-redirect-title::before {
+            content: "🚀";
+            font-size: 1.3rem;
+        }
+
+        .code-redirect-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .code-input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 2px solid #bdc3c7;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .code-input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .code-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .code-button:hover {
+            background-color: #2980b9;
+        }
+
+        .code-hint {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-top: 10px;
+        }
+
+        .code-hint strong {
+            color: #2c3e50;
+        }
     </style>
 </head>
 <body>
@@ -158,8 +346,23 @@
             <p class="subtitle">Учебные материалы по математике для 7-11 классов</p>
         </header>
 
+        <!-- Система авторизации -->
+        <div class="auth-container">
+            <div class="auth-title">Авторизация для доступа к материалам</div>
+            <div class="auth-form">
+                <div class="auth-input-group">
+                    <input type="text" class="auth-input" id="authCode" placeholder="Введите код доступа">
+                    <button class="auth-button" id="authButton">Разблокировать</button>
+                </div>
+                <div class="auth-status" id="authStatus"></div>
+            </div>
+            <div class="auth-info">
+                После авторизации все ссылки станут доступными для перехода
+            </div>
+        </div>
+
         <div class="note">
-            <p>💡 Нажмите на любой файл для перехода к учебному материалу. Все ссылки работают относительно текущего местоположения.</p>
+            <p>💡 Для доступа к материалам необходимо ввести код авторизации. После этого вы сможете переходить по ссылкам.</p>
         </div>
 
         <div class="classes-container">
@@ -168,19 +371,19 @@
                 <div class="class-header class-7">7 класс</div>
                 <div class="file-list">
                     <div class="file-item">
-                        <a href="7 класс/Лин_Уравн_Нер.html">Линейные уравнения и неравенства</a>
+                        <a class="secured-link" data-href="7 класс/Лин_Уравн_Нер.html" data-code="7-1">Линейные уравнения и неравенства</a>
                     </div>
                     <div class="file-item">
-                        <a href="7 класс/Одночлены_Многочлены.html">Одночлены и многочлены</a>
+                        <a class="secured-link" data-href="7 класс/Одночлены_Многочлены.html" data-code="7-2">Одночлены и многочлены</a>
                     </div>
                     <div class="file-item">
-                        <a href="7 класс/Сист_Лин_Уравн.html">Системы линейных уравнений</a>
+                        <a class="secured-link" data-href="7 класс/Сист_Лин_Уравн.html" data-code="7-3">Системы линейных уравнений</a>
                     </div>
                     <div class="file-item">
-                        <a href="7 класс/Сист_Совокуп_Лин_Нер.html">Системы и совокупности линейных неравенств</a>
+                        <a class="secured-link" data-href="7 класс/Сист_Совокуп_Лин_Нер.html" data-code="7-4">Системы и совокупности линейных неравенств</a>
                     </div>
                     <div class="file-item">
-                        <a href="7 класс/Степени.html">Степени</a>
+                        <a class="secured-link" data-href="7 класс/Степени.html" data-code="7-5">Степени</a>
                     </div>
                 </div>
             </div>
@@ -190,47 +393,47 @@
                 <div class="class-header class-8">8 класс</div>
                 <div class="file-list">
                     <div class="file-item">
-                        <a href="8 класс/index.html">Главная страница 8 класса</a>
+                        <a class="secured-link" data-href="8 класс/index.html" data-code="8-1">Главная страница 8 класса</a>
                     </div>
                     <div class="file-item">
-                        <a href="8 класс/123.html">123</a>
+                        <a class="secured-link" data-href="8 класс/123.html" data-code="8-2">123</a>
                     </div>
                     <div class="file-item">
-                        <a href="8 класс/Квадратные_Корни.html">Квадратные корни</a>
+                        <a class="secured-link" data-href="8 класс/Квадратные_Корни.html" data-code="8-3">Квадратные корни</a>
                     </div>
                     <div class="file-item">
-                        <a href="8 класс/Квадратные_Уравнения.html">Квадратные уравнения</a>
+                        <a class="secured-link" data-href="8 класс/Квадратные_Уравнения.html" data-code="8-4">Квадратные уравнения</a>
                     </div>
                     <div class="file-item">
-                        <a href="8 класс/Функции_Pasные.html">Разные функции</a>
+                        <a class="secured-link" data-href="8 класс/Функции_Pasные.html" data-code="8-5">Разные функции</a>
                     </div>
                 </div>
             </div>
 
-            <!-- 9 класс  -->
+            <!-- 9 класс -->
             <div class="class-card">
                 <div class="class-header class-9">9 класс</div>
                 <div class="file-list">
                     <div class="file-item">
-                        <a href="9 класс/Арифметическая_Геометрическая_Прогрессии.html">Арифметическая и геометрическая прогрессии</a>
+                        <a class="secured-link" data-href="9 класс/Арифметическая_Геометрическая_Прогрессии.html" data-code="9-1">Арифметическая и геометрическая прогрессии</a>
                     </div>
                     <div class="file-item">
-                        <a href="9 класс/Дробно-Рациональные-Неравенства.html">Дробно-рациональные неравенства</a>
+                        <a class="secured-link" data-href="9 класс/Дробно-Рациональные-Неравенства.html" data-code="9-2">Дробно-рациональные неравенства</a>
                     </div>
                     <div class="file-item">
-                        <a href="9 класс/Дробно_РАциональные_Уравнения.html">Дробно-рациональные уравнения</a>
+                        <a class="secured-link" data-href="9 класс/Дробно_РАциональные_Уравнения.html" data-code="9-3">Дробно-рациональные уравнения</a>
                     </div>
                     <div class="file-item">
-                        <a href="9 класс/Отрезок_Окружность.html">Отрезок и окружность</a>
+                        <a class="secured-link" data-href="9 класс/Отрезок_Окружность.html" data-code="9-4">Отрезок и окружность</a>
                     </div>
                     <div class="file-item">
-                        <a href="9 класс/Рациональная_Дробь.html">Рациональная дробь</a>
+                        <a class="secured-link" data-href="9 класс/Рациональная_Дробь.html" data-code="9-5">Рациональная дробь</a>
                     </div>
                     <div class="file-item">
-                        <a href="9 класс/Системы_Нелинейных_Уравнений.html">Системы нелинейных уравнений</a>
+                        <a class="secured-link" data-href="9 класс/Системы_Нелинейных_Уравнений.html" data-code="9-6">Системы нелинейных уравнений</a>
                     </div>
                     <div class="file-item">
-                        <a href="9 класс/Функции.html">Функции</a>
+                        <a class="secured-link" data-href="9 класс/Функции.html" data-code="9-7">Функции</a>
                     </div>
                 </div>
             </div>
@@ -240,13 +443,13 @@
                 <div class="class-header class-10">10 класс</div>
                 <div class="file-list">
                     <div class="file-item">
-                        <a href="10 класс/Корень n-ой степени.html">Корень n-ой степени</a>
+                        <a class="secured-link" data-href="10 класс/Корень n-ой степени.html" data-code="10-1">Корень n-ой степени</a>
                     </div>
                     <div class="file-item">
-                        <a href="10 класс/Производная.html">Производная</a>
+                        <a class="secured-link" data-href="10 класс/Производная.html" data-code="10-2">Производная</a>
                     </div>
                     <div class="file-item">
-                        <a href="10 класс/Тригонометрия.html">Тригонометрия</a>
+                        <a class="secured-link" data-href="10 класс/Тригонометрия.html" data-code="10-3">Тригонометрия</a>
                     </div>
                 </div>
             </div>
@@ -256,17 +459,166 @@
                 <div class="class-header class-11">11 класс</div>
                 <div class="file-list">
                     <div class="file-item">
-                        <a href="11 класс/Обобщенное понятие степени.html">Обобщенное понятие степени</a>
+                        <a class="secured-link" data-href="11 класс/Обобщенное понятие степени.html" data-code="11-1">Обобщенное понятие степени</a>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="footer">
-            <p>Математика • Учебные материалы • Относительная навигация</p>
-            <p>Все ссылки работают относительно текущего расположения файлов в проекте</p>
-            <p>Структура проекта основана на организации по классам: 7 класс, 8 класс, 9 класс, 10 класс, 11 класс</p>
+            <p>Математика • Учебные материалы • Защищенный доступ</p>
+            <p>Все материалы защищены системой авторизации</p>
         </div>
     </div>
+
+    <script>
+    // Список паролей для доступа
+    const VALID_PASSWORDS = [
+        "11111",
+        "Zxcvb2210"
+    ];
+
+    // Состояние авторизации
+    let isAuthorized = false;
+    const authCodeInput = document.getElementById('authCode');
+    const authButton = document.getElementById('authButton');
+    const authStatus = document.getElementById('authStatus');
+    const redirectCodeInput = document.getElementById('redirectCode');
+    const redirectButton = document.getElementById('redirectButton');
+
+    // Карта кодов для быстрого перехода
+    const codeMap = {
+        '7-1': '7 класс/Лин_Уравн_Нер.html',
+        '7-2': '7 класс/Одночлены_Многочлены.html',
+        '7-3': '7 класс/Сист_Лин_Уравн.html',
+        '7-4': '7 класс/Сист_Совокуп_Лин_Нер.html',
+        '7-5': '7 класс/Степени.html',
+        '8-1': '8 класс/index.html',
+        '8-2': '8 класс/123.html',
+        '8-3': '8 класс/Квадратные_Корни.html',
+        '8-4': '8 класс/Квадратные_Уравнения.html',
+        '8-5': '8 класс/Функции_Pasные.html',
+        '9-1': '9 класс/Арифметическая_Геометрическая_Прогрессии.html',
+        '9-2': '9 класс/Дробно-Рациональные-Неравенства.html',
+        '9-3': '9 класс/Дробно_РАциональные_Уравнения.html',
+        '9-4': '9 класс/Отрезок_Окружность.html',
+        '9-5': '9 класс/Рациональная_Дробь.html',
+        '9-6': '9 класс/Системы_Нелинейных_Уравнений.html',
+        '9-7': '9 класс/Функции.html',
+        '10-1': '10 класс/Корень n-ой степени.html',
+        '10-2': '10 класс/Производная.html',
+        '10-3': '10 класс/Тригонометрия.html',
+        '11-1': '11 класс/Обобщенное понятие степени.html'
+    };
+
+    // Функция авторизации
+    function authenticate() {
+        const code = authCodeInput.value.trim();
+
+        if (VALID_PASSWORDS.includes(code)) {
+            isAuthorized = true;
+            authStatus.textContent = '✅ Авторизация успешна! Все ссылки разблокированы.';
+            authStatus.className = 'auth-status auth-success';
+            unlockAllLinks();
+            localStorage.setItem('maths_auth', 'true');
+            authCodeInput.value = '';
+        } else {
+            authStatus.textContent = '❌ Неверный код доступа. Попробуйте снова.';
+            authStatus.className = 'auth-status auth-error';
+            isAuthorized = false;
+        }
+
+        authStatus.style.display = 'block';
+    }
+
+    // Разблокировка всех ссылок
+    function unlockAllLinks() {
+        const securedLinks = document.querySelectorAll('.secured-link');
+
+        securedLinks.forEach(link => {
+            link.classList.remove('secured-link');
+            link.classList.add('unlocked-link');
+            link.href = link.getAttribute('data-href');
+
+            // Добавляем обработчик клика
+            link.addEventListener('click', function(e) {
+                if (!isAuthorized) {
+                    e.preventDefault();
+                    authStatus.textContent = '⚠️ Для перехода по ссылке необходимо авторизоваться.';
+                    authStatus.className = 'auth-status auth-error';
+                    authStatus.style.display = 'block';
+                }
+            });
+        });
+    }
+
+    // Проверка сохраненной авторизации
+    function checkSavedAuth() {
+        const savedAuth = localStorage.getItem('maths_auth');
+        if (savedAuth === 'true') {
+            isAuthorized = true;
+            unlockAllLinks();
+            authStatus.textContent = '✅ Авторизация восстановлена из предыдущей сессии.';
+            authStatus.className = 'auth-status auth-success';
+            authStatus.style.display = 'block';
+        }
+    }
+
+    // Быстрый переход по коду
+    function redirectByCode() {
+        const code = redirectCodeInput.value.trim();
+
+        if (!code) {
+            alert('Пожалуйста, введите код');
+            return;
+        }
+
+        if (!isAuthorized) {
+            authStatus.textContent = '⚠️ Для быстрого перехода необходимо авторизоваться.';
+            authStatus.className = 'auth-status auth-error';
+            authStatus.style.display = 'block';
+            return;
+        }
+
+        if (codeMap[code]) {
+            window.location.href = codeMap[code];
+        } else {
+            alert('Код не найден. Пожалуйста, проверьте правильность ввода.');
+        }
+    }
+
+
+    // Обработчики событий
+    authButton.addEventListener('click', authenticate);
+    authCodeInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            authenticate();
+        }
+    });
+
+    redirectButton.addEventListener('click', redirectByCode);
+    redirectCodeInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            redirectByCode();
+        }
+    });
+
+    // Автозаполнение кода редиректа при клике на ссылку
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('unlocked-link')) {
+            const code = e.target.getAttribute('data-code');
+            redirectCodeInput.value = code;
+        }
+    });
+
+    // Инициализация при загрузке страницы
+    document.addEventListener('DOMContentLoaded', function() {
+        checkSavedAuth();
+        addPasswordHintButton();
+
+        // Показываем подсказку с паролями при загрузке (можно отключить)
+        // setTimeout(showPasswordHint, 1000);
+    });
+</script>
 </body>
 </html>
