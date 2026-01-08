@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>Теория</title>
+				<style>
+        * {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f9ff;
+    color: #333;
+    line-height: 1.6;
+    font-size: 16px; /* Базовый размер шрифта */
+}
+
+.container {
+    max-width: 2000px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 150, 0.1);
+    padding: 30px;
+}
+
+.image-container {
+    text-align: center;
+    margin: 1rem auto;
+    padding: 0.8rem;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    max-width: min(600px, 50vw); /* Ограничение: максимум 600px или половина экрана */
+    width: fit-content; /* Подстраивается под содержимое */
+}
+
+.function-image {
+    max-width: 100%;
+    max-height: min(400px, 50vh); /* Ограничение по высоте */
+    height: auto;
+    width: auto;
+    object-fit: contain;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .image-container {
+        max-width: min(500px, 60vw);
+    }
+
+    .function-image {
+        max-height: min(350px, 45vh);
+    }
+}
+
+@media (max-width: 768px) {
+    .image-container {
+        max-width: min(400px, 80vw);
+        padding: 0.6rem;
+        margin: 0.8rem auto;
+    }
+
+    .function-image {
+        max-height: min(300px, 40vh);
+    }
+}
+
+@media (max-width: 480px) {
+    .image-container {
+        max-width: 95vw; /* Практически на всю ширину */
+        margin: 0.6rem auto;
+        padding: 0.5rem;
+    }
+
+    .function-image {
+        max-height: min(250px, 35vh);
+    }
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 15px;
+    margin-top: 0;
+    font-size: 1.8em; /* Главный заголовок */
+}
+
+h2 {
+    color: #2980b9;
+    margin-top: 30px;
+    font-size: 1.4em; /* Второстепенные заголовки */
+}
+
+.lesson-section {
+    background-color: #f8fafd;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 25px 0;
+    border-left: 5px solid #3498db;
+}
+
+.definition {
+    background-color: #e8f4fc;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-size: 1em; /* Обычный размер шрифта */
+}
+
+.example {
+    background-color: #f0f7ff;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-left: 4px solid #2ecc71;
+    font-size: 1em; /* Обычный размер шрифта */
+}
+
+.example-title {
+    font-weight: bold;
+    color: #27ae60;
+    margin-bottom: 10px;
+    font-size: 1.1em; /* Чуть больше обычного для заголовков примеров */
+}
+
+.hard-example {
+    border-left-color: #e74c3c;
+}
+
+.hard-example .example-title {
+    color: #e74c3c;
+}
+
+.math-container {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin: 15px 0;
+    overflow-x: auto;
+}
+
+.math-formula {
+    font-size: 1.1em; /* Чуть больше для формул */
+    text-align: center;
+    padding: 10px;
+}
+
+.explanation {
+    background-color: #fffde7;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    font-style: italic;
+    font-size: 1em; /* Обычный размер шрифта */
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em; /* Обычный размер шрифта */
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+.lesson-number {
+    background-color: #3498db;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 0.9em; /* Немного меньше для меток */
+}
+
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #7f8c8d;
+    font-size: 0.9em; /* Меньше для подвала */
+}
+    </style>
+			</head>
+			<body>
+				<div class="container">
+
+					<div class="lesson-section"> <h2>Определение арифметической прогрессии</h2> <div class="definition"> <p><strong>Арифметическая прогрессия</strong> — это числовая последовательность, каждый член которой, начиная со второго, равен предыдущему, сложенному с одним и тем же числом <math><mrow><mi>d</mi></mrow></math>, называемым <strong>разностью прогрессии</strong>.</p> <div class="math-container"> <div class="math-formula"> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <msub><mi>a</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>a</mi><mi>n</mi></msub><mo>+</mo><mi>d</mi> </mrow> </math> </div> </div> </div>
+text
+
+<div class="problem">
+    <h3>Задача 1: Продолжение прогрессии</h3>
+    <p>Последовательность 2; 12; 22; ... является арифметической прогрессией. Продолжите последовательность.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>d</mi><mo>=</mo><msub><mi>a</mi><mn>2</mn></msub><mo>-</mo><msub><mi>a</mi><mn>1</mn></msub><mo>=</mo><mn>12</mn><mo>-</mo><mn>2</mn><mo>=</mo><mn>10</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>a</mi><mn>4</mn></msub><mo>=</mo><msub><mi>a</mi><mn>3</mn></msub><mo>+</mo><mi>d</mi><mo>=</mo><mn>22</mn><mo>+</mo><mn>10</mn><mo>=</mo><mn>32</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>a</mi><mn>5</mn></msub><mo>=</mo><msub><mi>a</mi><mn>4</mn></msub><mo>+</mo><mi>d</mi><mo>=</mo><mn>32</mn><mo>+</mo><mn>10</mn><mo>=</mo><mn>42</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> 2; 12; 22; 32; 42; ...</p>
+</div>
+
+</div><div class="lesson-section"> <h2>Задача 2: Нахождение разности прогрессии</h2> <div class="problem"> <p>Известны члены арифметической прогрессии: <math><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>=</mo><mo>-</mo><mn>2</mn></mrow></math>; <math><mrow><msub><mi>a</mi><mn>3</mn></msub><mo>=</mo><mn>8</mn></mrow></math>. Найдите разность этой прогрессии.</p> </div> <div class="solution"> <p><strong>Решение:</strong></p> <div class="math-container"> <div class="math-formula"> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mi>d</mi><mo>=</mo><mfrac><mrow><msub><mi>a</mi><mn>3</mn></msub><mo>-</mo><msub><mi>a</mi><mn>1</mn></msub></mrow><mrow><mn>3</mn><mo>-</mo><mn>1</mn></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>8</mn><mo>-</mo><mo>(</mo><mo>-</mo><mn>2</mn><mo>)</mo></mrow><mn>2</mn></mfrac><mo>=</mo><mfrac><mn>10</mn><mn>2</mn></mfrac><mo>=</mo><mn>5</mn> </mrow> </math> </div> </div> <p><strong>Ответ:</strong> <math><mrow><mi>d</mi><mo>=</mo><mn>5</mn></mrow></math></p> </div> </div><div class="lesson-section"> <h2>Формула n-го члена арифметической прогрессии</h2> <div class="definition"> <div class="math-container"> <div class="math-formula"> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <msub><mi>a</mi><mi>n</mi></msub><mo>=</mo><msub><mi>a</mi><mn>1</mn></msub><mo>+</mo><mo>(</mo><mi>n</mi><mo>-</mo><mn>1</mn><mo>)</mo><mi>d</mi> </mrow> </math> </div> </div> </div>
+text
+
+<div class="problem">
+    <h3>Задача 3: Нахождение n-го члена</h3>
+    <p>Последовательность <math><mrow><mo>(</mo><msub><mi>a</mi><mi>n</mi></msub><mo>)</mo></mrow></math> — арифметическая прогрессия. Найдите двадцатый член прогрессии, если <math><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>=</mo><mn>3</mn></mrow></math>, <math><mrow><mi>d</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>6</mn></mrow></math>.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>a</mi><mn>20</mn></msub><mo>=</mo><msub><mi>a</mi><mn>1</mn></msub><mo>+</mo><mo>(</mo><mn>20</mn><mo>-</mo><mn>1</mn><mo>)</mo><mi>d</mi><mo>=</mo><mn>3</mn><mo>+</mo><mn>19</mn><mo>·</mo><mn>1</mn><mo>,</mo><mn>6</mn><mo>=</mo><mn>3</mn><mo>+</mo><mn>30</mn><mo>,</mo><mn>4</mn><mo>=</mo><mn>33</mn><mo>,</mo><mn>4</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><msub><mi>a</mi><mn>20</mn></msub><mo>=</mo><mn>33</mn><mo>,</mo><mn>4</mn></mrow></math></p>
+</div>
+
+<div class="problem">
+    <h3>Задача 4: Составление формулы n-го члена</h3>
+    <p>Запишите формулу n-го члена для арифметической прогрессии −15,5; −14,9; −14,3; ... и найдите ее двадцатый член.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>a</mi><mn>1</mn></msub><mo>=</mo><mo>-</mo><mn>15</mn><mo>,</mo><mn>5</mn><mo>,</mo><mspace width="1em"/><mi>d</mi><mo>=</mo><msub><mi>a</mi><mn>2</mn></msub><mo>-</mo><msub><mi>a</mi><mn>1</mn></msub><mo>=</mo><mo>-</mo><mn>14</mn><mo>,</mo><mn>9</mn><mo>-</mo><mo>(</mo><mo>-</mo><mn>15</mn><mo>,</mo><mn>5</mn><mo>)</mo><mo>=</mo><mn>0</mn><mo>,</mo><mn>6</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>a</mi><mi>n</mi></msub><mo>=</mo><mo>-</mo><mn>15</mn><mo>,</mo><mn>5</mn><mo>+</mo><mo>(</mo><mi>n</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>·</mo><mn>0</mn><mo>,</mo><mn>6</mn><mo>=</mo><mn>0</mn><mo>,</mo><mn>6</mn><mi>n</mi><mo>-</mo><mn>16</mn><mo>,</mo><mn>1</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>a</mi><mn>20</mn></msub><mo>=</mo><mn>0</mn><mo>,</mo><mn>6</mn><mo>·</mo><mn>20</mn><mo>-</mo><mn>16</mn><mo>,</mo><mn>1</mn><mo>=</mo><mn>12</mn><mo>-</mo><mn>16</mn><mo>,</mo><mn>1</mn><mo>=</mo><mo>-</mo><mn>4</mn><mo>,</mo><mn>1</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>=</mo><mn>0</mn><mo>,</mo><mn>6</mn><mi>n</mi><mo>-</mo><mn>16</mn><mo>,</mo><mn>1</mn></mrow></math>; <math><mrow><msub><mi>a</mi><mn>20</mn></msub><mo>=</mo><mo>-</mo><mn>4</mn><mo>,</mo><mn>1</mn></mrow></math></p>
+</div>
+
+<div class="problem">
+    <h3>Задача 5: Нахождение номера члена прогрессии</h3>
+    <p>В арифметической прогрессии <math><mrow><mo>(</mo><msub><mi>a</mi><mi>n</mi></msub><mo>)</mo></mrow></math> известно, что <math><mrow><msub><mi>a</mi><mn>3</mn></msub><mo>=</mo><mo>-</mo><mn>5</mn><mo>,</mo><mn>6</mn></mrow></math>; <math><mrow><msub><mi>a</mi><mn>4</mn></msub><mo>=</mo><mo>-</mo><mn>4</mn><mo>,</mo><mn>8</mn></mrow></math>. Число 16 является членом этой прогрессии. Найдите его номер.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>d</mi><mo>=</mo><msub><mi>a</mi><mn>4</mn></msub><mo>-</mo><msub><mi>a</mi><mn>3</mn></msub><mo>=</mo><mo>-</mo><mn>4</mn><mo>,</mo><mn>8</mn><mo>-</mo><mo>(</mo><mo>-</mo><mn>5</mn><mo>,</mo><mn>6</mn><mo>)</mo><mo>=</mo><mn>0</mn><mo>,</mo><mn>8</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>a</mi><mn>1</mn></msub><mo>=</mo><msub><mi>a</mi><mn>3</mn></msub><mo>-</mo><mn>2</mn><mi>d</mi><mo>=</mo><mo>-</mo><mn>5</mn><mo>,</mo><mn>6</mn><mo>-</mo><mn>1</mn><mo>,</mo><mn>6</mn><mo>=</mo><mo>-</mo><mn>7</mn><mo>,</mo><mn>2</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>a</mi><mi>n</mi></msub><mo>=</mo><mn>16</mn><mspace width="1em"/><mo>⇒</mo><mspace width="1em"/><mo>-</mo><mn>7</mn><mo>,</mo><mn>2</mn><mo>+</mo><mo>(</mo><mi>n</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>·</mo><mn>0</mn><mo>,</mo><mn>8</mn><mo>=</mo><mn>16</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>0</mn><mo>,</mo><mn>8</mn><mo>(</mo><mi>n</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>=</mo><mn>23</mn><mo>,</mo><mn>2</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>n</mi><mo>-</mo><mn>1</mn><mo>=</mo><mn>29</mn><mspace width="1em"/><mo>⇒</mo><mspace width="1em"/><mi>n</mi><mo>=</mo><mn>30</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><mi>n</mi><mo>=</mo><mn>30</mn></mrow></math></p>
+</div>
+
+<div class="problem">
+    <h3>Задача 6: Нахождение первого члена и разности</h3>
+    <p>В арифметической прогрессии <math><mrow><msub><mi>a</mi><mn>6</mn></msub><mo>=</mo><mn>8</mn></mrow></math>, <math><mrow><msub><mi>a</mi><mn>10</mn></msub><mo>=</mo><mn>16</mn></mrow></math>. Найдите разность прогрессии и ее первый член.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mfenced open="{" close="">
+                        <mtable>
+                            <mtr>
+                                <mtd><msub><mi>a</mi><mn>1</mn></msub><mo>+</mo><mn>5</mn><mi>d</mi><mo>=</mo><mn>8</mn></mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd><msub><mi>a</mi><mn>1</mn></msub><mo>+</mo><mn>9</mn><mi>d</mi><mo>=</mo><mn>16</mn></mtd>
+                            </mtr>
+                        </mtable>
+                    </mfenced>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>(</mo><msub><mi>a</mi><mn>1</mn></msub><mo>+</mo><mn>9</mn><mi>d</mi><mo>)</mo><mo>-</mo><mo>(</mo><msub><mi>a</mi><mn>1</mn></msub><mo>+</mo><mn>5</mn><mi>d</mi><mo>)</mo><mo>=</mo><mn>16</mn><mo>-</mo><mn>8</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>4</mn><mi>d</mi><mo>=</mo><mn>8</mn><mspace width="1em"/><mo>⇒</mo><mspace width="1em"/><mi>d</mi><mo>=</mo><mn>2</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>a</mi><mn>1</mn></msub><mo>=</mo><mn>8</mn><mo>-</mo><mn>5</mn><mo>·</mo><mn>2</mn><mo>=</mo><mo>-</mo><mn>2</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><mi>d</mi><mo>=</mo><mn>2</mn></mrow></math>, <math><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>=</mo><mo>-</mo><mn>2</mn></mrow></math></p>
+</div>
+
+</div><div class="lesson-section"> <h2>Характеристическое свойство арифметической прогрессии</h2> <div class="definition"> <p>Для любого члена арифметической прогрессии, начиная со второго, выполняется:</p> <div class="math-container"> <div class="math-formula"> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <msub><mi>a</mi><mi>n</mi></msub><mo>=</mo><mfrac><mrow><msub><mi>a</mi><mrow><mi>n</mi><mo>-</mo><mn>1</mn></mrow></msub><mo>+</mo><msub><mi>a</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><mn>2</mn></mfrac> </mrow> </math> </div> </div> </div>
+text
+
+<div class="problem">
+    <h3>Задача 7: Нахождение члена прогрессии</h3>
+    <p>Найдите восьмой член арифметической прогрессии <math><mrow><mo>(</mo><msub><mi>a</mi><mi>n</mi></msub><mo>)</mo></mrow></math>, если <math><mrow><msub><mi>a</mi><mn>7</mn></msub><mo>=</mo><mn>21</mn></mrow></math>, <math><mrow><msub><mi>a</mi><mn>9</mn></msub><mo>=</mo><mn>29</mn></mrow></math>.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>a</mi><mn>8</mn></msub><mo>=</mo><mfrac><mrow><msub><mi>a</mi><mn>7</mn></msub><mo>+</mo><msub><mi>a</mi><mn>9</mn></msub></mrow><mn>2</mn></mfrac><mo>=</mo><mfrac><mrow><mn>21</mn><mo>+</mo><mn>29</mn></mrow><mn>2</mn></mfrac><mo>=</mo><mn>25</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><msub><mi>a</mi><mn>8</mn></msub><mo>=</mo><mn>25</mn></mrow></math></p>
+</div>
+
+<div class="problem">
+    <h3>Задача 8: Условие арифметической прогрессии</h3>
+    <p>При каком значении <math><mrow><mi>x</mi></mrow></math> последовательность <math><mrow><mi>x</mi><mo>-</mo><mn>1</mn></mrow></math>; <math><mrow><mn>4</mn><mi>x</mi><mo>-</mo><mn>9</mn></mrow></math>; <math><mrow><mn>4</mn><mi>x</mi><mo>+</mo><mn>2</mn></mrow></math> является арифметической прогрессией?</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>4</mn><mi>x</mi><mo>-</mo><mn>9</mn><mo>=</mo><mfrac><mrow><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>+</mo><mo>(</mo><mn>4</mn><mi>x</mi><mo>+</mo><mn>2</mn><mo>)</mo></mrow><mn>2</mn></mfrac>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>8</mn><mi>x</mi><mo>-</mo><mn>18</mn><mo>=</mo><mn>5</mn><mi>x</mi><mo>+</mo><mn>1</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>3</mn><mi>x</mi><mo>=</mo><mn>19</mn><mspace width="1em"/><mo>⇒</mo><mspace width="1em"/><mi>x</mi><mo>=</mo><mfrac><mn>19</mn><mn>3</mn></mfrac><mo>=</mo><mn>6</mn><mfrac><mn>1</mn><mn>3</mn></mfrac>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><mi>x</mi><mo>=</mo><mn>6</mn><mfrac><mn>1</mn><mn>3</mn></mfrac></mrow></math></p>
+</div>
+
+</div><div class="lesson-section"> <h2>Формулы суммы n первых членов арифметической прогрессии</h2> <div class="definition"> <div class="math-container"> <div class="math-formula"> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <msub><mi>S</mi><mi>n</mi></msub><mo>=</mo><mfrac><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>+</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><mn>2</mn></mfrac><mo>·</mo><mi>n</mi> </mrow> </math> <br> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <msub><mi>S</mi><mi>n</mi></msub><mo>=</mo><mfrac><mrow><mn>2</mn><msub><mi>a</mi><mn>1</mn></msub><mo>+</mo><mo>(</mo><mi>n</mi><mo>-</mo><mn>1</mn><mo>)</mo><mi>d</mi></mrow><mn>2</mn></mfrac><mo>·</mo><mi>n</mi> </mrow> </math> </div> </div> </div>
+text
+
+<div class="problem">
+    <h3>Задача 1: Сумма первых членов</h3>
+    <p>Найдите сумму шести первых членов арифметической прогрессии, если ее первый член равен -2, а разность прогрессии равна 0,4.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>S</mi><mn>6</mn></msub><mo>=</mo><mfrac><mrow><mn>2</mn><mo>·</mo><mo>(</mo><mo>-</mo><mn>2</mn><mo>)</mo><mo>+</mo><mo>(</mo><mn>6</mn><mo>-</mo><mn>1</mn><mo>)</mo><mo>·</mo><mn>0</mn><mo>,</mo><mn>4</mn></mrow><mn>2</mn></mfrac><mo>·</mo><mn>6</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>S</mi><mn>6</mn></msub><mo>=</mo><mfrac><mrow><mo>-</mo><mn>4</mn><mo>+</mo><mn>2</mn></mrow><mn>2</mn></mfrac><mo>·</mo><mn>6</mn><mo>=</mo><mo>-</mo><mn>1</mn><mo>·</mo><mn>6</mn><mo>=</mo><mo>-</mo><mn>6</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><msub><mi>S</mi><mn>6</mn></msub><mo>=</mo><mo>-</mo><mn>6</mn></mrow></math></p>
+</div>
+
+<div class="problem">
+    <h3>Задача 2: Сумма членов прогрессии</h3>
+    <p>Найдите сумму <math><mrow><mn>4</mn><mo>+</mo><mn>7</mn><mo>+</mo><mn>10</mn><mo>+</mo><mo>…</mo><mo>+</mo><mn>100</mn></mrow></math>, если ее слагаемые — последовательные члены арифметической прогрессии.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>a</mi><mn>1</mn></msub><mo>=</mo><mn>4</mn><mo>,</mo><mspace width="1em"/><mi>d</mi><mo>=</mo><mn>3</mn><mo>,</mo><mspace width="1em"/><msub><mi>a</mi><mi>n</mi></msub><mo>=</mo><mn>100</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>100</mn><mo>=</mo><mn>4</mn><mo>+</mo><mn>3</mn><mo>(</mo><mi>n</mi><mo>-</mo><mn>1</mn><mo>)</mo>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>96</mn><mo>=</mo><mn>3</mn><mo>(</mo><mi>n</mi><mo>-</mo><mn>1</mn><mo>)</mo><mspace width="1em"/><mo>⇒</mo><mspace width="1em"/><mi>n</mi><mo>-</mo><mn>1</mn><mo>=</mo><mn>32</mn><mspace width="1em"/><mo>⇒</mo><mspace width="1em"/><mi>n</mi><mo>=</mo><mn>33</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>S</mi><mn>33</mn></msub><mo>=</mo><mfrac><mrow><mn>4</mn><mo>+</mo><mn>100</mn></mrow><mn>2</mn></mfrac><mo>·</mo><mn>33</mn><mo>=</mo><mn>52</mn><mo>·</mo><mn>33</mn><mo>=</mo><mn>1716</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><msub><mi>S</mi><mn>33</mn></msub><mo>=</mo><mn>1716</mn></mrow></math></p>
+</div>
+
+<div class="problem">
+    <h3>Задача 3: Нахождение количества членов</h3>
+    <p>Найдите количество членов арифметической прогрессии, зная, что их сумма равна 430, первый член прогрессии равен -7, а разность прогрессии равна 3.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>430</mn><mo>=</mo><mfrac><mrow><mn>2</mn><mo>·</mo><mo>(</mo><mo>-</mo><mn>7</mn><mo>)</mo><mo>+</mo><mo>(</mo><mi>n</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>·</mo><mn>3</mn></mrow><mn>2</mn></mfrac><mo>·</mo><mi>n</mi>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>860</mn><mo>=</mo><mo>(</mo><mn>3</mn><mi>n</mi><mo>-</mo><mn>17</mn><mo>)</mo><mi>n</mi>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>3</mn><msup><mi>n</mi><mn>2</mn></msup><mo>-</mo><mn>17</mn><mi>n</mi><mo>-</mo><mn>860</mn><mo>=</mo><mn>0</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>D</mi><mo>=</mo><mn>17</mn><msup><mn>2</mn><mn>2</mn></msup><mo>-</mo><mn>4</mn><mo>·</mo><mn>3</mn><mo>·</mo><mo>(</mo><mo>-</mo><mn>860</mn><mo>)</mo><mo>=</mo><mn>289</mn><mo>+</mo><mn>10320</mn><mo>=</mo><mn>10609</mn><mo>=</mo><mn>103</mn><msup><mn>2</mn><mn>2</mn></msup>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>n</mi><mo>=</mo><mfrac><mrow><mn>17</mn><mo>+</mo><mn>103</mn></mrow><mrow><mn>2</mn><mo>·</mo><mn>3</mn></mrow></mfrac><mo>=</mo><mfrac><mn>120</mn><mn>6</mn></mfrac><mo>=</mo><mn>20</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><mi>n</mi><mo>=</mo><mn>20</mn></mrow></math></p>
+</div>
+
+<div class="problem">
+    <h3>Задача 4: Сумма членов с заданными условиями</h3>
+    <p>В арифметической прогрессии <math><mrow><msub><mi>a</mi><mn>5</mn></msub><mo>=</mo><mn>18</mn></mrow></math>, <math><mrow><msub><mi>a</mi><mn>10</mn></msub><mo>=</mo><mn>13</mn></mrow></math>. Найдите сумму членов этой прогрессии с четвертого по семнадцатый включительно.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mfenced open="{" close="">
+                        <mtable>
+                            <mtr>
+                                <mtd><msub><mi>a</mi><mn>1</mn></msub><mo>+</mo><mn>4</mn><mi>d</mi><mo>=</mo><mn>18</mn></mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd><msub><mi>a</mi><mn>1</mn></msub><mo>+</mo><mn>9</mn><mi>d</mi><mo>=</mo><mn>13</mn></mtd>
+                            </mtr>
+                        </mtable>
+                    </mfenced>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>5</mn><mi>d</mi><mo>=</mo><mo>-</mo><mn>5</mn><mspace width="1em"/><mo>⇒</mo><mspace width="1em"/><mi>d</mi><mo>=</mo><mo>-</mo><mn>1</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>a</mi><mn>1</mn></msub><mo>=</mo><mn>18</mn><mo>-</mo><mn>4</mn><mo>(</mo><mo>-</mo><mn>1</mn><mo>)</mo><mo>=</mo><mn>22</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>a</mi><mn>4</mn></msub><mo>=</mo><mn>22</mn><mo>+</mo><mn>3</mn><mo>(</mo><mo>-</mo><mn>1</mn><mo>)</mo><mo>=</mo><mn>19</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>a</mi><mn>17</mn></msub><mo>=</mo><mn>22</mn><mo>+</mo><mn>16</mn><mo>(</mo><mo>-</mo><mn>1</mn><mo>)</mo><mo>=</mo><mn>6</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>S</mi><mrow><mn>4</mn><mo>-</mo><mn>17</mn></mrow></msub><mo>=</mo><mfrac><mrow><msub><mi>a</mi><mn>4</mn></msub><mo>+</mo><msub><mi>a</mi><mn>17</mn></msub></mrow><mn>2</mn></mfrac><mo>·</mo><mn>14</mn><mo>=</mo><mfrac><mrow><mn>19</mn><mo>+</mo><mn>6</mn></mrow><mn>2</mn></mfrac><mo>·</mo><mn>14</mn><mo>=</mo><mn>25</mn><mo>·</mo><mn>7</mn><mo>=</mo><mn>175</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><msub><mi>S</mi><mrow><mn>4</mn><mo>-</mo><mn>17</mn></mrow></msub><mo>=</mo><mn>175</mn></mrow></math></p>
+</div>
+
+<div class="problem">
+    <h3>Задача 5: Сумма чисел с определенными свойствами</h3>
+    <p>Найдите сумму всех четных натуральных чисел, не превосходящих 300, которые при делении на 13 дают в остатке 5.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>a</mi><mn>1</mn></msub><mo>=</mo><mn>18</mn><mo>,</mo><mspace width="1em"/><mi>d</mi><mo>=</mo><mn>26</mn><mo>,</mo><mspace width="1em"/><msub><mi>a</mi><mi>n</mi></msub><mo>=</mo><mn>278</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>278</mn><mo>=</mo><mn>18</mn><mo>+</mo><mn>26</mn><mo>(</mo><mi>n</mi><mo>-</mo><mn>1</mn><mo>)</mo>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>260</mn><mo>=</mo><mn>26</mn><mo>(</mo><mi>n</mi><mo>-</mo><mn>1</mn><mo>)</mo><mspace width="1em"/><mo>⇒</mo><mspace width="1em"/><mi>n</mi><mo>-</mo><mn>1</mn><mo>=</mo><mn>10</mn><mspace width="1em"/><mo>⇒</mo><mspace width="1em"/><mi>n</mi><mo>=</mo><mn>11</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>S</mi><mn>11</mn></msub><mo>=</mo><mfrac><mrow><mn>18</mn><mo>+</mo><mn>278</mn></mrow><mn>2</mn></mfrac><mo>·</mo><mn>11</mn><mo>=</mo><mn>148</mn><mo>·</mo><mn>11</mn><mo>=</mo><mn>1628</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><msub><mi>S</mi><mn>11</mn></msub><mo>=</mo><mn>1628</mn></mrow></math></p>
+</div>
+
+</div>
+
+                    <div class="lesson-section"> <h2>Определение геометрической прогрессии</h2> <div class="definition"> <p><strong>Геометрическая прогрессия</strong> — это числовая последовательность, каждый член которой, начиная со второго, равен предыдущему, умноженному на одно и то же число <math><mrow><mi>q</mi></mrow></math>, называемое <strong>знаменателем прогрессии</strong>.</p> <div class="math-container"> <div class="math-formula"> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <msub><mi>b</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>b</mi><mi>n</mi></msub><mo>·</mo><mi>q</mi> </mrow> </math> </div> </div> </div>
+text
+
+<div class="problem">
+    <h3>Задача 1: Продолжение прогрессии</h3>
+    <p>Последовательность 2; 10; 50; ... является геометрической прогрессией. Продолжите последовательность.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>q</mi><mo>=</mo><mfrac><msub><mi>b</mi><mn>2</mn></msub><msub><mi>b</mi><mn>1</mn></msub></mfrac><mo>=</mo><mfrac><mn>10</mn><mn>2</mn></mfrac><mo>=</mo><mn>5</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>b</mi><mn>4</mn></msub><mo>=</mo><msub><mi>b</mi><mn>3</mn></msub><mo>·</mo><mi>q</mi><mo>=</mo><mn>50</mn><mo>·</mo><mn>5</mn><mo>=</mo><mn>250</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>b</mi><mn>5</mn></msub><mo>=</mo><msub><mi>b</mi><mn>4</mn></msub><mo>·</mo><mi>q</mi><mo>=</mo><mn>250</mn><mo>·</mo><mn>5</mn><mo>=</mo><mn>1250</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>b</mi><mn>6</mn></msub><mo>=</mo><msub><mi>b</mi><mn>5</mn></msub><mo>·</mo><mi>q</mi><mo>=</mo><mn>1250</mn><mo>·</mo><mn>5</mn><mo>=</mo><mn>6250</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> 2; 10; 50; 250; 1250; 6250; ...</p>
+</div>
+
+</div><div class="lesson-section"> <h2>Задача 2: Нахождение знаменателя прогрессии</h2> <div class="problem"> <p>Известны члены геометрической прогрессии: <math><mrow><msub><mi>b</mi><mn>7</mn></msub><mo>=</mo><mn>16</mn></mrow></math>; <math><mrow><msub><mi>b</mi><mn>8</mn></msub><mo>=</mo><mn>32</mn></mrow></math>. Найдите знаменатель этой прогрессии.</p> </div> <div class="solution"> <p><strong>Решение:</strong></p> <div class="math-container"> <div class="math-formula"> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mi>q</mi><mo>=</mo><mfrac><msub><mi>b</mi><mn>8</mn></msub><msub><mi>b</mi><mn>7</mn></msub></mfrac><mo>=</mo><mfrac><mn>32</mn><mn>16</mn></mfrac><mo>=</mo><mn>2</mn> </mrow> </math> </div> </div> <p><strong>Ответ:</strong> <math><mrow><mi>q</mi><mo>=</mo><mn>2</mn></mrow></math></p> </div> </div><div class="lesson-section"> <h2>Формула n-го члена геометрической прогрессии</h2> <div class="definition"> <div class="math-container"> <div class="math-formula"> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <msub><mi>b</mi><mi>n</mi></msub><mo>=</mo><msub><mi>b</mi><mn>1</mn></msub><mo>·</mo><msup><mi>q</mi><mrow><mi>n</mi><mo>-</mo><mn>1</mn></mrow></msup> </mrow> </math> </div> </div> </div>
+text
+
+<div class="problem">
+    <h3>Задача 3: Нахождение n-го члена</h3>
+    <p>Последовательность <math><mrow><mo>(</mo><msub><mi>b</mi><mi>n</mi></msub><mo>)</mo></mrow></math> — геометрическая прогрессия. Найдите пятый член этой прогрессии, если <math><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>=</mo><mo>-</mo><mn>0</mn><mo>,</mo><mn>1</mn></mrow></math>, <math><mrow><mi>q</mi><mo>=</mo><mn>4</mn></mrow></math>.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>b</mi><mn>5</mn></msub><mo>=</mo><msub><mi>b</mi><mn>1</mn></msub><mo>·</mo><msup><mi>q</mi><mn>4</mn></msup><mo>=</mo><mo>-</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>·</mo><msup><mn>4</mn><mn>4</mn></msup><mo>=</mo><mo>-</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>·</mo><mn>256</mn><mo>=</mo><mo>-</mo><mn>25</mn><mo>,</mo><mn>6</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><msub><mi>b</mi><mn>5</mn></msub><mo>=</mo><mo>-</mo><mn>25</mn><mo>,</mo><mn>6</mn></mrow></math></p>
+</div>
+
+<div class="problem">
+    <h3>Задача 4: Составление формулы n-го члена</h3>
+    <p>Запишите формулу n-го члена для геометрической прогрессии –216; 36; –6; ... и найдите ее седьмой член.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>b</mi><mn>1</mn></msub><mo>=</mo><mo>-</mo><mn>216</mn><mo>,</mo><mspace width="1em"/><mi>q</mi><mo>=</mo><mfrac><msub><mi>b</mi><mn>2</mn></msub><msub><mi>b</mi><mn>1</mn></msub></mfrac><mo>=</mo><mfrac><mn>36</mn><mrow><mo>-</mo><mn>216</mn></mrow></mfrac><mo>=</mo><mo>-</mo><mfrac><mn>1</mn><mn>6</mn></mfrac>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>b</mi><mi>n</mi></msub><mo>=</mo><msub><mi>b</mi><mn>1</mn></msub><mo>·</mo><msup><mi>q</mi><mrow><mi>n</mi><mo>-</mo><mn>1</mn></mrow></msup><mo>=</mo><mo>-</mo><mn>216</mn><mo>·</mo><msup><mrow><mo>(</mo><mo>-</mo><mfrac><mn>1</mn><mn>6</mn></mfrac><mo>)</mo></mrow><mrow><mi>n</mi><mo>-</mo><mn>1</mn></mrow></msup>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>b</mi><mn>7</mn></msub><mo>=</mo><mo>-</mo><mn>216</mn><mo>·</mo><msup><mrow><mo>(</mo><mo>-</mo><mfrac><mn>1</mn><mn>6</mn></mfrac><mo>)</mo></mrow><mn>6</mn></msup><mo>=</mo><mo>-</mo><mn>216</mn><mo>·</mo><mfrac><mn>1</mn><msup><mn>6</mn><mn>6</mn></msup></mfrac><mo>=</mo><mo>-</mo><mfrac><msup><mn>6</mn><mn>3</mn></msup><msup><mn>6</mn><mn>6</mn></msup></mfrac><mo>=</mo><mfrac><mn>1</mn><msup><mn>6</mn><mn>3</mn></msup></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>216</mn></mfrac>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><msub><mi>b</mi><mi>n</mi></msub><mo>=</mo><mo>-</mo><mn>216</mn><mo>·</mo><msup><mrow><mo>(</mo><mo>-</mo><mfrac><mn>1</mn><mn>6</mn></mfrac><mo>)</mo></mrow><mrow><mi>n</mi><mo>-</mo><mn>1</mn></mrow></msup></mrow></math>; <math><mrow><msub><mi>b</mi><mn>7</mn></msub><mo>=</mo><mfrac><mn>1</mn><mn>216</mn></mfrac></mrow></math></p>
+</div>
+
+<div class="problem">
+    <h3>Задача 5: Нахождение номера члена прогрессии</h3>
+    <p>Найдите номер члена геометрической прогрессии 0,1; 0,3; ..., равного 218,7.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>b</mi><mn>1</mn></msub><mo>=</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mspace width="1em"/><mi>q</mi><mo>=</mo><mfrac><msub><mi>b</mi><mn>2</mn></msub><msub><mi>b</mi><mn>1</mn></msub></mfrac><mo>=</mo><mfrac><mn>0</mn><mo>,</mo><mn>3</mn><mo></mo><mn>0</mn><mo>,</mo><mn>1</mn></mfrac><mo>=</mo><mn>3</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>218</mn><mo>,</mo><mn>7</mn><mo>=</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>·</mo><msup><mn>3</mn><mrow><mi>n</mi><mo>-</mo><mn>1</mn></mrow></msup>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msup><mn>3</mn><mrow><mi>n</mi><mo>-</mo><mn>1</mn></mrow></msup><mo>=</mo><mn>2187</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msup><mn>3</mn><mrow><mi>n</mi><mo>-</mo><mn>1</mn></mrow></msup><mo>=</mo><msup><mn>3</mn><mn>7</mn></msup>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>n</mi><mo>-</mo><mn>1</mn><mo>=</mo><mn>7</mn><mspace width="1em"/><mo>⇒</mo><mspace width="1em"/><mi>n</mi><mo>=</mo><mn>8</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><mi>n</mi><mo>=</mo><mn>8</mn></mrow></math></p>
+</div>
+
+<div class="problem">
+    <h3>Задача 6: Нахождение первого члена и знаменателя</h3>
+    <p>Найдите знаменатель и первый член геометрической прогрессии <math><mrow><mo>(</mo><msub><mi>b</mi><mi>n</mi></msub><mo>)</mo></mrow></math>, если <math><mrow><msub><mi>b</mi><mn>5</mn></msub><mo>=</mo><mn>24</mn></mrow></math>; <math><mrow><msub><mi>b</mi><mn>8</mn></msub><mo>=</mo><mo>-</mo><mn>3</mn></mrow></math>.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mfenced open="{" close="">
+                        <mtable>
+                            <mtr>
+                                <mtd><msub><mi>b</mi><mn>1</mn></msub><mo>·</mo><msup><mi>q</mi><mn>4</mn></msup><mo>=</mo><mn>24</mn></mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd><msub><mi>b</mi><mn>1</mn></msub><mo>·</mo><msup><mi>q</mi><mn>7</mn></msup><mo>=</mo><mo>-</mo><mn>3</mn></mtd>
+                            </mtr>
+                        </mtable>
+                    </mfenced>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mfrac><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>·</mo><msup><mi>q</mi><mn>7</mn></msup></mrow><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>·</mo><msup><mi>q</mi><mn>4</mn></msup></mrow></mfrac><mo>=</mo><mfrac><mrow><mo>-</mo><mn>3</mn></mrow><mn>24</mn></mfrac>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msup><mi>q</mi><mn>3</mn></msup><mo>=</mo><mo>-</mo><mfrac><mn>1</mn><mn>8</mn></mfrac>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>q</mi><mo>=</mo><mo>-</mo><mfrac><mn>1</mn><mn>2</mn></mfrac>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>b</mi><mn>1</mn></msub><mo>=</mo><mfrac><mn>24</mn><msup><mi>q</mi><mn>4</mn></msup></mfrac><mo>=</mo><mfrac><mn>24</mn><msup><mrow><mo>(</mo><mo>-</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>)</mo></mrow><mn>4</mn></msup></mfrac><mo>=</mo><mfrac><mn>24</mn><mfrac><mn>1</mn><mn>16</mn></mfrac></mfrac><mo>=</mo><mn>24</mn><mo>·</mo><mn>16</mn><mo>=</mo><mn>384</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><mi>q</mi><mo>=</mo><mo>-</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow></math>, <math><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>=</mo><mn>384</mn></mrow></math></p>
+</div>
+
+</div><div class="lesson-section"> <h2>Характеристическое свойство геометрической прогрессии</h2> <div class="definition"> <p>Для любого члена геометрической прогрессии, начиная со второго, выполняется:</p> <div class="math-container"> <div class="math-formula"> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <msubsup><mi>b</mi><mi>n</mi><mn>2</mn></msubsup><mo>=</mo><msub><mi>b</mi><mrow><mi>n</mi><mo>-</mo><mn>1</mn></mrow></msub><mo>·</mo><msub><mi>b</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub> </mrow> </math> </div> </div> </div>
+text
+
+<div class="problem">
+    <h3>Задача 7: Нахождение члена прогрессии</h3>
+    <p>Найдите сорок девятый член геометрической прогрессии, если сорок восьмой ее член равен 4, а пятидесятый ее член равен 9.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msubsup><mi>b</mi><mn>49</mn><mn>2</mn></msubsup><mo>=</mo><msub><mi>b</mi><mn>48</mn></msub><mo>·</mo><msub><mi>b</mi><mn>50</mn></msub><mo>=</mo><mn>4</mn><mo>·</mo><mn>9</mn><mo>=</mo><mn>36</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>b</mi><mn>49</mn></msub><mo>=</mo><mo>±</mo><mn>6</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><msub><mi>b</mi><mn>49</mn></msub><mo>=</mo><mn>6</mn></mrow></math> или <math><mrow><msub><mi>b</mi><mn>49</mn></msub><mo>=</mo><mo>-</mo><mn>6</mn></mrow></math></p>
+</div>
+
+<div class="problem">
+    <h3>Задача 8: Условие геометрической прогрессии</h3>
+    <p>При каком значении <math><mrow><mi>x</mi></mrow></math> последовательность <math><mrow><mi>x</mi><mo>-</mo><mn>2</mn></mrow></math>; <math><mrow><mi>x</mi><mo>-</mo><mn>1</mn></mrow></math>; <math><mrow><mi>x</mi><mo>+</mo><mn>2</mn></mrow></math> является геометрической прогрессией?</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msup><mrow><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup><mo>=</mo><mo>(</mo><mi>x</mi><mo>-</mo><mn>2</mn><mo>)</mo><mo>(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo>)</mo>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>1</mn><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>4</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>-</mo><mn>2</mn><mi>x</mi><mo>=</mo><mo>-</mo><mn>5</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>x</mi><mo>=</mo><mn>2</mn><mo>,</mo><mn>5</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><mi>x</mi><mo>=</mo><mn>2</mn><mo>,</mo><mn>5</mn></mrow></math></p>
+</div>
+
+</div><div class="lesson-section"> <h2>Формула суммы n первых членов геометрической прогрессии</h2> <div class="definition"> <div class="math-container"> <div class="math-formula"> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <msub><mi>S</mi><mi>n</mi></msub><mo>=</mo><mfrac><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>(</mo><msup><mi>q</mi><mi>n</mi></msup><mo>-</mo><mn>1</mn><mo>)</mo></mrow><mrow><mi>q</mi><mo>-</mo><mn>1</mn></mrow></mfrac><mo>,</mo><mspace width="1em"/><mi>q</mi><mo>≠</mo><mn>1</mn> </mrow> </math> </div> </div> </div>
+text
+
+<div class="problem">
+    <h3>Задача 1: Сумма первых членов</h3>
+    <p>Найдите сумму пяти первых членов геометрической прогрессии <math><mrow><mo>(</mo><msub><mi>b</mi><mi>n</mi></msub><mo>)</mo></mrow></math>, если <math><mrow><msub><mi>b</mi><mn>2</mn></msub><mo>=</mo><mo>-</mo><mn>1</mn></mrow></math>, <math><mrow><msub><mi>b</mi><mn>3</mn></msub><mo>=</mo><mo>-</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow></math>.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>q</mi><mo>=</mo><mfrac><msub><mi>b</mi><mn>3</mn></msub><msub><mi>b</mi><mn>2</mn></msub></mfrac><mo>=</mo><mfrac><mrow><mo>-</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><mrow><mo>-</mo><mn>1</mn></mrow></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>b</mi><mn>1</mn></msub><mo>=</mo><mfrac><msub><mi>b</mi><mn>2</mn></msub><mi>q</mi></mfrac><mo>=</mo><mfrac><mrow><mo>-</mo><mn>1</mn></mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></mfrac><mo>=</mo><mo>-</mo><mn>2</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>S</mi><mn>5</mn></msub><mo>=</mo><mfrac><mrow><mo>-</mo><mn>2</mn><mo>(</mo><msup><mrow><mo>(</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>)</mo></mrow><mn>5</mn></msup><mo>-</mo><mn>1</mn><mo>)</mo></mrow><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>-</mo><mn>1</mn></mrow></mfrac><mo>=</mo><mfrac><mrow><mo>-</mo><mn>2</mn><mo>(</mo><mfrac><mn>1</mn><mn>32</mn></mfrac><mo>-</mo><mn>1</mn><mo>)</mo></mrow><mrow><mo>-</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow></mfrac><mo>=</mo><mfrac><mrow><mo>-</mo><mn>2</mn><mo>(</mo><mo>-</mo><mfrac><mn>31</mn><mn>32</mn></mfrac><mo>)</mo></mrow><mrow><mo>-</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow></mfrac>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>S</mi><mn>5</mn></msub><mo>=</mo><mfrac><mfrac><mn>62</mn><mn>32</mn></mfrac><mrow><mo>-</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow></mfrac><mo>=</mo><mo>-</mo><mfrac><mn>62</mn><mn>16</mn></mfrac><mo>=</mo><mo>-</mo><mn>3</mn><mfrac><mn>7</mn><mn>8</mn></mfrac>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><msub><mi>S</mi><mn>5</mn></msub><mo>=</mo><mo>-</mo><mn>3</mn><mfrac><mn>7</mn><mn>8</mn></mfrac></mrow></math></p>
+</div>
+
+<div class="problem">
+    <h3>Задача 2: Нахождение количества членов</h3>
+    <p>Сумма членов геометрической прогрессии равна 605. Найдите количество членов прогрессии, если <math><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>=</mo><mn>5</mn></mrow></math>, <math><mrow><mi>q</mi><mo>=</mo><mn>3</mn></mrow></math>.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>605</mn><mo>=</mo><mfrac><mrow><mn>5</mn><mo>(</mo><msup><mn>3</mn><mi>n</mi></msup><mo>-</mo><mn>1</mn><mo>)</mo></mrow><mrow><mn>3</mn><mo>-</mo><mn>1</mn></mrow></mfrac>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>605</mn><mo>=</mo><mfrac><mrow><mn>5</mn><mo>(</mo><msup><mn>3</mn><mi>n</mi></msup><mo>-</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></mfrac>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>5</mn><mo>(</mo><msup><mn>3</mn><mi>n</mi></msup><mo>-</mo><mn>1</mn><mo>)</mo><mo>=</mo><mn>1210</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msup><mn>3</mn><mi>n</mi></msup><mo>-</mo><mn>1</mn><mo>=</mo><mn>242</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msup><mn>3</mn><mi>n</mi></msup><mo>=</mo><mn>243</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msup><mn>3</mn><mi>n</mi></msup><mo>=</mo><msup><mn>3</mn><mn>5</mn></msup><mspace width="1em"/><mo>⇒</mo><mspace width="1em"/><mi>n</mi><mo>=</mo><mn>5</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><mi>n</mi><mo>=</mo><mn>5</mn></mrow></math></p>
+</div>
+
+<div class="problem">
+    <h3>Задача 3: Нахождение суммы</h3>
+    <p>В геометрической прогрессии <math><mrow><mo>(</mo><msub><mi>b</mi><mi>n</mi></msub><mo>)</mo></mrow></math> известно, что <math><mrow><msub><mi>b</mi><mn>5</mn></msub><mo>=</mo><mn>6</mn></mrow></math>; <math><mrow><msub><mi>b</mi><mn>6</mn></msub><mo>=</mo><mo>-</mo><mn>36</mn></mrow></math>. Найдите <math><mrow><msub><mi>S</mi><mn>3</mn></msub></mrow></math>.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>q</mi><mo>=</mo><mfrac><msub><mi>b</mi><mn>6</mn></msub><msub><mi>b</mi><mn>5</mn></msub></mfrac><mo>=</mo><mfrac><mrow><mo>-</mo><mn>36</mn></mrow><mn>6</mn></mfrac><mo>=</mo><mo>-</mo><mn>6</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>b</mi><mn>1</mn></msub><mo>=</mo><mfrac><msub><mi>b</mi><mn>5</mn></msub><msup><mi>q</mi><mn>4</mn></msup></mfrac><mo>=</mo><mfrac><mn>6</mn><msup><mrow><mo>(</mo><mo>-</mo><mn>6</mn><mo>)</mo></mrow><mn>4</mn></msup></mfrac><mo>=</mo><mfrac><mn>6</mn><mn>1296</mn></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>216</mn></mfrac>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>S</mi><mn>3</mn></msub><mo>=</mo><mfrac><mrow><mfrac><mn>1</mn><mn>216</mn></mfrac><mo>(</mo><msup><mrow><mo>(</mo><mo>-</mo><mn>6</mn><mo>)</mo></mrow><mn>3</mn></msup><mo>-</mo><mn>1</mn><mo>)</mo></mrow><mrow><mo>-</mo><mn>6</mn><mo>-</mo><mn>1</mn></mrow></mfrac><mo>=</mo><mfrac><mrow><mfrac><mn>1</mn><mn>216</mn></mfrac><mo>(</mo><mo>-</mo><mn>216</mn><mo>-</mo><mn>1</mn><mo>)</mo></mrow><mrow><mo>-</mo><mn>7</mn></mrow></mfrac>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>S</mi><mn>3</mn></msub><mo>=</mo><mfrac><mrow><mfrac><mn>1</mn><mn>216</mn></mfrac><mo>(</mo><mo>-</mo><mn>217</mn><mo>)</mo></mrow><mrow><mo>-</mo><mn>7</mn></mrow></mfrac><mo>=</mo><mfrac><mrow><mo>-</mo><mfrac><mn>217</mn><mn>216</mn></mfrac></mrow><mrow><mo>-</mo><mn>7</mn></mrow></mfrac><mo>=</mo><mfrac><mn>217</mn><mrow><mn>1512</mn></mrow></mfrac>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><msub><mi>S</mi><mn>3</mn></msub><mo>=</mo><mfrac><mn>217</mn><mn>1512</mn></mfrac></mrow></math></p>
+</div>
+
+<div class="problem">
+    <h3>Задача 4: Нахождение суммы n членов</h3>
+    <p>В геометрической прогрессии <math><mrow><mo>(</mo><msub><mi>b</mi><mi>n</mi></msub><mo>)</mo></mrow></math> известно, что <math><mrow><msub><mi>b</mi><mn>3</mn></msub><mo>=</mo><mn>16</mn></mrow></math>, <math><mrow><mi>q</mi><mo>=</mo><mn>2</mn></mrow></math>, <math><mrow><msub><mi>b</mi><mi>n</mi></msub><mo>=</mo><mn>64</mn></mrow></math>. Найдите сумму <math><mrow><mi>n</mi></mrow></math> первых членов этой прогрессии.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>b</mi><mn>1</mn></msub><mo>=</mo><mfrac><msub><mi>b</mi><mn>3</mn></msub><msup><mi>q</mi><mn>2</mn></msup></mfrac><mo>=</mo><mfrac><mn>16</mn><msup><mn>2</mn><mn>2</mn></msup></mfrac><mo>=</mo><mfrac><mn>16</mn><mn>4</mn></mfrac><mo>=</mo><mn>4</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>64</mn><mo>=</mo><mn>4</mn><mo>·</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>-</mo><mn>1</mn></mrow></msup>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msup><mn>2</mn><mrow><mi>n</mi><mo>-</mo><mn>1</mn></mrow></msup><mo>=</mo><mn>16</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msup><mn>2</mn><mrow><mi>n</mi><mo>-</mo><mn>1</mn></mrow></msup><mo>=</mo><msup><mn>2</mn><mn>4</mn></msup>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>n</mi><mo>-</mo><mn>1</mn><mo>=</mo><mn>4</mn><mspace width="1em"/><mo>⇒</mo><mspace width="1em"/><mi>n</mi><mo>=</mo><mn>5</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>S</mi><mn>5</mn></msub><mo>=</mo><mfrac><mrow><mn>4</mn><mo>(</mo><msup><mn>2</mn><mn>5</mn></msup><mo>-</mo><mn>1</mn><mo>)</mo></mrow><mrow><mn>2</mn><mo>-</mo><mn>1</mn></mrow></mfrac><mo>=</mo><mn>4</mn><mo>(</mo><mn>32</mn><mo>-</mo><mn>1</mn><mo>)</mo><mo>=</mo><mn>4</mn><mo>·</mo><mn>31</mn><mo>=</mo><mn>124</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><msub><mi>S</mi><mn>5</mn></msub><mo>=</mo><mn>124</mn></mrow></math></p>
+</div>
+
+</div><div class="lesson-section"> <h2>Бесконечно убывающая геометрическая прогрессия</h2> <div class="definition"> <p><strong>Бесконечно убывающая геометрическая прогрессия</strong> — это геометрическая прогрессия, у которой <math><mrow><mo>|</mo><mi>q</mi><mo>|</mo><mo><</mo><mn>1</mn></mrow></math>.</p> <p>Сумма бесконечно убывающей геометрической прогрессии:</p> <div class="math-container"> <div class="math-formula"> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mi>S</mi><mo>=</mo><mfrac><msub><mi>b</mi><mn>1</mn></msub><mrow><mn>1</mn><mo>-</mo><mi>q</mi></mrow></mfrac> </mrow> </math> </div> </div> </div>
+text
+
+<div class="problem">
+    <h3>Задача 1: Проверка на бесконечно убывающую прогрессию</h3>
+    <p>Является ли бесконечно убывающей геометрическая прогрессия:</p>
+    <p>а) <math><mrow><mn>4</mn><mo>;</mo><mfrac><mn>4</mn><mn>3</mn></mfrac><mo>;</mo><mfrac><mn>4</mn><mn>9</mn></mfrac><mo>;</mo><mfrac><mn>4</mn><mn>27</mn></mfrac><mo>;</mo><mo>…</mo></mrow></math></p>
+    <p>б) <math><mrow><mn>1</mn><mo>;</mo><mo>-</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mo>;</mo><mfrac><mn>1</mn><mn>9</mn></mfrac><mo>;</mo><mo>-</mo><mfrac><mn>1</mn><mn>27</mn></mfrac><mo>;</mo><mo>…</mo></mrow></math></p>
+    <p>в) <math><mrow><mn>2</mn><mo>;</mo><mo>-</mo><mn>4</mn><mo>;</mo><mn>8</mn><mo>;</mo><mo>-</mo><mn>16</mn><mo>;</mo><mo>…</mo></mrow></math></p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <p>а) <math><mrow><mi>q</mi><mo>=</mo><mfrac><mfrac><mn>4</mn><mn>3</mn></mfrac><mn>4</mn></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac></mrow></math>, <math><mrow><mo>|</mo><mi>q</mi><mo>|</mo><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mo><</mo><mn>1</mn></mrow></math> ⇒ является</p>
+    <p>б) <math><mrow><mi>q</mi><mo>=</mo><mfrac><mrow><mo>-</mo><mfrac><mn>1</mn><mn>3</mn></mfrac></mrow><mn>1</mn></mfrac><mo>=</mo><mo>-</mo><mfrac><mn>1</mn><mn>3</mn></mfrac></mrow></math>, <math><mrow><mo>|</mo><mi>q</mi><mo>|</mo><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mo><</mo><mn>1</mn></mrow></math> ⇒ является</p>
+    <p>в) <math><mrow><mi>q</mi><mo>=</mo><mfrac><mrow><mo>-</mo><mn>4</mn></mrow><mn>2</mn></mfrac><mo>=</mo><mo>-</mo><mn>2</mn></mrow></math>, <math><mrow><mo>|</mo><mi>q</mi><mo>|</mo><mo>=</mo><mn>2</mn><mo>></mo><mn>1</mn></mrow></math> ⇒ не является</p>
+</div>
+
+<div class="problem">
+    <h3>Задача 2: Сумма бесконечно убывающей прогрессии</h3>
+    <p>Найдите сумму бесконечно убывающей геометрической прогрессии, в которой <math><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>=</mo><mn>5</mn></mrow></math>, <math><mrow><mi>q</mi><mo>=</mo><mo>-</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow></math>.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>S</mi><mo>=</mo><mfrac><msub><mi>b</mi><mn>1</mn></msub><mrow><mn>1</mn><mo>-</mo><mi>q</mi></mrow></mfrac><mo>=</mo><mfrac><mn>5</mn><mrow><mn>1</mn><mo>-</mo><mo>(</mo><mo>-</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>)</mo></mrow></mfrac><mo>=</mo><mfrac><mn>5</mn><mfrac><mn>3</mn><mn>2</mn></mfrac></mfrac><mo>=</mo><mn>5</mn><mo>·</mo><mfrac><mn>2</mn><mn>3</mn></mfrac><mo>=</mo><mfrac><mn>10</mn><mn>3</mn></mfrac><mo>=</mo><mn>3</mn><mfrac><mn>1</mn><mn>3</mn></mfrac>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><mi>S</mi><mo>=</mo><mn>3</mn><mfrac><mn>1</mn><mn>3</mn></mfrac></mrow></math></p>
+</div>
+
+<div class="problem">
+    <h3>Задача 3: Нахождение первого члена</h3>
+    <p>В бесконечно убывающей геометрической прогрессии <math><mrow><mi>S</mi><mo>=</mo><mn>90</mn></mrow></math>, <math><mrow><mi>q</mi><mo>=</mo><mn>0</mn><mo>,</mo><mn>1</mn></mrow></math>. Найдите первый член этой прогрессии.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>90</mn><mo>=</mo><mfrac><msub><mi>b</mi><mn>1</mn></msub><mrow><mn>1</mn><mo>-</mo><mn>0</mn><mo>,</mo><mn>1</mn></mrow></mfrac>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>90</mn><mo>=</mo><mfrac><msub><mi>b</mi><mn>1</mn></msub><mn>0</mn><mo>,</mo><mn>9</mn></mfrac>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>b</mi><mn>1</mn></msub><mo>=</mo><mn>90</mn><mo>·</mo><mn>0</mn><mo>,</mo><mn>9</mn><mo>=</mo><mn>81</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>=</mo><mn>81</mn></mrow></math></p>
+</div>
+
+<div class="problem">
+    <h3>Задача 4: Перевод периодической десятичной дроби</h3>
+    <p>Запишите бесконечную периодическую десятичную дробь <math><mrow><mn>15</mn><mo>,</mo><mn>2</mn><mo>(</mo><mn>3</mn><mo>)</mo></mrow></math> в виде обыкновенной дроби.</p>
+</div>
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>15</mn><mo>,</mo><mn>2</mn><mo>(</mo><mn>3</mn><mo>)</mo><mo>=</mo><mn>15</mn><mo>+</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo>+</mo><mn>0</mn><mo>,</mo><mn>03</mn><mo>+</mo><mn>0</mn><mo>,</mo><mn>003</mn><mo>+</mo><mn>0</mn><mo>,</mo><mn>0003</mn><mo>+</mo><mo>…</mo>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>b</mi><mn>1</mn></msub><mo>=</mo><mn>0</mn><mo>,</mo><mn>03</mn><mo>,</mo><mspace width="1em"/><mi>q</mi><mo>=</mo><mfrac><mn>0</mn><mo>,</mo><mn>003</mn><mn>0</mn><mo>,</mo><mn>03</mn></mfrac><mo>=</mo><mn>0</mn><mo>,</mo><mn>1</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>S</mi><mo>=</mo><mfrac><msub><mi>b</mi><mn>1</mn></msub><mrow><mn>1</mn><mo>-</mo><mi>q</mi></mrow></mfrac><mo>=</mo><mfrac><mn>0</mn><mo>,</mo><mn>03</mn><mrow><mn>1</mn><mo>-</mo><mn>0</mn><mo>,</mo><mn>1</mn></mrow></mfrac><mo>=</mo><mfrac><mn>0</mn><mo>,</mo><mn>03</mn><mn>0</mn><mo>,</mo><mn>9</mn></mfrac><mo>=</mo><mfrac><mn>3</mn><mn>90</mn></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>30</mn></mfrac>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>15</mn><mo>,</mo><mn>2</mn><mo>(</mo><mn>3</mn><mo>)</mo><mo>=</mo><mn>15</mn><mfrac><mn>2</mn><mn>10</mn></mfrac><mo>+</mo><mfrac><mn>1</mn><mn>30</mn></mfrac><mo>=</mo><mn>15</mn><mfrac><mn>6</mn><mn>30</mn></mfrac><mo>+</mo><mfrac><mn>1</mn><mn>30</mn></mfrac><mo>=</mo><mn>15</mn><mfrac><mn>7</mn><mn>30</mn></mfrac>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p><strong>Ответ:</strong> <math><mrow><mn>15</mn><mfrac><mn>7</mn><mn>30</mn></mfrac></mrow></math></p>
+</div>
+
+</div>
+<div class="footer">
+					<p>Функции. Кобрин П.С.</p>
+				</div>
+</div>
+
+
+
+
+	</body>
+</html>

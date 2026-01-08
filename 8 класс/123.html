@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>Квадратные уравнения</title>
+				<style>
+   * {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 15px;
+  background-color: #f5f9ff;
+  color: #333;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 150, 0.1);
+  padding: 25px 20px;
+}
+
+h1 {
+  color: #2c3e50;
+  text-align: center;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 15px;
+  margin-top: 0;
+  font-size: 1.8em;
+}
+
+h2 {
+  color: #2980b9;
+  margin-top: 30px;
+  font-size: 1.4em;
+  padding: 0 5px;
+}
+
+.lesson-section {
+  background-color: #f8fafd;
+  border-radius: 10px;
+  padding: 18px;
+  margin: 20px 0;
+  border-left: 5px solid #3498db;
+}
+
+.definition {
+  background-color: #e8f4fc;
+  padding: 18px;
+  border-radius: 8px;
+  margin: 18px 0;
+  font-size: 1em;
+}
+
+.example {
+  background-color: #f0f7ff;
+  padding: 18px;
+  border-radius: 8px;
+  margin: 18px 0;
+  border-left: 4px solid #2ecc71;
+  font-size: 1em;
+}
+
+.example-title {
+  font-weight: bold;
+  color: #27ae60;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
+.hard-example {
+  border-left-color: #e74c3c;
+}
+
+.hard-example .example-title {
+  color: #e74c3c;
+}
+
+.math-container {
+  background-color: white;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin: 14px 0;
+  overflow-x: auto;
+}
+
+.math-formula {
+  font-size: 1.1em;
+  text-align: center;
+  padding: 10px;
+}
+
+.explanation {
+  background-color: #fffde7;
+  padding: 14px;
+  border-radius: 8px;
+  margin: 14px 0;
+  font-style: italic;
+  font-size: 0.95em;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
+  flex: 1;
+  min-width: 120px;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.lesson-number {
+  background-color: #3498db;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  color: #7f8c8d;
+  font-size: 0.9em;
+}
+
+.image-container {
+  text-align: center;
+  margin: 1rem 0;
+  padding: 0.8rem;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+
+/* Специальные медиа-запросы для изображений */
+@media (max-width: 768px) {
+  .image-container {
+    padding: 0.6rem;
+    margin: 0.8rem 0;
+  }
+
+  .function-image,
+  .sign-image {
+    max-height: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-container {
+    padding: 0.5rem;
+    margin: 0.6rem 0;
+  }
+
+  .function-image,
+  .sign-image {
+    max-height: 200px;
+  }
+}
+
+.function-image,
+.sign-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  transition: transform 0.3s ease;
+  max-height: 280px;
+  object-fit: contain;
+}
+
+.function-image:hover,
+.sign-image:hover {
+  transform: scale(1.02);
+}
+
+.function-analysis {
+  background: white;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.function-analysis h3 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.8rem;
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+.function-properties {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+.property {
+  background: #f8fafc;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #3498db;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.property:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.property h4 {
+  color: #2c3e50;
+  margin-top: 0;
+  font-size: 1.05rem;
+  margin-bottom: 0.6rem;
+}
+
+.explanation {
+  font-style: italic;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  padding-left: 0.8rem;
+  border-left: 2px solid #bdc3c7;
+}
+
+.sign-constancy-cases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.case {
+  background: white;
+  padding: 1.2rem;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease;
+}
+
+.case:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.sign-analysis {
+  background: #f8fafc;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 0.8rem;
+  border-left: 4px solid #2ecc71;
+}
+
+.sign-analysis h4 {
+  color: #27ae60;
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  font-size: 1.05rem;
+}
+
+.summary {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  padding: 1.2rem;
+  border-radius: 10px;
+  margin-top: 1.5rem;
+  border-left: 5px solid #2196F3;
+}
+
+.summary h4 {
+  color: #1565c0;
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin: 1.2rem 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sign-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  min-width: 600px;
+}
+
+.sign-table th {
+  background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+  color: white;
+  padding: 0.9rem;
+  text-align: left;
+  font-weight: 600;
+  border: 1px solid #388E3C;
+  font-size: 0.95em;
+}
+
+.sign-table td {
+  padding: 0.7rem 0.9rem;
+  border: 1px solid #e0e0e0;
+  color: #333;
+  font-size: 0.9em;
+}
+
+.sign-table tbody tr:nth-child(even) {
+  background: #f5f5f5;
+}
+
+.sign-table tbody tr:hover {
+  background: #e3f2fd;
+}
+
+.positive-a {
+  background: #e8f5e9 !important;
+  color: #1b5e20 !important;
+  font-weight: 600;
+}
+
+.negative-a {
+  background: #ffebee !important;
+  color: #b71c1c !important;
+  font-weight: 600;
+}
+
+.note {
+  background: #fff3e0;
+  padding: 1.2rem;
+  border-radius: 10px;
+  margin-top: 1.5rem;
+  border-left: 5px solid #ff9800;
+}
+
+.note h4 {
+  color: #e65100;
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .container {
+    padding: 18px 15px;
+    border-radius: 12px;
+  }
+
+  h1 {
+    font-size: 1.6em;
+    padding-bottom: 12px;
+  }
+
+  h2 {
+    font-size: 1.3em;
+    margin-top: 25px;
+  }
+
+  .lesson-section {
+    padding: 15px;
+    margin: 15px 0;
+  }
+
+  .definition,
+  .example {
+    padding: 15px;
+    margin: 15px 0;
+  }
+
+  .function-analysis {
+    padding: 1.2rem;
+    margin: 1.2rem 0;
+  }
+
+  .function-properties,
+  .sign-constancy-cases {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .property,
+  .case {
+    padding: 1rem;
+  }
+
+  .function-image,
+  .sign-image {
+    max-height: 220px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 0.95em;
+    min-width: 110px;
+  }
+
+  .navigation {
+    gap: 10px;
+  }
+
+  .sign-table {
+    min-width: 100%;
+    font-size: 0.85em;
+  }
+
+  .sign-table th,
+  .sign-table td {
+    padding: 0.6rem 0.8rem;
+  }
+}
+
+/* Адаптивность для очень маленьких экранов */
+@media (max-width: 480px) {
+  body {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 15px 12px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+
+  .function-image,
+  .sign-image {
+    max-height: 200px;
+  }
+
+  .math-formula {
+    font-size: 1em;
+    padding: 8px;
+  }
+
+  button {
+    min-width: 100px;
+    padding: 8px 16px;
+  }
+
+  .sign-table th,
+  .sign-table td {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8em;
+  }
+}
+  </style>
+			</head>
+			<body>
+				<div class="container">
+                    <h1>Решение квадратичных неравенств</h1>
+                    <div class="lesson-section">
+    <h2>Общий алгоритм решения неравенства</h2>
+
+    <div class="definition">
+        <p><strong>Алгоритм решения квадратичного неравенства:</strong></p>
+        <ol>
+            <li>Привести неравенство к стандартному виду: <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>a</mi><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>b</mi><mi>x</mi><mo>+</mo><mi>c</mi><mo>≤</mo><mn>0</mn></mrow></math> (или другие знаки неравенства)</li>
+            <li>Найти корни квадратного уравнения <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>a</mi><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>b</mi><mi>x</mi><mo>+</mo><mi>c</mi><mo>=</mo><mn>0</mn></mrow></math></li>
+            <li>Отметить корни на числовой прямой</li>
+            <li>Определить направление ветвей параболы (знак коэффициента <math><mi>a</mi></math>)</li>
+            <li>Схематически изобразить параболу, проходящую через отмеченные точки</li>
+            <li>Выбрать интервалы, соответствующие знаку неравенства</li>
+            <li>Записать ответ с учётом строгости неравенства</li>
+        </ol>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Пример 1: Решение неравенства</h2>
+
+    <div class="example">
+        <div class="example-title">Графическое решение неравенства:</div>
+
+        <div class="image-container">
+            <img src="https://i.postimg.cc/sX9Hq0dk/изображение.png" class="function-image"
+                 alt="Графическое решение квадратичного неравенства">
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>2</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>-</mo>
+                        <mi>x</mi>
+                        <mo>-</mo>
+                        <mn>15</mn>
+                        <mo>≤</mo>
+                        <mn>0</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <p><strong>Анализ решения:</strong></p>
+            <ul>
+                <li>Коэффициент <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>a</mi><mo>=</mo><mn>2</mn><mo>&gt;</mo><mn>0</mn></mrow></math> ⇒ ветви параболы направлены вверх</li>
+                <li>Корни уравнения <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mi>x</mi><mo>-</mo><mn>15</mn><mo>=</mo><mn>0</mn></mrow></math>:
+                    <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mo>-</mo><mn>2.5</mn></mrow></math>,
+                    <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>=</mo><mn>3</mn></mrow></math></li>
+                <li>Неравенство нестрогое (≤) ⇒ точки, где функция равна нулю, включаем в ответ</li>
+                <li>Нам нужны промежутки, где парабола находится ниже или на оси OX</li>
+            </ul>
+        </div>
+
+        <div class="sign-analysis">
+            <h4>Ответ:</h4>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mi>x</mi>
+                            <mo>∈</mo>
+                            <mo>[</mo>
+                            <mo>-</mo>
+                            <mn>2.5</mn>
+                            <mo>;</mo>
+                            <mn>3</mn>
+                            <mo>]</mo>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Пример 2: Решение неравенства (методом умножения на -1)</h2>
+
+    <div class="example">
+        <div class="example-title">Алгебраическое решение неравенства:</div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>-</mo>
+                        <mn>3</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>+</mo>
+                        <mi>x</mi>
+                        <mo>+</mo>
+                        <mn>4</mn>
+                        <mo>&lt;</mo>
+                        <mn>0</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <p><strong>Шаг 1: Умножение на -1</strong></p>
+            <p>Умножим обе части неравенства на -1. При умножении на отрицательное число знак неравенства меняется на противоположный:</p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mo>(</mo>
+                            <mo>-</mo>
+                            <mn>1</mn>
+                            <mo>)</mo>
+                            <mo>·</mo>
+                            <mo>(</mo>
+                            <mo>-</mo>
+                            <mn>3</mn>
+                            <msup>
+                                <mi>x</mi>
+                                <mn>2</mn>
+                            </msup>
+                            <mo>+</mo>
+                            <mi>x</mi>
+                            <mo>+</mo>
+                            <mn>4</mn>
+                            <mo>)</mo>
+                            <mo>&gt;</mo>
+                            <mo>(</mo>
+                            <mo>-</mo>
+                            <mn>1</mn>
+                            <mo>)</mo>
+                            <mo>·</mo>
+                            <mn>0</mn>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mn>3</mn>
+                            <msup>
+                                <mi>x</mi>
+                                <mn>2</mn>
+                            </msup>
+                            <mo>-</mo>
+                            <mi>x</mi>
+                            <mo>-</mo>
+                            <mn>4</mn>
+                            <mo>&gt;</mo>
+                            <mn>0</mn>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+
+            <p><strong>Шаг 2: Находим корни квадратного уравнения</strong></p>
+            <p>Решаем уравнение <math><mrow><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mi>x</mi><mo>-</mo><mn>4</mn><mo>=</mo><mn>0</mn></mrow></math>:</p>
+            <ul>
+                <li>Дискриминант:
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mi>D</mi>
+                            <mo>=</mo>
+                            <msup>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mo>-</mo>
+                                    <mn>1</mn>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mn>2</mn>
+                            </msup>
+                            <mo>-</mo>
+                            <mn>4</mn>
+                            <mo>·</mo>
+                            <mn>3</mn>
+                            <mo>·</mo>
+                            <mo>(</mo>
+                            <mo>-</mo>
+                            <mn>4</mn>
+                            <mo>)</mo>
+                            <mo>=</mo>
+                            <mn>1</mn>
+                            <mo>+</mo>
+                            <mn>48</mn>
+                            <mo>=</mo>
+                            <mn>49</mn>
+                        </mrow>
+                    </math>
+                </li>
+                <li>Корни:
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>1</mn>
+                            </msub>
+                            <mo>=</mo>
+                            <mfrac>
+                                <mrow>
+                                    <mn>1</mn>
+                                    <mo>-</mo>
+                                    <mn>7</mn>
+                                </mrow>
+                                <mn>6</mn>
+                            </mfrac>
+                            <mo>=</mo>
+                            <mo>-</mo>
+                            <mn>1</mn>
+                        </mrow>
+                    </math>,
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>2</mn>
+                            </msub>
+                            <mo>=</mo>
+                            <mfrac>
+                                <mrow>
+                                    <mn>1</mn>
+                                    <mo>+</mo>
+                                    <mn>7</mn>
+                                </mrow>
+                                <mn>6</mn>
+                            </mfrac>
+                            <mo>=</mo>
+                            <mfrac>
+                                <mn>4</mn>
+                                <mn>3</mn>
+                            </mfrac>
+                        </mrow>
+                    </math>
+                </li>
+            </ul>
+
+            <p><strong>Шаг 3: Анализ неравенства</strong></p>
+            <ul>
+                <li>Коэффициент <math><mrow><mi>a</mi><mo>=</mo><mn>3</mn><mo>></mo><mn>0</mn></mrow></math> ⇒ ветви параболы направлены <strong>вверх</strong>.</li>
+                <li>Нам нужны значения <em>x</em>, при которых квадратный трёхчлен <strong>больше нуля</strong>.</li>
+                <li>Парабола с ветвями вверх больше нуля <strong>вне промежутка между корнями</strong>.</li>
+            </ul>
+
+            <p><strong>Шаг 4: Запись решения</strong></p>
+            <p>Так как неравенство строгое (>), корни не включаются в решение. Получаем объединение двух интервалов:</p>
+        </div>
+
+        <div class="sign-analysis">
+            <h4>Ответ (для неравенства после умножения на -1):</h4>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mi>x</mi>
+                            <mo>∈</mo>
+                            <mo>(</mo>
+                            <mo>-</mo>
+                            <mi>∞</mi>
+                            <mo>;</mo>
+                            <mo>-</mo>
+                            <mn>1</mn>
+                            <mo>)</mo>
+                            <mo>∪</mo>
+                            <mo>(</mo>
+                            <mfrac>
+                                <mn>4</mn>
+                                <mn>3</mn>
+                            </mfrac>
+                            <mo>;</mo>
+                            <mo>+</mo>
+                            <mi>∞</mi>
+                            <mo>)</mo>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Пример 3а: Решение неравенства</h2>
+
+    <div class="example">
+        <div class="example-title">Графическое решение неравенства:</div>
+
+        <div class="image-container">
+            <img src="https://i.postimg.cc/htzycGRz/изображение.png" class="function-image"
+                 alt="Графическое решение квадратичного неравенства">
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>+</mo>
+                        <mn>3</mn>
+                        <mo>&gt;</mo>
+                        <mn>0</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <p><strong>Анализ решения:</strong></p>
+            <ul>
+                <li>Коэффициент <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>a</mi><mo>=</mo><mn>1</mn><mo>&gt;</mo><mn>0</mn></mrow></math> ⇒ ветви параболы направлены вверх</li>
+                <li>Уравнение <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>3</mn><mo>=</mo><mn>0</mn></mrow></math> не имеет действительных корней (дискриминант <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>D</mi><mo>=</mo><mo>-</mo><mn>12</mn><mo>&lt;</mo><mn>0</mn></mrow></math>)</li>
+                <li>Парабола целиком находится выше оси OX</li>
+                <li>Неравенство строгое (&gt;) ⇒ функция положительна для всех значений <math><mi>x</mi></math></li>
+            </ul>
+        </div>
+
+        <div class="sign-analysis">
+            <h4>Ответ:</h4>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mi>x</mi>
+                            <mo>∈</mo>
+                            <mo>(</mo>
+                            <mo>-</mo>
+                            <mi>∞</mi>
+                            <mo>;</mo>
+                            <mo>+</mo>
+                            <mi>∞</mi>
+                            <mo>)</mo>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Пример 3б: Решение неравенства</h2>
+
+    <div class="example">
+        <div class="example-title">Графическое решение неравенства:</div>
+
+        <div class="image-container">
+            <img src="https://i.postimg.cc/HnkzKYt1/изображение.png" class="function-image"
+                 alt="Графическое решение квадратичного неравенства">
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>4</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>-</mo>
+                        <mn>12</mn>
+                        <mi>x</mi>
+                        <mo>+</mo>
+                        <mn>9</mn>
+                        <mo>&gt;</mo>
+                        <mn>0</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <p><strong>Анализ решения:</strong></p>
+            <ul>
+                <li>Коэффициент <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>a</mi><mo>=</mo><mn>4</mn><mo>&gt;</mo><mn>0</mn></mrow></math> ⇒ ветви параболы направлены вверх</li>
+                <li>Уравнение <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>4</mn><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>12</mn><mi>x</mi><mo>+</mo><mn>9</mn><mo>=</mo><mn>0</mn></mrow></math> имеет один корень (дискриминант <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>D</mi><mo>=</mo><mn>0</mn></mrow></math>):
+                    <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>x</mi><mn>0</mn></msub><mo>=</mo><mfrac><mn>3</mn><mn>2</mn></mfrac></mrow></math></li>
+                <li>Парабола касается оси OX в точке <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>=</mo><mfrac><mn>3</mn><mn>2</mn></mfrac></mrow></math> и положительна во всех остальных точках</li>
+                <li>Неравенство строгое (&gt;) ⇒ точка касания не включается в ответ</li>
+            </ul>
+        </div>
+
+        <div class="sign-analysis">
+            <h4>Ответ:</h4>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mi>x</mi>
+                            <mo>∈</mo>
+                            <mo>(</mo>
+                            <mo>-</mo>
+                            <mi>∞</mi>
+                            <mo>;</mo>
+                            <mfrac>
+                                <mn>3</mn>
+                                <mn>2</mn>
+                            </mfrac>
+                            <mo>)</mo>
+                            <mo>∪</mo>
+                            <mo>(</mo>
+                            <mfrac>
+                                <mn>3</mn>
+                                <mn>2</mn>
+                            </mfrac>
+                            <mo>;</mo>
+                            <mo>+</mo>
+                            <mi>∞</mi>
+                            <mo>)</mo>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                    <h1>Решение систем и совокупностей квадратичных неравенств</h1>
+
+                    <div class="lesson-section">
+    <h2>Решение систем квадратичных неравенств</h2>
+
+    <div class="definition">
+        <p><strong>Алгоритм решения системы квадратичных неравенств:</strong></p>
+        <ol>
+            <li>Решить каждое неравенство системы отдельно</li>
+            <li>Найти множество решений для каждого неравенства</li>
+            <li>Найти пересечение полученных множеств решений</li>
+            <li>Изобразить решение на числовой прямой</li>
+            <li>Записать окончательный ответ</li>
+        </ol>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Пример 1: Решение системы неравенств</h2>
+
+    <div class="example">
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>{</mo>
+                        <mtable>
+                            <mtr>
+                                <mtd>
+                                    <mn>4</mn>
+                                    <msup>
+                                        <mi>x</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>≥</mo>
+                                    <mo>-</mo>
+                                    <mo>(</mo>
+                                    <mi>x</mi>
+                                    <mo>-</mo>
+                                    <mn>3</mn>
+                                    <mo>)</mo>
+                                </mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd>
+                                    <msup>
+                                        <mi>x</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>≤</mo>
+                                    <mn>6</mn>
+                                </mtd>
+                            </mtr>
+                        </mtable>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <p><strong>Анализ решения:</strong></p>
+            <ul>
+                <li><strong>Первое неравенство:</strong>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>4</mn><msup><mi>x</mi><mn>2</mn></msup><mo>≥</mo><mo>-</mo><mi>x</mi><mo>+</mo><mn>3</mn></mrow></math> или
+                    <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>4</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>x</mi><mo>-</mo><mn>3</mn><mo>≥</mo><mn>0</mn></mrow></math></li>
+                <li>Корни: <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mo>-</mo><mn>1</mn></mrow></math>,
+                    <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>=</mo><mfrac><mn>3</mn><mn>4</mn></mfrac></mrow></math></li>
+                <li>Решение первого неравенства:
+                    <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>∈</mo><mo>(</mo><mo>-</mo><mi>∞</mi><mo>;</mo><mo>-</mo><mn>1</mn><mo>]</mo><mo>∪</mo><mo>[</mo><mfrac><mn>3</mn><mn>4</mn></mfrac><mo>;</mo><mo>+</mo><mi>∞</mi><mo>)</mo></mrow></math></li>
+                <li><strong>Второе неравенство:</strong>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>≤</mo><mn>6</mn></mrow></math></li>
+                <li>Решение второго неравенства:
+                    <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>∈</mo><mo>[</mo><mo>-</mo><msqrt><mn>6</mn></msqrt><mo>;</mo><msqrt><mn>6</mn></msqrt><mo>]</mo></mrow></math></li>
+                <li><strong>Пересечение решений:</strong> объединяем решения обоих неравенств</li>
+            </ul>
+        </div>
+
+        <div class="example-title">Графическое решение системы:</div>
+
+        <div class="image-container">
+            <img src="https://i.postimg.cc/NMdGYDR1/изображение.png" class="function-image"
+                 alt="Графическое решение системы квадратичных неравенств">
+        </div>
+
+        <div class="sign-analysis">
+            <h4>Ответ:</h4>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mi>x</mi>
+                            <mo>∈</mo>
+                            <mo>[</mo>
+                            <mo>-</mo>
+                            <msqrt>
+                                <mn>6</mn>
+                            </msqrt>
+                            <mo>;</mo>
+                            <mo>-</mo>
+                            <mn>1</mn>
+                            <mo>]</mo>
+                            <mo>∪</mo>
+                            <mo>[</mo>
+                            <mfrac>
+                                <mn>3</mn>
+                                <mn>4</mn>
+                            </mfrac>
+                            <mo>;</mo>
+                            <msqrt>
+                                <mn>6</mn>
+                            </msqrt>
+                            <mo>]</mo>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Решение совокупностей квадратичных неравенств</h2>
+
+    <div class="definition">
+        <p><strong>Алгоритм решения совокупности квадратичных неравенств:</strong></p>
+        <ol>
+            <li>Решить каждое неравенство совокупности отдельно</li>
+            <li>Найти множество решений для каждого неравенства</li>
+            <li>Найти объединение полученных множеств решений</li>
+            <li>Изобразить решение на числовой прямой</li>
+            <li>Записать окончательный ответ</li>
+        </ol>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Пример 2: Решение совокупности неравенств</h2>
+
+    <div class="example">
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>[</mo>
+                        <mtable>
+                            <mtr>
+                                <mtd>
+                                    <mn>3</mn>
+                                    <msup>
+                                        <mi>x</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>≤</mo>
+                                    <mn>9</mn>
+                                </mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd>
+                                    <mn>4</mn>
+                                    <msup>
+                                        <mi>x</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>&gt;</mo>
+                                    <mn>2.56</mn>
+                                </mtd>
+                            </mtr>
+                        </mtable>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <p><strong>Анализ решения:</strong></p>
+            <ul>
+                <li><strong>Первое неравенство:</strong>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>≤</mo><mn>9</mn></mrow></math> или
+                    <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>≤</mo><mn>3</mn></mrow></math></li>
+                <li>Решение первого неравенства:
+                    <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>∈</mo><mo>[</mo><mo>-</mo><msqrt><mn>3</mn></msqrt><mo>;</mo><msqrt><mn>3</mn></msqrt><mo>]</mo></mrow></math></li>
+                <li><strong>Второе неравенство:</strong>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>4</mn><msup><mi>x</mi><mn>2</mn></msup><mo>&gt;</mo><mn>2.56</mn></mrow></math> или
+                    <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>&gt;</mo><mn>0.64</mn></mrow></math></li>
+                <li>Решение второго неравенства:
+                    <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>∈</mo><mo>(</mo><mo>-</mo><mi>∞</mi><mo>;</mo><mo>-</mo><mn>0.8</mn><mo>)</mo><mo>∪</mo><mo>(</mo><mn>0.8</mn><mo>;</mo><mo>+</mo><mi>∞</mi><mo>)</mo></mrow></math></li>
+                <li><strong>Объединение решений:</strong> берем все значения, удовлетворяющие хотя бы одному неравенству</li>
+            </ul>
+        </div>
+
+        <div class="example-title">Графическое решение совокупности:</div>
+
+        <div class="image-container">
+            <img src="https://i.postimg.cc/T2H24kdx/изображение.png" class="function-image"
+                 alt="Графическое решение совокупности квадратичных неравенств">
+        </div>
+
+        <div class="sign-analysis">
+            <h4>Ответ:</h4>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mi>x</mi>
+                            <mo>∈</mo>
+                            <mo>(</mo>
+                            <mo>-</mo>
+                            <mi>∞</mi>
+                            <mo>;</mo>
+                            <mo>+</mo>
+                            <mi>∞</mi>
+                            <mo>)</mo>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+            <p class="explanation">
+                Поскольку первое неравенство дает промежуток
+                <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>[</mo><mo>-</mo><msqrt><mn>3</mn></msqrt><mo>;</mo><msqrt><mn>3</mn></msqrt><mo>]</mo></mrow></math>,
+                а второе неравенство покрывает все значения вне промежутка
+                <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>[</mo><mo>-</mo><mn>0.8</mn><mo>;</mo><mn>0.8</mn><mo>]</mo></mrow></math>,
+                их объединение дает всю числовую прямую.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Сравнение системы и совокупности неравенств</h2>
+
+    <div class="summary">
+        <h4>Ключевые отличия:</h4>
+        <div class="function-properties">
+            <div class="property">
+                <h4>Система неравенств</h4>
+                <p>Решение должно удовлетворять <strong>всем</strong> неравенствам одновременно</p>
+                <p><strong>Находим ПЕРЕСЕЧЕНИЕ</strong> множеств решений</p>
+                <p>Обозначается фигурной скобкой: <math><mo>{</mo></math></p>
+            </div>
+
+            <div class="property">
+                <h4>Совокупность неравенств</h4>
+                <p>Решение должно удовлетворять <strong>хотя бы одному</strong> из неравенств</p>
+                <p><strong>Находим ОБЪЕДИНЕНИЕ</strong> множеств решений</p>
+                <p>Обозначается квадратной скобкой: <math><mo>[</mo></math></p>
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+
+																					</body>
+																				</html>

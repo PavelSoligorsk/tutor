@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>Дробн.-Рац. уравн.</title>
+				<style>
+        * {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f9ff;
+    color: #333;
+    line-height: 1.6;
+    font-size: 16px; /* Базовый размер шрифта */
+}
+
+.container {
+    max-width: 2000px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 150, 0.1);
+    padding: 30px;
+}
+
+.image-container {
+    text-align: center;
+    margin: 1rem auto;
+    padding: 0.8rem;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    max-width: min(600px, 50vw); /* Ограничение: максимум 600px или половина экрана */
+    width: fit-content; /* Подстраивается под содержимое */
+}
+
+.function-image {
+    max-width: 100%;
+    max-height: min(400px, 50vh); /* Ограничение по высоте */
+    height: auto;
+    width: auto;
+    object-fit: contain;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .image-container {
+        max-width: min(500px, 60vw);
+    }
+
+    .function-image {
+        max-height: min(350px, 45vh);
+    }
+}
+
+@media (max-width: 768px) {
+    .image-container {
+        max-width: min(400px, 80vw);
+        padding: 0.6rem;
+        margin: 0.8rem auto;
+    }
+
+    .function-image {
+        max-height: min(300px, 40vh);
+    }
+}
+
+@media (max-width: 480px) {
+    .image-container {
+        max-width: 95vw; /* Практически на всю ширину */
+        margin: 0.6rem auto;
+        padding: 0.5rem;
+    }
+
+    .function-image {
+        max-height: min(250px, 35vh);
+    }
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 15px;
+    margin-top: 0;
+    font-size: 1.8em; /* Главный заголовок */
+}
+
+h2 {
+    color: #2980b9;
+    margin-top: 30px;
+    font-size: 1.4em; /* Второстепенные заголовки */
+}
+
+.lesson-section {
+    background-color: #f8fafd;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 25px 0;
+    border-left: 5px solid #3498db;
+}
+
+.definition {
+    background-color: #e8f4fc;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-size: 1em; /* Обычный размер шрифта */
+}
+
+.example {
+    background-color: #f0f7ff;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-left: 4px solid #2ecc71;
+    font-size: 1em; /* Обычный размер шрифта */
+}
+
+.example-title {
+    font-weight: bold;
+    color: #27ae60;
+    margin-bottom: 10px;
+    font-size: 1.1em; /* Чуть больше обычного для заголовков примеров */
+}
+
+.hard-example {
+    border-left-color: #e74c3c;
+}
+
+.hard-example .example-title {
+    color: #e74c3c;
+}
+
+.math-container {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin: 15px 0;
+    overflow-x: auto;
+}
+
+.math-formula {
+    font-size: 1.1em; /* Чуть больше для формул */
+    text-align: center;
+    padding: 10px;
+}
+
+.explanation {
+    background-color: #fffde7;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    font-style: italic;
+    font-size: 1em; /* Обычный размер шрифта */
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em; /* Обычный размер шрифта */
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+.lesson-number {
+    background-color: #3498db;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 0.9em; /* Немного меньше для меток */
+}
+
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #7f8c8d;
+    font-size: 0.9em; /* Меньше для подвала */
+}
+    </style>
+			</head>
+			<body>
+				<div class="container">
+
+					<h1>Дробно-рациональные уравнения</h1>
+ <div class="lesson-section"> <h2>Основное свойство: равенство дроби нулю</h2> <div class="definition"> <p><strong>Дробь равна нулю тогда и только тогда, когда её числитель равен нулю, а знаменатель не равен нулю.</strong></p>
+
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mfrac>
+                        <mrow><mi>P</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow>
+                        <mrow><mi>Q</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mn>0</mn>
+                    <mo>⇔</mo>
+                    <mo>{</mo>
+                    <mtable>
+                        <mtr>
+                            <mtd><mi>P</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mn>0</mn></mtd>
+                        </mtr>
+                        <mtr>
+                            <mtd><mi>Q</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>≠</mo><mn>0</mn></mtd>
+                        </mtr>
+                    </mtable>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>Это ключевое свойство, которое позволяет решать дробно-рациональные уравнения.</p>
+</div>
+
+</div><div class="lesson-section"> <h2>Пример 1: Простое дробно-рациональное уравнение</h2> <div class="example"> <p class="example-title">Решите уравнение: <math><mrow><mfrac><mrow><mi>x</mi><mo>-</mo><mn>6</mn></mrow><mrow><mi>x</mi><mo>+</mo><mn>6</mn></mrow></mfrac><mo>=</mo><mn>0</mn></mrow></math></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mfrac>
+                        <mrow><mi>x</mi><mo>-</mo><mn>6</mn></mrow>
+                        <mrow><mi>x</mi><mo>+</mo><mn>6</mn></mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mn>0</mn>
+                    <mo>⇔</mo>
+                    <mo>{</mo>
+                    <mtable>
+                        <mtr>
+                            <mtd><mi>x</mi><mo>-</mo><mn>6</mn><mo>=</mo><mn>0</mn></mtd>
+                        </mtr>
+                        <mtr>
+                            <mtd><mi>x</mi><mo>+</mo><mn>6</mn><mo>≠</mo><mn>0</mn></mtd>
+                        </mtr>
+                    </mtable>
+                    <mo>⇔</mo>
+                    <mo>{</mo>
+                    <mtable>
+                        <mtr>
+                            <mtd><mi>x</mi><mo>=</mo><mn>6</mn></mtd>
+                        </mtr>
+                        <mtr>
+                            <mtd><mi>x</mi><mo>≠</mo><mo>-</mo><mn>6</mn></mtd>
+                        </mtr>
+                    </mtable>
+                    <mo>⇔</mo>
+                    <mi>x</mi><mo>=</mo><mn>6</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p><strong>Ответ:</strong> <math><mrow><mi>x</mi><mo>=</mo><mn>6</mn></mrow></math></p>
+</div>
+
+</div><div class="lesson-section"> <h2>Пример 2: Уравнение с разложением на множители</h2> <div class="example"> <p class="example-title">Решите уравнение: <math><mrow><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>36</mn></mrow><mrow><mi>x</mi><mo>-</mo><mn>6</mn></mrow></mfrac><mo>=</mo><mn>0</mn></mrow></math></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mfrac>
+                        <mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>36</mn></mrow>
+                        <mrow><mi>x</mi><mo>-</mo><mn>6</mn></mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mn>0</mn>
+                    <mo>⇔</mo>
+                    <mo>{</mo>
+                    <mtable>
+                        <mtr>
+                            <mtd><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>36</mn><mo>=</mo><mn>0</mn></mtd>
+                        </mtr>
+                        <mtr>
+                            <mtd><mi>x</mi><mo>-</mo><mn>6</mn><mo>≠</mo><mn>0</mn></mtd>
+                        </mtr>
+                    </mtable>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>Разложим числитель на множители:</p>
+
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>36</mn><mo>=</mo><mn>0</mn>
+                    <mo>⇔</mo>
+                    <mo>(</mo><mi>x</mi><mo>-</mo><mn>6</mn><mo>)</mo><mo>(</mo><mi>x</mi><mo>+</mo><mn>6</mn><mo>)</mo><mo>=</mo><mn>0</mn>
+                    <mo>⇔</mo>
+                    <mi>x</mi><mo>=</mo><mn>6</mn><mspace width="1em"/><mtext>или</mtext><mspace width="1em"/><mi>x</mi><mo>=</mo><mo>-</mo><mn>6</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>Учитываем ограничение:</p>
+
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>x</mi><mo>-</mo><mn>6</mn><mo>≠</mo><mn>0</mn><mo>⇒</mo><mi>x</mi><mo>≠</mo><mn>6</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>Из двух корней оставляем только тот, который удовлетворяет ограничению:</p>
+
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>x</mi><mo>=</mo><mo>-</mo><mn>6</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p><strong>Ответ:</strong> <math><mrow><mi>x</mi><mo>=</mo><mo>-</mo><mn>6</mn></mrow></math></p>
+</div>
+
+</div><div class="lesson-section"> <h2>Пример 3: Уравнение с двумя корнями</h2> <div class="example"> <p class="example-title">Решите уравнение: <math><mrow><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>6</mn><mi>x</mi></mrow><mrow><mi>x</mi><mo>+</mo><mn>6</mn></mrow></mfrac><mo>=</mo><mn>0</mn></mrow></math></p>
+
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mfrac>
+                        <mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>6</mn><mi>x</mi></mrow>
+                        <mrow><mi>x</mi><mo>+</mo><mn>6</mn></mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mn>0</mn>
+                    <mo>⇔</mo>
+                    <mo>{</mo>
+                    <mtable>
+                        <mtr>
+                            <mtd><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>6</mn><mi>x</mi><mo>=</mo><mn>0</mn></mtd>
+                        </mtr>
+                        <mtr>
+                            <mtd><mi>x</mi><mo>+</mo><mn>6</mn><mo>≠</mo><mn>0</mn></mtd>
+                        </mtr>
+                    </mtable>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>Решаем уравнение числителя:</p>
+
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>6</mn><mi>x</mi><mo>=</mo><mn>0</mn>
+                    <mo>⇔</mo>
+                    <mi>x</mi><mo>(</mo><mi>x</mi><mo>-</mo><mn>6</mn><mo>)</mo><mo>=</mo><mn>0</mn>
+                    <mo>⇔</mo>
+                    <mi>x</mi><mo>=</mo><mn>0</mn><mspace width="1em"/><mtext>или</mtext><mspace width="1em"/><mi>x</mi><mo>=</mo><mn>6</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>Проверяем ограничение:</p>
+
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>x</mi><mo>+</mo><mn>6</mn><mo>≠</mo><mn>0</mn><mo>⇒</mo><mi>x</mi><mo>≠</mo><mo>-</mo><mn>6</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>Оба корня удовлетворяют ограничению (ни 0, ни 6 не равны -6).</p>
+
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>x</mi><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="1em"/><mi>x</mi><mo>=</mo><mn>6</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p><strong>Ответ:</strong> <math><mrow><mi>x</mi><mo>=</mo><mn>0</mn><mo>;</mo><mspace width="1em"/><mi>x</mi><mo>=</mo><mn>6</mn></mrow></math></p>
+</div>
+
+</div>
+                    <div class="lesson-section"> <h2>Пример 4: Уравнение без решений</h2> <div class="example hard-example"> <p class="example-title">Решите уравнение: <math><mrow><mfrac><mrow><mi>x</mi><mo>+</mo><mn>6</mn></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>36</mn></mrow></mfrac><mo>=</mo><mn>0</mn></mrow></math></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mfrac>
+                        <mrow><mi>x</mi><mo>+</mo><mn>6</mn></mrow>
+                        <mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>36</mn></mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mn>0</mn>
+                    <mo>⇔</mo>
+                    <mo>{</mo>
+                    <mtable>
+                        <mtr>
+                            <mtd><mi>x</mi><mo>+</mo><mn>6</mn><mo>=</mo><mn>0</mn></mtd>
+                        </mtr>
+                        <mtr>
+                            <mtd><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>36</mn><mo>≠</mo><mn>0</mn></mtd>
+                        </mtr>
+                    </mtable>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>Решаем уравнение числителя:</p>
+
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>x</mi><mo>+</mo><mn>6</mn><mo>=</mo><mn>0</mn>
+                    <mo>⇔</mo>
+                    <mi>x</mi><mo>=</mo><mo>-</mo><mn>6</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>Решаем ограничение:</p>
+
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>36</mn><mo>≠</mo><mn>0</mn>
+                    <mo>⇔</mo>
+                    <mo>(</mo><mi>x</mi><mo>-</mo><mn>6</mn><mo>)</mo><mo>(</mo><mi>x</mi><mo>+</mo><mn>6</mn><mo>)</mo><mo>≠</mo><mn>0</mn>
+                    <mo>⇔</mo>
+                    <mi>x</mi><mo>≠</mo><mn>6</mn><mspace width="1em"/><mtext>и</mtext><mspace width="1em"/><mi>x</mi><mo>≠</mo><mo>-</mo><mn>6</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>Корень числителя <math><mrow><mi>x</mi><mo>=</mo><mo>-</mo><mn>6</mn></mrow></math> НЕ удовлетворяет ограничению, так как он обращает знаменатель в ноль.</p>
+
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>x</mi><mo>=</mo><mo>-</mo><mn>6</mn><mo>∉</mo><mtext>ОДЗ</mtext>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p><strong>Ответ:</strong> Нет корней</p>
+</div>
+
+</div>
+<div class="lesson-section">
+    <h2>Пример 5: Уравнение с несколькими дробями (подробное решение)</h2>
+    <div class="example">
+        <p class="example-title">Решите уравнение: <math><mrow><mfrac><mi>x</mi><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>5</mn><mi>x</mi><mo>+</mo><mn>6</mn></mrow></mfrac><mo>+</mo><mfrac><mn>3</mn><mrow><mi>x</mi><mo>-</mo><mn>2</mn></mrow></mfrac><mo>=</mo><mfrac><mn>2</mn><mrow><mi>x</mi><mo>-</mo><mn>3</mn></mrow></mfrac></mrow></math></p>
+
+        <p><strong>Шаг 1: Найдём ОДЗ (область допустимых значений)</strong></p>
+        <p>Для каждой дроби знаменатель не должен быть равен нулю:</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>{</mo>
+                        <mtable>
+                            <mtr>
+                                <mtd><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>5</mn><mi>x</mi><mo>+</mo><mn>6</mn><mo>≠</mo><mn>0</mn></mtd>
+                                <mtd><mtext>(для первой дроби)</mtext></mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd><mi>x</mi><mo>-</mo><mn>2</mn><mo>≠</mo><mn>0</mn></mtd>
+                                <mtd><mtext>(для второй дроби)</mtext></mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd><mi>x</mi><mo>-</mo><mn>3</mn><mo>≠</mo><mn>0</mn></mtd>
+                                <mtd><mtext>(для третьей дроби)</mtext></mtd>
+                            </mtr>
+                        </mtable>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p><strong>Шаг 2: Решим каждое неравенство</strong></p>
+
+        <p>1) <math><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>5</mn><mi>x</mi><mo>+</mo><mn>6</mn><mo>≠</mo><mn>0</mn></mrow></math></p>
+        <p>Сначала найдем корни квадратного уравнения:</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>5</mn><mi>x</mi><mo>+</mo><mn>6</mn><mo>=</mo><mn>0</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>D</mi><mo>=</mo><msup><mn>5</mn><mn>2</mn></msup><mo>-</mo><mn>4</mn><mo>·</mo><mn>1</mn><mo>·</mo><mn>6</mn><mo>=</mo><mn>25</mn><mo>-</mo><mn>24</mn><mo>=</mo><mn>1</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mfrac><mrow><mn>5</mn><mo>-</mo><mn>1</mn></mrow><mn>2</mn></mfrac><mo>=</mo><mn>2</mn><mo>,</mo><mspace width="1em"/>
+                        <msub><mi>x</mi><mn>2</mn></msub><mo>=</mo><mfrac><mrow><mn>5</mn><mo>+</mo><mn>1</mn></mrow><mn>2</mn></mfrac><mo>=</mo><mn>3</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p>Значит:</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>5</mn><mi>x</mi><mo>+</mo><mn>6</mn><mo>=</mo><mo>(</mo><mi>x</mi><mo>-</mo><mn>2</mn><mo>)</mo><mo>(</mo><mi>x</mi><mo>-</mo><mn>3</mn><mo>)</mo>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p>Условие <math><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>5</mn><mi>x</mi><mo>+</mo><mn>6</mn><mo>≠</mo><mn>0</mn></mrow></math> означает:</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>x</mi><mo>≠</mo><mn>2</mn><mspace width="1em"/><mtext>и</mtext><mspace width="1em"/><mi>x</mi><mo>≠</mo><mn>3</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p>2) <math><mrow><mi>x</mi><mo>-</mo><mn>2</mn><mo>≠</mo><mn>0</mn><mo>⇒</mo><mi>x</mi><mo>≠</mo><mn>2</mn></mrow></math></p>
+        <p>3) <math><mrow><mi>x</mi><mo>-</mo><mn>3</mn><mo>≠</mo><mn>0</mn><mo>⇒</mo><mi>x</mi><mo>≠</mo><mn>3</mn></mrow></math></p>
+
+        <p><strong>Шаг 3: Объединим все ограничения</strong></p>
+        <p>Все три условия дают одно и то же ограничение: <math><mrow><mi>x</mi><mo>≠</mo><mn>2</mn></mrow></math> и <math><mrow><mi>x</mi><mo>≠</mo><mn>3</mn></mrow></math></p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>ОДЗ</mi><mo>:</mo><mspace width="1em"/><mi>x</mi><mo>∈</mo><mi>ℝ</mi><mo>\</mo><mo>{</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>}</mo>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p><strong>Шаг 4: Приведем все дроби к общему знаменателю</strong></p>
+        <p>Заметим, что:</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>5</mn><mi>x</mi><mo>+</mo><mn>6</mn><mo>=</mo><mo>(</mo><mi>x</mi><mo>-</mo><mn>2</mn><mo>)</mo><mo>(</mo><mi>x</mi><mo>-</mo><mn>3</mn><mo>)</mo>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p>Поэтому общий знаменатель для всех трех дробей: <math><mrow><mo>(</mo><mi>x</mi><mo>-</mo><mn>2</mn><mo>)</mo><mo>(</mo><mi>x</mi><mo>-</mo><mn>3</mn><mo>)</mo></mrow></math></p>
+
+        <p>Запишем уравнение с общим знаменателем:</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac><mi>x</mi><mrow><mo>(</mo><mi>x</mi><mo>-</mo><mn>2</mn><mo>)</mo><mo>(</mo><mi>x</mi><mo>-</mo><mn>3</mn><mo>)</mo></mrow></mfrac>
+                        <mo>+</mo>
+                        <mfrac><mrow><mn>3</mn><mo>(</mo><mi>x</mi><mo>-</mo><mn>3</mn><mo>)</mo></mrow><mrow><mo>(</mo><mi>x</mi><mo>-</mo><mn>2</mn><mo>)</mo><mo>(</mo><mi>x</mi><mo>-</mo><mn>3</mn><mo>)</mo></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><mn>2</mn><mo>(</mo><mi>x</mi><mo>-</mo><mn>2</mn><mo>)</mo></mrow><mrow><mo>(</mo><mi>x</mi><mo>-</mo><mn>2</mn><mo>)</mo><mo>(</mo><mi>x</mi><mo>-</mo><mn>3</mn><mo>)</mo></mrow></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p><strong>Шаг 5: Умножим обе части уравнения на общий знаменатель</strong></p>
+        <p>Так как <math><mrow><mi>x</mi><mo>≠</mo><mn>2</mn></mrow></math> и <math><mrow><mi>x</mi><mo>≠</mo><mn>3</mn></mrow></math> (из ОДЗ), знаменатель не равен нулю, поэтому умножение допустимо:</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>x</mi><mo>+</mo><mn>3</mn><mo>(</mo><mi>x</mi><mo>-</mo><mn>3</mn><mo>)</mo><mo>=</mo><mn>2</mn><mo>(</mo><mi>x</mi><mo>-</mo><mn>2</mn><mo>)</mo>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p><strong>Шаг 6: Решим полученное линейное уравнение</strong></p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>x</mi><mo>+</mo><mn>3</mn><mi>x</mi><mo>-</mo><mn>9</mn><mo>=</mo><mn>2</mn><mi>x</mi><mo>-</mo><mn>4</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>4</mn><mi>x</mi><mo>-</mo><mn>9</mn><mo>=</mo><mn>2</mn><mi>x</mi><mo>-</mo><mn>4</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p>Перенесем все члены с x влево, а числа вправо:</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>4</mn><mi>x</mi><mo>-</mo><mn>2</mn><mi>x</mi><mo>=</mo><mn>9</mn><mo>-</mo><mn>4</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>2</mn><mi>x</mi><mo>=</mo><mn>5</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>x</mi><mo>=</mo><mn>2.5</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p>Или в виде дроби: <math><mrow><mi>x</mi><mo>=</mo><mfrac><mn>5</mn><mn>2</mn></mfrac></mrow></math></p>
+
+        <p><strong>Шаг 7: Проверим, удовлетворяет ли найденный корень ОДЗ</strong></p>
+        <p>Нам нужно проверить:</p>
+        <ul>
+            <li><math><mrow><mi>x</mi><mo>=</mo><mn>2.5</mn><mo>≠</mo><mn>2</mn></mrow></math> ✓ (верно)</li>
+            <li><math><mrow><mi>x</mi><mo>=</mo><mn>2.5</mn><mo>≠</mo><mn>3</mn></mrow></math> ✓ (верно)</li>
+        </ul>
+
+        <p>Корень удовлетворяет всем ограничениям ОДЗ.</p>
+
+        <p><strong>Шаг 8: Сделаем проверку подстановкой (по желанию)</strong></p>
+        <p>Подставим x = 2.5 в исходное уравнение:</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac><mn>2.5</mn><mrow><msup><mn>2.5</mn><mn>2</mn></msup><mo>-</mo><mn>5</mn><mo>·</mo><mn>2.5</mn><mo>+</mo><mn>6</mn></mrow></mfrac>
+                        <mo>+</mo>
+                        <mfrac><mn>3</mn><mrow><mn>2.5</mn><mo>-</mo><mn>2</mn></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mn>2</mn><mrow><mn>2.5</mn><mo>-</mo><mn>3</mn></mrow></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac><mn>2.5</mn><mrow><mn>6.25</mn><mo>-</mo><mn>12.5</mn><mo>+</mo><mn>6</mn></mrow></mfrac>
+                        <mo>+</mo>
+                        <mfrac><mn>3</mn><mrow><mn>0.5</mn></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mn>2</mn><mrow><mo>-</mo><mn>0.5</mn></mrow></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac><mn>2.5</mn><mrow><mo>-</mo><mn>0.25</mn></mrow></mfrac>
+                        <mo>+</mo>
+                        <mn>6</mn>
+                        <mo>=</mo>
+                        <mo>-</mo><mn>4</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>-</mo><mn>10</mn><mo>+</mo><mn>6</mn><mo>=</mo><mo>-</mo><mn>4</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>-</mo><mn>4</mn><mo>=</mo><mo>-</mo><mn>4</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p>Равенство верно, проверка подтверждает правильность решения.</p>
+
+        <p><strong>Ответ:</strong> <math><mrow><mi>x</mi><mo>=</mo><mn>2.5</mn></mrow></math> или <math><mrow><mi>x</mi><mo>=</mo><mfrac><mn>5</mn><mn>2</mn></mfrac></mrow></math></p>
+
+        <div class="explanation">
+            <p><strong>Пояснение:</strong> В этом уравнении важно было:</p>
+            <ol>
+                <li>Найти ОДЗ и исключить значения, обращающие знаменатели в ноль</li>
+                <li>Найти общий знаменатель для всех дробей</li>
+                <li>Умножить на общий знаменатель (только после проверки, что он не равен нулю!)</li>
+                <li>Решить полученное уравнение</li>
+                <li>Проверить, что найденный корень принадлежит ОДЗ</li>
+            </ol>
+        </div>
+    </div>
+</div><div class="lesson-section">
+    <h2>Пример 6: Нахождение нулей функции с разложением на множители</h2>
+    <div class="example">
+        <p class="example-title">Найдите нули функции: <math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mfrac><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>-</mo><mn>7</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>12</mn><mi>x</mi></mrow><mrow><mi>x</mi><mo>-</mo><mn>4</mn></mrow></mfrac></mrow></math></p>
+
+        <p><strong>Шаг 1: Найдем ОДЗ</strong></p>
+        <p>Знаменатель не должен быть равен нулю:</p>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>x</mi><mo>-</mo><mn>4</mn><mo>≠</mo><mn>0</mn><mo>⇒</mo><mi>x</mi><mo>≠</mo><mn>4</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p><strong>Шаг 2: Найдем нули функции</strong></p>
+        <p>Нули функции — это значения x, при которых f(x) = 0. Дробь равна нулю, когда числитель равен нулю, а знаменатель не равен нулю.</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mn>0</mn><mo>⇔</mo>
+                        <mo>{</mo>
+                        <mtable>
+                            <mtr>
+                                <mtd><mfrac><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>-</mo><mn>7</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>12</mn><mi>x</mi></mrow><mrow><mi>x</mi><mo>-</mo><mn>4</mn></mrow></mfrac><mo>=</mo><mn>0</mn></mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd><mi>x</mi><mo>≠</mo><mn>4</mn></mtd>
+                            </mtr>
+                        </mtable>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p>Упростим числитель, вынеся общий множитель:</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <msup><mi>x</mi><mn>3</mn></msup><mo>-</mo><mn>7</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>12</mn><mi>x</mi><mo>=</mo>
+                        <mi>x</mi><mo>(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>7</mn><mi>x</mi><mo>+</mo><mn>12</mn><mo>)</mo>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p>Разложим квадратный трехчлен на множители:</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>7</mn><mi>x</mi><mo>+</mo><mn>12</mn><mo>=</mo><mn>0</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>D</mi><mo>=</mo><msup><mn>7</mn><mn>2</mn></msup><mo>-</mo><mn>4</mn><mo>·</mo><mn>1</mn><mo>·</mo><mn>12</mn><mo>=</mo><mn>49</mn><mo>-</mo><mn>48</mn><mo>=</mo><mn>1</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mfrac><mrow><mn>7</mn><mo>-</mo><mn>1</mn></mrow><mrow><mn>2</mn></mrow></mfrac><mo>=</mo><mn>3</mn><mo>,</mo><mspace width="1em"/>
+                        <msub><mi>x</mi><mn>2</mn></msub><mo>=</mo><mfrac><mrow><mn>7</mn><mo>+</mo><mn>1</mn></mrow><mrow><mn>2</mn></mrow></mfrac><mo>=</mo><mn>4</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p>Получаем разложение:</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>7</mn><mi>x</mi><mo>+</mo><mn>12</mn><mo>=</mo><mo>(</mo><mi>x</mi><mo>-</mo><mn>3</mn><mo>)</mo><mo>(</mo><mi>x</mi><mo>-</mo><mn>4</mn><mo>)</mo>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p>Теперь исходная функция:</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo>
+                        <mfrac><mrow><mi>x</mi><mo>(</mo><mi>x</mi><mo>-</mo><mn>3</mn><mo>)</mo><mo>(</mo><mi>x</mi><mo>-</mo><mn>4</mn><mo>)</mo></mrow><mrow><mi>x</mi><mo>-</mo><mn>4</mn></mrow></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p><strong>Важно:</strong> Нельзя просто сократить (x-4), так как при x=4 функция не определена! Но для нахождения нулей можно рассмотреть числитель:</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>x</mi><mo>(</mo><mi>x</mi><mo>-</mo><mn>3</mn><mo>)</mo><mo>(</mo><mi>x</mi><mo>-</mo><mn>4</mn><mo>)</mo><mo>=</mo><mn>0</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p>Получаем корни: x=0, x=3, x=4</p>
+
+        <p><strong>Шаг 3: Проверим корни на принадлежность ОДЗ</strong></p>
+        <p>Из ОДЗ: x ≠ 4</p>
+        <p>Поэтому корень x=4 не входит в область определения и не является нулем функции.</p>
+
+        <p><strong>Шаг 4: Запишем ответ</strong></p>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>x</mi><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="1em"/><mi>x</mi><mo>=</mo><mn>3</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p><strong>Ответ:</strong> Нули функции: x=0 и x=3</p>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Пример 7: Уравнение, решаемое методом замены переменной</h2>
+    <div class="example hard-example">
+        <p class="example-title">Решите уравнение: <math><mrow><mfrac><mrow><mn>2</mn><mi>x</mi><mo>-</mo><mn>1</mn></mrow><mi>x</mi></mfrac><mo>+</mo><mfrac><mi>x</mi><mrow><mn>2</mn><mi>x</mi><mo>-</mo><mn>1</mn></mrow></mfrac><mo>=</mo><mn>4.25</mn></mrow></math></p>
+
+        <p><strong>Шаг 1: Найдем ОДЗ</strong></p>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>{</mo>
+                        <mtable>
+                            <mtr>
+                                <mtd><mi>x</mi><mo>≠</mo><mn>0</mn></mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd><mn>2</mn><mi>x</mi><mo>-</mo><mn>1</mn><mo>≠</mo><mn>0</mn><mo>⇒</mo><mi>x</mi><mo>≠</mo><mn>0.5</mn></mtd>
+                            </mtr>
+                        </mtable>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p><strong>Шаг 2: Сделаем замену переменной</strong></p>
+        <p>Заметим, что дроби взаимно обратны. Введем замену:</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>t</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>x</mi><mo>-</mo><mn>1</mn></mrow><mi>x</mi></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p>Тогда:</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac><mi>x</mi><mrow><mn>2</mn><mi>x</mi><mo>-</mo><mn>1</mn></mrow></mfrac><mo>=</mo><mfrac><mn>1</mn><mi>t</mi></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p>Преобразуем 4.25 в дробь:</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>4.25</mn><mo>=</mo><mn>4</mn><mo>+</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><mo>=</mo><mfrac><mn>17</mn><mn>4</mn></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p>Исходное уравнение принимает вид:</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>t</mi><mo>+</mo><mfrac><mn>1</mn><mi>t</mi></mfrac><mo>=</mo><mfrac><mn>17</mn><mn>4</mn></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p><strong>Шаг 3: Решим полученное уравнение</strong></p>
+        <p>Умножим обе части на 4t (t ≠ 0 из ОДЗ):</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>4</mn><msup><mi>t</mi><mn>2</mn></msup><mo>+</mo><mn>4</mn><mo>=</mo><mn>17</mn><mi>t</mi>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>4</mn><msup><mi>t</mi><mn>2</mn></msup><mo>-</mo><mn>17</mn><mi>t</mi><mo>+</mo><mn>4</mn><mo>=</mo><mn>0</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p>Найдем дискриминант:</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>D</mi><mo>=</mo><msup><mn>17</mn><mn>2</mn></msup><mo>-</mo><mn>4</mn><mo>·</mo><mn>4</mn><mo>·</mo><mn>4</mn><mo>=</mo><mn>289</mn><mo>-</mo><mn>64</mn><mo>=</mo><mn>225</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <msqrt><mi>D</mi></msqrt><mo>=</mo><mn>15</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <msub><mi>t</mi><mn>1</mn></msub><mo>=</mo><mfrac><mrow><mn>17</mn><mo>-</mo><mn>15</mn></mrow><mrow><mn>8</mn></mrow></mfrac><mo>=</mo><mfrac><mn>2</mn><mn>8</mn></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><mo>,</mo><mspace width="1em"/>
+                        <msub><mi>t</mi><mn>2</mn></msub><mo>=</mo><mfrac><mrow><mn>17</mn><mo>+</mo><mn>15</mn></mrow><mrow><mn>8</mn></mrow></mfrac><mo>=</mo><mfrac><mn>32</mn><mn>8</mn></mfrac><mo>=</mo><mn>4</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p><strong>Шаг 4: Вернемся к переменной x</strong></p>
+        <p><strong>Случай 1:</strong> t = 1/4</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac><mrow><mn>2</mn><mi>x</mi><mo>-</mo><mn>1</mn></mrow><mi>x</mi></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>4</mn></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p>Умножим крест-накрест:</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>4</mn><mo>(</mo><mn>2</mn><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>=</mo><mi>x</mi>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>8</mn><mi>x</mi><mo>-</mo><mn>4</mn><mo>=</mo><mi>x</mi>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>8</mn><mi>x</mi><mo>-</mo><mi>x</mi><mo>=</mo><mn>4</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>7</mn><mi>x</mi><mo>=</mo><mn>4</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>x</mi><mo>=</mo><mfrac><mn>4</mn><mn>7</mn></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p><strong>Случай 2:</strong> t = 4</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac><mrow><mn>2</mn><mi>x</mi><mo>-</mo><mn>1</mn></mrow><mi>x</mi></mfrac><mo>=</mo><mn>4</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>2</mn><mi>x</mi><mo>-</mo><mn>1</mn><mo>=</mo><mn>4</mn><mi>x</mi>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>2</mn><mi>x</mi><mo>-</mo><mn>4</mn><mi>x</mi><mo>=</mo><mn>1</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>-</mo><mn>2</mn><mi>x</mi><mo>=</mo><mn>1</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>x</mi><mo>=</mo><mo>-</mo><mfrac><mn>1</mn><mn>2</mn></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p><strong>Шаг 5: Проверим корни на принадлежность ОДЗ</strong></p>
+        <p>ОДЗ: x ≠ 0 и x ≠ 0.5</p>
+        <p>Оба найденных корня удовлетворяют ОДЗ:</p>
+        <ul>
+            <li>x = 4/7 ≈ 0.571 ≠ 0 и ≠ 0.5</li>
+            <li>x = -1/2 = -0.5 ≠ 0 и ≠ 0.5</li>
+        </ul>
+
+        <p><strong>Ответ:</strong> <math><mrow><mi>x</mi><mo>=</mo><mfrac><mn>4</mn><mn>7</mn></mfrac><mo>,</mo><mspace width="1em"/><mi>x</mi><mo>=</mo><mo>-</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow></math></p>
+    </div>
+</div>
+</div>
+			</div>
+
+	</body>
+</html>

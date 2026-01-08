@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>Разные функции</title>
+				<style>
+   * {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 15px;
+  background-color: #f5f9ff;
+  color: #333;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 150, 0.1);
+  padding: 25px 20px;
+}
+
+h1 {
+  color: #2c3e50;
+  text-align: center;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 15px;
+  margin-top: 0;
+  font-size: 1.8em;
+}
+
+h2 {
+  color: #2980b9;
+  margin-top: 30px;
+  font-size: 1.4em;
+  padding: 0 5px;
+}
+
+.lesson-section {
+  background-color: #f8fafd;
+  border-radius: 10px;
+  padding: 18px;
+  margin: 20px 0;
+  border-left: 5px solid #3498db;
+}
+
+.definition {
+  background-color: #e8f4fc;
+  padding: 18px;
+  border-radius: 8px;
+  margin: 18px 0;
+  font-size: 1em;
+}
+
+.example {
+  background-color: #f0f7ff;
+  padding: 18px;
+  border-radius: 8px;
+  margin: 18px 0;
+  border-left: 4px solid #2ecc71;
+  font-size: 1em;
+}
+
+.example-title {
+  font-weight: bold;
+  color: #27ae60;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
+.hard-example {
+  border-left-color: #e74c3c;
+}
+
+.hard-example .example-title {
+  color: #e74c3c;
+}
+
+.math-container {
+  background-color: white;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin: 14px 0;
+  overflow-x: auto;
+}
+
+.math-formula {
+  font-size: 1.1em;
+  text-align: center;
+  padding: 10px;
+}
+
+.explanation {
+  background-color: #fffde7;
+  padding: 14px;
+  border-radius: 8px;
+  margin: 14px 0;
+  font-style: italic;
+  font-size: 0.95em;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
+  flex: 1;
+  min-width: 120px;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.lesson-number {
+  background-color: #3498db;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  color: #7f8c8d;
+  font-size: 0.9em;
+}
+
+.image-container {
+  text-align: center;
+  margin: 1rem 0;
+  padding: 0.8rem;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+
+/* Специальные медиа-запросы для изображений */
+@media (max-width: 768px) {
+  .image-container {
+    padding: 0.6rem;
+    margin: 0.8rem 0;
+  }
+
+  .function-image,
+  .sign-image {
+    max-height: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-container {
+    padding: 0.5rem;
+    margin: 0.6rem 0;
+  }
+
+  .function-image,
+  .sign-image {
+    max-height: 200px;
+  }
+}
+
+.function-image,
+.sign-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  transition: transform 0.3s ease;
+  max-height: 280px;
+  object-fit: contain;
+}
+
+.function-image:hover,
+.sign-image:hover {
+  transform: scale(1.02);
+}
+
+.function-analysis {
+  background: white;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.function-analysis h3 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.8rem;
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+.function-properties {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+.property {
+  background: #f8fafc;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #3498db;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.property:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.property h4 {
+  color: #2c3e50;
+  margin-top: 0;
+  font-size: 1.05rem;
+  margin-bottom: 0.6rem;
+}
+
+.explanation {
+  font-style: italic;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  padding-left: 0.8rem;
+  border-left: 2px solid #bdc3c7;
+}
+
+.sign-constancy-cases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.case {
+  background: white;
+  padding: 1.2rem;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease;
+}
+
+.case:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.sign-analysis {
+  background: #f8fafc;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 0.8rem;
+  border-left: 4px solid #2ecc71;
+}
+
+.sign-analysis h4 {
+  color: #27ae60;
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  font-size: 1.05rem;
+}
+
+.summary {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  padding: 1.2rem;
+  border-radius: 10px;
+  margin-top: 1.5rem;
+  border-left: 5px solid #2196F3;
+}
+
+.summary h4 {
+  color: #1565c0;
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin: 1.2rem 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sign-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  min-width: 600px;
+}
+
+.sign-table th {
+  background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+  color: white;
+  padding: 0.9rem;
+  text-align: left;
+  font-weight: 600;
+  border: 1px solid #388E3C;
+  font-size: 0.95em;
+}
+
+.sign-table td {
+  padding: 0.7rem 0.9rem;
+  border: 1px solid #e0e0e0;
+  color: #333;
+  font-size: 0.9em;
+}
+
+.sign-table tbody tr:nth-child(even) {
+  background: #f5f5f5;
+}
+
+.sign-table tbody tr:hover {
+  background: #e3f2fd;
+}
+
+.positive-a {
+  background: #e8f5e9 !important;
+  color: #1b5e20 !important;
+  font-weight: 600;
+}
+
+.negative-a {
+  background: #ffebee !important;
+  color: #b71c1c !important;
+  font-weight: 600;
+}
+
+.note {
+  background: #fff3e0;
+  padding: 1.2rem;
+  border-radius: 10px;
+  margin-top: 1.5rem;
+  border-left: 5px solid #ff9800;
+}
+
+.note h4 {
+  color: #e65100;
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .container {
+    padding: 18px 15px;
+    border-radius: 12px;
+  }
+
+  h1 {
+    font-size: 1.6em;
+    padding-bottom: 12px;
+  }
+
+  h2 {
+    font-size: 1.3em;
+    margin-top: 25px;
+  }
+
+  .lesson-section {
+    padding: 15px;
+    margin: 15px 0;
+  }
+
+  .definition,
+  .example {
+    padding: 15px;
+    margin: 15px 0;
+  }
+
+  .function-analysis {
+    padding: 1.2rem;
+    margin: 1.2rem 0;
+  }
+
+  .function-properties,
+  .sign-constancy-cases {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .property,
+  .case {
+    padding: 1rem;
+  }
+
+  .function-image,
+  .sign-image {
+    max-height: 220px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 0.95em;
+    min-width: 110px;
+  }
+
+  .navigation {
+    gap: 10px;
+  }
+
+  .sign-table {
+    min-width: 100%;
+    font-size: 0.85em;
+  }
+
+  .sign-table th,
+  .sign-table td {
+    padding: 0.6rem 0.8rem;
+  }
+}
+
+/* Адаптивность для очень маленьких экранов */
+@media (max-width: 480px) {
+  body {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 15px 12px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+
+  .function-image,
+  .sign-image {
+    max-height: 200px;
+  }
+
+  .math-formula {
+    font-size: 1em;
+    padding: 8px;
+  }
+
+  button {
+    min-width: 100px;
+    padding: 8px 16px;
+  }
+
+  .sign-table th,
+  .sign-table td {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8em;
+  }
+}
+
+   /* Нижняя навигация */
+        .bottom-nav {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 8px 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            z-index: 999;
+            width: 90%;
+            max-width: 300px;
+        }
+
+        .bottom-nav select {
+            width: 100%;
+            font-size: 16px;
+            padding: 8px;
+            cursor: pointer;
+            border: 1px solid #3498db;
+            border-radius: 6px;
+        }
+
+        .lesson-number {
+            background-color: #3498db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+  </style>
+			</head>
+			<body>
+				<div class="container">
+					<h1  id="1">Разношерстные функции. Обратная пропорциональность</h1>
+                    <div class="lesson-section">
+    <h2>Обратная пропорциональность: функция y = k/x</h2>
+
+    <div class="definition">
+        <p><strong>Функция обратной пропорциональности:</strong></p>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>y</mi>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mi>k</mi>
+                            <mi>x</mi>
+                        </mfrac>
+                        <mo>,</mo>
+                        <mspace width="1em"/>
+                        <mi>k</mi>
+                        <mo>≠</mo>
+                        <mn>0</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="function-analysis">
+        <h3>Свойства функции y = k/x</h3>
+
+        <div class="function-properties">
+            <div class="property">
+                <h4>Область определения</h4>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mi>D</mi>
+                                <mo>(</mo>
+                                <mi>f</mi>
+                                <mo>)</mo>
+                                <mo>=</mo>
+                                <mo>(</mo>
+                                <mo>-</mo>
+                                <mi>∞</mi>
+                                <mo>;</mo>
+                                <mn>0</mn>
+                                <mo>)</mo>
+                                <mo>∪</mo>
+                                <mo>(</mo>
+                                <mn>0</mn>
+                                <mo>;</mo>
+                                <mo>+</mo>
+                                <mi>∞</mi>
+                                <mo>)</mo>
+                            </mrow>
+                        </math>
+                    </div>
+                </div>
+                <p class="explanation">Функция не определена при x = 0 (деление на ноль)</p>
+            </div>
+
+            <div class="property">
+                <h4>Множество значений</h4>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mi>E</mi>
+                                <mo>(</mo>
+                                <mi>f</mi>
+                                <mo>)</mo>
+                                <mo>=</mo>
+                                <mo>(</mo>
+                                <mo>-</mo>
+                                <mi>∞</mi>
+                                <mo>;</mo>
+                                <mn>0</mn>
+                                <mo>)</mo>
+                                <mo>∪</mo>
+                                <mo>(</mo>
+                                <mn>0</mn>
+                                <mo>;</mo>
+                                <mo>+</mo>
+                                <mi>∞</mi>
+                                <mo>)</mo>
+                            </mrow>
+                        </math>
+                    </div>
+                </div>
+                <p class="explanation">Функция никогда не принимает значение 0</p>
+            </div>
+
+            <div class="property">
+                <h4>Нули функции</h4>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mtext>Нет нулей</mtext>
+                            </mrow>
+                        </math>
+                    </div>
+                </div>
+                <p class="explanation">Уравнение k/x = 0 не имеет решений (k ≠ 0)</p>
+            </div>
+        </div>
+
+        <div class="function-properties">
+            <div class="property">
+                <h4>Промежутки знакопостоянства</h4>
+                <ul>
+                    <li>При k > 0: y > 0 при x > 0; y < 0 при x < 0</li>
+                    <li>При k < 0: y < 0 при x > 0; y > 0 при x < 0</li>
+                </ul>
+            </div>
+
+            <div class="property">
+                <h4>График функции</h4>
+                <p><strong>Гипербола</strong>, состоящая из двух ветвей</p>
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/2871XQKd/изображение.png" class="function-image" alt="График функции y = k/x">
+                </div>
+                <p class="explanation">Асимптоты: x = 0 и y = 0</p>
+            </div>
+
+            <div class="property">
+                <h4>Промежутки монотонности</h4>
+                <ul>
+                    <li>При k > 0: убывает на (-∞; 0) и на (0; +∞)</li>
+                    <li>При k < 0: возрастает на (-∞; 0) и на (0; +∞)</li>
+                </ul>
+                <p class="explanation">Функция не является монотонной на всей области определения</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<h1 id="2">Модульная функция</h1>
+<div class="lesson-section">
+    <h2>Модуль: функция y = |x|</h2>
+
+    <div class="definition">
+        <p><strong>Функция модуля:</strong></p>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>y</mi>
+                        <mo>=</mo>
+                        <mo>|</mo>
+                        <mi>x</mi>
+                        <mo>|</mo>
+                        <mo>=</mo>
+                        <mrow>
+                            <mo>{</mo>
+                            <mtable>
+                                <mtr>
+                                    <mtd>
+                                        <mi>x</mi>
+                                        <mo>,</mo>
+                                        <mtext> если </mtext>
+                                        <mi>x</mi>
+                                        <mo>≥</mo>
+                                        <mn>0</mn>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <mo>-</mo>
+                                        <mi>x</mi>
+                                        <mo>,</mo>
+                                        <mtext> если </mtext>
+                                        <mi>x</mi>
+                                        <mo>&lt;</mo>
+                                        <mn>0</mn>
+                                    </mtd>
+                                </mtr>
+                            </mtable>
+                        </mrow>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="function-analysis">
+        <h3>Свойства функции y = |x|</h3>
+
+        <div class="function-properties">
+            <div class="property">
+                <h4>Область определения</h4>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mi>D</mi>
+                                <mo>(</mo>
+                                <mi>f</mi>
+                                <mo>)</mo>
+                                <mo>=</mo>
+                                <mo>(</mo>
+                                <mo>-</mo>
+                                <mi>∞</mi>
+                                <mo>;</mo>
+                                <mo>+</mo>
+                                <mi>∞</mi>
+                                <mo>)</mo>
+                            </mrow>
+                        </math>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property">
+                <h4>Множество значений</h4>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mi>E</mi>
+                                <mo>(</mo>
+                                <mi>f</mi>
+                                <mo>)</mo>
+                                <mo>=</mo>
+                                <mo>[</mo>
+                                <mn>0</mn>
+                                <mo>;</mo>
+                                <mo>+</mo>
+                                <mi>∞</mi>
+                                <mo>)</mo>
+                            </mrow>
+                        </math>
+                    </div>
+                </div>
+                <p class="explanation">Модуль всегда неотрицателен</p>
+            </div>
+
+            <div class="property">
+                <h4>Нули функции</h4>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mn>0</mn>
+                                </msub>
+                                <mo>=</mo>
+                                <mn>0</mn>
+                            </mrow>
+                        </math>
+                    </div>
+                </div>
+                <p class="explanation">|0| = 0</p>
+            </div>
+        </div>
+
+        <div class="function-properties">
+            <div class="property">
+                <h4>Промежутки знакопостоянства</h4>
+                <ul>
+                    <li>y > 0 при x ≠ 0</li>
+                    <li>y = 0 при x = 0</li>
+                </ul>
+            </div>
+
+            <div class="property">
+                <h4>График функции</h4>
+                <p><strong>Ломаная линия</strong>, состоящая из двух лучей</p>
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/bYHYzz9t/изображение.png" class="function-image" alt="График функции y = |x|">
+                </div>
+                <p class="explanation">График симметричен относительно оси OY</p>
+            </div>
+
+            <div class="property">
+                <h4>Промежутки монотонности</h4>
+                <ul>
+                    <li>Убывает на (-∞; 0]</li>
+                    <li>Возрастает на [0; +∞)</li>
+                </ul>
+                <p class="explanation">x = 0 - точка минимума</p>
+            </div>
+        </div>
+    </div>
+</div>
+<h1 id="3">Кубическая функция</h1>
+                    <div class="lesson-section">
+    <h2>Степенная функция: y = x³ (кубическая функция)</h2>
+
+    <div class="definition">
+        <p><strong>Кубическая функция:</strong></p>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>y</mi>
+                        <mo>=</mo>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>3</mn>
+                        </msup>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="function-analysis">
+        <h3>Свойства функции y = x³</h3>
+
+        <div class="function-properties">
+            <div class="property">
+                <h4>Область определения</h4>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mi>D</mi>
+                                <mo>(</mo>
+                                <mi>f</mi>
+                                <mo>)</mo>
+                                <mo>=</mo>
+                                <mo>(</mo>
+                                <mo>-</mo>
+                                <mi>∞</mi>
+                                <mo>;</mo>
+                                <mo>+</mo>
+                                <mi>∞</mi>
+                                <mo>)</mo>
+                            </mrow>
+                        </math>
+                    </div>
+                </div>
+                <p class="explanation">Функция определена для всех действительных чисел</p>
+            </div>
+
+            <div class="property">
+                <h4>Множество значений</h4>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mi>E</mi>
+                                <mo>(</mo>
+                                <mi>f</mi>
+                                <mo>)</mo>
+                                <mo>=</mo>
+                                <mo>(</mo>
+                                <mo>-</mo>
+                                <mi>∞</mi>
+                                <mo>;</mo>
+                                <mo>+</mo>
+                                <mi>∞</mi>
+                                <mo>)</mo>
+                            </mrow>
+                        </math>
+                    </div>
+                </div>
+                <p class="explanation">Функция принимает все действительные значения</p>
+            </div>
+
+            <div class="property">
+                <h4>Нули функции</h4>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mn>0</mn>
+                                </msub>
+                                <mo>=</mo>
+                                <mn>0</mn>
+                            </mrow>
+                        </math>
+                    </div>
+                </div>
+                <p class="explanation">x³ = 0 при x = 0</p>
+            </div>
+        </div>
+
+        <div class="function-properties">
+            <div class="property">
+                <h4>Промежутки знакопостоянства</h4>
+                <ul>
+                    <li>y > 0 при x > 0</li>
+                    <li>y < 0 при x < 0</li>
+                    <li>y = 0 при x = 0</li>
+                </ul>
+            </div>
+
+            <div class="property">
+                <h4>График функции</h4>
+                <p><strong>Кубическая парабола</strong>, симметричная относительно начала координат</p>
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/L8s8Crfm/изображение.png" class="function-image" alt="График функции y = x³">
+                </div>
+                <p class="explanation">Проходит через точки (-2, -8), (-1, -1), (0, 0), (1, 1), (2, 8)</p>
+            </div>
+
+            <div class="property">
+                <h4>Промежутки монотонности</h4>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mtext>Возрастает на всей области определения</mtext>
+                            </mrow>
+                        </math>
+                    </div>
+                </div>
+                <p class="explanation">Функция является строго возрастающей на (-∞; +∞)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h1 id="4">Функция корня</h1>
+<div class="lesson-section">
+    <h2>Степенная функция: y = √x (квадратный корень)</h2>
+
+    <div class="definition">
+        <p><strong>Функция квадратного корня:</strong></p>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>y</mi>
+                        <mo>=</mo>
+                        <msqrt>
+                            <mi>x</mi>
+                        </msqrt>
+                        <mspace width="1em"/>
+                        <mtext>или</mtext>
+                        <mspace width="1em"/>
+                        <mi>y</mi>
+                        <mo>=</mo>
+                        <msup>
+                            <mi>x</mi>
+                            <mfrac>
+                                <mn>1</mn>
+                                <mn>2</mn>
+                            </mfrac>
+                        </msup>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="function-analysis">
+        <h3>Свойства функции y = √x</h3>
+
+        <div class="function-properties">
+            <div class="property">
+                <h4>Область определения</h4>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mi>D</mi>
+                                <mo>(</mo>
+                                <mi>f</mi>
+                                <mo>)</mo>
+                                <mo>=</mo>
+                                <mo>[</mo>
+                                <mn>0</mn>
+                                <mo>;</mo>
+                                <mo>+</mo>
+                                <mi>∞</mi>
+                                <mo>)</mo>
+                            </mrow>
+                        </math>
+                    </div>
+                </div>
+                <p class="explanation">Квадратный корень определен только для неотрицательных чисел</p>
+            </div>
+
+            <div class="property">
+                <h4>Множество значений</h4>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mi>E</mi>
+                                <mo>(</mo>
+                                <mi>f</mi>
+                                <mo>)</mo>
+                                <mo>=</mo>
+                                <mo>[</mo>
+                                <mn>0</mn>
+                                <mo>;</mo>
+                                <mo>+</mo>
+                                <mi>∞</mi>
+                                <mo>)</mo>
+                            </mrow>
+                        </math>
+                    </div>
+                </div>
+                <p class="explanation">Квадратный корень всегда неотрицателен</p>
+            </div>
+
+            <div class="property">
+                <h4>Нули функции</h4>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mn>0</mn>
+                                </msub>
+                                <mo>=</mo>
+                                <mn>0</mn>
+                            </mrow>
+                        </math>
+                    </div>
+                </div>
+                <p class="explanation">√0 = 0</p>
+            </div>
+        </div>
+
+        <div class="function-properties">
+            <div class="property">
+                <h4>Промежутки знакопостоянства</h4>
+                <ul>
+                    <li>y > 0 при x > 0</li>
+                    <li>y = 0 при x = 0</li>
+                </ul>
+                <p class="explanation">Функция всегда неотрицательна</p>
+            </div>
+
+            <div class="property">
+                <h4>График функции</h4>
+                <p><strong>Ветвь параболы</strong>, лежащая в первой координатной четверти</p>
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/CKqY9Yxr/изображение.png" class="function-image" alt="График функции y = √x">
+                </div>
+                <p class="explanation">Проходит через точки (0, 0), (1, 1), (4, 2), (9, 3)</p>
+            </div>
+
+            <div class="property">
+                <h4>Промежутки монотонности</h4>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mtext>Возрастает на всей области определения</mtext>
+                            </mrow>
+                        </math>
+                    </div>
+                </div>
+                <p class="explanation">Функция является строго возрастающей на [0; +∞)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+                   <div class="bottom-nav">
+    <select onchange="goToSection(this.value)">
+        <option value="">Перейти к теме…</option>
+        <option value="1">y = k/x</option>
+        <option value="2">y = |x|</option>
+        <option value="3">y = x³ (кубическая функция)</option>
+        <option value="4">y = √x (квадратный корень)</option>
+
+    </select>
+</div>
+
+<script>
+function goToSection(id) {
+    if (!id) return;
+    document.getElementById(id).scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+</script>
+				</div>
+															</body>
+																				</html>

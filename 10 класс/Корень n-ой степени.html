@@ -1,0 +1,2714 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>Корень. Иррациональные уравнения</title>
+				<style>
+    /* Общие стили */
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f9ff;
+            color: #333;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 150, 0.1);
+            padding: 30px;
+        }
+
+        /* Заголовки */
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+        }
+
+        /* Секции */
+        .lesson-section {
+            background-color: #f8fafd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 5px solid #3498db;
+        }
+
+        /* Определения и примеры */
+        .definition {
+            background-color: #e8f4fc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .example {
+            background-color: #f0f7ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #2ecc71;
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 10px;
+        }
+
+        .hard-example {
+            border-left-color: #e74c3c;
+        }
+
+        .hard-example .example-title {
+            color: #e74c3c;
+        }
+
+        /* Математические контейнеры */
+        .math-container {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin: 15px 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .math-formula {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .explanation {
+            background-color: #fffde7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+
+        /* Изображения - УПРОЩЕННЫЙ ВАРИАНТ */
+        .image-container {
+            text-align: center;
+            margin: 15px auto;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            max-width: 25%;
+        }
+
+        .function-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+
+        /* Таблицы */
+        .trig-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            overflow-x: auto;
+            display: block;
+        }
+
+        .trig-table th,
+        .trig-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .trig-table th {
+            background-color: #f2f2f2;
+        }
+
+        /* Нижняя навигация */
+        .bottom-nav {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 8px 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            z-index: 999;
+            width: 90%;
+            max-width: 300px;
+        }
+
+        .bottom-nav select {
+            width: 100%;
+            font-size: 16px;
+            padding: 8px;
+            cursor: pointer;
+            border: 1px solid #3498db;
+            border-radius: 6px;
+        }
+
+        .lesson-number {
+            background-color: #3498db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* ПРОСТАЯ АДАПТАЦИЯ ДЛЯ ТЕЛЕФОНА */
+        @media (max-width: 768px) {
+    body {
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    .container {
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+        padding-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 1.3em;
+        margin-top: 20px;
+    }
+
+    .lesson-section {
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    .definition,
+    .example {
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    .math-container {
+        padding: 12px;
+        margin: 12px 0;
+    }
+
+    .explanation {
+        padding: 12px;
+        margin: 12px 0;
+        font-size: 0.95em;
+    }
+
+    .image-container {
+        padding: 8px;
+        margin: 10px 0;
+        max-width: 100% !important; /* Принудительно на всю ширину */
+        width: 100% !important;
+    }
+
+    .function-image {
+        max-height: auto !important; /* Убираем ограничение по высоте */
+        height: auto;
+        width: 100%; /* Занимает всю ширину контейнера */
+        max-width: 100%;
+        display: block; /* Убираем лишние отступы */
+    }
+
+    .trig-table {
+        font-size: 14px;
+    }
+
+    .trig-table th,
+    .trig-table td {
+        padding: 6px;
+    }
+
+    .bottom-nav {
+        bottom: 5px;
+        padding: 6px 10px;
+    }
+
+    .bottom-nav select {
+        font-size: 14px;
+        padding: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    h1 {
+        font-size: 1.3em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    .lesson-section {
+        padding: 12px;
+        margin: 10px 0;
+    }
+
+    .definition,
+    .example {
+        padding: 12px;
+        margin: 10px 0;
+    }
+
+    .image-container {
+        padding: 5px;
+        margin: 8px 0;
+    }
+
+    .function-image {
+        width: 100%;
+        height: auto;
+        max-height: none; /* Убираем все ограничения по высоте */
+    }
+
+    .trig-table {
+        font-size: 13px;
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .trig-table th,
+    .trig-table td {
+        padding: 5px;
+        min-width: 50px; /* Минимальная ширина для ячеек */
+    }
+}
+
+  </style>
+			</head>
+			<body>
+				<div class="container">
+    <h1 id="1">Корень n-й степени и его свойства</h1>
+
+    <!-- Общее определение корня n-ой степени -->
+    <div class="lesson-section">
+        <div class="lesson-number">Определение</div>
+        <h2>Корень n-ой степени</h2>
+
+        <div class="definition">
+            <p><strong>Определение:</strong> Корнем n-ой степени из числа a называется такое число b, что bⁿ = a.</p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot><mi>a</mi><mi>n</mi></mroot>
+                        <mo>=</mo>
+                        <mi>b</mi>
+                        <mspace width="1em"/>
+                        <mtext>такое, что</mtext>
+                        <mspace width="1em"/>
+                        <msup><mi>b</mi><mi>n</mi></msup>
+                        <mo>=</mo>
+                        <mi>a</mi>
+                    </math>
+                </div>
+            </div>
+            <p><strong>Обозначения:</strong></p>
+            <ul>
+                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi></math> — подкоренное выражение</li>
+                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi></math> — показатель корня (степень корня)</li>
+                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>b</mi></math> — значение корня</li>
+            </ul>
+            <p><strong>Особые случаи:</strong></p>
+            <ul>
+                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mi>a</mi><mn>2</mn></mroot></math> — квадратный корень (обычно пишут √a)</li>
+                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mi>a</mi><mn>3</mn></mroot></math> — кубический корень</li>
+            </ul>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример 1:</div>
+            <p>Найти: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mn>8</mn><mn>3</mn></mroot></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot><mn>8</mn><mn>3</mn></mroot>
+                        <mo>=</mo>
+                        <mn>2</mn>
+                        <mspace width="1em"/>
+                        <mtext>потому что</mtext>
+                        <mspace width="1em"/>
+                        <msup><mn>2</mn><mn>3</mn></msup>
+                        <mo>=</mo>
+                        <mn>8</mn>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример 2:</div>
+            <p>Найти: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mn>81</mn><mn>4</mn></mroot></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot><mn>81</mn><mn>4</mn></mroot>
+                        <mo>=</mo>
+                        <mn>3</mn>
+                        <mspace width="1em"/>
+                        <mtext>потому что</mtext>
+                        <mspace width="1em"/>
+                        <msup><mn>3</mn><mn>4</mn></msup>
+                        <mo>=</mo>
+                        <mn>81</mn>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="lesson-section">
+        <div class="lesson-number">Свойство 1</div>
+        <h2>Корень n-й степени из произведения</h2>
+
+        <div class="definition">
+            <p><strong>Формулировка:</strong> Корень n-й степени из произведения неотрицательных множителей равен произведению корней n-й степени из этих множителей.</p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot>
+                            <mrow><mi>a</mi><mo>⋅</mo><mi>b</mi></mrow>
+                            <mi>n</mi>
+                        </mroot>
+                        <mo>=</mo>
+                        <mroot><mi>a</mi><mi>n</mi></mroot>
+                        <mo>⋅</mo>
+                        <mroot><mi>b</mi><mi>n</mi></mroot>
+                    </math>
+                </div>
+            </div>
+            <p><strong>Условия:</strong> <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi><mo>≥</mo><mn>0</mn></math>, <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>b</mi><mo>≥</mo><mn>0</mn></math>, <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>∈</mo><mi>ℕ</mi></math>, <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>></mo><mn>1</mn></math></p>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример 1:</div>
+            <p>Вычислить: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mrow><mn>81</mn><mo>⋅</mo><mn>625</mn></mrow><mn>4</mn></mroot></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot><mrow><mn>81</mn><mo>⋅</mo><mn>625</mn></mrow><mn>4</mn></mroot>
+                        <mo>=</mo>
+                        <mroot><mn>81</mn><mn>4</mn></mroot>
+                        <mo>⋅</mo>
+                        <mroot><mn>625</mn><mn>4</mn></mroot>
+                        <mo>=</mo>
+                        <mn>3</mn>
+                        <mo>⋅</mo>
+                        <mn>5</mn>
+                        <mo>=</mo>
+                        <mn>15</mn>
+                    </math>
+                </div>
+            </div>
+            <p class="explanation">Разложили на множители: <math xmlns="http://www.w3.org/1998/Math/MathML"><mn>81</mn><mo>=</mo><msup><mn>3</mn><mn>4</mn></msup></math> и <math xmlns="http://www.w3.org/1998/Math/MathML"><mn>625</mn><mo>=</mo><msup><mn>5</mn><mn>4</mn></msup></math></p>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример 2:</div>
+            <p>Вычислить: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mrow><mn>0.00032</mn><mo>⋅</mo><mn>3125</mn></mrow><mn>5</mn></mroot></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot><mrow><mn>0.00032</mn><mo>⋅</mo><mn>3125</mn></mrow><mn>5</mn></mroot>
+                        <mo>=</mo>
+                        <mroot><mn>0.00032</mn><mn>5</mn></mroot>
+                        <mo>⋅</mo>
+                        <mroot><mn>3125</mn><mn>5</mn></mroot>
+                        <mo>=</mo>
+                        <mn>0.2</mn>
+                        <mo>⋅</mo>
+                        <mn>5</mn>
+                        <mo>=</mo>
+                        <mn>1</mn>
+                    </math>
+                </div>
+            </div>
+            <p class="explanation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>0.00032</mn><mo>=</mo><msup><mn>0.2</mn><mn>5</mn></msup></math> и <math xmlns="http://www.w3.org/1998/Math/MathML"><mn>3125</mn><mo>=</mo><msup><mn>5</mn><mn>5</mn></msup></math></p>
+        </div>
+    </div>
+
+    <div class="lesson-section">
+        <div class="lesson-number">Свойство 2</div>
+        <h2>Корень n-й степени из частного</h2>
+
+        <div class="definition">
+            <p><strong>Формулировка:</strong> Корень n-й степени из частного равен частному корней n-й степени делимого и делителя.</p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot>
+                            <mfrac><mi>a</mi><mi>b</mi></mfrac>
+                            <mi>n</mi>
+                        </mroot>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mroot><mi>a</mi><mi>n</mi></mroot>
+                            <mroot><mi>b</mi><mi>n</mi></mroot>
+                        </mfrac>
+                    </math>
+                </div>
+            </div>
+            <p><strong>Условия:</strong> <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi><mo>≥</mo><mn>0</mn></math>, <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>b</mi><mo>></mo><mn>0</mn></math>, <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>∈</mo><mi>ℕ</mi></math>, <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>></mo><mn>1</mn></math></p>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример 1:</div>
+            <p>Вычислить: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mfrac><mn>0.0625</mn><mn>810000</mn></mfrac><mn>4</mn></mroot></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot><mfrac><mn>0.0625</mn><mn>810000</mn></mfrac><mn>4</mn></mroot>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mroot><mn>0.0625</mn><mn>4</mn></mroot>
+                            <mroot><mn>810000</mn><mn>4</mn></mroot>
+                        </mfrac>
+                        <mo>=</mo>
+                        <mfrac><mn>0.5</mn><mn>30</mn></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mn>1</mn><mn>60</mn></mfrac>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="example hard-example">
+            <div class="example-title">Пример 2 (сложный):</div>
+            <p>Вычислить: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mfrac><mn>216000</mn><mn>0.001</mn></mfrac><mn>3</mn></mroot></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot><mfrac><mn>216000</mn><mn>0.001</mn></mfrac><mn>3</mn></mroot>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mroot><mn>216000</mn><mn>3</mn></mroot>
+                            <mroot><mn>0.001</mn><mn>3</mn></mroot>
+                        </mfrac>
+                        <mo>=</mo>
+                        <mfrac><mn>60</mn><mn>0.1</mn></mfrac>
+                        <mo>=</mo>
+                        <mn>600</mn>
+                    </math>
+                </div>
+            </div>
+            <p class="explanation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>216000</mn><mo>=</mo><msup><mn>60</mn><mn>3</mn></msup></math> и <math xmlns="http://www.w3.org/1998/Math/MathML"><mn>0.001</mn><mo>=</mo><msup><mn>0.1</mn><mn>3</mn></msup></math></p>
+        </div>
+    </div>
+
+    <div class="lesson-section">
+        <div class="lesson-number">Свойство 3</div>
+        <h2>Корень из степени</h2>
+
+        <div class="definition">
+            <p><strong>Формулировка:</strong> Значение корня из степени не изменится, если и показатель корня, и показатель подкоренного выражения умножить на одно и то же натуральное число или разделить на их общий делитель.</p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot>
+                            <msup><mi>a</mi><mi>m</mi></msup>
+                            <mi>n</mi>
+                        </mroot>
+                        <mo>=</mo>
+                        <mroot>
+                            <msup><mi>a</mi><mrow><mi>m</mi><mo>⋅</mo><mi>k</mi></mrow></msup>
+                            <mrow><mi>n</mi><mo>⋅</mo><mi>k</mi></mrow>
+                        </mroot>
+                        <mo>=</mo>
+                        <mroot>
+                            <msup><mi>a</mi><mrow><mi>m</mi><mo>:</mo><mi>k</mi></mrow></msup>
+                            <mrow><mi>n</mi><mo>:</mo><mi>k</mi></mrow>
+                        </mroot>
+                    </math>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример 1:</div>
+            <p>Упростить: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><msup><mn>16</mn><mn>2</mn></msup><mn>6</mn></mroot></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot><msup><mn>16</mn><mn>2</mn></msup><mn>6</mn></mroot>
+                        <mo>=</mo>
+                        <mroot><msup><mn>2</mn><mn>8</mn></msup><mn>6</mn></mroot>
+                        <mo>=</mo>
+                        <mroot><msup><mn>2</mn><mn>4</mn></msup><mn>3</mn></mroot>
+                        <mo>=</mo>
+                        <mroot><mn>16</mn><mn>3</mn></mroot>
+                    </math>
+                </div>
+            </div>
+            <p class="explanation">Показатели 8 и 6 имеют общий делитель 2, поэтому: <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>8</mn><mn>6</mn></mfrac><mo>=</mo><mfrac><mn>4</mn><mn>3</mn></mfrac></math></p>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример 2:</div>
+            <p>Упростить: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><msup><mn>25</mn><mn>2</mn></msup><mn>4</mn></mroot></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot><msup><mn>25</mn><mn>2</mn></msup><mn>4</mn></mroot>
+                        <mo>=</mo>
+                        <mroot><msup><mn>5</mn><mn>4</mn></msup><mn>4</mn></mroot>
+                        <mo>=</mo>
+                        <mroot><mn>5</mn><mn>2</mn></mroot>
+                        <mo>=</mo>
+                        <mn>5</mn>
+                    </math>
+                </div>
+            </div>
+            <p class="explanation">НОД(4, 4) = 4, поэтому: <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>4</mn><mn>4</mn></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>1</mn></mfrac></math></p>
+        </div>
+    </div>
+
+    <div class="lesson-section">
+        <div class="lesson-number">Свойство 4</div>
+        <h2>Корень из корня</h2>
+
+        <div class="definition">
+            <p><strong>Формулировка:</strong> Чтобы извлечь корень k-й степени из корня n-й степени из неотрицательного числа, достаточно извлечь корень степени n·k из этого числа.</p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot>
+                            <mroot><mi>a</mi><mi>n</mi></mroot>
+                            <mi>k</mi>
+                        </mroot>
+                        <mo>=</mo>
+                        <mroot>
+                            <mi>a</mi>
+                            <mrow><mi>n</mi><mo>⋅</mo><mi>k</mi></mrow>
+                        </mroot>
+                    </math>
+                </div>
+            </div>
+            <p><strong>Условия:</strong> <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi><mo>≥</mo><mn>0</mn></math>, <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>></mo><mn>1</mn></math>, <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>k</mi><mo>></mo><mn>1</mn></math></p>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример 1:</div>
+            <p>Упростить: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mroot><mn>64</mn><mn>3</mn></mroot><mn>2</mn></mroot></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot><mroot><mn>64</mn><mn>3</mn></mroot><mn>2</mn></mroot>
+                        <mo>=</mo>
+                        <mroot><mn>64</mn><mrow><mn>3</mn><mo>⋅</mo><mn>2</mn></mrow></mroot>
+                        <mo>=</mo>
+                        <mroot><mn>64</mn><mn>6</mn></mroot>
+                        <mo>=</mo>
+                        <mroot><msup><mn>2</mn><mn>6</mn></msup><mn>6</mn></mroot>
+                        <mo>=</mo>
+                        <mn>2</mn>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример 2:</div>
+            <p>Упростить: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mroot><mn>81</mn><mn>2</mn></mroot><mn>4</mn></mroot></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot><mroot><mn>81</mn><mn>2</mn></mroot><mn>4</mn></mroot>
+                        <mo>=</mo>
+                        <mroot><mn>81</mn><mrow><mn>2</mn><mo>⋅</mo><mn>4</mn></mrow></mroot>
+                        <mo>=</mo>
+                        <mroot><mn>81</mn><mn>8</mn></mroot>
+                        <mo>=</mo>
+                        <mroot><msup><mn>3</mn><mn>4</mn></msup><mn>8</mn></mroot>
+                        <mo>=</mo>
+                        <mroot><mn>3</mn><mn>2</mn></mroot>
+                        <mo>=</mo>
+                        <msqrt><mn>3</mn></msqrt>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="lesson-section">
+        <div class="lesson-number">Свойство 5</div>
+        <h2>Корень чётной и нечётной степени</h2>
+
+        <div class="definition">
+            <p><strong>Формулировка:</strong> Для любого действительного числа a и натурального n > 1:</p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot>
+                            <msup><mi>a</mi><mi>n</mi></msup>
+                            <mi>n</mi>
+                        </mroot>
+                        <mo>=</mo>
+                        <mrow>
+                            <mo>{</mo>
+                            <mtable>
+                                <mtr>
+                                    <mtd>
+                                        <mo>|</mo><mi>a</mi><mo>|</mo>
+                                    </mtd>
+                                    <mtd>
+                                        <mtext>если&nbsp;</mtext>
+                                        <mi>n</mi>
+                                        <mtext>— чётное число</mtext>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd><mi>a</mi></mtd>
+                                    <mtd>
+                                        <mtext>если&nbsp;</mtext>
+                                        <mi>n</mi>
+                                        <mtext>— нечётное число</mtext>
+                                    </mtd>
+                                </mtr>
+                            </mtable>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример 1 (чётная степень):</div>
+            <p>Вычислить: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><msup><mrow><mo>(</mo><mo>-</mo><mn>5</mn><mo>)</mo></mrow><mn>6</mn></msup><mn>6</mn></mroot></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot><msup><mrow><mo>(</mo><mo>-</mo><mn>5</mn><mo>)</mo></mrow><mn>6</mn></msup><mn>6</mn></mroot>
+                        <mo>=</mo>
+                        <mo>|</mo><mo>-</mo><mn>5</mn><mo>|</mo>
+                        <mo>=</mo>
+                        <mn>5</mn>
+                    </math>
+                </div>
+            </div>
+            <p class="explanation">6 — чётное число, поэтому результат — модуль числа</p>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример 2 (нечётная степень):</div>
+            <p>Вычислить: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><msup><mrow><mo>(</mo><mo>-</mo><mn>7</mn><mo>)</mo></mrow><mn>13</mn></msup><mn>13</mn></mroot></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot><msup><mrow><mo>(</mo><mo>-</mo><mn>7</mn><mo>)</mo></mrow><mn>13</mn></msup><mn>13</mn></mroot>
+                        <mo>=</mo>
+                        <mo>-</mo><mn>7</mn>
+                    </math>
+                </div>
+            </div>
+            <p class="explanation">13 — нечётное число, поэтому результат равен самому числу</p>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример 3:</div>
+            <p>Упростить: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><msup><mi>k</mi><mn>12</mn></msup><mn>12</mn></mroot></math>, если <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>k</mi><mo>≥</mo><mn>0</mn></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot><msup><mi>k</mi><mn>12</mn></msup><mn>12</mn></mroot>
+                        <mo>=</mo>
+                        <mo>|</mo><mi>k</mi><mo>|</mo>
+                        <mo>=</mo>
+                        <mi>k</mi>
+                        <mspace width="1em"/>
+                        <mtext>(так как</mtext>
+                        <mspace width="0.5em"/>
+                        <mi>k</mi>
+                        <mo>≥</mo>
+                        <mn>0</mn>
+                        <mo>)</mo>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="example hard-example">
+            <div class="example-title">Пример 4 (сложный):</div>
+            <p>Упростить: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><msup><mi>p</mi><mn>14</mn></msup><mn>14</mn></mroot></math>, если <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>p</mi><mo>≤</mo><mn>0</mn></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot><msup><mi>p</mi><mn>14</mn></msup><mn>14</mn></mroot>
+                        <mo>=</mo>
+                        <mo>|</mo><mi>p</mi><mo>|</mo>
+                        <mo>=</mo>
+                        <mo>-</mo><mi>p</mi>
+                        <mspace width="1em"/>
+                        <mtext>(так как</mtext>
+                        <mspace width="0.5em"/>
+                        <mi>p</mi>
+                        <mo>≤</mo>
+                        <mn>0</mn>
+                        <mo>)</mo>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <h1 id="2">Практическое применение свойств корней</h1>
+
+    <div class="lesson-section">
+        <div class="lesson-number">Задание 1</div>
+        <h2>Вынесение множителя за знак корня</h2>
+
+        <div class="definition">
+            <p><strong>Правило:</strong> Если подкоренное выражение содержит степень с показателем, кратным показателю корня, то этот множитель можно вынести за знак корня.</p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot>
+                            <msup><mi>a</mi><mi>nk</mi></msup>
+                            <mi>n</mi>
+                        </mroot>
+                        <mo>=</mo>
+                        <msup><mi>a</mi><mi>k</mi></msup>
+                        <mspace width="1em"/>
+                        <mtext>(при</mtext>
+                        <mspace width="0.5em"/>
+                        <mi>a</mi>
+                        <mo>≥</mo>
+                        <mn>0</mn>
+                        <mtext>)</mtext>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример 1:</div>
+            <p>Вынесите множитель за знак корня: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mrow><msup><mi>a</mi><mn>5</mn></msup><msup><mi>b</mi><mn>2</mn></msup></mrow><mn>5</mn></mroot></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot><mrow><msup><mi>a</mi><mn>5</mn></msup><msup><mi>b</mi><mn>2</mn></msup></mrow><mn>5</mn></mroot>
+                        <mo>=</mo>
+                        <mroot><msup><mi>a</mi><mn>5</mn></msup><mn>5</mn></mroot>
+                        <mo>⋅</mo>
+                        <mroot><msup><mi>b</mi><mn>2</mn></msup><mn>5</mn></mroot>
+                        <mo>=</mo>
+                        <mi>a</mi>
+                        <mspace width="0.5em"/>
+                        <mroot><msup><mi>b</mi><mn>2</mn></msup><mn>5</mn></mroot>
+                    </math>
+                </div>
+            </div>
+            <p class="explanation">Так как <math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>a</mi><mn>5</mn></msup></math> — полная пятая степень, множитель <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi></math> выносится полностью</p>
+        </div>
+
+        <div class="example hard-example">
+            <div class="example-title">Пример 2 (с условием):</div>
+            <p>Вынесите множитель за знак корня: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mrow><msup><mi>a</mi><mn>4</mn></msup><msup><mi>b</mi><mn>3</mn></msup></mrow><mn>4</mn></mroot></math> при <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi><mo><</mo><mn>0</mn></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot><mrow><msup><mi>a</mi><mn>4</mn></msup><msup><mi>b</mi><mn>3</mn></msup></mrow><mn>4</mn></mroot>
+                        <mo>=</mo>
+                        <mroot><msup><mi>a</mi><mn>4</mn></msup><mn>4</mn></mroot>
+                        <mo>⋅</mo>
+                        <mroot><msup><mi>b</mi><mn>3</mn></msup><mn>4</mn></mroot>
+                        <mo>=</mo>
+                        <mo>|</mo><mi>a</mi><mo>|</mo>
+                        <mo>⋅</mo>
+                        <mroot><msup><mi>b</mi><mn>3</mn></msup><mn>4</mn></mroot>
+                        <mo>=</mo>
+                        <mo>-</mo><mi>a</mi>
+                        <mo>⋅</mo>
+                        <mroot><msup><mi>b</mi><mn>3</mn></msup><mn>4</mn></mroot>
+                    </math>
+                </div>
+            </div>
+            <p class="explanation">Так как <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi><mo><</mo><mn>0</mn></math> и степень корня чётная, выносится модуль <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>|</mo><mi>a</mi><mo>|</mo></math>, который равен <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>-</mo><mi>a</mi></math></p>
+        </div>
+    </div>
+
+    <div class="lesson-section">
+        <div class="lesson-number">Задание 2</div>
+        <h2>Внесение множителя под знак корня</h2>
+
+        <div class="definition">
+            <p><strong>Правило:</strong> Чтобы внести множитель под знак корня n-ой степени, нужно возвести его в n-ую степень и умножить на подкоренное выражение.</p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mi>k</mi>
+                        <mroot><mi>a</mi><mi>n</mi></mroot>
+                        <mo>=</mo>
+                        <mroot>
+                            <mrow>
+                                <msup><mi>k</mi><mi>n</mi></msup>
+                                <mo>⋅</mo>
+                                <mi>a</mi>
+                            </mrow>
+                            <mi>n</mi>
+                        </mroot>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример 1:</div>
+            <p>Внесите множитель под знак корня: <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>-</mo><mn>2</mn><mroot><mn>2</mn><mn>3</mn></mroot></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mo>-</mo><mn>2</mn>
+                        <mroot><mn>2</mn><mn>3</mn></mroot>
+                        <mo>=</mo>
+                        <mo>-</mo>
+                        <mroot>
+                            <mrow>
+                                <msup><mn>2</mn><mn>3</mn></msup>
+                                <mo>⋅</mo>
+                                <mn>2</mn>
+                            </mrow>
+                            <mn>3</mn>
+                        </mroot>
+                        <mo>=</mo>
+                        <mo>-</mo>
+                        <mroot>
+                            <msup><mn>2</mn><mn>4</mn></msup>
+                            <mn>3</mn>
+                        </mroot>
+                        <mo>=</mo>
+                        <mo>-</mo>
+                        <mroot>
+                            <mn>16</mn>
+                            <mn>3</mn>
+                        </mroot>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="example hard-example">
+            <div class="example-title">Пример 2 (сложный):</div>
+            <p>Внесите множитель под знак корня: <math xmlns="http://www.w3.org/1998/Math/MathML"><mn>2</mn><mi>a</mi><mroot><mrow><mo>-</mo><mi>a</mi></mrow><mn>4</mn></mroot></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mn>2</mn><mi>a</mi>
+                        <mroot><mrow><mo>-</mo><mi>a</mi></mrow><mn>4</mn></mroot>
+                        <mo>=</mo>
+                        <mo>-</mo>
+                        <mo>(</mo>
+                        <mo>-</mo><mn>2</mn><mi>a</mi>
+                        <mo>)</mo>
+                        <mroot><mrow><mo>-</mo><mi>a</mi></mrow><mn>4</mn></mroot>
+                        <mo>=</mo>
+                        <mo>-</mo>
+                        <mroot>
+                            <mrow>
+                                <msup><mrow><mo>(</mo><mo>-</mo><mn>2</mn><mi>a</mi><mo>)</mo></mrow><mn>4</mn></msup>
+                                <mo>⋅</mo>
+                                <mrow><mo>(</mo><mo>-</mo><mi>a</mi><mo>)</mo></mrow>
+                            </mrow>
+                            <mn>4</mn>
+                        </mroot>
+                        <mo>=</mo>
+                        <mo>-</mo>
+                        <mroot>
+                            <mrow>
+                                <mn>16</mn>
+                                <msup><mi>a</mi><mn>4</mn></msup>
+                                <mo>⋅</mo>
+                                <mrow><mo>(</mo><mo>-</mo><mi>a</mi><mo>)</mo></mrow>
+                            </mrow>
+                            <mn>4</mn>
+                        </mroot>
+                        <mo>=</mo>
+                        <mo>-</mo>
+                        <mroot>
+                            <mrow>
+                                <mo>-</mo><mn>16</mn>
+                                <msup><mi>a</mi><mn>5</mn></msup>
+                            </mrow>
+                            <mn>4</mn>
+                        </mroot>
+                    </math>
+                </div>
+            </div>
+            <p class="explanation">Обратите внимание на знаки при внесении отрицательного множителя под корень чётной степени</p>
+        </div>
+    </div>
+
+    <div class="lesson-section">
+        <div class="lesson-number">Задание 3</div>
+        <h2>Упрощение выражений с корнями</h2>
+
+        <div class="definition">
+            <p><strong>Принцип:</strong> Сложение и вычитание корней возможно только при одинаковых подкоренных выражениях и одинаковых показателях корней.</p>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример 1:</div>
+            <p>Упростите выражение: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mn>16</mn><mn>3</mn></mroot><mo>+</mo><mroot><mn>54</mn><mn>3</mn></mroot><mo>-</mo><mroot><mn>2</mn><mn>3</mn></mroot></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot><mn>16</mn><mn>3</mn></mroot>
+                        <mo>+</mo>
+                        <mroot><mn>54</mn><mn>3</mn></mroot>
+                        <mo>-</mo>
+                        <mroot><mn>2</mn><mn>3</mn></mroot>
+                        <mo>=</mo>
+                        <mroot><mrow><mn>8</mn><mo>⋅</mo><mn>2</mn></mrow><mn>3</mn></mroot>
+                        <mo>+</mo>
+                        <mroot><mrow><mn>27</mn><mo>⋅</mo><mn>2</mn></mrow><mn>3</mn></mroot>
+                        <mo>-</mo>
+                        <mroot><mn>2</mn><mn>3</mn></mroot>
+                        <mo>=</mo>
+                        <mn>2</mn>
+                        <mroot><mn>2</mn><mn>3</mn></mroot>
+                        <mo>+</mo>
+                        <mn>3</mn>
+                        <mroot><mn>2</mn><mn>3</mn></mroot>
+                        <mo>-</mo>
+                        <mroot><mn>2</mn><mn>3</mn></mroot>
+                        <mo>=</mo>
+                        <mn>4</mn>
+                        <mroot><mn>2</mn><mn>3</mn></mroot>
+                    </math>
+                </div>
+            </div>
+            <p class="explanation">Сначала выносим множители, затем приводим подобные слагаемые</p>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример 2:</div>
+            <p>Упростите выражение: <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>(</mo><mn>2</mn><mroot><mn>5</mn><mn>4</mn></mroot><mo>-</mo><mroot><mn>27</mn><mn>4</mn></mroot><mo>)</mo><mo>⋅</mo><mroot><mn>3</mn><mn>4</mn></mroot><mo>-</mo><mn>2</mn><mroot><mn>15</mn><mn>4</mn></mroot></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mrow>
+                            <mo>(</mo>
+                            <mn>2</mn><mroot><mn>5</mn><mn>4</mn></mroot>
+                            <mo>-</mo>
+                            <mroot><mn>27</mn><mn>4</mn></mroot>
+                            <mo>)</mo>
+                        </mrow>
+                        <mo>⋅</mo>
+                        <mroot><mn>3</mn><mn>4</mn></mroot>
+                        <mo>-</mo>
+                        <mn>2</mn><mroot><mn>15</mn><mn>4</mn></mroot>
+                        <mo>=</mo>
+                        <mn>2</mn>
+                        <mroot><mrow><mn>5</mn><mo>⋅</mo><mn>3</mn></mrow><mn>4</mn></mroot>
+                        <mo>-</mo>
+                        <mroot><mrow><mn>27</mn><mo>⋅</mo><mn>3</mn></mrow><mn>4</mn></mroot>
+                        <mo>-</mo>
+                        <mn>2</mn><mroot><mn>15</mn><mn>4</mn></mroot>
+                        <mo>=</mo>
+                        <mn>2</mn><mroot><mn>15</mn><mn>4</mn></mroot>
+                        <mo>-</mo>
+                        <mroot><mn>81</mn><mn>4</mn></mroot>
+                        <mo>-</mo>
+                        <mn>2</mn><mroot><mn>15</mn><mn>4</mn></mroot>
+                        <mo>=</mo>
+                        <mo>-</mo>
+                        <mroot><mn>81</mn><mn>4</mn></mroot>
+                        <mo>=</mo>
+                        <mo>-</mo>
+                        <mn>3</mn>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="lesson-section">
+    <div class="lesson-number">Задание 4</div>
+    <h2>Умножение выражений с корнями</h2>
+
+    <div class="definition">
+        <p><strong>Формула разности квадратов:</strong> <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>(</mo><mi>x</mi><mo>-</mo><mi>y</mi><mo>)</mo><mo>(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo>)</mo><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><msup><mi>y</mi><mn>2</mn></msup></math></p>
+    </div>
+
+    <div class="example">
+        <div class="example-title">Пример:</div>
+        <p>Выполните действия: <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>(</mo><msqrt><mi>a</mi></msqrt><mo>-</mo><mroot><mi>b</mi><mn>4</mn></mroot><mo>)</mo><mo>(</mo><msqrt><mi>a</mi></msqrt><mo>+</mo><mroot><mi>b</mi><mn>4</mn></mroot><mo>)</mo><mo>(</mo><mi>a</mi><mo>+</mo><msqrt><mi>b</mi></msqrt><mo>)</mo></math></p>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mrow>
+                        <mo>(</mo>
+                        <msqrt><mi>a</mi></msqrt>
+                        <mo>-</mo>
+                        <mroot><mi>b</mi><mn>4</mn></mroot>
+                        <mo>)</mo>
+                    </mrow>
+                    <mrow>
+                        <mo>(</mo>
+                        <msqrt><mi>a</mi></msqrt>
+                        <mo>+</mo>
+                        <mroot><mi>b</mi><mn>4</mn></mroot>
+                        <mo>)</mo>
+                    </mrow>
+                    <mrow>
+                        <mo>(</mo>
+                        <mi>a</mi>
+                        <mo>+</mo>
+                        <msqrt><mi>b</mi></msqrt>
+                        <mo>)</mo>
+                    </mrow>
+                    <mo>=</mo>
+                    <mrow>
+                        <mo>[</mo>
+                        <msup><mrow><mo>(</mo><msqrt><mi>a</mi></msqrt><mo>)</mo></mrow><mn>2</mn></msup>
+                        <mo>-</mo>
+                        <msup><mrow><mo>(</mo><mroot><mi>b</mi><mn>4</mn></mroot><mo>)</mo></mrow><mn>2</mn></msup>
+                        <mo>]</mo>
+                    </mrow>
+                    <mrow>
+                        <mo>(</mo>
+                        <mi>a</mi>
+                        <mo>+</mo>
+                        <msqrt><mi>b</mi></msqrt>
+                        <mo>)</mo>
+                    </mrow>
+                    <mo>=</mo>
+                    <mrow>
+                        <mo>(</mo>
+                        <mi>a</mi>
+                        <mo>-</mo>
+                        <msqrt><mi>b</mi></msqrt>
+                        <mo>)</mo>
+                    </mrow>
+                    <mrow>
+                        <mo>(</mo>
+                        <mi>a</mi>
+                        <mo>+</mo>
+                        <msqrt><mi>b</mi></msqrt>
+                        <mo>)</mo>
+                    </mrow>
+                    <mo>=</mo>
+                    <msup><mi>a</mi><mn>2</mn></msup>
+                    <mo>-</mo>
+                    <mi>b</mi>
+                </math>
+            </div>
+        </div>
+        <p class="explanation">
+            <strong>Пояснение шагов:</strong><br>
+            1. Применили формулу разности квадратов к первым двум скобкам:<br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>(</mo><msqrt><mi>a</mi></msqrt><mo>)</mo><msup><mrow></mrow><mn>2</mn></msup><mo>=</mo><mi>a</mi></math>,
+            <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>(</mo><mroot><mi>b</mi><mn>4</mn></mroot><mo>)</mo><msup><mrow></mrow><mn>2</mn></msup><mo>=</mo><msup><mi>b</mi><mrow><mn>2</mn><mo>/</mo><mn>4</mn></mrow></msup><mo>=</mo><msup><mi>b</mi><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><mo>=</mo><msqrt><mi>b</mi></msqrt></math><br>
+            2. Получили: <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi><mo>-</mo><msqrt><mi>b</mi></msqrt></math><br>
+            3. Снова применили формулу разности квадратов к <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>(</mo><mi>a</mi><mo>-</mo><msqrt><mi>b</mi></msqrt><mo>)</mo><mo>(</mo><mi>a</mi><mo>+</mo><msqrt><mi>b</mi></msqrt><mo>)</mo></math><br>
+            4. Итог: <math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>a</mi><mn>2</mn></msup><mo>-</mo><mi>b</mi></math>
+        </p>
+    </div>
+</div>
+
+    <div class="lesson-section">
+
+    <div class="lesson-number">Задание 5</div>
+    <h2>Сокращение дробей с корнями</h2>
+
+    <div class="example">
+        <div class="example-title">Пример:</div>
+        <p>Сократите дробь: <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mroot><mn>32</mn><mn>6</mn></mroot><mo>+</mo><mroot><mn>2</mn><mn>3</mn></mroot></mrow><mrow><mn>2</mn><mroot><mn>2</mn><mn>3</mn></mroot></mrow></mfrac></math></p>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mfrac>
+                        <mrow>
+                            <mroot><mn>32</mn><mn>6</mn></mroot>
+                            <mo>+</mo>
+                            <mroot><mn>2</mn><mn>3</mn></mroot>
+                        </mrow>
+                        <mrow>
+                            <mn>2</mn><mroot><mn>2</mn><mn>3</mn></mroot>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <mroot><msup><mn>2</mn><mn>5</mn></msup><mn>6</mn></mroot>
+                            <mo>+</mo>
+                            <mroot><mn>2</mn><mn>3</mn></mroot>
+                        </mrow>
+                        <mrow>
+                            <mn>2</mn><mroot><mn>2</mn><mn>3</mn></mroot>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <msup><mn>2</mn><mrow><mn>5</mn><mo>/</mo><mn>6</mn></mrow></msup>
+                            <mo>+</mo>
+                            <msup><mn>2</mn><mrow><mn>1</mn><mo>/</mo><mn>3</mn></mrow></msup>
+                        </mrow>
+                        <mrow>
+                            <mn>2</mn><mo>⋅</mo><msup><mn>2</mn><mrow><mn>1</mn><mo>/</mo><mn>3</mn></mrow></msup>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <msup><mn>2</mn><mrow><mn>5</mn><mo>/</mo><mn>6</mn></mrow></msup>
+                            <mo>+</mo>
+                            <msup><mn>2</mn><mrow><mn>2</mn><mo>/</mo><mn>6</mn></mrow></msup>
+                        </mrow>
+                        <mrow>
+                            <mn>2</mn><mo>⋅</mo><msup><mn>2</mn><mrow><mn>2</mn><mo>/</mo><mn>6</mn></mrow></msup>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <msup><mn>2</mn><mrow><mn>2</mn><mo>/</mo><mn>6</mn></mrow></msup>
+                            <mo>(</mo>
+                            <msup><mn>2</mn><mrow><mn>3</mn><mo>/</mo><mn>6</mn></mrow></msup>
+                            <mo>+</mo>
+                            <mn>1</mn>
+                            <mo>)</mo>
+                        </mrow>
+                        <mrow>
+                            <mn>2</mn><mo>⋅</mo><msup><mn>2</mn><mrow><mn>2</mn><mo>/</mo><mn>6</mn></mrow></msup>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <mroot><msup><mn>2</mn><mn>2</mn></msup><mn>6</mn></mroot>
+                            <mo>(</mo>
+                            <mroot><msup><mn>2</mn><mn>3</mn></msup><mn>6</mn></mroot>
+                            <mo>+</mo>
+                            <mn>1</mn>
+                            <mo>)</mo>
+                        </mrow>
+                        <mrow>
+                            <mn>2</mn><mo>⋅</mo><mroot><msup><mn>2</mn><mn>2</mn></msup><mn>6</mn></mroot>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <mroot><mn>8</mn><mn>6</mn></mroot>
+                            <mo>+</mo>
+                            <mn>1</mn>
+                        </mrow>
+                        <mn>2</mn>
+                    </mfrac>
+                </math>
+            </div>
+        </div>
+        <p class="explanation">
+            <strong>Пояснение:</strong><br>
+            1. Представили числа как степени двойки: <math xmlns="http://www.w3.org/1998/Math/MathML"><mn>32</mn><mo>=</mo><msup><mn>2</mn><mn>5</mn></msup></math><br>
+            2. Привели все степени к общему знаменателю 6<br>
+            3. Вынесли общий множитель <math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mn>2</mn><mrow><mn>2</mn><mo>/</mo><mn>6</mn></mrow></msup><mo>=</mo><mroot><mn>4</mn><mn>6</mn></mroot></math><br>
+            4. Сократили общий множитель в числителе и знаменателе<br>
+            5. Получили ответ: <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mroot><mn>8</mn><mn>6</mn></mroot><mo>+</mo><mn>1</mn></mrow><mn>2</mn></mfrac></math>
+        </p>
+    </div>
+
+
+
+</div>
+
+<div class="lesson-section">
+    <div class="lesson-number">Задание 6</div>
+    <h2>Освобождение от иррациональности в знаменателе</h2>
+
+    <div class="example">
+        <div class="example-title">Пример:</div>
+        <p>Освободитесь от иррациональности в знаменателе: <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mrow><mroot><mn>125</mn><mn>4</mn></mroot></mrow></mfrac></math></p>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mfrac>
+                        <mn>1</mn>
+                        <mrow>
+                            <mroot><mn>125</mn><mn>4</mn></mroot>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mn>1</mn>
+                        <mrow>
+                            <mroot><msup><mn>5</mn><mn>3</mn></msup><mn>4</mn></mroot>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mn>1</mn>
+                        <mrow>
+                            <mroot><msup><mn>5</mn><mn>3</mn></msup><mn>4</mn></mroot>
+                        </mrow>
+                    </mfrac>
+                    <mo>⋅</mo>
+                    <mfrac>
+                        <mrow>
+                            <mroot><msup><mn>5</mn><mn>1</mn></msup><mn>4</mn></mroot>
+                        </mrow>
+                        <mrow>
+                            <mroot><msup><mn>5</mn><mn>1</mn></msup><mn>4</mn></mroot>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <mroot><msup><mn>5</mn><mn>1</mn></msup><mn>4</mn></mroot>
+                        </mrow>
+                        <mrow>
+                            <mroot><msup><mn>5</mn><mn>4</mn></msup><mn>4</mn></mroot>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <mroot><mn>5</mn><mn>4</mn></mroot>
+                        </mrow>
+                        <mn>5</mn>
+                    </mfrac>
+                </math>
+            </div>
+        </div>
+        <p class="explanation">
+            <strong>Пояснение:</strong><br>
+            1. Представили 125 как <math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mn>5</mn><mn>3</mn></msup></math><br>
+            2. Умножили числитель и знаменатель на <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mn>5</mn><mn>4</mn></mroot></math><br>
+            3. В знаменателе получили: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><msup><mn>5</mn><mn>3</mn></msup><mn>4</mn></mroot><mo>⋅</mo><mroot><mn>5</mn><mn>4</mn></mroot><mo>=</mo><mroot><msup><mn>5</mn><mn>4</mn></msup><mn>4</mn></mroot><mo>=</mo><mn>5</mn></math><br>
+            4. В числителе: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mn>5</mn><mn>4</mn></mroot></math>
+        </p>
+    </div>
+
+</div>
+                    <div class="lesson-section">
+    <div class="lesson-number">Задание 7</div>
+    <h2>Сложение дробей с корнями в знаменателе</h2>
+
+    <div class="example">
+        <div class="example-title">Пример:</div>
+        <p>Упростите выражение: <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mrow><mroot><mn>7</mn><mn>4</mn></mroot><mo>-</mo><mroot><mn>3</mn><mn>4</mn></mroot></mrow></mfrac><mo>+</mo><mfrac><mn>1</mn><mrow><mroot><mn>7</mn><mn>4</mn></mroot><mo>+</mo><mroot><mn>3</mn><mn>4</mn></mroot></mrow></mfrac></math></p>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mfrac>
+                        <mn>1</mn>
+                        <mrow>
+                            <mroot><mn>7</mn><mn>4</mn></mroot>
+                            <mo>-</mo>
+                            <mroot><mn>3</mn><mn>4</mn></mroot>
+                        </mrow>
+                    </mfrac>
+                    <mo>+</mo>
+                    <mfrac>
+                        <mn>1</mn>
+                        <mrow>
+                            <mroot><mn>7</mn><mn>4</mn></mroot>
+                            <mo>+</mo>
+                            <mroot><mn>3</mn><mn>4</mn></mroot>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <mroot><mn>7</mn><mn>4</mn></mroot>
+                            <mo>+</mo>
+                            <mroot><mn>3</mn><mn>4</mn></mroot>
+                            <mo>+</mo>
+                            <mroot><mn>7</mn><mn>4</mn></mroot>
+                            <mo>-</mo>
+                            <mroot><mn>3</mn><mn>4</mn></mroot>
+                        </mrow>
+                        <mrow>
+                            <mo>(</mo>
+                            <mroot><mn>7</mn><mn>4</mn></mroot>
+                            <mo>-</mo>
+                            <mroot><mn>3</mn><mn>4</mn></mroot>
+                            <mo>)</mo>
+                            <mo>(</mo>
+                            <mroot><mn>7</mn><mn>4</mn></mroot>
+                            <mo>+</mo>
+                            <mroot><mn>3</mn><mn>4</mn></mroot>
+                            <mo>)</mo>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <mn>2</mn><mroot><mn>7</mn><mn>4</mn></mroot>
+                        </mrow>
+                        <mrow>
+                            <msup><mrow><mo>(</mo><mroot><mn>7</mn><mn>4</mn></mroot><mo>)</mo></mrow><mn>2</mn></msup>
+                            <mo>-</mo>
+                            <msup><mrow><mo>(</mo><mroot><mn>3</mn><mn>4</mn></mroot><mo>)</mo></mrow><mn>2</mn></msup>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <mn>2</mn><mroot><mn>7</mn><mn>4</mn></mroot>
+                        </mrow>
+                        <mrow>
+                            <msqrt><mn>7</mn></msqrt>
+                            <mo>-</mo>
+                            <msqrt><mn>3</mn></msqrt>
+                        </mrow>
+                    </mfrac>
+                </math>
+            </div>
+        </div>
+        <p class="explanation">
+            <strong>Пояснение:</strong><br>
+            1. Привели к общему знаменателю, используя формулу разности квадратов<br>
+            2. Упростили числитель: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mn>7</mn><mn>4</mn></mroot><mo>+</mo><mroot><mn>3</mn><mn>4</mn></mroot><mo>+</mo><mroot><mn>7</mn><mn>4</mn></mroot><mo>-</mo><mroot><mn>3</mn><mn>4</mn></mroot><mo>=</mo><mn>2</mn><mroot><mn>7</mn><mn>4</mn></mroot></math><br>
+            3. Упростили знаменатель: <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>(</mo><mroot><mn>7</mn><mn>4</mn></mroot><mo>)</mo><msup><mrow></mrow><mn>2</mn></msup><mo>=</mo><msup><mn>7</mn><mrow><mn>2</mn><mo>/</mo><mn>4</mn></mrow></msup><mo>=</mo><msup><mn>7</mn><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><mo>=</mo><msqrt><mn>7</mn></msqrt></math> и аналогично для 3<br>
+            4. Получили ответ: <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mn>2</mn><mroot><mn>7</mn><mn>4</mn></mroot></mrow><mrow><msqrt><mn>7</mn></msqrt><mo>-</mo><msqrt><mn>3</mn></msqrt></mrow></mfrac></math>
+        </p>
+    </div>
+
+    <div class="example hard-example">
+        <div class="example-title">Продолжение решения (освобождение от иррациональности):</div>
+        <p>Можно продолжить упрощение, освободившись от иррациональности в знаменателе:</p>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mfrac>
+                        <mrow>
+                            <mn>2</mn><mroot><mn>7</mn><mn>4</mn></mroot>
+                        </mrow>
+                        <mrow>
+                            <msqrt><mn>7</mn></msqrt>
+                            <mo>-</mo>
+                            <msqrt><mn>3</mn></msqrt>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <mn>2</mn><mroot><mn>7</mn><mn>4</mn></mroot>
+                            <mo>(</mo>
+                            <msqrt><mn>7</mn></msqrt>
+                            <mo>+</mo>
+                            <msqrt><mn>3</mn></msqrt>
+                            <mo>)</mo>
+                        </mrow>
+                        <mrow>
+                            <mo>(</mo>
+                            <msqrt><mn>7</mn></msqrt>
+                            <mo>-</mo>
+                            <msqrt><mn>3</mn></msqrt>
+                            <mo>)</mo>
+                            <mo>(</mo>
+                            <msqrt><mn>7</mn></msqrt>
+                            <mo>+</mo>
+                            <msqrt><mn>3</mn></msqrt>
+                            <mo>)</mo>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <mn>2</mn><mroot><mn>7</mn><mn>4</mn></mroot>
+                            <mo>(</mo>
+                            <msqrt><mn>7</mn></msqrt>
+                            <mo>+</mo>
+                            <msqrt><mn>3</mn></msqrt>
+                            <mo>)</mo>
+                        </mrow>
+                        <mrow>
+                            <mn>7</mn>
+                            <mo>-</mo>
+                            <mn>3</mn>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <mn>2</mn><mroot><mn>7</mn><mn>4</mn></mroot>
+                            <mo>(</mo>
+                            <msqrt><mn>7</mn></msqrt>
+                            <mo>+</mo>
+                            <msqrt><mn>3</mn></msqrt>
+                            <mo>)</mo>
+                        </mrow>
+                        <mn>4</mn>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <mroot><mn>7</mn><mn>4</mn></mroot>
+                            <mo>(</mo>
+                            <msqrt><mn>7</mn></msqrt>
+                            <mo>+</mo>
+                            <msqrt><mn>3</mn></msqrt>
+                            <mo>)</mo>
+                        </mrow>
+                        <mn>2</mn>
+                    </mfrac>
+                </math>
+            </div>
+        </div>
+        <p class="explanation">Умножили числитель и знаменатель на <math xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mn>7</mn></msqrt><mo>+</mo><msqrt><mn>3</mn></msqrt></math> и упростили</p>
+    </div>
+</div>
+
+                    <h1 id="3">Свойства степенных функций с корнями</h1>
+
+    <div class="lesson-section">
+        <div class="lesson-number">Функция 1</div>
+        <h2>Функция <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>=</mo><mroot><mi>x</mi><mrow><mn>2</mn><mi>k</mi></mrow></mroot></math>, где <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>k</mi><mo>∈</mo><mi>ℕ</mi></math></h2>
+
+        <div class="definition">
+            <p><strong>Общий вид:</strong> Корень чётной степени из x</p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mi>y</mi>
+                        <mo>=</mo>
+                        <mroot>
+                            <mi>x</mi>
+                            <mrow><mn>2</mn><mi>k</mi></mrow>
+                        </mroot>
+                        <mo>,</mo>
+                        <mspace width="1em"/>
+                        <mi>k</mi>
+                        <mo>∈</mo>
+                        <mi>ℕ</mi>
+                    </math>
+                </div>
+            </div>
+            <p><strong>Примеры:</strong> <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>=</mo><msqrt><mi>x</mi></msqrt></math> (k=1), <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>=</mo><mroot><mi>x</mi><mn>4</mn></mroot></math> (k=2), <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>=</mo><mroot><mi>x</mi><mn>6</mn></mroot></math> (k=3)</p>
+        </div>
+
+        <div class="function-analysis">
+            <h3>Свойства функции</h3>
+
+            <div class="function-properties">
+                <div class="property">
+                    <h4>1. Область определения</h4>
+                    <div class="math-container">
+                        <div class="math-formula">
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>D</mi>
+                                <mo>(</mo>
+                                <mi>f</mi>
+                                <mo>)</mo>
+                                <mo>=</mo>
+                                <mo>[</mo>
+                                <mn>0</mn>
+                                <mo>;</mo>
+                                <mo>+</mo>
+                                <mi>∞</mi>
+                                <mo>)</mo>
+                            </math>
+                        </div>
+                    </div>
+                    <p class="explanation">По свойству арифметического корня чётной степени</p>
+                </div>
+
+                <div class="property">
+                    <h4>2. Множество значений</h4>
+                    <div class="math-container">
+                        <div class="math-formula">
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>E</mi>
+                                <mo>(</mo>
+                                <mi>y</mi>
+                                <mo>)</mo>
+                                <mo>=</mo>
+                                <mo>[</mo>
+                                <mn>0</mn>
+                                <mo>;</mo>
+                                <mo>+</mo>
+                                <mi>∞</mi>
+                                <mo>)</mo>
+                            </math>
+                        </div>
+                    </div>
+                    <p class="explanation">Функция принимает все неотрицательные значения</p>
+                </div>
+
+                <div class="property">
+                    <h4>3. Нули функции</h4>
+                    <div class="math-container">
+                        <div class="math-formula">
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msub>
+                                    <mi>x</mi>
+                                    <mn>0</mn>
+                                </msub>
+                                <mo>=</mo>
+                                <mn>0</mn>
+                            </math>
+                        </div>
+                    </div>
+                    <p class="explanation">Единственный ноль при x = 0</p>
+                </div>
+            </div>
+
+            <div class="function-properties">
+                <div class="property">
+                    <h4>4. Промежутки знакопостоянства</h4>
+                    <ul>
+                        <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>></mo><mn>0</mn></math> при <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>∈</mo><mo>(</mo><mn>0</mn><mo>;</mo><mo>+</mo><mi>∞</mi><mo>)</mo></math></li>
+                        <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>=</mo><mn>0</mn></math> при <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>=</mo><mn>0</mn></math></li>
+                    </ul>
+                </div>
+
+                <div class="property">
+                    <h4>5. Монотонность</h4>
+                    <div class="math-container">
+                        <div class="math-formula">
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mtext>Возрастает на всей области определения</mtext>
+                            </math>
+                        </div>
+                    </div>
+                    <p class="explanation">Если <math xmlns="http://www.w3.org/1998/Math/MathML"><mn>0</mn><mo>≤</mo><msub><mi>x</mi><mn>1</mn></msub><mo><</mo><msub><mi>x</mi><mn>2</mn></msub></math>, то <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><msub><mi>x</mi><mn>1</mn></msub><mrow><mn>2</mn><mi>k</mi></mrow></mroot><mo><</mo><mroot><msub><mi>x</mi><mn>2</mn></msub><mrow><mn>2</mn><mi>k</mi></mrow></mroot></math></p>
+                </div>
+
+                <div class="property">
+                    <h4>6. Чётность</h4>
+                    <div class="math-container">
+                        <div class="math-formula">
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mtext>Не является ни чётной, ни нечётной</mtext>
+                            </math>
+                        </div>
+                    </div>
+                    <p class="explanation">Область определения не симметрична относительно нуля</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="example">
+            <div class="example-title">График функции</div>
+            <p>Графики функций <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>=</mo><mroot><mi>x</mi><mn>2</mn></mroot><mo>=</mo><msqrt><mi>x</mi></msqrt></math>, <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>=</mo><mroot><mi>x</mi><mn>4</mn></mroot></math>, <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>=</mo><mroot><mi>x</mi><mn>6</mn></mroot></math>:</p>
+            <div class="image-container">
+                <img src="https://i.postimg.cc/59GGFhTV/изображение.png" class="function-image" alt="Графики корней чётных степеней">
+            </div>
+            <p class="explanation">Все графики проходят через точки (0,0) и (1,1). Чем больше показатель корня, тем медленнее рост функции.</p>
+        </div>
+    </div>
+
+    <div class="lesson-section">
+        <div class="lesson-number">Функция 2</div>
+        <h2>Функция <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>=</mo><mroot><mi>x</mi><mrow><mn>2</mn><mi>k</mi><mo>+</mo><mn>1</mn></mrow></mroot></math>, где <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>k</mi><mo>∈</mo><mi>ℕ</mi></math></h2>
+
+        <div class="definition">
+            <p><strong>Общий вид:</strong> Корень нечётной степени из x</p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mi>y</mi>
+                        <mo>=</mo>
+                        <mroot>
+                            <mi>x</mi>
+                            <mrow><mn>2</mn><mi>k</mi><mo>+</mo><mn>1</mn></mrow>
+                        </mroot>
+                        <mo>,</mo>
+                        <mspace width="1em"/>
+                        <mi>k</mi>
+                        <mo>∈</mo>
+                        <mi>ℕ</mi>
+                    </math>
+                </div>
+            </div>
+            <p><strong>Примеры:</strong> <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>=</mo><mroot><mi>x</mi><mn>3</mn></mroot></math> (k=1), <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>=</mo><mroot><mi>x</mi><mn>5</mn></mroot></math> (k=2), <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>=</mo><mroot><mi>x</mi><mn>7</mn></mroot></math> (k=3)</p>
+        </div>
+
+        <div class="function-analysis">
+            <h3>Свойства функции</h3>
+
+            <div class="function-properties">
+                <div class="property">
+                    <h4>1. Область определения</h4>
+                    <div class="math-container">
+                        <div class="math-formula">
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>D</mi>
+                                <mo>(</mo>
+                                <mi>f</mi>
+                                <mo>)</mo>
+                                <mo>=</mo>
+                                <mo>(</mo>
+                                <mo>-</mo>
+                                <mi>∞</mi>
+                                <mo>;</mo>
+                                <mo>+</mo>
+                                <mi>∞</mi>
+                                <mo>)</mo>
+                            </math>
+                        </div>
+                    </div>
+                    <p class="explanation">Корень нечётной степени определён для всех действительных чисел</p>
+                </div>
+
+                <div class="property">
+                    <h4>2. Множество значений</h4>
+                    <div class="math-container">
+                        <div class="math-formula">
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>E</mi>
+                                <mo>(</mo>
+                                <mi>y</mi>
+                                <mo>)</mo>
+                                <mo>=</mo>
+                                <mo>(</mo>
+                                <mo>-</mo>
+                                <mi>∞</mi>
+                                <mo>;</mo>
+                                <mo>+</mo>
+                                <mi>∞</mi>
+                                <mo>)</mo>
+                            </math>
+                        </div>
+                    </div>
+                    <p class="explanation">Функция принимает все действительные значения</p>
+                </div>
+
+                <div class="property">
+                    <h4>3. Нули функции</h4>
+                    <div class="math-container">
+                        <div class="math-formula">
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msub>
+                                    <mi>x</mi>
+                                    <mn>0</mn>
+                                </msub>
+                                <mo>=</mo>
+                                <mn>0</mn>
+                            </math>
+                        </div>
+                    </div>
+                    <p class="explanation">Единственный ноль при x = 0</p>
+                </div>
+            </div>
+
+            <div class="function-properties">
+                <div class="property">
+                    <h4>4. Промежутки знакопостоянства</h4>
+                    <ul>
+                        <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>></mo><mn>0</mn></math> при <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>∈</mo><mo>(</mo><mn>0</mn><mo>;</mo><mo>+</mo><mi>∞</mi><mo>)</mo></math></li>
+                        <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo><</mo><mn>0</mn></math> при <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>∈</mo><mo>(</mo><mo>-</mo><mi>∞</mi><mo>;</mo><mn>0</mn><mo>)</mo></math></li>
+                        <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>=</mo><mn>0</mn></math> при <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>=</mo><mn>0</mn></math></li>
+                    </ul>
+                </div>
+
+                <div class="property">
+                    <h4>5. Монотонность</h4>
+                    <div class="math-container">
+                        <div class="math-formula">
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mtext>Возрастает на всей области определения</mtext>
+                            </math>
+                        </div>
+                    </div>
+                    <p class="explanation">Если <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>x</mi><mn>1</mn></msub><mo><</mo><msub><mi>x</mi><mn>2</mn></msub></math>, то <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><msub><mi>x</mi><mn>1</mn></msub><mrow><mn>2</mn><mi>k</mi><mo>+</mo><mn>1</mn></mrow></mroot><mo><</mo><mroot><msub><mi>x</mi><mn>2</mn></msub><mrow><mn>2</mn><mi>k</mi><mo>+</mo><mn>1</mn></mrow></mroot></math></p>
+                </div>
+
+                <div class="property">
+                    <h4>6. Чётность</h4>
+                    <div class="math-container">
+                        <div class="math-formula">
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mtext>Функция нечётная</mtext>
+                            </math>
+                        </div>
+                    </div>
+                    <p class="explanation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo><mo>=</mo><mroot><mrow><mo>-</mo><mi>x</mi></mrow><mrow><mn>2</mn><mi>k</mi><mo>+</mo><mn>1</mn></mrow></mroot><mo>=</mo><mo>-</mo><mroot><mi>x</mi><mrow><mn>2</mn><mi>k</mi><mo>+</mo><mn>1</mn></mrow></mroot><mo>=</mo><mo>-</mo><mi>y</mi><mo>(</mo><mi>x</mi><mo>)</mo></math></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="example">
+            <div class="example-title">График функции</div>
+            <p>Графики функций <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>=</mo><mroot><mi>x</mi><mn>3</mn></mroot></math>, <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>=</mo><mroot><mi>x</mi><mn>5</mn></mroot></math>:</p>
+            <div class="image-container">
+                <img src="https://i.postimg.cc/fLPHmdHz/изображение.png" class="function-image" alt="Графики корней нечётных степеней">
+            </div>
+            <p class="explanation">Графики симметричны относительно начала координат. Проходят через точки (-1,-1), (0,0), (1,1). Чем больше показатель корня, тем ближе график к оси OX при |x| < 1 и тем дальше от оси OX при |x| > 1.</p>
+        </div>
+    </div>
+
+    <h1 id="4">Решение иррациональных уравнений</h1>
+
+    <div class="lesson-section">
+
+        <div class="lesson-number">Случай 1</div>
+        <h2>Уравнение вида <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mrow><mn>2</mn><mi>n</mi></mrow></mroot><mo>=</mo><mi>a</mi></math></h2>
+
+        <div class="definition">
+            <p><strong>Алгоритм решения:</strong></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot>
+                            <mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow>
+                            <mrow><mn>2</mn><mi>n</mi></mrow>
+                        </mroot>
+                        <mo>=</mo>
+                        <mi>a</mi>
+                        <mo>,</mo>
+                        <mspace width="1em"/>
+                        <mi>n</mi>
+                        <mo>∈</mo>
+                        <mi>ℕ</mi>
+                    </math>
+                </div>
+            </div>
+            <ol>
+                <li>Если <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi><mo>≥</mo><mn>0</mn></math>, то <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msup><mi>a</mi><mrow><mn>2</mn><mi>n</mi></mrow></msup></math></li>
+                <li>Если <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi><mo><</mo><mn>0</mn></math>, то корней нет</li>
+            </ol>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример 1:</div>
+            <p>Решить уравнение: <math xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mrow><mi>x</mi><mo>+</mo><mn>5</mn></mrow></msqrt><mo>=</mo><mn>3</mn></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <msqrt><mrow><mi>x</mi><mo>+</mo><mn>5</mn></mrow></msqrt>
+                        <mo>=</mo>
+                        <mn>3</mn>
+                        <mo>≥</mo>
+                        <mn>0</mn>
+                        <mo>⇒</mo>
+                        <mi>x</mi>
+                        <mo>+</mo>
+                        <mn>5</mn>
+                        <mo>=</mo>
+                        <msup><mn>3</mn><mn>2</mn></msup>
+                        <mo>=</mo>
+                        <mn>9</mn>
+                        <mo>⇒</mo>
+                        <mi>x</mi>
+                        <mo>=</mo>
+                        <mn>4</mn>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример 2:</div>
+            <p>Решить уравнение: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>4</mn></mrow><mn>4</mn></mroot><mo>=</mo><mo>-</mo><mn>2</mn></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>4</mn></mrow><mn>4</mn></mroot>
+                        <mo>=</mo>
+                        <mo>-</mo>
+                        <mn>2</mn>
+                        <mo><</mo>
+                        <mn>0</mn>
+                        <mo>⇒</mo>
+                        <mtext>корней нет</mtext>
+                    </math>
+                </div>
+            </div>
+            <p class="explanation">Корень чётной степени не может быть отрицательным</p>
+        </div>
+    </div>
+
+    <div class="lesson-section">
+        <div class="lesson-number">Случай 2</div>
+        <h2>Уравнение вида <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mrow><mn>2</mn><mi>n</mi><mo>+</mo><mn>1</mn></mrow></mroot><mo>=</mo><mi>a</mi></math></h2>
+
+        <div class="definition">
+            <p><strong>Алгоритм решения:</strong></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot>
+                            <mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow>
+                            <mrow><mn>2</mn><mi>n</mi><mo>+</mo><mn>1</mn></mrow>
+                        </mroot>
+                        <mo>=</mo>
+                        <mi>a</mi>
+                        <mo>,</mo>
+                        <mspace width="1em"/>
+                        <mi>n</mi>
+                        <mo>∈</mo>
+                        <mi>ℕ</mi>
+                    </math>
+                </div>
+            </div>
+            <p>Решение: <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msup><mi>a</mi><mrow><mn>2</mn><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></math></p>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример:</div>
+            <p>Решить уравнение: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mrow><mn>2</mn><mi>x</mi><mo>-</mo><mn>1</mn></mrow><mn>3</mn></mroot><mo>=</mo><mo>-</mo><mn>2</mn></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot><mrow><mn>2</mn><mi>x</mi><mo>-</mo><mn>1</mn></mrow><mn>3</mn></mroot>
+                        <mo>=</mo>
+                        <mo>-</mo>
+                        <mn>2</mn>
+                        <mo>⇒</mo>
+                        <mn>2</mn><mi>x</mi>
+                        <mo>-</mo>
+                        <mn>1</mn>
+                        <mo>=</mo>
+                        <msup><mrow><mo>(</mo><mo>-</mo><mn>2</mn><mo>)</mo></mrow><mn>3</mn></msup>
+                        <mo>=</mo>
+                        <mo>-</mo>
+                        <mn>8</mn>
+                        <mo>⇒</mo>
+                        <mn>2</mn><mi>x</mi>
+                        <mo>=</mo>
+                        <mo>-</mo>
+                        <mn>7</mn>
+                        <mo>⇒</mo>
+                        <mi>x</mi>
+                        <mo>=</mo>
+                        <mo>-</mo>
+                        <mfrac><mn>7</mn><mn>2</mn></mfrac>
+                    </math>
+                </div>
+            </div>
+            <p class="explanation">Корень нечётной степени может быть отрицательным</p>
+        </div>
+    </div>
+
+    <div class="lesson-section">
+        <div class="lesson-number">Случай 3</div>
+        <h2>Уравнение вида <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mrow><mn>2</mn><mi>n</mi></mrow></mroot><mo>=</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo></math></h2>
+
+        <div class="definition">
+            <p><strong>Алгоритм решения:</strong></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot>
+                            <mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow>
+                            <mrow><mn>2</mn><mi>n</mi></mrow>
+                        </mroot>
+                        <mo>=</mo>
+                        <mi>g</mi>
+                        <mo>(</mo>
+                        <mi>x</mi>
+                        <mo>)</mo>
+                        <mo>,</mo>
+                        <mspace width="1em"/>
+                        <mi>n</mi>
+                        <mo>∈</mo>
+                        <mi>ℕ</mi>
+                    </math>
+                </div>
+            </div>
+            <p>Равносильная система:</p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mrow>
+                            <mo>{</mo>
+                            <mtable>
+                                <mtr>
+                                    <mtd>
+                                        <mi>f</mi>
+                                        <mo>(</mo>
+                                        <mi>x</mi>
+                                        <mo>)</mo>
+                                        <mo>=</mo>
+                                        <mo>(</mo>
+                                        <mi>g</mi>
+                                        <mo>(</mo>
+                                        <mi>x</mi>
+                                        <mo>)</mo>
+                                        <mo>)</mo>
+                                        <msup><mrow></mrow><mrow><mn>2</mn><mi>n</mi></mrow></msup>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <mi>g</mi>
+                                        <mo>(</mo>
+                                        <mi>x</mi>
+                                        <mo>)</mo>
+                                        <mo>≥</mo>
+                                        <mn>0</mn>
+                                    </mtd>
+                                </mtr>
+                            </mtable>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример:</div>
+            <p>Решить уравнение: <math xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mrow><mn>2</mn><mi>x</mi><mo>+</mo><mn>3</mn></mrow></msqrt><mo>=</mo><mi>x</mi><mo>+</mo><mn>1</mn></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mrow>
+                            <mo>{</mo>
+                            <mtable>
+                                <mtr>
+                                    <mtd>
+                                        <mn>2</mn><mi>x</mi><mo>+</mo><mn>3</mn>
+                                        <mo>=</mo>
+                                        <msup><mrow><mo>(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <mi>x</mi>
+                                        <mo>+</mo>
+                                        <mn>1</mn>
+                                        <mo>≥</mo>
+                                        <mn>0</mn>
+                                    </mtd>
+                                </mtr>
+                            </mtable>
+                        </mrow>
+                        <mo>⇒</mo>
+                        <mrow>
+                            <mo>{</mo>
+                            <mtable>
+                                <mtr>
+                                    <mtd>
+                                        <mn>2</mn><mi>x</mi><mo>+</mo><mn>3</mn>
+                                        <mo>=</mo>
+                                        <msup><mi>x</mi><mn>2</mn></msup>
+                                        <mo>+</mo>
+                                        <mn>2</mn><mi>x</mi>
+                                        <mo>+</mo>
+                                        <mn>1</mn>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <mi>x</mi>
+                                        <mo>≥</mo>
+                                        <mo>-</mo><mn>1</mn>
+                                    </mtd>
+                                </mtr>
+                            </mtable>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mrow>
+                            <mo>{</mo>
+                            <mtable>
+                                <mtr>
+                                    <mtd>
+                                        <msup><mi>x</mi><mn>2</mn></msup>
+                                        <mo>=</mo>
+                                        <mn>2</mn>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <mi>x</mi>
+                                        <mo>≥</mo>
+                                        <mo>-</mo><mn>1</mn>
+                                    </mtd>
+                                </mtr>
+                            </mtable>
+                        </mrow>
+                        <mo>⇒</mo>
+                        <mrow>
+                            <mo>{</mo>
+                            <mtable>
+                                <mtr>
+                                    <mtd>
+                                        <mi>x</mi>
+                                        <mo>=</mo>
+                                        <mo>±</mo>
+                                        <msqrt><mn>2</mn></msqrt>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <mi>x</mi>
+                                        <mo>≥</mo>
+                                        <mo>-</mo><mn>1</mn>
+                                    </mtd>
+                                </mtr>
+                            </mtable>
+                        </mrow>
+                        <mo>⇒</mo>
+                        <mi>x</mi>
+                        <mo>=</mo>
+                        <msqrt><mn>2</mn></msqrt>
+                    </math>
+                </div>
+            </div>
+            <p class="explanation">Проверка условия <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>≥</mo><mn>0</mn></math> обязательна для корней чётной степени</p>
+        </div>
+    </div>
+
+    <div class="lesson-section">
+        <div class="lesson-number">Случай 4</div>
+        <h2>Уравнение вида <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mrow><mn>2</mn><mi>n</mi><mo>+</mo><mn>1</mn></mrow></mroot><mo>=</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo></math></h2>
+
+        <div class="definition">
+            <p><strong>Алгоритм решения:</strong></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot>
+                            <mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow>
+                            <mrow><mn>2</mn><mi>n</mi><mo>+</mo><mn>1</mn></mrow>
+                        </mroot>
+                        <mo>=</mo>
+                        <mi>g</mi>
+                        <mo>(</mo>
+                        <mi>x</mi>
+                        <mo>)</mo>
+                        <mo>,</mo>
+                        <mspace width="1em"/>
+                        <mi>n</mi>
+                        <mo>∈</mo>
+                        <mi>ℕ</mi>
+                    </math>
+                </div>
+            </div>
+            <p>Решение: <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>(</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><msup><mrow></mrow><mrow><mn>2</mn><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></math></p>
+            <p class="explanation">Для корней нечётной степени дополнительные условия не нужны</p>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример:</div>
+            <p>Решить уравнение: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>5</mn><mi>x</mi><mo>+</mo><mn>6</mn></mrow><mn>3</mn></mroot><mo>=</mo><mi>x</mi><mo>-</mo><mn>2</mn></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <msup><mi>x</mi><mn>2</mn></msup>
+                        <mo>-</mo>
+                        <mn>5</mn><mi>x</mi>
+                        <mo>+</mo>
+                        <mn>6</mn>
+                        <mo>=</mo>
+                        <msup><mrow><mo>(</mo><mi>x</mi><mo>-</mo><mn>2</mn><mo>)</mo></mrow><mn>3</mn></msup>
+                        <mo>=</mo>
+                        <msup><mi>x</mi><mn>3</mn></msup>
+                        <mo>-</mo>
+                        <mn>6</mn><msup><mi>x</mi><mn>2</mn></msup>
+                        <mo>+</mo>
+                        <mn>12</mn><mi>x</mi>
+                        <mo>-</mo>
+                        <mn>8</mn>
+                    </math>
+                </div>
+            </div>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <msup><mi>x</mi><mn>3</mn></msup>
+                        <mo>-</mo>
+                        <mn>7</mn><msup><mi>x</mi><mn>2</mn></msup>
+                        <mo>+</mo>
+                        <mn>17</mn><mi>x</mi>
+                        <mo>-</mo>
+                        <mn>14</mn>
+                        <mo>=</mo>
+                        <mn>0</mn>
+                        <mo>⇒</mo>
+                        <mo>(</mo>
+                        <mi>x</mi>
+                        <mo>-</mo>
+                        <mn>2</mn>
+                        <mo>)</mo>
+                        <mo>(</mo>
+                        <msup><mi>x</mi><mn>2</mn></msup>
+                        <mo>-</mo>
+                        <mn>5</mn><mi>x</mi>
+                        <mo>+</mo>
+                        <mn>7</mn>
+                        <mo>)</mo>
+                        <mo>=</mo>
+                        <mn>0</mn>
+                    </math>
+                </div>
+            </div>
+            <p>Ответ: <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>=</mo><mn>2</mn></math> (второй множитель не имеет действительных корней)</p>
+        </div>
+    </div>
+
+    <div class="lesson-section">
+        <div class="lesson-number">Случай 5</div>
+        <h2>Уравнение вида <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mrow><mn>2</mn><mi>n</mi><mo>+</mo><mn>1</mn></mrow></mroot><mo>=</mo><mroot><mrow><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mrow><mn>2</mn><mi>n</mi><mo>+</mo><mn>1</mn></mrow></mroot></math></h2>
+
+        <div class="definition">
+            <p><strong>Алгоритм решения:</strong></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot>
+                            <mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow>
+                            <mrow><mn>2</mn><mi>n</mi><mo>+</mo><mn>1</mn></mrow>
+                        </mroot>
+                        <mo>=</mo>
+                        <mroot>
+                            <mrow><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow>
+                            <mrow><mn>2</mn><mi>n</mi><mo>+</mo><mn>1</mn></mrow>
+                        </mroot>
+                    </math>
+                </div>
+            </div>
+            <p>Решение: <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo></math></p>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример:</div>
+            <p>Решить уравнение: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>3</mn><mi>x</mi></mrow><mn>3</mn></mroot><mo>=</mo><mroot><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mn>3</mn></mroot></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <msup><mi>x</mi><mn>2</mn></msup>
+                        <mo>-</mo>
+                        <mn>3</mn><mi>x</mi>
+                        <mo>=</mo>
+                        <mi>x</mi>
+                        <mo>+</mo>
+                        <mn>1</mn>
+                        <mo>⇒</mo>
+                        <msup><mi>x</mi><mn>2</mn></msup>
+                        <mo>-</mo>
+                        <mn>4</mn><mi>x</mi>
+                        <mo>-</mo>
+                        <mn>1</mn>
+                        <mo>=</mo>
+                        <mn>0</mn>
+                        <mo>⇒</mo>
+                        <mi>x</mi>
+                        <mo>=</mo>
+                        <mn>2</mn>
+                        <mo>±</mo>
+                        <msqrt><mn>5</mn></msqrt>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="lesson-section">
+        <div class="lesson-number">Случай 6</div>
+        <h2>Уравнение вида <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mrow><mn>2</mn><mi>n</mi></mrow></mroot><mo>=</mo><mroot><mrow><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mrow><mn>2</mn><mi>n</mi></mrow></mroot></math></h2>
+
+        <div class="definition">
+            <p><strong>Алгоритм решения:</strong></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot>
+                            <mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow>
+                            <mrow><mn>2</mn><mi>n</mi></mrow>
+                        </mroot>
+                        <mo>=</mo>
+                        <mroot>
+                            <mrow><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow>
+                            <mrow><mn>2</mn><mi>n</mi></mrow>
+                        </mroot>
+                    </math>
+                </div>
+            </div>
+            <p>Равносильная система (один из двух вариантов):</p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mrow>
+                            <mo>{</mo>
+                            <mtable>
+                                <mtr>
+                                    <mtd>
+                                        <mi>f</mi>
+                                        <mo>(</mo>
+                                        <mi>x</mi>
+                                        <mo>)</mo>
+                                        <mo>=</mo>
+                                        <mi>g</mi>
+                                        <mo>(</mo>
+                                        <mi>x</mi>
+                                        <mo>)</mo>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <mi>f</mi>
+                                        <mo>(</mo>
+                                        <mi>x</mi>
+                                        <mo>)</mo>
+                                        <mo>≥</mo>
+                                        <mn>0</mn>
+                                    </mtd>
+                                </mtr>
+                            </mtable>
+                        </mrow>
+                        <mtext>или&nbsp;</mtext>
+                        <mrow>
+                            <mo>{</mo>
+                            <mtable>
+                                <mtr>
+                                    <mtd>
+                                        <mi>f</mi>
+                                        <mo>(</mo>
+                                        <mi>x</mi>
+                                        <mo>)</mo>
+                                        <mo>=</mo>
+                                        <mi>g</mi>
+                                        <mo>(</mo>
+                                        <mi>x</mi>
+                                        <mo>)</mo>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <mi>g</mi>
+                                        <mo>(</mo>
+                                        <mi>x</mi>
+                                        <mo>)</mo>
+                                        <mo>≥</mo>
+                                        <mn>0</mn>
+                                    </mtd>
+                                </mtr>
+                            </mtable>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример:</div>
+            <p>Решить уравнение: <math xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>4</mn></mrow></msqrt><mo>=</mo><msqrt><mrow><mn>2</mn><mi>x</mi><mo>-</mo><mn>5</mn></mrow></msqrt></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mrow>
+                            <mo>{</mo>
+                            <mtable>
+                                <mtr>
+                                    <mtd>
+                                        <msup><mi>x</mi><mn>2</mn></msup>
+                                        <mo>-</mo>
+                                        <mn>4</mn>
+                                        <mo>=</mo>
+                                        <mn>2</mn><mi>x</mi>
+                                        <mo>-</mo>
+                                        <mn>5</mn>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <msup><mi>x</mi><mn>2</mn></msup>
+                                        <mo>-</mo>
+                                        <mn>4</mn>
+                                        <mo>≥</mo>
+                                        <mn>0</mn>
+                                    </mtd>
+                                </mtr>
+                            </mtable>
+                        </mrow>
+                        <mo>⇒</mo>
+                        <mrow>
+                            <mo>{</mo>
+                            <mtable>
+                                <mtr>
+                                    <mtd>
+                                        <msup><mi>x</mi><mn>2</mn></msup>
+                                        <mo>-</mo>
+                                        <mn>2</mn><mi>x</mi>
+                                        <mo>+</mo>
+                                        <mn>1</mn>
+                                        <mo>=</mo>
+                                        <mn>0</mn>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <mi>x</mi>
+                                        <mo>≤</mo>
+                                        <mo>-</mo><mn>2</mn>
+                                        <mtext>&nbsp;или&nbsp;</mtext>
+                                        <mi>x</mi>
+                                        <mo>≥</mo>
+                                        <mn>2</mn>
+                                    </mtd>
+                                </mtr>
+                            </mtable>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mrow>
+                            <mo>{</mo>
+                            <mtable>
+                                <mtr>
+                                    <mtd>
+                                        <msup><mrow><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                                        <mo>=</mo>
+                                        <mn>0</mn>
+                                        <mo>⇒</mo>
+                                        <mi>x</mi>
+                                        <mo>=</mo>
+                                        <mn>1</mn>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <mi>x</mi>
+                                        <mo>≤</mo>
+                                        <mo>-</mo><mn>2</mn>
+                                        <mtext>&nbsp;или&nbsp;</mtext>
+                                        <mi>x</mi>
+                                        <mo>≥</mo>
+                                        <mn>2</mn>
+                                    </mtd>
+                                </mtr>
+                            </mtable>
+                        </mrow>
+                        <mo>⇒</mo>
+                        <mtext>корней нет</mtext>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="lesson-section">
+        <div class="lesson-number">Случай 7</div>
+        <h2>Уравнение вида <math xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></msqrt><mo>±</mo><msqrt><mrow><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></msqrt><mo>=</mo><mi>a</mi></math></h2>
+
+        <div class="definition">
+            <p><strong>Метод возведения в квадрат:</strong></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <msqrt><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></msqrt>
+                        <mo>±</mo>
+                        <msqrt><mrow><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></msqrt>
+                        <mo>=</mo>
+                        <mi>a</mi>
+                    </math>
+                </div>
+            </div>
+            <p>1. Уединить один из корней<br>
+               2. Возвести обе части в квадрат<br>
+               3. Повторить при необходимости</p>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример:</div>
+            <p>Решить уравнение: <math xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mrow><mi>x</mi><mo>+</mo><mn>3</mn></mrow></msqrt><mo>-</mo><msqrt><mrow><mi>x</mi><mo>-</mo><mn>1</mn></mrow></msqrt><mo>=</mo><mn>1</mn></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <msqrt><mrow><mi>x</mi><mo>+</mo><mn>3</mn></mrow></msqrt>
+                        <mo>=</mo>
+                        <mn>1</mn>
+                        <mo>+</mo>
+                        <msqrt><mrow><mi>x</mi><mo>-</mo><mn>1</mn></mrow></msqrt>
+                        <mo>⇒</mo>
+                        <mi>x</mi>
+                        <mo>+</mo>
+                        <mn>3</mn>
+                        <mo>=</mo>
+                        <mn>1</mn>
+                        <mo>+</mo>
+                        <mn>2</mn>
+                        <msqrt><mrow><mi>x</mi><mo>-</mo><mn>1</mn></mrow></msqrt>
+                        <mo>+</mo>
+                        <mi>x</mi>
+                        <mo>-</mo>
+                        <mn>1</mn>
+                    </math>
+                </div>
+            </div>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mn>3</mn>
+                        <mo>=</mo>
+                        <mn>2</mn>
+                        <msqrt><mrow><mi>x</mi><mo>-</mo><mn>1</mn></mrow></msqrt>
+                        <mo>⇒</mo>
+                        <msqrt><mrow><mi>x</mi><mo>-</mo><mn>1</mn></mrow></msqrt>
+                        <mo>=</mo>
+                        <mfrac><mn>3</mn><mn>2</mn></mfrac>
+                        <mo>⇒</mo>
+                        <mi>x</mi>
+                        <mo>-</mo>
+                        <mn>1</mn>
+                        <mo>=</mo>
+                        <mfrac><mn>9</mn><mn>4</mn></mfrac>
+                        <mo>⇒</mo>
+                        <mi>x</mi>
+                        <mo>=</mo>
+                        <mfrac><mn>13</mn><mn>4</mn></mfrac>
+                    </math>
+                </div>
+            </div>
+            <p>Проверка показывает, что корень подходит.</p>
+        </div>
+    </div>
+
+    <div class="lesson-section">
+        <div class="lesson-number">Случай 8</div>
+        <h2>Метод замены переменной</h2>
+
+        <div class="definition">
+            <p><strong>Применяется, когда:</strong> уравнение содержит выражения, которые можно свести к одной переменной</p>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример 1:</div>
+            <p>Решить уравнение: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mn>4</mn></mroot><mo>+</mo><mn>20</mn><mo>=</mo><msqrt><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow></msqrt></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mtext>Пусть</mtext>
+                        <mspace width="1em"/>
+                        <mi>t</mi>
+                        <mo>=</mo>
+                        <mroot><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mn>4</mn></mroot>
+                        <mo>≥</mo>
+                        <mn>0</mn>
+                        <mo>,</mo>
+                        <mspace width="1em"/>
+                        <mtext>тогда</mtext>
+                        <mspace width="1em"/>
+                        <msqrt><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow></msqrt>
+                        <mo>=</mo>
+                        <msup><mi>t</mi><mn>2</mn></msup>
+                    </math>
+                </div>
+            </div>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mi>t</mi>
+                        <mo>+</mo>
+                        <mn>20</mn>
+                        <mo>=</mo>
+                        <msup><mi>t</mi><mn>2</mn></msup>
+                        <mo>⇒</mo>
+                        <msup><mi>t</mi><mn>2</mn></msup>
+                        <mo>-</mo>
+                        <mi>t</mi>
+                        <mo>-</mo>
+                        <mn>20</mn>
+                        <mo>=</mo>
+                        <mn>0</mn>
+                        <mo>⇒</mo>
+                        <mi>t</mi>
+                        <mo>=</mo>
+                        <mn>5</mn>
+                        <mtext>&nbsp;или&nbsp;</mtext>
+                        <mi>t</mi>
+                        <mo>=</mo>
+                        <mo>-</mo>
+                        <mn>4&nbsp;</mn>
+                        <mo>(</mo>
+                        <mtext>не подходит</mtext>
+                        <mo>)</mo>
+                    </math>
+                </div>
+            </div>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mroot><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mn>4</mn></mroot>
+                        <mo>=</mo>
+                        <mn>5</mn>
+                        <mo>⇒</mo>
+                        <mi>x</mi>
+                        <mo>+</mo>
+                        <mn>1</mn>
+                        <mo>=</mo>
+                        <msup><mn>5</mn><mn>4</mn></msup>
+                        <mo>=</mo>
+                        <mn>625</mn>
+                        <mo>⇒</mo>
+                        <mi>x</mi>
+                        <mo>=</mo>
+                        <mn>624</mn>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример 2 (симметричное):</div>
+            <p>Решить уравнение: <math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mfrac><mi>x</mi><mrow><mi>x</mi><mo>-</mo><mn>7</mn></mrow></mfrac><mn>3</mn></mroot><mo>+</mo><mroot><mfrac><mrow><mi>x</mi><mo>-</mo><mn>7</mn></mrow><mi>x</mi></mfrac><mn>3</mn></mroot><mo>=</mo><mfrac><mn>10</mn><mn>3</mn></mfrac></math></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mtext>Пусть</mtext>
+                        <mspace width="1em"/>
+                        <mi>t</mi>
+                        <mo>=</mo>
+                        <mroot><mfrac><mi>x</mi><mrow><mi>x</mi><mo>-</mo><mn>7</mn></mrow></mfrac><mn>3</mn></mroot>
+                        <mo>,</mo>
+                        <mspace width="1em"/>
+                        <mtext>тогда</mtext>
+                        <mspace width="1em"/>
+                        <mroot><mfrac><mrow><mi>x</mi><mo>-</mo><mn>7</mn></mrow><mi>x</mi></mfrac><mn>3</mn></mroot>
+                        <mo>=</mo>
+                        <mfrac><mn>1</mn><mi>t</mi></mfrac>
+                    </math>
+                </div>
+            </div>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mi>t</mi>
+                        <mo>+</mo>
+                        <mfrac><mn>1</mn><mi>t</mi></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mn>10</mn><mn>3</mn></mfrac>
+                        <mo>⇒</mo>
+                        <mn>3</mn>
+                        <msup><mi>t</mi><mn>2</mn></msup>
+                        <mo>-</mo>
+                        <mn>10</mn>
+                        <mi>t</mi>
+                        <mo>+</mo>
+                        <mn>3</mn>
+                        <mo>=</mo>
+                        <mn>0</mn>
+                        <mo>⇒</mo>
+                        <mi>t</mi>
+                        <mo>=</mo>
+                        <mn>3</mn>
+                        <mtext>&nbsp;или&nbsp;</mtext>
+                        <mi>t</mi>
+                        <mo>=</mo>
+                        <mfrac><mn>1</mn><mn>3</mn></mfrac>
+                    </math>
+                </div>
+            </div>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mtable>
+                            <mtr>
+                                <mtd>
+                                    <mroot><mfrac><mi>x</mi><mrow><mi>x</mi><mo>-</mo><mn>7</mn></mrow></mfrac><mn>3</mn></mroot>
+                                    <mo>=</mo>
+                                    <mn>3</mn>
+                                    <mo>⇒</mo>
+                                    <mfrac><mi>x</mi><mrow><mi>x</mi><mo>-</mo><mn>7</mn></mrow></mfrac>
+                                    <mo>=</mo>
+                                    <mn>27</mn>
+                                    <mo>⇒</mo>
+                                    <mi>x</mi>
+                                    <mo>=</mo>
+                                    <mn>27</mn><mi>x</mi>
+                                    <mo>-</mo>
+                                    <mn>189</mn>
+                                    <mo>⇒</mo>
+                                    <mi>x</mi>
+                                    <mo>=</mo>
+                                    <mfrac><mn>189</mn><mn>26</mn></mfrac>
+                                </mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd>
+                                    <mroot><mfrac><mi>x</mi><mrow><mi>x</mi><mo>-</mo><mn>7</mn></mrow></mfrac><mn>3</mn></mroot>
+                                    <mo>=</mo>
+                                    <mfrac><mn>1</mn><mn>3</mn></mfrac>
+                                    <mo>⇒</mo>
+                                    <mfrac><mi>x</mi><mrow><mi>x</mi><mo>-</mo><mn>7</mn></mrow></mfrac>
+                                    <mo>=</mo>
+                                    <mfrac><mn>1</mn><mn>27</mn></mfrac>
+                                    <mo>⇒</mo>
+                                    <mn>27</mn><mi>x</mi>
+                                    <mo>=</mo>
+                                    <mi>x</mi>
+                                    <mo>-</mo>
+                                    <mn>7</mn>
+                                    <mo>⇒</mo>
+                                    <mi>x</mi>
+                                    <mo>=</mo>
+                                    <mo>-</mo>
+                                    <mfrac><mn>7</mn><mn>26</mn></mfrac>
+                                </mtd>
+                            </mtr>
+                        </mtable>
+                    </math>
+                </div>
+            </div>
+            <p>Ответ: <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>=</mo><mfrac><mn>189</mn><mn>26</mn></mfrac></math> или <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>=</mo><mo>-</mo><mfrac><mn>7</mn><mn>26</mn></mfrac></math></p>
+        </div>
+    </div>
+
+                    <div class="bottom-nav">
+    <select onchange="goToSection(this.value)">
+        <option value="">Перейти к теме…</option>
+        <option value="1">Корень n-й степени и его свойства</option>
+        <option value="2">Практическое применение свойств корней</option>
+        <option value="3">Свойства степенных функций с корнями</option>
+        <option value="4">Решение иррациональных уравнений</option>
+
+    </select>
+</div>
+
+<script>
+function goToSection(id) {
+    if (!id) return;
+    document.getElementById(id).scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+</script>
+
+                </div>
+															</body>
+																				</html>

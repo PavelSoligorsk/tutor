@@ -1,0 +1,2427 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>Одночлены. Многочлены</title>
+				<style>
+   * {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 15px;
+  background-color: #f5f9ff;
+  color: #333;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 150, 0.1);
+  padding: 25px 20px;
+}
+
+h1 {
+  color: #2c3e50;
+  text-align: center;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 15px;
+  margin-top: 0;
+  font-size: 1.8em;
+}
+
+h2 {
+  color: #2980b9;
+  margin-top: 30px;
+  font-size: 1.4em;
+  padding: 0 5px;
+}
+
+.lesson-section {
+  background-color: #f8fafd;
+  border-radius: 10px;
+  padding: 18px;
+  margin: 20px 0;
+  border-left: 5px solid #3498db;
+}
+
+.definition {
+  background-color: #e8f4fc;
+  padding: 18px;
+  border-radius: 8px;
+  margin: 18px 0;
+  font-size: 1em;
+}
+
+.example {
+  background-color: #f0f7ff;
+  padding: 18px;
+  border-radius: 8px;
+  margin: 18px 0;
+  border-left: 4px solid #2ecc71;
+  font-size: 1em;
+}
+
+.example-title {
+  font-weight: bold;
+  color: #27ae60;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
+.hard-example {
+  border-left-color: #e74c3c;
+}
+
+.hard-example .example-title {
+  color: #e74c3c;
+}
+
+.math-container {
+  background-color: white;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin: 14px 0;
+  overflow-x: auto;
+}
+
+.math-formula {
+  font-size: 1.1em;
+  text-align: center;
+  padding: 10px;
+}
+
+.explanation {
+  background-color: #fffde7;
+  padding: 14px;
+  border-radius: 8px;
+  margin: 14px 0;
+  font-style: italic;
+  font-size: 0.95em;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
+  flex: 1;
+  min-width: 120px;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.lesson-number {
+  background-color: #3498db;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  color: #7f8c8d;
+  font-size: 0.9em;
+}
+
+.image-container {
+  text-align: center;
+  margin: 1rem 0;
+  padding: 0.8rem;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+
+/* Специальные медиа-запросы для изображений */
+@media (max-width: 768px) {
+  .image-container {
+    padding: 0.6rem;
+    margin: 0.8rem 0;
+  }
+
+  .function-image,
+  .sign-image {
+    max-height: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-container {
+    padding: 0.5rem;
+    margin: 0.6rem 0;
+  }
+
+  .function-image,
+  .sign-image {
+    max-height: 200px;
+  }
+}
+
+.function-image,
+.sign-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  transition: transform 0.3s ease;
+  max-height: 280px;
+  object-fit: contain;
+}
+
+.function-image:hover,
+.sign-image:hover {
+  transform: scale(1.02);
+}
+
+.function-analysis {
+  background: white;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.function-analysis h3 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.8rem;
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+.function-properties {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+.property {
+  background: #f8fafc;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #3498db;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.property:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.property h4 {
+  color: #2c3e50;
+  margin-top: 0;
+  font-size: 1.05rem;
+  margin-bottom: 0.6rem;
+}
+
+.explanation {
+  font-style: italic;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  padding-left: 0.8rem;
+  border-left: 2px solid #bdc3c7;
+}
+
+.sign-constancy-cases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.case {
+  background: white;
+  padding: 1.2rem;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease;
+}
+
+.case:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.sign-analysis {
+  background: #f8fafc;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 0.8rem;
+  border-left: 4px solid #2ecc71;
+}
+
+.sign-analysis h4 {
+  color: #27ae60;
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  font-size: 1.05rem;
+}
+
+.summary {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  padding: 1.2rem;
+  border-radius: 10px;
+  margin-top: 1.5rem;
+  border-left: 5px solid #2196F3;
+}
+
+.summary h4 {
+  color: #1565c0;
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin: 1.2rem 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sign-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  min-width: 600px;
+}
+
+.sign-table th {
+  background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+  color: white;
+  padding: 0.9rem;
+  text-align: left;
+  font-weight: 600;
+  border: 1px solid #388E3C;
+  font-size: 0.95em;
+}
+
+.sign-table td {
+  padding: 0.7rem 0.9rem;
+  border: 1px solid #e0e0e0;
+  color: #333;
+  font-size: 0.9em;
+}
+
+.sign-table tbody tr:nth-child(even) {
+  background: #f5f5f5;
+}
+
+.sign-table tbody tr:hover {
+  background: #e3f2fd;
+}
+
+.positive-a {
+  background: #e8f5e9 !important;
+  color: #1b5e20 !important;
+  font-weight: 600;
+}
+
+.negative-a {
+  background: #ffebee !important;
+  color: #b71c1c !important;
+  font-weight: 600;
+}
+
+.note {
+  background: #fff3e0;
+  padding: 1.2rem;
+  border-radius: 10px;
+  margin-top: 1.5rem;
+  border-left: 5px solid #ff9800;
+}
+
+.note h4 {
+  color: #e65100;
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .container {
+    padding: 18px 15px;
+    border-radius: 12px;
+  }
+
+  h1 {
+    font-size: 1.6em;
+    padding-bottom: 12px;
+  }
+
+  h2 {
+    font-size: 1.3em;
+    margin-top: 25px;
+  }
+
+  .lesson-section {
+    padding: 15px;
+    margin: 15px 0;
+  }
+
+  .definition,
+  .example {
+    padding: 15px;
+    margin: 15px 0;
+  }
+
+  .function-analysis {
+    padding: 1.2rem;
+    margin: 1.2rem 0;
+  }
+
+  .function-properties,
+  .sign-constancy-cases {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .property,
+  .case {
+    padding: 1rem;
+  }
+
+  .function-image,
+  .sign-image {
+    max-height: 220px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 0.95em;
+    min-width: 110px;
+  }
+
+  .navigation {
+    gap: 10px;
+  }
+
+  .sign-table {
+    min-width: 100%;
+    font-size: 0.85em;
+  }
+
+  .sign-table th,
+  .sign-table td {
+    padding: 0.6rem 0.8rem;
+  }
+}
+
+/* Адаптивность для очень маленьких экранов */
+@media (max-width: 480px) {
+  body {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 15px 12px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+
+  .function-image,
+  .sign-image {
+    max-height: 200px;
+  }
+
+  .math-formula {
+    font-size: 1em;
+    padding: 8px;
+  }
+
+  button {
+    min-width: 100px;
+    padding: 8px 16px;
+  }
+
+  .sign-table th,
+  .sign-table td {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8em;
+  }
+}
+  </style>
+			</head>
+			<body>
+				<div class="container">
+                    <h1>Одночлены. Многочлены</h1>
+
+<div class="lesson-section">
+    <h2>Одночлены: определение и основные понятия</h2>
+
+    <div class="definition">
+        <p><strong>Определение одночлена:</strong></p>
+        <p>Одночленом называется выражение, которое представляет собой:</p>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mtext>1) произведение чисел и переменных</mtext>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mtext>2) натуральные степени переменных</mtext>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mtext>3) отдельное число или переменная</mtext>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="example">
+        <div class="example-title">Примеры одночленов:</div>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>5</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mi>y</mi>
+                        <mo>,</mo>
+                        <mspace width="1em"/>
+                        <mo>-</mo>
+                        <mn>3.7</mn>
+                        <msup>
+                            <mi>a</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <mo>,</mo>
+                        <mspace width="1em"/>
+                        <mfrac>
+                            <mn>2</mn>
+                            <mn>5</mn>
+                        </mfrac>
+                        <msup>
+                            <mi>m</mi>
+                            <mn>4</mn>
+                        </msup>
+                        <msup>
+                            <mi>n</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>,</mo>
+                        <mspace width="1em"/>
+                        <mn>12</mn>
+                        <mo>,</mo>
+                        <mspace width="1em"/>
+                        <mi>k</mi>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="example hard-example">
+        <div class="example-title">Ловушки: что НЕ является одночленом?</div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>2</mn>
+                        <mi>x</mi>
+                        <mo>+</mo>
+                        <mn>3</mn>
+                        <mi>y</mi>
+                        <mspace width="2em"/>
+                        <mo>←</mo>
+                        <mtext>содержит сложение</mtext>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac>
+                            <mn>4</mn>
+                            <mi>x</mi>
+                        </mfrac>
+                        <mspace width="2em"/>
+                        <mo>←</mo>
+                        <mtext>деление на переменную</mtext>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <msup>
+                            <mi>x</mi>
+                            <mrow>
+                                <mo>-</mo>
+                                <mn>2</mn>
+                            </mrow>
+                        </msup>
+                        <mspace width="2em"/>
+                        <mo>←</mo>
+                        <mtext>отрицательная степень</mtext>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <msqrt>
+                            <mi>x</mi>
+                        </msqrt>
+                        <mspace width="2em"/>
+                        <mo>←</mo>
+                        <mtext>корень (не натуральная степень)</mtext>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Стандартный вид одночлена</h2>
+
+    <div class="definition">
+        <p><strong>Стандартный вид одночлена:</strong></p>
+        <p>Одночлен записан в стандартном виде, если:</p>
+        <ol>
+            <li>На первом месте стоит числовой множитель (коэффициент)</li>
+            <li>За ним записаны произведения степеней различных переменных</li>
+            <li>Каждая переменная встречается только один раз</li>
+        </ol>
+    </div>
+
+    <div class="example">
+        <div class="example-title">Приведение к стандартному виду:</div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>4</mn>
+                        <mi>x</mi>
+                        <mo>·</mo>
+                        <mn>2</mn>
+                        <mi>x</mi>
+                        <mi>y</mi>
+                        <mo>=</mo>
+                        <mn>8</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mi>y</mi>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>-</mo>
+                        <mn>5</mn>
+                        <msup>
+                            <mi>a</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <mi>x</mi>
+                        <mo>·</mo>
+                        <mn>4</mn>
+                        <mi>c</mi>
+                        <mo>=</mo>
+                        <mo>-</mo>
+                        <mn>20</mn>
+                        <msup>
+                            <mi>a</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <mi>x</mi>
+                        <mi>c</mi>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>-</mo>
+                        <mn>2</mn>
+                        <msup>
+                            <mi>a</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <msup>
+                            <mi>y</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>(</mo>
+                        <mo>-</mo>
+                        <mn>5</mn>
+                        <msup>
+                            <mi>a</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <msup>
+                            <mi>y</mi>
+                            <mn>5</mn>
+                        </msup>
+                        <mo>)</mo>
+                        <mo>=</mo>
+                        <mn>10</mn>
+                        <msup>
+                            <mi>a</mi>
+                            <mn>5</mn>
+                        </msup>
+                        <msup>
+                            <mi>y</mi>
+                            <mn>7</mn>
+                        </msup>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="definition">
+        <p><strong>Коэффициент одночлена:</strong></p>
+        <p>Числовой множитель одночлена, записанного в стандартном виде</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mtable>
+                            <mtr>
+                                <mtd>
+                                    <mo>-</mo>
+                                    <mn>15</mn>
+                                    <msup>
+                                        <mi>a</mi>
+                                        <mn>3</mn>
+                                    </msup>
+                                    <msup>
+                                        <mi>x</mi>
+                                        <mn>4</mn>
+                                    </msup>
+                                    <msup>
+                                        <mi>c</mi>
+                                        <mn>3</mn>
+                                    </msup>
+                                </mtd>
+                                <mtd>
+                                    <mo>→</mo>
+                                </mtd>
+                                <mtd>
+                                    <mtext>коэффициент = </mtext>
+                                    <mo>-</mo>
+                                    <mn>15</mn>
+                                </mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd>
+                                    <mfrac>
+                                        <mn>2</mn>
+                                        <mn>7</mn>
+                                    </mfrac>
+                                    <msup>
+                                        <mi>x</mi>
+                                        <mn>3</mn>
+                                    </msup>
+                                    <mi>y</mi>
+                                </mtd>
+                                <mtd>
+                                    <mo>→</mo>
+                                </mtd>
+                                <mtd>
+                                    <mtext>коэффициент = </mtext>
+                                    <mfrac>
+                                        <mn>2</mn>
+                                        <mn>7</mn>
+                                    </mfrac>
+                                </mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd>
+                                    <msup>
+                                        <mi>a</mi>
+                                        <mn>5</mn>
+                                    </msup>
+                                    <msup>
+                                        <mi>y</mi>
+                                        <mn>7</mn>
+                                    </msup>
+                                </mtd>
+                                <mtd>
+                                    <mo>→</mo>
+                                </mtd>
+                                <mtd>
+                                    <mtext>коэффициент = </mtext>
+                                    <mn>1</mn>
+                                </mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd>
+                                    <mo>-</mo>
+                                    <msup>
+                                        <mi>x</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                </mtd>
+                                <mtd>
+                                    <mo>→</mo>
+                                </mtd>
+                                <mtd>
+                                    <mtext>коэффициент = </mtext>
+                                    <mo>-</mo>
+                                    <mn>1</mn>
+                                </mtd>
+                            </mtr>
+                        </mtable>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Степень одночлена</h2>
+
+    <div class="definition">
+        <p><strong>Определение степени одночлена:</strong></p>
+        <p>Степенью одночлена с коэффициентом, отличным от нуля, называется сумма показателей степеней всех переменных, входящих в этот одночлен.</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mtext>Степень одночлена = </mtext>
+                        <munder>
+                            <mo>∑</mo>
+                            <mrow>
+                                <mtext>всех переменных</mtext>
+                            </mrow>
+                        </munder>
+                        <mtext>показатель степени</mtext>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="example">
+        <div class="example-title">Примеры определения степени:</div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>5</mn>
+                        <msup>
+                            <mi>a</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <msup>
+                            <mi>b</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <mi>c</mi>
+                        <mspace width="1em"/>
+                        <mo>→</mo>
+                        <mspace width="1em"/>
+                        <mn>2</mn>
+                        <mo>+</mo>
+                        <mn>3</mn>
+                        <mo>+</mo>
+                        <mn>1</mn>
+                        <mo>=</mo>
+                        <mn>6</mn>
+                        <mspace width="1em"/>
+                        <mtext>(6-я степень)</mtext>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>10</mn>
+                        <msup>
+                            <mi>a</mi>
+                            <mn>5</mn>
+                        </msup>
+                        <msup>
+                            <mi>y</mi>
+                            <mn>7</mn>
+                        </msup>
+                        <mspace width="1em"/>
+                        <mo>→</mo>
+                        <mspace width="1em"/>
+                        <mn>5</mn>
+                        <mo>+</mo>
+                        <mn>7</mn>
+                        <mo>=</mo>
+                        <mn>12</mn>
+                        <mspace width="1em"/>
+                        <mtext>(12-я степень)</mtext>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>-</mo>
+                        <mn>4</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>5</mn>
+                        </msup>
+                        <mspace width="1em"/>
+                        <mo>→</mo>
+                        <mspace width="1em"/>
+                        <mn>5</mn>
+                        <mspace width="1em"/>
+                        <mtext>(5-я степень)</mtext>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>25</mn>
+                        <mi>x</mi>
+                        <mspace width="1em"/>
+                        <mo>→</mo>
+                        <mspace width="1em"/>
+                        <mn>1</mn>
+                        <mspace width="1em"/>
+                        <mtext>(1-я степень)</mtext>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>7</mn>
+                        <mspace width="1em"/>
+                        <mo>→</mo>
+                        <mspace width="1em"/>
+                        <mn>0</mn>
+                        <mspace width="1em"/>
+                        <mtext>(0-я степень)</mtext>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="example hard-example">
+        <div class="example-title">Важное правило:</div>
+        <p>Если одночлен не содержит переменных (это просто число), то его степень равна нулю.</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>1024</mn>
+                        <mo>,</mo>
+                        <mspace width="1em"/>
+                        <mo>-</mo>
+                        <mn>3.7</mn>
+                        <mo>,</mo>
+                        <mspace width="1em"/>
+                        <mfrac>
+                            <mn>2</mn>
+                            <mn>5</mn>
+                        </mfrac>
+                        <mspace width="1em"/>
+                        <mo>→</mo>
+                        <mspace width="1em"/>
+                        <mtext>степень = 0</mtext>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Действия с одночленами</h2>
+
+    <div class="definition">
+        <h3>Умножение одночленов</h3>
+        <p>Чтобы умножить одночлены, нужно:</p>
+        <ol>
+            <li>Перемножить коэффициенты</li>
+            <li>Перемножить степени с одинаковыми основаниями</li>
+        </ol>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>2</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mi>y</mi>
+                        <mo>·</mo>
+                        <mo>(</mo>
+                        <mn>0.3</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <msup>
+                            <mi>y</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>)</mo>
+                        <mo>=</mo>
+                        <mo>(</mo>
+                        <mn>2</mn>
+                        <mo>·</mo>
+                        <mn>0.3</mn>
+                        <mo>)</mo>
+                        <mo>·</mo>
+                        <mo>(</mo>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>·</mo>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <mo>)</mo>
+                        <mo>·</mo>
+                        <mo>(</mo>
+                        <mi>y</mi>
+                        <mo>·</mo>
+                        <msup>
+                            <mi>y</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>)</mo>
+                        <mo>=</mo>
+                        <mn>0.6</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>5</mn>
+                        </msup>
+                        <msup>
+                            <mi>y</mi>
+                            <mn>3</mn>
+                        </msup>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="definition">
+        <h3>Деление одночленов</h3>
+        <p>Чтобы разделить одночлены, нужно:</p>
+        <ol>
+            <li>Разделить коэффициенты</li>
+            <li>Разделить степени с одинаковыми основаниями</li>
+        </ol>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac>
+                            <mrow>
+                                <mn>15</mn>
+                                <msup>
+                                    <mi>x</mi>
+                                    <mn>4</mn>
+                                </msup>
+                                <msup>
+                                    <mi>y</mi>
+                                    <mn>3</mn>
+                                </msup>
+                            </mrow>
+                            <mrow>
+                                <mo>-</mo>
+                                <mn>3</mn>
+                                <mi>x</mi>
+                                <msup>
+                                    <mi>y</mi>
+                                    <mn>2</mn>
+                                </msup>
+                            </mrow>
+                        </mfrac>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mn>15</mn>
+                            <mrow>
+                                <mo>-</mo>
+                                <mn>3</mn>
+                            </mrow>
+                        </mfrac>
+                        <mo>·</mo>
+                        <mfrac>
+                            <msup>
+                                <mi>x</mi>
+                                <mn>4</mn>
+                            </msup>
+                            <mi>x</mi>
+                        </mfrac>
+                        <mo>·</mo>
+                        <mfrac>
+                            <msup>
+                                <mi>y</mi>
+                                <mn>3</mn>
+                            </msup>
+                            <msup>
+                                <mi>y</mi>
+                                <mn>2</mn>
+                            </msup>
+                        </mfrac>
+                        <mo>=</mo>
+                        <mo>-</mo>
+                        <mn>5</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <mi>y</mi>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="definition">
+        <h3>Возведение одночлена в степень</h3>
+        <p>Чтобы возвести одночлен в степень, нужно возвести в эту степень каждый множитель.</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <msup>
+                            <mrow>
+                                <mo>(</mo>
+                                <mn>0.1</mn>
+                                <msup>
+                                    <mi>a</mi>
+                                    <mn>6</mn>
+                                </msup>
+                                <msup>
+                                    <mi>b</mi>
+                                    <mn>3</mn>
+                                </msup>
+                                <mo>)</mo>
+                            </mrow>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>=</mo>
+                        <msup>
+                            <mrow>
+                                <mo>(</mo>
+                                <mn>0.1</mn>
+                                <mo>)</mo>
+                            </mrow>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>·</mo>
+                        <msup>
+                            <mrow>
+                                <mo>(</mo>
+                                <msup>
+                                    <mi>a</mi>
+                                    <mn>6</mn>
+                                </msup>
+                                <mo>)</mo>
+                            </mrow>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>·</mo>
+                        <msup>
+                            <mrow>
+                                <mo>(</mo>
+                                <msup>
+                                    <mi>b</mi>
+                                    <mn>3</mn>
+                                </msup>
+                                <mo>)</mo>
+                            </mrow>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>=</mo>
+                        <mn>0.01</mn>
+                        <msup>
+                            <mi>a</mi>
+                            <mn>12</mn>
+                        </msup>
+                        <msup>
+                            <mi>b</mi>
+                            <mn>6</mn>
+                        </msup>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Подобные одночлены</h2>
+
+    <div class="definition">
+        <p><strong>Определение подобных одночленов:</strong></p>
+        <p>Одночлены называются подобными, если они имеют одинаковую буквенную часть (одинаковые переменные в одинаковых степенях).</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mtable>
+                            <mtr>
+                                <mtd>
+                                    <mn>3</mn>
+                                    <msup>
+                                        <mi>x</mi>
+                                        <mn>3</mn>
+                                    </msup>
+                                    <mi>y</mi>
+                                </mtd>
+                                <mtd>
+                                    <mtext>и</mtext>
+                                </mtd>
+                                <mtd>
+                                    <mn>5</mn>
+                                    <msup>
+                                        <mi>x</mi>
+                                        <mn>3</mn>
+                                    </msup>
+                                    <mi>y</mi>
+                                </mtd>
+                                <mtd>
+                                    <mo>→</mo>
+                                    <mtext>подобные</mtext>
+                                </mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd>
+                                    <mn>5</mn>
+                                    <msup>
+                                        <mi>a</mi>
+                                        <mn>4</mn>
+                                    </msup>
+                                    <msup>
+                                        <mi>b</mi>
+                                        <mn>3</mn>
+                                    </msup>
+                                </mtd>
+                                <mtd>
+                                    <mtext>и</mtext>
+                                </mtd>
+                                <mtd>
+                                    <mo>-</mo>
+                                    <mn>4</mn>
+                                    <msup>
+                                        <mi>a</mi>
+                                        <mn>4</mn>
+                                    </msup>
+                                    <msup>
+                                        <mi>b</mi>
+                                        <mn>3</mn>
+                                    </msup>
+                                </mtd>
+                                <mtd>
+                                    <mo>→</mo>
+                                    <mtext>подобные</mtext>
+                                </mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd>
+                                    <mn>2</mn>
+                                    <msup>
+                                        <mi>x</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mi>y</mi>
+                                </mtd>
+                                <mtd>
+                                    <mtext>и</mtext>
+                                </mtd>
+                                <mtd>
+                                    <mn>2</mn>
+                                    <mi>x</mi>
+                                    <msup>
+                                        <mi>y</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                </mtd>
+                                <mtd>
+                                    <mo>→</mo>
+                                    <mtext>НЕ подобные</mtext>
+                                </mtd>
+                            </mtr>
+                        </mtable>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="definition">
+        <h3>Сложение и вычитание подобных одночленов</h3>
+        <p>Складывать и вычитать можно только подобные одночлены!</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>2</mn>
+                        <msup>
+                            <mi>a</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <msup>
+                            <mi>b</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>+</mo>
+                        <mn>7</mn>
+                        <msup>
+                            <mi>a</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <msup>
+                            <mi>b</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>=</mo>
+                        <mo>(</mo>
+                        <mn>2</mn>
+                        <mo>+</mo>
+                        <mn>7</mn>
+                        <mo>)</mo>
+                        <msup>
+                            <mi>a</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <msup>
+                            <mi>b</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>=</mo>
+                        <mn>9</mn>
+                        <msup>
+                            <mi>a</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <msup>
+                            <mi>b</mi>
+                            <mn>2</mn>
+                        </msup>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>10</mn>
+                        <msup>
+                            <mi>b</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <msup>
+                            <mi>c</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <mo>-</mo>
+                        <mn>7</mn>
+                        <msup>
+                            <mi>b</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <msup>
+                            <mi>c</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <mo>-</mo>
+                        <mn>4</mn>
+                        <msup>
+                            <mi>b</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <msup>
+                            <mi>c</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <mo>=</mo>
+                        <mo>(</mo>
+                        <mn>10</mn>
+                        <mo>-</mo>
+                        <mn>7</mn>
+                        <mo>-</mo>
+                        <mn>4</mn>
+                        <mo>)</mo>
+                        <msup>
+                            <mi>b</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <msup>
+                            <mi>c</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <mo>=</mo>
+                        <mo>-</mo>
+                        <mn>1</mn>
+                        <msup>
+                            <mi>b</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <msup>
+                            <mi>c</mi>
+                            <mn>3</mn>
+                        </msup>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="example hard-example">
+        <div class="example-title">Ловушка при сложении одночленов:</div>
+        <p>Нельзя складывать неподобные одночлены!</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>3</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>+</mo>
+                        <mn>2</mn>
+                        <mi>x</mi>
+                        <mspace width="2em"/>
+                        <mo>→</mo>
+                        <mspace width="1em"/>
+                        <mtext>НЕЛЬЗЯ упростить!</mtext>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>5</mn>
+                        <mi>a</mi>
+                        <mi>b</mi>
+                        <mo>+</mo>
+                        <mn>3</mn>
+                        <mi>a</mi>
+                        <mi>c</mi>
+                        <mspace width="2em"/>
+                        <mo>→</mo>
+                        <mspace width="1em"/>
+                        <mtext>НЕЛЬЗЯ упростить!</mtext>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Многочлены: определение и основные понятия</h2>
+
+    <div class="definition">
+        <p><strong>Определение многочлена:</strong></p>
+        <p>Многочленом называется сумма одночленов.</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mtext>Примеры многочленов:</mtext>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>3</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <mo>-</mo>
+                        <mn>2</mn>
+                        <mi>x</mi>
+                        <msup>
+                            <mi>y</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>+</mo>
+                        <mi>y</mi>
+                        <mo>-</mo>
+                        <mn>2</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>5</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>-</mo>
+                        <mn>2</mn>
+                        <msup>
+                            <mi>y</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <mspace width="2em"/>
+                        <mo>(</mo>
+                        <mtext>двучлен</mtext>
+                        <mo>)</mo>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="definition">
+        <p><strong>Стандартный вид многочлена:</strong></p>
+        <p>Многочлен имеет стандартный вид, если:</p>
+        <ol>
+            <li>Все его члены записаны в стандартном виде</li>
+            <li>Среди членов нет подобных</li>
+        </ol>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>2</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <mo>+</mo>
+                        <mn>5</mn>
+                        <mi>x</mi>
+                        <mi>x</mi>
+                        <mi>y</mi>
+                        <mo>-</mo>
+                        <mn>7.5</mn>
+                        <mi>x</mi>
+                        <mi>x</mi>
+                        <mi>y</mi>
+                        <mspace width="1em"/>
+                        <mo>→</mo>
+                        <mspace width="1em"/>
+                        <mn>2</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <mo>-</mo>
+                        <mn>2.5</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mi>y</mi>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="definition">
+        <p><strong>Степень многочлена:</strong></p>
+        <p>Степенью многочлена стандартного вида называется наибольшая из степеней входящих в него одночленов.</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>-</mo>
+                        <mn>3</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>5</mn>
+                        </msup>
+                        <msup>
+                            <mi>y</mi>
+                            <mn>4</mn>
+                        </msup>
+                        <mo>+</mo>
+                        <mn>3</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>5</mn>
+                        </msup>
+                        <mi>y</mi>
+                        <mo>-</mo>
+                        <mn>9</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>6</mn>
+                        </msup>
+                        <mo>+</mo>
+                        <mn>4</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>5</mn>
+                        </msup>
+                        <mi>y</mi>
+                        <mo>-</mo>
+                        <mn>5</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>5</mn>
+                        </msup>
+                        <msup>
+                            <mi>y</mi>
+                            <mn>4</mn>
+                        </msup>
+                        <mspace width="1em"/>
+                        <mo>→</mo>
+                        <mspace width="1em"/>
+                        <mo>-</mo>
+                        <mn>8</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>5</mn>
+                        </msup>
+                        <msup>
+                            <mi>y</mi>
+                            <mn>4</mn>
+                        </msup>
+                        <mo>+</mo>
+                        <mn>7</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>5</mn>
+                        </msup>
+                        <mi>y</mi>
+                        <mo>-</mo>
+                        <mn>9</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>6</mn>
+                        </msup>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <p>Степень многочлена = 9 (максимум из 5+4=9, 5+1=6, 6=6)</p>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Действия с многочленами</h2>
+
+    <div class="definition">
+        <h3>Сложение и вычитание многочленов</h3>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>(</mo>
+                        <mo>-</mo>
+                        <mn>3</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <msup>
+                            <mi>y</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>+</mo>
+                        <mn>2</mn>
+                        <mi>x</mi>
+                        <mi>y</mi>
+                        <mo>-</mo>
+                        <mn>7</mn>
+                        <mo>)</mo>
+                        <mo>+</mo>
+                        <mo>(</mo>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <msup>
+                            <mi>y</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>+</mo>
+                        <mn>4</mn>
+                        <mi>x</mi>
+                        <mi>y</mi>
+                        <mo>-</mo>
+                        <mn>2</mn>
+                        <mo>)</mo>
+                        <mo>=</mo>
+                        <mo>-</mo>
+                        <mn>2</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <msup>
+                            <mi>y</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>+</mo>
+                        <mn>6</mn>
+                        <mi>x</mi>
+                        <mi>y</mi>
+                        <mo>-</mo>
+                        <mn>9</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="definition">
+        <h3>Умножение одночлена на многочлен</h3>
+        <p>Чтобы умножить одночлен на многочлен, нужно умножить одночлен на каждый член многочлена.</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>3</mn>
+                        <mi>x</mi>
+                        <mi>y</mi>
+                        <mo>(</mo>
+                        <mn>4</mn>
+                        <mi>x</mi>
+                        <mo>-</mo>
+                        <mn>7</mn>
+                        <mi>y</mi>
+                        <mo>)</mo>
+                        <mo>=</mo>
+                        <mn>12</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mi>y</mi>
+                        <mo>-</mo>
+                        <mn>21</mn>
+                        <mi>x</mi>
+                        <msup>
+                            <mi>y</mi>
+                            <mn>2</mn>
+                        </msup>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="definition">
+        <h3>Деление многочлена на одночлен</h3>
+        <p>Чтобы разделить многочлен на одночлен, нужно разделить каждый член многочлена на этот одночлен.</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>(</mo>
+                        <mn>4</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>4</mn>
+                        </msup>
+                        <mo>-</mo>
+                        <mn>6</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <mo>+</mo>
+                        <mn>8</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>)</mo>
+                        <mo>:</mo>
+                        <mo>(</mo>
+                        <mn>2</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>)</mo>
+                        <mo>=</mo>
+                        <mn>2</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>-</mo>
+                        <mn>3</mn>
+                        <mi>x</mi>
+                        <mo>+</mo>
+                        <mn>4</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="definition">
+        <h3>Умножение многочлена на многочлен</h3>
+        <p>Чтобы умножить многочлен на многочлен, нужно каждый член одного многочлена умножить на каждый член другого многочлена.</p>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>(</mo>
+                        <mi>x</mi>
+                        <mo>+</mo>
+                        <mn>3</mn>
+                        <mo>)</mo>
+                        <mo>(</mo>
+                        <mn>4</mn>
+                        <mi>x</mi>
+                        <mo>-</mo>
+                        <mn>2</mn>
+                        <mo>)</mo>
+                        <mo>=</mo>
+                        <mn>4</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>-</mo>
+                        <mn>2</mn>
+                        <mi>x</mi>
+                        <mo>+</mo>
+                        <mn>12</mn>
+                        <mi>x</mi>
+                        <mo>-</mo>
+                        <mn>6</mn>
+                        <mo>=</mo>
+                        <mn>4</mn>
+                        <msup>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>+</mo>
+                        <mn>10</mn>
+                        <mi>x</mi>
+                        <mo>-</mo>
+                        <mn>6</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Формулы сокращенного умножения</h2>
+
+    <div class="definition">
+        <h3>Квадрат суммы</h3>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <msup>
+                            <mrow>
+                                <mo>(</mo>
+                                <mi>a</mi>
+                                <mo>+</mo>
+                                <mi>b</mi>
+                                <mo>)</mo>
+                            </mrow>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>=</mo>
+                        <msup>
+                            <mi>a</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>+</mo>
+                        <mn>2</mn>
+                        <mi>a</mi>
+                        <mi>b</mi>
+                        <mo>+</mo>
+                        <msup>
+                            <mi>b</mi>
+                            <mn>2</mn>
+                        </msup>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример:</div>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <msup>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mi>x</mi>
+                                    <mo>+</mo>
+                                    <mn>3</mn>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mn>2</mn>
+                            </msup>
+                            <mo>=</mo>
+                            <msup>
+                                <mi>x</mi>
+                                <mn>2</mn>
+                            </msup>
+                            <mo>+</mo>
+                            <mn>6</mn>
+                            <mi>x</mi>
+                            <mo>+</mo>
+                            <mn>9</mn>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="definition">
+        <h3>Квадрат разности</h3>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <msup>
+                            <mrow>
+                                <mo>(</mo>
+                                <mi>a</mi>
+                                <mo>-</mo>
+                                <mi>b</mi>
+                                <mo>)</mo>
+                            </mrow>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>=</mo>
+                        <msup>
+                            <mi>a</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>-</mo>
+                        <mn>2</mn>
+                        <mi>a</mi>
+                        <mi>b</mi>
+                        <mo>+</mo>
+                        <msup>
+                            <mi>b</mi>
+                            <mn>2</mn>
+                        </msup>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример:</div>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <msup>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mn>7</mn>
+                                    <mi>n</mi>
+                                    <mo>-</mo>
+                                    <mn>1</mn>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mn>2</mn>
+                            </msup>
+                            <mo>=</mo>
+                            <mn>49</mn>
+                            <msup>
+                                <mi>n</mi>
+                                <mn>2</mn>
+                            </msup>
+                            <mo>-</mo>
+                            <mn>14</mn>
+                            <mi>n</mi>
+                            <mo>+</mo>
+                            <mn>1</mn>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="definition">
+        <h3>Разность квадратов</h3>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>(</mo>
+                        <mi>a</mi>
+                        <mo>+</mo>
+                        <mi>b</mi>
+                        <mo>)</mo>
+                        <mo>(</mo>
+                        <mi>a</mi>
+                        <mo>-</mo>
+                        <mi>b</mi>
+                        <mo>)</mo>
+                        <mo>=</mo>
+                        <msup>
+                            <mi>a</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>-</mo>
+                        <msup>
+                            <mi>b</mi>
+                            <mn>2</mn>
+                        </msup>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="example">
+            <div class="example-title">Пример:</div>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mo>(</mo>
+                            <mn>3</mn>
+                            <mi>b</mi>
+                            <mo>+</mo>
+                            <mn>7</mn>
+                            <mi>c</mi>
+                            <mo>)</mo>
+                            <mo>(</mo>
+                            <mn>3</mn>
+                            <mi>b</mi>
+                            <mo>-</mo>
+                            <mn>7</mn>
+                            <mi>c</mi>
+                            <mo>)</mo>
+                            <mo>=</mo>
+                            <mn>9</mn>
+                            <msup>
+                                <mi>b</mi>
+                                <mn>2</mn>
+                            </msup>
+                            <mo>-</mo>
+                            <mn>49</mn>
+                            <msup>
+                                <mi>c</mi>
+                                <mn>2</mn>
+                            </msup>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Разложение многочленов на множители</h2>
+
+    <div class="definition">
+        <h3>Вынесение общего множителя за скобки</h3>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>6</mn>
+                        <msup>
+                            <mi>a</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <msup>
+                            <mi>b</mi>
+                            <mn>4</mn>
+                        </msup>
+                        <mo>+</mo>
+                        <mn>9</mn>
+                        <msup>
+                            <mi>a</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <msup>
+                            <mi>b</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mi>c</mi>
+                        <mo>=</mo>
+                        <mn>3</mn>
+                        <msup>
+                            <mi>a</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <msup>
+                            <mi>b</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>(</mo>
+                        <mn>2</mn>
+                        <mi>a</mi>
+                        <msup>
+                            <mi>b</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>+</mo>
+                        <mn>3</mn>
+                        <mi>c</mi>
+                        <mo>)</mo>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="definition">
+        <h3>Способ группировки</h3>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>a</mi>
+                        <mi>x</mi>
+                        <mo>+</mo>
+                        <mn>7</mn>
+                        <mi>a</mi>
+                        <mo>-</mo>
+                        <mn>3</mn>
+                        <mi>x</mi>
+                        <mo>-</mo>
+                        <mn>21</mn>
+                        <mo>=</mo>
+                        <mo>(</mo>
+                        <mi>a</mi>
+                        <mi>x</mi>
+                        <mo>+</mo>
+                        <mn>7</mn>
+                        <mi>a</mi>
+                        <mo>)</mo>
+                        <mo>+</mo>
+                        <mo>(</mo>
+                        <mo>-</mo>
+                        <mn>3</mn>
+                        <mi>x</mi>
+                        <mo>-</mo>
+                        <mn>21</mn>
+                        <mo>)</mo>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mi>a</mi>
+                        <mo>(</mo>
+                        <mi>x</mi>
+                        <mo>+</mo>
+                        <mn>7</mn>
+                        <mo>)</mo>
+                        <mo>-</mo>
+                        <mn>3</mn>
+                        <mo>(</mo>
+                        <mi>x</mi>
+                        <mo>+</mo>
+                        <mn>7</mn>
+                        <mo>)</mo>
+                        <mo>=</mo>
+                        <mo>(</mo>
+                        <mi>x</mi>
+                        <mo>+</mo>
+                        <mn>7</mn>
+                        <mo>)</mo>
+                        <mo>(</mo>
+                        <mi>a</mi>
+                        <mo>-</mo>
+                        <mn>3</mn>
+                        <mo>)</mo>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="definition">
+        <h3>Использование формул сокращенного умножения</h3>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac>
+                            <mn>9</mn>
+                            <mn>25</mn>
+                        </mfrac>
+                        <msup>
+                            <mi>m</mi>
+                            <mn>4</mn>
+                        </msup>
+                        <mo>-</mo>
+                        <msup>
+                            <mi>n</mi>
+                            <mn>6</mn>
+                        </msup>
+                        <mo>=</mo>
+                        <msup>
+                            <mrow>
+                                <mo>(</mo>
+                                <mfrac>
+                                    <mn>3</mn>
+                                    <mn>5</mn>
+                                </mfrac>
+                                <msup>
+                                    <mi>m</mi>
+                                    <mn>2</mn>
+                                </msup>
+                                <mo>)</mo>
+                            </mrow>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>-</mo>
+                        <msup>
+                            <mrow>
+                                <mo>(</mo>
+                                <msup>
+                                    <mi>n</mi>
+                                    <mn>3</mn>
+                                </msup>
+                                <mo>)</mo>
+                            </mrow>
+                            <mn>2</mn>
+                        </msup>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mo>(</mo>
+                        <mfrac>
+                            <mn>3</mn>
+                            <mn>5</mn>
+                        </mfrac>
+                        <msup>
+                            <mi>m</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>+</mo>
+                        <msup>
+                            <mi>n</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <mo>)</mo>
+                        <mo>(</mo>
+                        <mfrac>
+                            <mn>3</mn>
+                            <mn>5</mn>
+                        </mfrac>
+                        <msup>
+                            <mi>m</mi>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>-</mo>
+                        <msup>
+                            <mi>n</mi>
+                            <mn>3</mn>
+                        </msup>
+                        <mo>)</mo>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Сводная таблица: одночлены и многочлены</h2>
+
+    <div class="summary">
+        <h4>Ключевые понятия</h4>
+        <div class="table-container">
+            <table class="sign-table">
+                <thead>
+                    <tr>
+                        <th>Понятие</th>
+                        <th>Определение</th>
+                        <th>Пример</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Одночлен</td>
+                        <td>Произведение чисел и натуральных степеней переменных</td>
+                        <td><math><mrow><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mi>y</mi></mrow></math></td>
+                    </tr>
+                    <tr>
+                        <td>Коэффициент</td>
+                        <td>Числовой множитель в стандартном виде одночлена</td>
+                        <td><math><mrow><mo>-</mo><mn>5</mn></mrow></math> в <math><mrow><mo>-</mo><mn>5</mn><msup><mi>a</mi><mn>2</mn></msup></mrow></math></td>
+                    </tr>
+                    <tr>
+                        <td>Степень одночлена</td>
+                        <td>Сумма показателей степеней всех переменных</td>
+                        <td><math><mrow><mn>2</mn><mo>+</mo><mn>1</mn><mo>=</mo><mn>3</mn></mrow></math> для <math><mrow><msup><mi>x</mi><mn>2</mn></msup><mi>y</mi></mrow></math></td>
+                    </tr>
+                    <tr>
+                        <td>Подобные одночлены</td>
+                        <td>Одночлены с одинаковой буквенной частью</td>
+                        <td><math><mrow><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mi>y</mi></mrow></math> и <math><mrow><mo>-</mo><mn>5</mn><msup><mi>x</mi><mn>2</mn></msup><mi>y</mi></mrow></math></td>
+                    </tr>
+                    <tr>
+                        <td>Многочлен</td>
+                        <td>Сумма одночленов</td>
+                        <td><math><mrow><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>2</mn><mi>x</mi><mi>y</mi><mo>+</mo><mn>5</mn></mrow></math></td>
+                    </tr>
+                    <tr>
+                        <td>Степень многочлена</td>
+                        <td>Наибольшая степень среди его членов</td>
+                        <td>2 для <math><mrow><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>5</mn></mrow></math></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+            </body>
+																				</html>

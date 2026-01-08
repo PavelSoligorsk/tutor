@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>Теория</title>
+				<style>
+        * {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f9ff;
+    color: #333;
+    line-height: 1.6;
+    font-size: 16px; /* Базовый размер шрифта */
+}
+
+.container {
+    max-width: 2000px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 150, 0.1);
+    padding: 30px;
+}
+
+.image-container {
+    text-align: center;
+    margin: 1rem auto;
+    padding: 0.8rem;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    max-width: min(600px, 50vw); /* Ограничение: максимум 600px или половина экрана */
+    width: fit-content; /* Подстраивается под содержимое */
+}
+
+.function-image {
+    max-width: 100%;
+    max-height: min(400px, 50vh); /* Ограничение по высоте */
+    height: auto;
+    width: auto;
+    object-fit: contain;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .image-container {
+        max-width: min(500px, 60vw);
+    }
+
+    .function-image {
+        max-height: min(350px, 45vh);
+    }
+}
+
+@media (max-width: 768px) {
+    .image-container {
+        max-width: min(400px, 80vw);
+        padding: 0.6rem;
+        margin: 0.8rem auto;
+    }
+
+    .function-image {
+        max-height: min(300px, 40vh);
+    }
+}
+
+@media (max-width: 480px) {
+    .image-container {
+        max-width: 95vw; /* Практически на всю ширину */
+        margin: 0.6rem auto;
+        padding: 0.5rem;
+    }
+
+    .function-image {
+        max-height: min(250px, 35vh);
+    }
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 15px;
+    margin-top: 0;
+    font-size: 1.8em; /* Главный заголовок */
+}
+
+h2 {
+    color: #2980b9;
+    margin-top: 30px;
+    font-size: 1.4em; /* Второстепенные заголовки */
+}
+
+.lesson-section {
+    background-color: #f8fafd;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 25px 0;
+    border-left: 5px solid #3498db;
+}
+
+.definition {
+    background-color: #e8f4fc;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-size: 1em; /* Обычный размер шрифта */
+}
+
+.example {
+    background-color: #f0f7ff;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-left: 4px solid #2ecc71;
+    font-size: 1em; /* Обычный размер шрифта */
+}
+
+.example-title {
+    font-weight: bold;
+    color: #27ae60;
+    margin-bottom: 10px;
+    font-size: 1.1em; /* Чуть больше обычного для заголовков примеров */
+}
+
+.hard-example {
+    border-left-color: #e74c3c;
+}
+
+.hard-example .example-title {
+    color: #e74c3c;
+}
+
+.math-container {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin: 15px 0;
+    overflow-x: auto;
+}
+
+.math-formula {
+    font-size: 1.1em; /* Чуть больше для формул */
+    text-align: center;
+    padding: 10px;
+}
+
+.explanation {
+    background-color: #fffde7;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    font-style: italic;
+    font-size: 1em; /* Обычный размер шрифта */
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em; /* Обычный размер шрифта */
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+.lesson-number {
+    background-color: #3498db;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 0.9em; /* Немного меньше для меток */
+}
+
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #7f8c8d;
+    font-size: 0.9em; /* Меньше для подвала */
+}
+    </style>
+			</head>
+			<body>
+				<div class="container">
+
+					<h1>Отрезок. Окружность</h1>
+					<div class="lesson-section"> <h2>Длина отрезка на координатной плоскости</h2> <div class="definition"> <p><strong>Длина отрезка</strong>, соединяющего две точки на плоскости, вычисляется по теореме Пифагора.</p> <p>Даны две точки: <math><mrow><msub><mi>M</mi><mn>1</mn></msub><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo>)</mo></mrow></math> и <math><mrow><msub><mi>M</mi><mn>2</mn></msub><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo>)</mo></mrow></math>.</p>
+
+    <div class="image-container">
+        <img src="https://i.postimg.cc/Xq1q9kdW/izobrazenie.png" class="function-image" alt="Длина отрезка на координатной плоскости">
+    </div>
+
+    <p>Разности координат являются катетами прямоугольного треугольника:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                   <msub><mi>M</mi><mn>1</mn></msub><msub><mi>M</mi><mn>2</mn></msub><mo>=</mo>
+                    <msqrt>
+                        <msup><mrow><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>-</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo></mrow><mn>2</mn></msup>
+                        <mo>+</mo>
+                        <msup><mrow><mo>(</mo><msub><mi>y</mi><mn>2</mn></msub><mo>-</mo><msub><mi>y</mi><mn>1</mn></msub><mo>)</mo></mrow><mn>2</mn></msup>
+                    </msqrt>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p><strong>Пример:</strong> Найти расстояние между точками A(2; -1) и B(-3; 4).</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                   <mi>A</mi><mi>B</mi><mo>=</mo>
+                    <msqrt>
+                        <msup><mrow><mo>(</mo><mo>-</mo><mn>3</mn><mo>-</mo><mn>2</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                        <mo>+</mo>
+                        <msup><mrow><mo>(</mo><mn>4</mn><mo>-</mo><mo>(</mo><mo>-</mo><mn>1</mn><mo>)</mo><mo>)</mo></mrow><mn>2</mn></msup>
+                    </msqrt>
+                    <mo>=</mo>
+                    <msqrt>
+                        <msup><mrow><mo>(</mo><mo>-</mo><mn>5</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                        <mo>+</mo>
+                        <msup><mrow><mo>(</mo><mn>5</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                    </msqrt>
+                    <mo>=</mo>
+                    <msqrt>
+                        <mn>25</mn><mo>+</mo><mn>25</mn>
+                    </msqrt>
+                    <mo>=</mo>
+                    <msqrt><mn>50</mn></msqrt>
+                    <mo>=</mo>
+                    <mn>5</mn><msqrt><mn>2</mn></msqrt>
+                </mrow>
+            </math>
+        </div>
+    </div>
+</div>
+
+</div>
+                    <div class="lesson-section"> <h2>Уравнение окружности</h2> <div class="definition"> <p><strong>Окружность</strong> — это геометрическое место точек плоскости, равноудаленных от заданной точки (центра).</p> <p>Даны: центр окружности <math><mrow><mi>C</mi><mo>(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><msub><mi>y</mi><mn>0</mn></msub><mo>)</mo></mrow></math> и её радиус <math><mrow><mi>R</mi></mrow></math>. <br>Пусть <math><mrow><mi>P</mi><mo>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>)</mo></mrow></math> — произвольная точка на окружности.</p>
+
+    <div class="image-container">
+        <img src="https://i.postimg.cc/rFzKM72V/izobrazenie.png" class="function-image" alt="Уравнение окружности">
+    </div>
+
+    <p>Условие принадлежности точки P окружности: расстояние от точки P до центра C равно радиусу R.</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>|</mo><mi>C</mi><mi>P</mi><mo>|</mo><mo>=</mo><mi>R</mi>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msqrt>
+                        <msup><mrow><mo>(</mo><mi>x</mi><mo>-</mo><msub><mi>x</mi><mn>0</mn></msub><mo>)</mo></mrow><mn>2</mn></msup>
+                        <mo>+</mo>
+                        <msup><mrow><mo>(</mo><mi>y</mi><mo>-</mo><msub><mi>y</mi><mn>0</mn></msub><mo>)</mo></mrow><mn>2</mn></msup>
+                    </msqrt>
+                    <mo>=</mo>
+                    <mi>R</mi>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msup><mrow><mo>(</mo><mi>x</mi><mo>-</mo><msub><mi>x</mi><mn>0</mn></msub><mo>)</mo></mrow><mn>2</mn></msup>
+                    <mo>+</mo>
+                    <msup><mrow><mo>(</mo><mi>y</mi><mo>-</mo><msub><mi>y</mi><mn>0</mn></msub><mo>)</mo></mrow><mn>2</mn></msup>
+                    <mo>=</mo>
+                    <msup><mi>R</mi><mn>2</mn></msup>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p><strong>Частный случай:</strong> Если центр окружности находится в начале координат, C(0; 0), то уравнение упрощается:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><msup><mi>R</mi><mn>2</mn></msup>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p><strong>Пример:</strong> Составить уравнение окружности с центром в точке C(-1; 3) и радиусом R = 4.</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msup><mrow><mo>(</mo><mi>x</mi><mo>-</mo><mo>(</mo><mo>-</mo><mn>1</mn><mo>)</mo><mo>)</mo></mrow><mn>2</mn></msup>
+                    <mo>+</mo>
+                    <msup><mrow><mo>(</mo><mi>y</mi><mo>-</mo><mn>3</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                    <mo>=</mo>
+                    <msup><mn>4</mn><mn>2</mn></msup>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msup><mrow><mo>(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                    <mo>+</mo>
+                    <msup><mrow><mo>(</mo><mi>y</mi><mo>-</mo><mn>3</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                    <mo>=</mo>
+                    <mn>16</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+</div>
+
+</div>
+
+                    <div class="lesson-section"> <h2>Задача 1: Длина отрезка MN</h2> <div class="problem"> <p>Найдите длину отрезка <math><mrow><mi>M</mi><mi>N</mi></mrow></math>, если <math><mrow><mi>M</mi><mo>(</mo><mn>3</mn><mo>;</mo><mo>-</mo><mn>6</mn><mo>)</mo></mrow></math>, <math><mrow><mi>N</mi><mo>(</mo><mo>-</mo><mn>1</mn><mo>;</mo><mn>4</mn><mo>)</mo></mrow></math>.</p> </div> <div class="solution"> <p><strong>Решение:</strong></p> <div class="math-container"> <div class="math-formula"> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mo>|</mo><mi>M</mi><mi>N</mi><mo>|</mo><mo>=</mo> <msqrt> <msup><mrow><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>-</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo></mrow><mn>2</mn></msup> <mo>+</mo> <msup><mrow><mo>(</mo><msub><mi>y</mi><mn>2</mn></msub><mo>-</mo><msub><mi>y</mi><mn>1</mn></msub><mo>)</mo></mrow><mn>2</mn></msup> </msqrt> </mrow> </math> <br> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mo>|</mo><mi>M</mi><mi>N</mi><mo>|</mo><mo>=</mo> <msqrt> <msup><mrow><mo>(</mo><mo>-</mo><mn>1</mn><mo>-</mo><mn>3</mn><mo>)</mo></mrow><mn>2</mn></msup> <mo>+</mo> <msup><mrow><mo>(</mo><mn>4</mn><mo>-</mo><mo>(</mo><mo>-</mo><mn>6</mn><mo>)</mo><mo>)</mo></mrow><mn>2</mn></msup> </msqrt> </mrow> </math> <br> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mo>|</mo><mi>M</mi><mi>N</mi><mo>|</mo><mo>=</mo> <msqrt> <msup><mrow><mo>(</mo><mo>-</mo><mn>4</mn><mo>)</mo></mrow><mn>2</mn></msup> <mo>+</mo> <msup><mrow><mo>(</mo><mn>10</mn><mo>)</mo></mrow><mn>2</mn></msup> </msqrt> </mrow> </math> <br> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mo>|</mo><mi>M</mi><mi>N</mi><mo>|</mo><mo>=</mo> <msqrt><mn>16</mn><mo>+</mo><mn>100</mn></msqrt> </mrow> </math> <br> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mo>|</mo><mi>M</mi><mi>N</mi><mo>|</mo><mo>=</mo> <msqrt><mn>116</mn></msqrt> </mrow> </math> <br> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mo>|</mo><mi>M</mi><mi>N</mi><mo>|</mo><mo>=</mo> <mn>2</mn><msqrt><mn>29</mn></msqrt> </mrow> </math> </div> </div> <p><strong>Ответ:</strong> <math><mrow><mo>|</mo><mi>M</mi><mi>N</mi><mo>|</mo><mo>=</mo><mn>2</mn><msqrt><mn>29</mn></msqrt></mrow></math></p> </div> </div><div class="lesson-section"> <h2>Задача 2: Длина диагонали прямоугольника</h2> <div class="problem"> <p>Найдите длину диагонали прямоугольника, если заданы его вершина <math><mrow><mi>A</mi><mo>(</mo><mo>-</mo><mn>7</mn><mo>;</mo><mn>1</mn><mo>)</mo></mrow></math> и точка пересечения его диагоналей <math><mrow><mi>O</mi><mo>(</mo><mo>-</mo><mn>3</mn><mo>;</mo><mo>-</mo><mn>2</mn><mo>)</mo></mrow></math>.</p> </div> <div class="solution"> <p><strong>Решение:</strong></p> <p>Точка <math><mrow><mi>O</mi></mrow></math> — середина диагоналей прямоугольника. Значит, <math><mrow><mi>O</mi></mrow></math> является серединой отрезка <math><mrow><mi>A</mi><mi>C</mi></mrow></math>, где <math><mrow><mi>C</mi></mrow></math> — противоположная вершина.</p> <div class="math-container"> <div class="math-formula"> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mi>O</mi><mo>=</mo><mrow><mo>(</mo><mfrac><mrow><msub><mi>x</mi><mi>A</mi></msub><mo>+</mo><msub><mi>x</mi><mi>C</mi></msub></mrow><mn>2</mn></mfrac><mo>;</mo><mfrac><mrow><msub><mi>y</mi><mi>A</mi></msub><mo>+</mo><msub><mi>y</mi><mi>C</mi></msub></mrow><mn>2</mn></mfrac><mo>)</mo></mrow> </mrow> </math> <br> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mo>(</mo><mo>-</mo><mn>3</mn><mo>;</mo><mo>-</mo><mn>2</mn><mo>)</mo><mo>=</mo><mrow><mo>(</mo><mfrac><mrow><mo>-</mo><mn>7</mn><mo>+</mo><msub><mi>x</mi><mi>C</mi></msub></mrow><mn>2</mn></mfrac><mo>;</mo><mfrac><mrow><mn>1</mn><mo>+</mo><msub><mi>y</mi><mi>C</mi></msub></mrow><mn>2</mn></mfrac><mo>)</mo></mrow> </mrow> </math> </div> </div> <p>Находим координаты точки <math><mrow><mi>C</mi></mrow></math>:</p> <div class="math-container"> <div class="math-formula"> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mfrac><mrow><mo>-</mo><mn>7</mn><mo>+</mo><msub><mi>x</mi><mi>C</mi></msub></mrow><mn>2</mn></mfrac><mo>=</mo><mo>-</mo><mn>3</mn> <mo>⇒</mo> <mo>-</mo><mn>7</mn><mo>+</mo><msub><mi>x</mi><mi>C</mi></msub><mo>=</mo><mo>-</mo><mn>6</mn> <mo>⇒</mo> <msub><mi>x</mi><mi>C</mi></msub><mo>=</mo><mn>1</mn> </mrow> </math> <br> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mfrac><mrow><mn>1</mn><mo>+</mo><msub><mi>y</mi><mi>C</mi></msub></mrow><mn>2</mn></mfrac><mo>=</mo><mo>-</mo><mn>2</mn> <mo>⇒</mo> <mn>1</mn><mo>+</mo><msub><mi>y</mi><mi>C</mi></msub><mo>=</mo><mo>-</mo><mn>4</mn> <mo>⇒</mo> <msub><mi>y</mi><mi>C</mi></msub><mo>=</mo><mo>-</mo><mn>5</mn> </mrow> </math> </div> </div> <p>Итак, <math><mrow><mi>C</mi><mo>(</mo><mn>1</mn><mo>;</mo><mo>-</mo><mn>5</mn><mo>)</mo></mrow></math>. Длина диагонали <math><mrow><mi>A</mi><mi>C</mi></mrow></math>:</p> <div class="math-container"> <div class="math-formula"> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mo>|</mo><mi>A</mi><mi>C</mi><mo>|</mo><mo>=</mo> <msqrt> <msup><mrow><mo>(</mo><mn>1</mn><mo>-</mo><mo>(</mo><mo>-</mo><mn>7</mn><mo>)</mo><mo>)</mo></mrow><mn>2</mn></msup> <mo>+</mo> <msup><mrow><mo>(</mo><mo>-</mo><mn>5</mn><mo>-</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup> </msqrt> </mrow> </math> <br> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mo>|</mo><mi>A</mi><mi>C</mi><mo>|</mo><mo>=</mo> <msqrt> <msup><mrow><mo>(</mo><mn>8</mn><mo>)</mo></mrow><mn>2</mn></msup> <mo>+</mo> <msup><mrow><mo>(</mo><mo>-</mo><mn>6</mn><mo>)</mo></mrow><mn>2</mn></msup> </msqrt> </mrow> </math> <br> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mo>|</mo><mi>A</mi><mi>C</mi><mo>|</mo><mo>=</mo> <msqrt><mn>64</mn><mo>+</mo><mn>36</mn></msqrt> </mrow> </math> <br> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mo>|</mo><mi>A</mi><mi>C</mi><mo>|</mo><mo>=</mo> <msqrt><mn>100</mn></msqrt> <mo>=</mo><mn>10</mn> </mrow> </math> </div> </div> <p><strong>Ответ:</strong> <math><mrow><mo>|</mo><mi>A</mi><mi>C</mi><mo>|</mo><mo>=</mo><mn>10</mn></mrow></math></p> </div> </div><div class="lesson-section"> <h2>Задача 3: Определение центра и радиуса окружности</h2> <div class="problem"> <p>Определите координаты центра и радиус окружности:</p> <p>a) <math><mrow><mo>(</mo><mi>x</mi><mo>+</mo><mn>1</mn><msup><mo>)</mo><mn>2</mn></msup><mo>+</mo><mo>(</mo><mi>y</mi><mo>-</mo><mn>1</mn><msup><mo>)</mo><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow></math></p> <p>б) <math><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mo>(</mo><mi>y</mi><mo>+</mo><mn>7</mn><msup><mo>)</mo><mn>2</mn></msup><mo>=</mo><mn>4</mn></mrow></math></p> <p>в) <math><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>8</mn></mrow></math></p> </div> <div class="solution"> <p><strong>Решение:</strong></p> <p>Стандартное уравнение окружности: <math><mrow><mo>(</mo><mi>x</mi><mo>-</mo><msub><mi>x</mi><mn>0</mn></msub><msup><mo>)</mo><mn>2</mn></msup><mo>+</mo><mo>(</mo><mi>y</mi><mo>-</mo><msub><mi>y</mi><mn>0</mn></msub><msup><mo>)</mo><mn>2</mn></msup><mo>=</mo><msup><mi>R</mi><mn>2</mn></msup></mrow></math>, где <math><mrow><mo>(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>;</mo><msub><mi>y</mi><mn>0</mn></msub><mo>)</mo></mrow></math> — центр, <math><mrow><mi>R</mi></mrow></math> — радиус.</p>
+text
+
+    <p>a) <math><mrow><mo>(</mo><mi>x</mi><mo>+</mo><mn>1</mn><msup><mo>)</mo><mn>2</mn></msup><mo>+</mo><mo>(</mo><mi>y</mi><mo>-</mo><mn>1</mn><msup><mo>)</mo><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow></math>:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>(</mo><mi>x</mi><mo>-</mo><mo>(</mo><mo>-</mo><mn>1</mn><mo>)</mo><msup><mo>)</mo><mn>2</mn></msup><mo>+</mo><mo>(</mo><mi>y</mi><mo>-</mo><mn>1</mn><msup><mo>)</mo><mn>2</mn></msup><mo>=</mo><msup><mn>1</mn><mn>2</mn></msup>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p>Центр: <math><mrow><mi>C</mi><mo>(</mo><mo>-</mo><mn>1</mn><mo>;</mo><mn>1</mn><mo>)</mo></mrow></math>, радиус: <math><mrow><mi>R</mi><mo>=</mo><mn>1</mn></mrow></math></p>
+
+    <p>б) <math><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mo>(</mo><mi>y</mi><mo>+</mo><mn>7</mn><msup><mo>)</mo><mn>2</mn></msup><mo>=</mo><mn>4</mn></mrow></math>:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>(</mo><mi>x</mi><mo>-</mo><mn>0</mn><msup><mo>)</mo><mn>2</mn></msup><mo>+</mo><mo>(</mo><mi>y</mi><mo>-</mo><mo>(</mo><mo>-</mo><mn>7</mn><mo>)</mo><msup><mo>)</mo><mn>2</mn></msup><mo>=</mo><msup><mn>2</mn><mn>2</mn></msup>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p>Центр: <math><mrow><mi>C</mi><mo>(</mo><mn>0</mn><mo>;</mo><mo>-</mo><mn>7</mn><mo>)</mo></mrow></math>, радиус: <math><mrow><mi>R</mi><mo>=</mo><mn>2</mn></mrow></math></p>
+
+    <p>в) <math><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>8</mn></mrow></math>:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>(</mo><mi>x</mi><mo>-</mo><mn>0</mn><msup><mo>)</mo><mn>2</mn></msup><mo>+</mo><mo>(</mo><mi>y</mi><mo>-</mo><mn>0</mn><msup><mo>)</mo><mn>2</mn></msup><mo>=</mo><mo>(</mo><msqrt><mn>8</mn></msqrt><msup><mo>)</mo><mn>2</mn></msup>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p>Центр: <math><mrow><mi>C</mi><mo>(</mo><mn>0</mn><mo>;</mo><mn>0</mn><mo>)</mo></mrow></math>, радиус: <math><mrow><mi>R</mi><mo>=</mo><msqrt><mn>8</mn></msqrt><mo>=</mo><mn>2</mn><msqrt><mn>2</mn></msqrt></mrow></math></p>
+</div>
+
+</div><div class="lesson-section"> <h2>Задача 4: Принадлежность точек окружности</h2> <div class="problem"> <p>Какие из данных точек лежат на окружности <math><mrow><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><msup><mo>)</mo><mn>2</mn></msup><mo>+</mo><mo>(</mo><mi>y</mi><mo>+</mo><mn>1</mn><msup><mo>)</mo><mn>2</mn></msup><mo>=</mo><mn>25</mn></mrow></math>:</p> <p>a) <math><mrow><mi>A</mi><mo>(</mo><mn>4</mn><mo>;</mo><mn>3</mn><mo>)</mo></mrow></math></p> <p>б) <math><mrow><mi>B</mi><mo>(</mo><mn>4</mn><mo>;</mo><mo>-</mo><mn>3</mn><mo>)</mo></mrow></math></p> <p>в) <math><mrow><mi>C</mi><mo>(</mo><mo>-</mo><mn>3</mn><mo>;</mo><mn>4</mn><mo>)</mo></mrow></math></p> <p>г) <math><mrow><mi>D</mi><mo>(</mo><mo>-</mo><mn>3</mn><mo>;</mo><mo>-</mo><mn>4</mn><mo>)</mo></mrow></math></p> </div> <div class="solution"> <p><strong>Решение:</strong></p> <p>Подставим координаты каждой точки в уравнение окружности:</p>
+text
+
+    <p>a) <math><mrow><mi>A</mi><mo>(</mo><mn>4</mn><mo>;</mo><mn>3</mn><mo>)</mo></mrow></math>:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>(</mo><mn>4</mn><mo>-</mo><mn>1</mn><msup><mo>)</mo><mn>2</mn></msup><mo>+</mo><mo>(</mo><mn>3</mn><mo>+</mo><mn>1</mn><msup><mo>)</mo><mn>2</mn></msup><mo>=</mo>
+                    <msup><mn>3</mn><mn>2</mn></msup><mo>+</mo><msup><mn>4</mn><mn>2</mn></msup><mo>=</mo>
+                    <mn>9</mn><mo>+</mo><mn>16</mn><mo>=</mo><mn>25</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p>Равенство выполняется ⇒ точка A лежит на окружности.</p>
+
+    <p>б) <math><mrow><mi>B</mi><mo>(</mo><mn>4</mn><mo>;</mo><mo>-</mo><mn>3</mn><mo>)</mo></mrow></math>:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>(</mo><mn>4</mn><mo>-</mo><mn>1</mn><msup><mo>)</mo><mn>2</mn></msup><mo>+</mo><mo>(</mo><mo>-</mo><mn>3</mn><mo>+</mo><mn>1</mn><msup><mo>)</mo><mn>2</mn></msup><mo>=</mo>
+                    <msup><mn>3</mn><mn>2</mn></msup><mo>+</mo><msup><mrow><mo>(</mo><mo>-</mo><mn>2</mn><mo>)</mo></mrow><mn>2</mn></msup><mo>=</mo>
+                    <mn>9</mn><mo>+</mo><mn>4</mn><mo>=</mo><mn>13</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p>13 ≠ 25 ⇒ точка B не лежит на окружности.</p>
+
+    <p>в) <math><mrow><mi>C</mi><mo>(</mo><mo>-</mo><mn>3</mn><mo>;</mo><mn>4</mn><mo>)</mo></mrow></math>:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>(</mo><mo>-</mo><mn>3</mn><mo>-</mo><mn>1</mn><msup><mo>)</mo><mn>2</mn></msup><mo>+</mo><mo>(</mo><mn>4</mn><mo>+</mo><mn>1</mn><msup><mo>)</mo><mn>2</mn></msup><mo>=</mo>
+                    <msup><mrow><mo>(</mo><mo>-</mo><mn>4</mn><mo>)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mn>5</mn><mn>2</mn></msup><mo>=</mo>
+                    <mn>16</mn><mo>+</mo><mn>25</mn><mo>=</mo><mn>41</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p>41 ≠ 25 ⇒ точка C не лежит на окружности.</p>
+
+    <p>г) <math><mrow><mi>D</mi><mo>(</mo><mo>-</mo><mn>3</mn><mo>;</mo><mo>-</mo><mn>4</mn><mo>)</mo></mrow></math>:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>(</mo><mo>-</mo><mn>3</mn><mo>-</mo><mn>1</mn><msup><mo>)</mo><mn>2</mn></msup><mo>+</mo><mo>(</mo><mo>-</mo><mn>4</mn><mo>+</mo><mn>1</mn><msup><mo>)</mo><mn>2</mn></msup><mo>=</mo>
+                    <msup><mrow><mo>(</mo><mo>-</mo><mn>4</mn><mo>)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo>(</mo><mo>-</mo><mn>3</mn><mo>)</mo></mrow><mn>2</mn></msup><mo>=</mo>
+                    <mn>16</mn><mo>+</mo><mn>9</mn><mo>=</mo><mn>25</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <p>Равенство выполняется ⇒ точка D лежит на окружности.</p>
+
+    <p><strong>Ответ:</strong> на окружности лежат точки A и D.</p>
+</div>
+
+</div><div class="lesson-section"> <h2>Задача 5: Уравнение окружности по центру и радиусу</h2> <div class="problem"> <p>Запишите уравнение окружности с центром в точке <math><mrow><mo>(</mo><mo>-</mo><mn>1</mn><mo>;</mo><mn>1</mn><mo>)</mo></mrow></math> и радиусом <math><mrow><msqrt><mn>2</mn></msqrt></mrow></math>.</p> </div> <div class="solution"> <p><strong>Решение:</strong></p> <div class="math-container"> <div class="math-formula"> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mo>(</mo><mi>x</mi><mo>-</mo><mo>(</mo><mo>-</mo><mn>1</mn><mo>)</mo><msup><mo>)</mo><mn>2</mn></msup><mo>+</mo><mo>(</mo><mi>y</mi><mo>-</mo><mn>1</mn><msup><mo>)</mo><mn>2</mn></msup><mo>=</mo><mo>(</mo><msqrt><mn>2</mn></msqrt><msup><mo>)</mo><mn>2</mn></msup> </mrow> </math> <br> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mo>(</mo><mi>x</mi><mo>+</mo><mn>1</mn><msup><mo>)</mo><mn>2</mn></msup><mo>+</mo><mo>(</mo><mi>y</mi><mo>-</mo><mn>1</mn><msup><mo>)</mo><mn>2</mn></msup><mo>=</mo><mn>2</mn> </mrow> </math> </div> </div> <p><strong>Ответ:</strong> <math><mrow><mo>(</mo><mi>x</mi><mo>+</mo><mn>1</mn><msup><mo>)</mo><mn>2</mn></msup><mo>+</mo><mo>(</mo><mi>y</mi><mo>-</mo><mn>1</mn><msup><mo>)</mo><mn>2</mn></msup><mo>=</mo><mn>2</mn></mrow></math></p> </div> </div><div class="lesson-section"> <h2>Задача 6: Уравнение окружности с центром в точке A и радиусом AB</h2> <div class="problem"> <p>Запишите уравнение окружности с центром в точке <math><mrow><mi>A</mi></mrow></math>, для которой отрезок <math><mrow><mi>A</mi><mi>B</mi></mrow></math> является радиусом, если <math><mrow><mi>A</mi><mo>(</mo><mn>2</mn><mo>;</mo><mn>4</mn><mo>)</mo></mrow></math>, <math><mrow><mi>B</mi><mo>(</mo><mn>5</mn><mo>;</mo><mn>7</mn><mo>)</mo></mrow></math>.</p> </div> <div class="solution"> <p><strong>Решение:</strong></p> <p>Сначала найдем длину радиуса (длину отрезка AB):</p> <div class="math-container"> <div class="math-formula"> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mi>R</mi><mo>=</mo><mo>|</mo><mi>A</mi><mi>B</mi><mo>|</mo><mo>=</mo> <msqrt> <msup><mrow><mo>(</mo><mn>5</mn><mo>-</mo><mn>2</mn><mo>)</mo></mrow><mn>2</mn></msup> <mo>+</mo> <msup><mrow><mo>(</mo><mn>7</mn><mo>-</mo><mn>4</mn><mo>)</mo></mrow><mn>2</mn></msup> </msqrt> </mrow> </math> <br> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mi>R</mi><mo>=</mo> <msqrt> <msup><mn>3</mn><mn>2</mn></msup> <mo>+</mo> <msup><mn>3</mn><mn>2</mn></msup> </msqrt> </mrow> </math> <br> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mi>R</mi><mo>=</mo> <msqrt><mn>9</mn><mo>+</mo><mn>9</mn></msqrt> <mo>=</mo> <msqrt><mn>18</mn></msqrt> <mo>=</mo> <mn>3</mn><msqrt><mn>2</mn></msqrt> </mrow> </math> </div> </div> <p>Уравнение окружности с центром в <math><mrow><mi>A</mi><mo>(</mo><mn>2</mn><mo>;</mo><mn>4</mn><mo>)</mo></mrow></math> и радиусом <math><mrow><mi>R</mi><mo>=</mo><mn>3</mn><msqrt><mn>2</mn></msqrt></mrow></math>:</p> <div class="math-container"> <div class="math-formula"> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mo>(</mo><mi>x</mi><mo>-</mo><mn>2</mn><msup><mo>)</mo><mn>2</mn></msup><mo>+</mo><mo>(</mo><mi>y</mi><mo>-</mo><mn>4</mn><msup><mo>)</mo><mn>2</mn></msup><mo>=</mo><mo>(</mo><mn>3</mn><msqrt><mn>2</mn></msqrt><msup><mo>)</mo><mn>2</mn></msup> </mrow> </math> <br> <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <mo>(</mo><mi>x</mi><mo>-</mo><mn>2</mn><msup><mo>)</mo><mn>2</mn></msup><mo>+</mo><mo>(</mo><mi>y</mi><mo>-</mo><mn>4</mn><msup><mo>)</mo><mn>2</mn></msup><mo>=</mo><mn>18</mn> </mrow> </math> </div> </div> <p><strong>Ответ:</strong> <math><mrow><mo>(</mo><mi>x</mi><mo>-</mo><mn>2</mn><msup><mo>)</mo><mn>2</mn></msup><mo>+</mo><mo>(</mo><mi>y</mi><mo>-</mo><mn>4</mn><msup><mo>)</mo><mn>2</mn></msup><mo>=</mo><mn>18</mn></mrow></math></p> </div> </div>
+<div class="footer">
+					<p>Функции. Кобрин П.С.</p>
+				</div>
+</div>
+
+
+
+		</div>
+	</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Математика - Главная страница</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #2c3e50 0%, #4a6491 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .classes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 40px 30px;
+        }
+
+        .class-card {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid #eaeaea;
+        }
+
+        .class-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .class-header {
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .class-7 { background-color: #3498db; }
+        .class-8 { background-color: #2ecc71; }
+        .class-9 { background-color: #9b59b6; }
+        .class-10 { background-color: #e74c3c; }
+        .class-11 { background-color: #f39c12; }
+
+        .file-list {
+            padding: 20px;
+        }
+
+        .file-item {
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            background-color: white;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: all 0.2s ease;
+        }
+
+        .file-item:hover {
+            background-color: #eef7ff;
+            transform: translateX(5px);
+        }
+
+        .file-item a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            display: block;
+        }
+
+        .file-item a:hover {
+            color: #3498db;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            background-color: #f8f9fa;
+            color: #7f8c8d;
+            border-top: 1px solid #eee;
+        }
+
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .classes-container {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        .note {
+            background-color: #fffde7;
+            padding: 15px;
+            margin: 0 30px 30px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .note p {
+            margin: 0;
+            color: #8a6d3b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Математика</h1>
+            <p class="subtitle">Учебные материалы по математике для 7-11 классов</p>
+        </header>
+
+        <div class="note">
+            <p>💡 Нажмите на любой файл для перехода к учебному материалу. Все ссылки работают относительно текущего местоположения.</p>
+        </div>
+
+        <div class="classes-container">
+            <!-- 7 класс -->
+            <div class="class-card">
+                <div class="class-header class-7">7 класс</div>
+                <div class="file-list">
+                    <div class="file-item">
+                        <a href="7 класс/Лин_Уравн_Нер.html">Линейные уравнения и неравенства</a>
+                    </div>
+                    <div class="file-item">
+                        <a href="7 класс/Одночлены_Многочлены.html">Одночлены и многочлены</a>
+                    </div>
+                    <div class="file-item">
+                        <a href="7 класс/Сист_Лин_Уравн.html">Системы линейных уравнений</a>
+                    </div>
+                    <div class="file-item">
+                        <a href="7 класс/Сист_Совокуп_Лин_Нер.html">Системы и совокупности линейных неравенств</a>
+                    </div>
+                    <div class="file-item">
+                        <a href="7 класс/Степени.html">Степени</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8 класс -->
+            <div class="class-card">
+                <div class="class-header class-8">8 класс</div>
+                <div class="file-list">
+                    <div class="file-item">
+                        <a href="8 класс/index.html">Главная страница 8 класса</a>
+                    </div>
+                    <div class="file-item">
+                        <a href="8 класс/123.html">123</a>
+                    </div>
+                    <div class="file-item">
+                        <a href="8 класс/Квадратные_Корни.html">Квадратные корни</a>
+                    </div>
+                    <div class="file-item">
+                        <a href="8 класс/Квадратные_Уравнения.html">Квадратные уравнения</a>
+                    </div>
+                    <div class="file-item">
+                        <a href="8 класс/Функции_Pasные.html">Разные функции</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9 класс -->
+            <div class="class-card">
+                <div class="class-header class-9">9 класс</div>
+                <div class="file-list">
+                    <div class="file-item">
+                        <a href="9 класс/Арифметическая_Геометрическая_Прогрессии.html">Арифметическая и геометрическая прогрессии</a>
+                    </div>
+                    <div class="file-item">
+                        <a href="9 класс/Дробно-Рациональные-Неравенства.html">Дробно-рациональные неравенства</a>
+                    </div>
+                    <div class="file-item">
+                        <a href="9 класс/Дробно_РАциональные_Уравнения.html">Дробно-рациональные уравнения</a>
+                    </div>
+                    <div class="file-item">
+                        <a href="9 класс/Отрезок_Окружность.html">Отрезок и окружность</a>
+                    </div>
+                    <div class="file-item">
+                        <a href="9 класс/Рациональная_Дробь.html">Рациональная дробь</a>
+                    </div>
+                    <div class="file-item">
+                        <a href="9 класс/Системы_Нелинейных_Уравнений.html">Системы нелинейных уравнений</a>
+                    </div>
+                    <div class="file-item">
+                        <a href="9 класс/Функции.html">Функции</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10 класс -->
+            <div class="class-card">
+                <div class="class-header class-10">10 класс</div>
+                <div class="file-list">
+                    <div class="file-item">
+                        <a href="10 класс/Корень n-ой степени.html">Корень n-ой степени</a>
+                    </div>
+                    <div class="file-item">
+                        <a href="10 класс/Производная.html">Производная</a>
+                    </div>
+                    <div class="file-item">
+                        <a href="10 класс/Тригонометрия.html">Тригонометрия</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 11 класс -->
+            <div class="class-card">
+                <div class="class-header class-11">11 класс</div>
+                <div class="file-list">
+                    <div class="file-item">
+                        <a href="11 класс/Обобщенное понятие степени.html">Обобщенное понятие степени</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Математика • Учебные материалы • Относительная навигация</p>
+            <p>Все ссылки работают относительно текущего расположения файлов в проекте</p>
+            <p>Структура проекта основана на организации по классам: 7 класс, 8 класс, 9 класс, 10 класс, 11 класс</p>
+        </div>
+    </div>
+</body>
+</html>

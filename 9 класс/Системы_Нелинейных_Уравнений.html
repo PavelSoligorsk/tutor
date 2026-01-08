@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>Системы нелинейных уравнений</title>
+				<style>
+        * {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f9ff;
+    color: #333;
+    line-height: 1.6;
+    font-size: 16px; /* Базовый размер шрифта */
+}
+
+.container {
+    max-width: 2000px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 150, 0.1);
+    padding: 30px;
+}
+
+.image-container {
+    text-align: center;
+    margin: 1rem auto;
+    padding: 0.8rem;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    max-width: min(600px, 50vw); /* Ограничение: максимум 600px или половина экрана */
+    width: fit-content; /* Подстраивается под содержимое */
+}
+
+.function-image {
+    max-width: 100%;
+    max-height: min(400px, 50vh); /* Ограничение по высоте */
+    height: auto;
+    width: auto;
+    object-fit: contain;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .image-container {
+        max-width: min(500px, 60vw);
+    }
+
+    .function-image {
+        max-height: min(350px, 45vh);
+    }
+}
+
+@media (max-width: 768px) {
+    .image-container {
+        max-width: min(400px, 80vw);
+        padding: 0.6rem;
+        margin: 0.8rem auto;
+    }
+
+    .function-image {
+        max-height: min(300px, 40vh);
+    }
+}
+
+@media (max-width: 480px) {
+    .image-container {
+        max-width: 95vw; /* Практически на всю ширину */
+        margin: 0.6rem auto;
+        padding: 0.5rem;
+    }
+
+    .function-image {
+        max-height: min(250px, 35vh);
+    }
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 15px;
+    margin-top: 0;
+    font-size: 1.8em; /* Главный заголовок */
+}
+
+h2 {
+    color: #2980b9;
+    margin-top: 30px;
+    font-size: 1.4em; /* Второстепенные заголовки */
+}
+
+.lesson-section {
+    background-color: #f8fafd;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 25px 0;
+    border-left: 5px solid #3498db;
+}
+
+.definition {
+    background-color: #e8f4fc;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-size: 1em; /* Обычный размер шрифта */
+}
+
+.example {
+    background-color: #f0f7ff;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-left: 4px solid #2ecc71;
+    font-size: 1em; /* Обычный размер шрифта */
+}
+
+.example-title {
+    font-weight: bold;
+    color: #27ae60;
+    margin-bottom: 10px;
+    font-size: 1.1em; /* Чуть больше обычного для заголовков примеров */
+}
+
+.hard-example {
+    border-left-color: #e74c3c;
+}
+
+.hard-example .example-title {
+    color: #e74c3c;
+}
+
+.math-container {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin: 15px 0;
+    overflow-x: auto;
+}
+
+.math-formula {
+    font-size: 1.1em; /* Чуть больше для формул */
+    text-align: center;
+    padding: 10px;
+}
+
+.explanation {
+    background-color: #fffde7;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    font-style: italic;
+    font-size: 1em; /* Обычный размер шрифта */
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em; /* Обычный размер шрифта */
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+.lesson-number {
+    background-color: #3498db;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 0.9em; /* Немного меньше для меток */
+}
+
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #7f8c8d;
+    font-size: 0.9em; /* Меньше для подвала */
+}
+    </style>
+			</head>
+			<body>
+				<div class="container">
+
+					<h1>Системы нелинейных уравнений</h1>
+					<div class="lesson-section"> <h2>Что такое система уравнений и ее решение</h2> <div class="definition"> <p><strong>Система уравнений</strong> — это набор двух или более уравнений, которые рассматриваются одновременно.</p> <p><strong>Решение системы уравнений</strong> — это упорядоченная пара чисел (x; y), которая удовлетворяет всем уравнениям системы одновременно.</p> <p>Геометрически решение системы представляет собой <strong>точку пересечения графиков</strong> уравнений, входящих в систему.</p> </div> </div><div class="lesson-section"> <h2>Метод подстановки</h2> <div class="definition"> <p><strong>Метод подстановки</strong> — метод решения систем уравнений, при котором из одного уравнения выражают одну переменную через другую и подставляют это выражение в другое уравнение.</p> </div>
+<div class="problem">
+    <h3>Пример: Решение системы методом подстановки</h3>
+    <p>Решите систему уравнений:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mrow>
+                        <mo>{</mo>
+                        <mtable columnalign="left">
+                            <mtr>
+                                <mtd><mi>x</mi><mo>+</mo><mi>y</mi><mo>=</mo><mn>3</mn></mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>9</mn></mtd>
+                            </mtr>
+                        </mtable>
+                    </mrow>
+                </mrow>
+            </math>
+        </div>
+    </div>
+</div>
+
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <p>1. Выразим x из первого уравнения:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>x</mi><mo>=</mo><mn>3</mn><mo>-</mo><mi>y</mi>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>2. Подставим это выражение во второе уравнение:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msup><mrow><mo>(</mo><mn>3</mn><mo>-</mo><mi>y</mi><mo>)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>9</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>3. Раскроем скобки и упростим:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>9</mn><mo>-</mo><mn>6</mn><mi>y</mi><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>9</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>2</mn><msup><mi>y</mi><mn>2</mn></msup><mo>-</mo><mn>6</mn><mi>y</mi><mo>=</mo><mn>0</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>2</mn><mi>y</mi><mo>(</mo><mi>y</mi><mo>-</mo><mn>3</mn><mo>)</mo><mo>=</mo><mn>0</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>4. Решим полученное уравнение:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>y</mi><mo>=</mo><mn>0</mn><mspace width="2em"/><mtext>или</mtext><mspace width="2em"/><mi>y</mi><mo>=</mo><mn>3</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>5. Найдем соответствующие значения x:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mtext>При&ensp;</mtext><mi>y</mi><mo>=</mo><mn>0</mn><mo>:</mo><mspace width="1em"/><mi>x</mi><mo>=</mo><mn>3</mn><mo>-</mo><mn>0</mn><mo>=</mo><mn>3</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mtext>При&ensp;</mtext><mi>y</mi><mo>=</mo><mn>3</mn><mo>:</mo><mspace width="1em"/><mi>x</mi><mo>=</mo><mn>3</mn><mo>-</mo><mn>3</mn><mo>=</mo><mn>0</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p><strong>Ответ:</strong> (3; 0) и (0; 3)</p>
+</div>
+
+</div><div class="lesson-section"> <h2>Метод сложения</h2> <div class="definition"> <p><strong>Метод сложения (исключения)</strong> — метод решения систем уравнений, при котором уравнения системы складывают или вычитают таким образом, чтобы исключить одну из переменных.</p> </div>
+
+<div class="problem">
+    <h3>Пример: Решение системы методом сложения</h3>
+    <p>Решите систему уравнений:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mrow>
+                        <mo>{</mo>
+                        <mtable columnalign="left">
+                            <mtr>
+                                <mtd><msup><mi>y</mi><mn>2</mn></msup><mo>+</mo><mi>x</mi><mi>y</mi><mo>=</mo><mo>-</mo><mn>10</mn></mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd><mn>5</mn><mi>y</mi><mo>-</mo><mn>2</mn><mi>x</mi><mi>y</mi><mo>=</mo><mn>17</mn></mtd>
+                            </mtr>
+                        </mtable>
+                    </mrow>
+                </mrow>
+            </math>
+        </div>
+    </div>
+</div>
+
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <p>1. Перепишем систему:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mrow>
+                        <mo>{</mo>
+                        <mtable columnalign="left">
+                            <mtr>
+                                <mtd><mi>x</mi><mi>y</mi><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mo>-</mo><mn>10</mn></mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd><mo>-</mo><mn>2</mn><mi>x</mi><mi>y</mi><mo>+</mo><mn>5</mn><mi>y</mi><mo>=</mo><mn>17</mn></mtd>
+                            </mtr>
+                        </mtable>
+                    </mrow>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>2. Умножим первое уравнение на 2:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>2</mn><mi>x</mi><mi>y</mi><mo>+</mo><mn>2</mn><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mo>-</mo><mn>20</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>3. Сложим полученное уравнение со вторым уравнением системы:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>(</mo><mn>2</mn><mi>x</mi><mi>y</mi><mo>+</mo><mn>2</mn><msup><mi>y</mi><mn>2</mn></msup><mo>)</mo><mo>+</mo><mo>(</mo><mo>-</mo><mn>2</mn><mi>x</mi><mi>y</mi><mo>+</mo><mn>5</mn><mi>y</mi><mo>)</mo><mo>=</mo><mo>-</mo><mn>20</mn><mo>+</mo><mn>17</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>2</mn><msup><mi>y</mi><mn>2</mn></msup><mo>+</mo><mn>5</mn><mi>y</mi><mo>=</mo><mo>-</mo><mn>3</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>4. Решим полученное квадратное уравнение:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>2</mn><msup><mi>y</mi><mn>2</mn></msup><mo>+</mo><mn>5</mn><mi>y</mi><mo>+</mo><mn>3</mn><mo>=</mo><mn>0</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>D</mi><mo>=</mo><msup><mn>5</mn><mn>2</mn></msup><mo>-</mo><mn>4</mn><mo>·</mo><mn>2</mn><mo>·</mo><mn>3</mn><mo>=</mo><mn>25</mn><mo>-</mo><mn>24</mn><mo>=</mo><mn>1</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>y</mi><mn>1</mn></msub><mo>=</mo><mfrac><mrow><mo>-</mo><mn>5</mn><mo>+</mo><mn>1</mn></mrow><mrow><mn>2</mn><mo>·</mo><mn>2</mn></mrow></mfrac><mo>=</mo><mfrac><mrow><mo>-</mo><mn>4</mn></mrow><mn>4</mn></mfrac><mo>=</mo><mo>-</mo><mn>1</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>y</mi><mn>2</mn></msub><mo>=</mo><mfrac><mrow><mo>-</mo><mn>5</mn><mo>-</mo><mn>1</mn></mrow><mrow><mn>2</mn><mo>·</mo><mn>2</mn></mrow></mfrac><mo>=</mo><mfrac><mrow><mo>-</mo><mn>6</mn></mrow><mn>4</mn></mfrac><mo>=</mo><mo>-</mo><mfrac><mn>3</mn><mn>2</mn></mfrac><mo>=</mo><mo>-</mo><mn>1</mn><mo>,</mo><mn>5</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>5. Найдем соответствующие значения x из первого уравнения системы:</p>
+    <p>При y = -1:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>x</mi><mo>·</mo><mo>(</mo><mo>-</mo><mn>1</mn><mo>)</mo><mo>+</mo><msup><mrow><mo>(</mo><mo>-</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup><mo>=</mo><mo>-</mo><mn>10</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>-</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo>=</mo><mo>-</mo><mn>10</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>x</mi><mo>=</mo><mn>11</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>При y = -3/2:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>x</mi><mo>·</mo><mrow><mo>(</mo><mo>-</mo><mfrac><mn>3</mn><mn>2</mn></mfrac><mo>)</mo></mrow><mo>+</mo><msup><mrow><mo>(</mo><mo>-</mo><mfrac><mn>3</mn><mn>2</mn></mfrac><mo>)</mo></mrow><mn>2</mn></msup><mo>=</mo><mo>-</mo><mn>10</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>-</mo><mfrac><mrow><mn>3</mn><mi>x</mi></mrow><mn>2</mn></mfrac><mo>+</mo><mfrac><mn>9</mn><mn>4</mn></mfrac><mo>=</mo><mo>-</mo><mn>10</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>-</mo><mfrac><mrow><mn>3</mn><mi>x</mi></mrow><mn>2</mn></mfrac><mo>=</mo><mo>-</mo><mn>10</mn><mo>-</mo><mfrac><mn>9</mn><mn>4</mn></mfrac><mo>=</mo><mo>-</mo><mfrac><mn>49</mn><mn>4</mn></mfrac>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>x</mi><mo>=</mo><mfrac><mn>49</mn><mn>6</mn></mfrac>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p><strong>Ответ:</strong> (11; -1) и (49/6; -3/2)</p>
+</div>
+
+</div><div class="lesson-section"> <h2>Графический метод</h2> <div class="definition"> <p><strong>Графический метод</strong> — метод решения систем уравнений, при котором строят графики уравнений, входящих в систему, и находят точки их пересечения.</p> </div>
+
+<div class="problem">
+    <h3>Пример: Решение системы графическим методом</h3>
+    <p>Решите графически систему уравнений:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mrow>
+                        <mo>{</mo>
+                        <mtable columnalign="left">
+                            <mtr>
+                                <mtd><mi>y</mi><mo>-</mo><mi>x</mi><mo>-</mo><mn>2</mn><mo>=</mo><mn>0</mn></mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd><mi>y</mi><mo>-</mo><msup><mrow><mo>(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup><mo>=</mo><mo>-</mo><mn>1</mn></mtd>
+                            </mtr>
+                        </mtable>
+                    </mrow>
+                </mrow>
+            </math>
+        </div>
+    </div>
+</div>
+
+<div class="solution">
+    <p><strong>Решение:</strong></p>
+    <p>1. Преобразуем уравнения к виду, удобному для построения графиков:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>y</mi><mo>=</mo><mi>x</mi><mo>+</mo><mn>2</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>y</mi><mo>=</mo><msup><mrow><mo>(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup><mo>-</mo><mn>1</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>2. Построим графики:</p>
+    <ul>
+        <li>Прямая y = x + 2 — линейная функция, проходящая через точки (0; 2) и (-2; 0)</li>
+        <li>Парабола y = (x + 1)² - 1 — парабола, ветви вверх, вершина в точке (-1; -1)</li>
+    </ul>
+
+    <div class="image-container">
+        <img src="https://i.postimg.cc/t7QYpz3R/изображение.png" class="function-image" alt="Графическое решение системы уравнений">
+    </div>
+
+    <p>3. На графике видно две точки пересечения:</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>A</mi><mo>(</mo><mo>-</mo><mn>2</mn><mo>;</mo><mn>0</mn><mo>)</mo><mspace width="2em"/><mtext>и</mtext><mspace width="2em"/><mi>B</mi><mo>(</mo><mn>1</mn><mo>;</mo><mn>3</mn><mo>)</mo>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>4. Проверим решение аналитически:</p>
+    <p>Для точки A(-2; 0):</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>0</mn><mo>-</mo><mo>(</mo><mo>-</mo><mn>2</mn><mo>)</mo><mo>-</mo><mn>2</mn><mo>=</mo><mn>0</mn><mo>+</mo><mn>2</mn><mo>-</mo><mn>2</mn><mo>=</mo><mn>0</mn><mo>✓</mo>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>0</mn><mo>-</mo><msup><mrow><mo>(</mo><mo>-</mo><mn>2</mn><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup><mo>=</mo><mn>0</mn><mo>-</mo><msup><mrow><mo>(</mo><mo>-</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup><mo>=</mo><mn>0</mn><mo>-</mo><mn>1</mn><mo>=</mo><mo>-</mo><mn>1</mn><mo>✓</mo>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>Для точки B(1; 3):</p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>3</mn><mo>-</mo><mn>1</mn><mo>-</mo><mn>2</mn><mo>=</mo><mn>3</mn><mo>-</mo><mn>3</mn><mo>=</mo><mn>0</mn><mo>✓</mo>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>3</mn><mo>-</mo><msup><mrow><mo>(</mo><mn>1</mn><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup><mo>=</mo><mn>3</mn><mo>-</mo><msup><mn>2</mn><mn>2</mn></msup><mo>=</mo><mn>3</mn><mo>-</mo><mn>4</mn><mo>=</mo><mo>-</mo><mn>1</mn><mo>✓</mo>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p><strong>Ответ:</strong> (-2; 0) и (1; 3)</p>
+</div>
+
+</div><div class="lesson-section"> <h2>Сравнение методов решения систем уравнений</h2> <div class="comparison-table"> <table> <thead> <tr> <th>Метод</th> <th>Преимущества</th> <th>Недостатки</th> <th>Когда применять</th> </tr> </thead> <tbody> <tr> <td><strong>Подстановки</strong></td> <td>Простой и понятный<br>Всегда применим</td> <td>Может приводить к сложным вычислениям</td> <td>Когда легко выразить одну переменную через другую</td> </tr> <tr> <td><strong>Сложения</strong></td> <td>Удобен при наличии одинаковых коэффициентов<br>Позволяет избежать дробей</td> <td>Не всегда применим напрямую</td> <td>Когда коэффициенты при переменных кратны друг другу</td> </tr> <tr> <td><strong>Графический</strong></td> <td>Наглядность<br>Позволяет видеть количество решений</td> <td>Неточность при приближенном построении<br>Трудоемкость</td> <td>Для проверки решений, полученных аналитически</td> </tr> </tbody> </table> </div> </div>
+</div>
+
+
+
+	</body>
+</html>
+
+

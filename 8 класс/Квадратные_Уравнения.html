@@ -1,0 +1,4734 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>Квадратные уравнения</title>
+				<style>
+   * {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 8px 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    z-index: 999;
+    width: 90%;
+    max-width: 300px;
+}
+
+.bottom-nav select {
+    width: 100%;
+    font-size: 16px;
+    padding: 8px;
+    cursor: pointer;
+    border: 1px solid #3498db;
+    border-radius: 6px;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f9ff;
+    color: #333;
+    line-height: 1.6;
+    font-size: 16px;
+    /* Базовый размер шрифта */
+}
+
+.container {
+    max-width: 2000px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 150, 0.1);
+    padding: 30px;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 15px;
+    margin-top: 0;
+    font-size: 1.8em;
+    /* Главный заголовок */
+}
+
+h2 {
+    color: #2980b9;
+    margin-top: 30px;
+    font-size: 1.4em;
+    /* Второстепенные заголовки */
+}
+
+.lesson-section {
+    background-color: #f8fafd;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 25px 0;
+    border-left: 5px solid #3498db;
+}
+
+.definition {
+    background-color: #e8f4fc;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-size: 1em;
+    /* Обычный размер шрифта */
+}
+
+.example {
+    background-color: #f0f7ff;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-left: 4px solid #2ecc71;
+    font-size: 1em;
+    /* Обычный размер шрифта */
+}
+
+.example-title {
+    font-weight: bold;
+    color: #27ae60;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    /* Чуть больше обычного для заголовков примеров */
+}
+
+.hard-example {
+    border-left-color: #e74c3c;
+}
+
+.hard-example .example-title {
+    color: #e74c3c;
+}
+
+.math-container {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin: 15px 0;
+    overflow-x: auto;
+}
+
+.math-formula {
+    font-size: 1.1em;
+    /* Чуть больше для формул */
+    text-align: center;
+    padding: 10px;
+}
+
+.explanation {
+    background-color: #fffde7;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    font-style: italic;
+    font-size: 1em;
+    /* Обычный размер шрифта */
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    /* Обычный размер шрифта */
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+.lesson-number {
+    background-color: #3498db;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    /* Немного меньше для меток */
+}
+
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #7f8c8d;
+    font-size: 0.9em;
+    /* Меньше для подвала */
+}
+
+/* АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    .container {
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+        padding-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 1.3em;
+        margin-top: 20px;
+    }
+
+    .lesson-section {
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    .definition,
+    .example {
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    .example-title {
+        font-size: 1em;
+    }
+
+    .math-container {
+        padding: 12px;
+        margin: 12px 0;
+    }
+
+    .math-formula {
+        font-size: 1em;
+        padding: 8px;
+    }
+
+    .explanation {
+        padding: 12px;
+        margin: 12px 0;
+        font-size: 0.95em;
+    }
+
+    .navigation {
+        margin-top: 20px;
+        padding-top: 15px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 0.95em;
+        width: 100%;
+    }
+
+    .lesson-number {
+        font-size: 0.85em;
+        padding: 4px 12px;
+    }
+
+    .footer {
+        margin-top: 20px;
+        font-size: 0.85em;
+    }
+
+    .bottom-nav {
+        bottom: 5px;
+        padding: 6px 10px;
+    }
+
+    .bottom-nav select {
+        font-size: 14px;
+        padding: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    h1 {
+        font-size: 1.3em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    .lesson-section {
+        padding: 12px;
+        margin: 10px 0;
+    }
+
+    .definition,
+    .example {
+        padding: 12px;
+        margin: 10px 0;
+    }
+
+    .example-title {
+        font-size: 0.95em;
+    }
+
+    .math-container {
+        padding: 10px;
+        margin: 10px 0;
+    }
+
+    .math-formula {
+        font-size: 0.95em;
+        padding: 6px;
+    }
+
+    .explanation {
+        padding: 10px;
+        margin: 10px 0;
+        font-size: 0.9em;
+    }
+
+    .navigation {
+        margin-top: 15px;
+        padding-top: 12px;
+    }
+
+    button {
+        padding: 8px 16px;
+        font-size: 0.9em;
+    }
+
+    .lesson-number {
+        font-size: 0.8em;
+        padding: 3px 10px;
+    }
+
+    .footer {
+        margin-top: 15px;
+        font-size: 0.8em;
+    }
+
+    .bottom-nav {
+        bottom: 3px;
+        padding: 5px 8px;
+        width: 95%;
+    }
+
+    .bottom-nav select {
+        font-size: 13px;
+        padding: 5px;
+    }
+}
+  </style>
+			</head>
+			<body>
+				<div class="container">
+					<h1 id="1">Введение в квадратные уравнения. Неполные квадратные уравнения</h1>
+					<div class="lesson-section">
+						<h2>Что такое квадратное уравнение?</h2>
+						<div class="definition">
+							<p>
+								<strong>Квадратным уравнением</strong> называется уравнение вида:
+
+							</p>
+							<div class="math-container">
+								<div class="math-formula">
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>a</mi>
+											<msup>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msup>
+											<mo>+</mo>
+											<mi>b</mi>
+											<mi>x</mi>
+											<mo>+</mo>
+											<mi>c</mi>
+											<mo>=</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>
+								</div>
+							</div>
+							<p>где:</p>
+							<ul>
+								<li>
+									<strong>x</strong> — переменная (неизвестное)
+
+								</li>
+								<li>
+									<strong>a, b, c</strong> — некоторые числа (
+
+									<strong>коэффициенты</strong>)
+
+								</li>
+								<li>
+									<strong>a ≠ 0</strong> (если a = 0, уравнение становится линейным)
+
+								</li>
+							</ul>
+							<div class="explanation">
+								<p>
+									<strong>Пояснение:</strong> Квадратное уравнение называется так потому, что наивысшая степень переменной x — вторая (x²). Число
+
+									<strong>a</strong> называется
+
+									<em>первым коэффициентом</em> или
+
+									<em>коэффициентом при x²</em>, число
+
+									<strong>b</strong> —
+
+									<em>вторым коэффициентом</em> или
+
+									<em>коэффициентом при x</em>, а число
+
+									<strong>c</strong> —
+
+									<em>свободным членом</em>.
+
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="lesson-section">
+						<h2>Неполные квадратные уравнения</h2>
+						<div class="definition">
+							<p>
+								<strong>Неполным квадратным уравнением</strong> называется квадратное уравнение, в котором один или два коэффициента (кроме
+
+								<em>a</em>) равны нулю.
+
+							</p>
+							<p>Существует три вида неполных квадратных уравнений:</p>
+							<div class="example">
+								<div class="example-title">Вид 1: Уравнение без свободного члена (c = 0)</div>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>a</mi>
+												<msup>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>+</mo>
+												<mi>b</mi>
+												<mi>x</mi>
+												<mo>=</mo>
+												<mn>0</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>где
+
+									<strong>a ≠ 0</strong> и
+
+									<strong>b ≠ 0</strong>.
+
+								</p>
+							</div>
+							<div class="example">
+								<div class="example-title">Вид 2: Уравнение без линейного члена (b = 0)</div>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>a</mi>
+												<msup>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>+</mo>
+												<mi>c</mi>
+												<mo>=</mo>
+												<mn>0</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>где
+
+									<strong>a ≠ 0</strong> и
+
+									<strong>c ≠ 0</strong>.
+
+								</p>
+							</div>
+							<div class="example">
+								<div class="example-title">Вид 3: Уравнение только с квадратом переменной</div>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>a</mi>
+												<msup>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>=</mo>
+												<mn>0</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>где
+
+									<strong>a ≠ 0</strong> (b = 0 и c = 0).
+
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="lesson-section">
+						<h2>Решение неполных квадратных уравнений</h2>
+						<div class="example">
+							<div class="example-title">Пример 1: Решение уравнения вида ax² = 0</div>
+							<p>Решите уравнение:
+
+
+								<math
+									xmlns="http://www.w3.org/1998/Math/MathML">
+									<mrow>
+										<mo>−</mo>
+										<mn>2</mn>
+										<msup>
+											<mi>x</mi>
+											<mn>2</mn>
+										</msup>
+										<mo>=</mo>
+										<mn>0</mn>
+									</mrow>
+								</math>
+							</p>
+							<div class="solution">
+								<p>
+									<strong>Решение:</strong>
+								</p>
+								<p>1. Разделим обе части уравнения на -2:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mfrac>
+													<mrow>
+														<mo>−</mo>
+														<mn>2</mn>
+														<msup>
+															<mi>x</mi>
+															<mn>2</mn>
+														</msup>
+													</mrow>
+													<mrow>
+														<mo>−</mo>
+														<mn>2</mn>
+													</mrow>
+												</mfrac>
+												<mo>=</mo>
+												<mfrac>
+													<mn>0</mn>
+													<mrow>
+														<mo>−</mo>
+														<mn>2</mn>
+													</mrow>
+												</mfrac>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>2. Упрощаем:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msup>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>=</mo>
+												<mn>0</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>3. Извлекаем квадратный корень:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>x</mi>
+												<mo>=</mo>
+												<mn>0</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>
+									<strong>Ответ:</strong>
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>x</mi>
+											<mo>=</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>
+								</p>
+							</div>
+						</div>
+						<div class="example">
+							<div class="example-title">Пример 2: Решение уравнения вида ax² + bx = 0</div>
+							<p>Решите уравнение:
+
+
+								<math
+									xmlns="http://www.w3.org/1998/Math/MathML">
+									<mrow>
+										<mn>5</mn>
+										<msup>
+											<mi>x</mi>
+											<mn>2</mn>
+										</msup>
+										<mo>+</mo>
+										<mn>2</mn>
+										<mi>x</mi>
+										<mo>=</mo>
+										<mn>0</mn>
+									</mrow>
+								</math>
+							</p>
+							<div class="solution">
+								<p>
+									<strong>Решение:</strong>
+								</p>
+								<p>1. Вынесем общий множитель x за скобки:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>x</mi>
+												<mo>(</mo>
+												<mn>5</mn>
+												<mi>x</mi>
+												<mo>+</mo>
+												<mn>2</mn>
+												<mo>)</mo>
+												<mo>=</mo>
+												<mn>0</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>2. Произведение равно нулю, когда хотя бы один из множителей равен нулю:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>x</mi>
+												<mo>=</mo>
+												<mn>0</mn>
+												<mtext>&#160;или&#160;</mtext>
+												<mn>5</mn>
+												<mi>x</mi>
+												<mo>+</mo>
+												<mn>2</mn>
+												<mo>=</mo>
+												<mn>0</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>3. Решаем второе уравнение:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mn>5</mn>
+												<mi>x</mi>
+												<mo>=</mo>
+												<mo>−</mo>
+												<mn>2</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>x</mi>
+												<mo>=</mo>
+												<mo>−</mo>
+												<mfrac>
+													<mn>2</mn>
+													<mn>5</mn>
+												</mfrac>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>
+									<strong>Ответ:</strong>
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msub>
+												<mi>x</mi>
+												<mn>1</mn>
+											</msub>
+											<mo>=</mo>
+											<mn>0</mn>
+											<mo>,</mo>
+											<mtext>&#160;</mtext>
+											<msub>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msub>
+											<mo>=</mo>
+											<mo>−</mo>
+											<mfrac>
+												<mn>2</mn>
+												<mn>5</mn>
+											</mfrac>
+										</mrow>
+									</math>
+								</p>
+							</div>
+						</div>
+						<div class="example">
+							<div class="example-title">Пример 3: Решение уравнения вида ax² + c = 0 (с > 0)</div>
+							<p>Решите уравнение:
+
+
+								<math
+									xmlns="http://www.w3.org/1998/Math/MathML">
+									<mrow>
+										<msup>
+											<mi>x</mi>
+											<mn>2</mn>
+										</msup>
+										<mo>−</mo>
+										<mn>3</mn>
+										<mo>=</mo>
+										<mn>0</mn>
+									</mrow>
+								</math>
+							</p>
+							<div class="solution">
+								<p>
+									<strong>Решение:</strong>
+								</p>
+								<p>1. Перенесём свободный член в правую часть:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msup>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>=</mo>
+												<mn>3</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>2. Извлечём квадратный корень из обеих частей:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>x</mi>
+												<mo>=</mo>
+												<mo>±</mo>
+												<msqrt>
+													<mn>3</mn>
+												</msqrt>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>
+									<strong>Ответ:</strong>
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>x</mi>
+											<mo>=</mo>
+											<mo>±</mo>
+											<msqrt>
+												<mn>3</mn>
+											</msqrt>
+										</mrow>
+									</math>
+								</p>
+							</div>
+						</div>
+						<div class="example hard-example">
+							<div class="example-title">Пример 4: Решение уравнения вида ax² + c = 0 (c
+          < 0, a < 0)
+
+							</div>
+							<p>Решите уравнение:
+
+
+								<math
+									xmlns="http://www.w3.org/1998/Math/MathML">
+									<mrow>
+										<mo>−</mo>
+										<msup>
+											<mi>x</mi>
+											<mn>2</mn>
+										</msup>
+										<mo>−</mo>
+										<mn>1</mn>
+										<mo>=</mo>
+										<mn>0</mn>
+									</mrow>
+								</math>
+							</p>
+							<div class="solution">
+								<p>
+									<strong>Решение:</strong>
+								</p>
+								<p>1. Перенесём свободный член в правую часть:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mo>−</mo>
+												<msup>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>=</mo>
+												<mn>1</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>2. Разделим обе части на -1:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msup>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>=</mo>
+												<mo>−</mo>
+												<mn>1</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>3. Квадрат действительного числа не может быть отрицательным</p>
+								<p>
+									<strong>Ответ:</strong> уравнение не имеет действительных корней
+
+								</p>
+							</div>
+						</div>
+					</div>
+					<h1 id="2">Решение полных квадратных уравнений.</h1>
+					<div class="lesson-section">
+						<h2>Что такое полное квадратное уравнение?</h2>
+						<div class="definition">
+							<p>
+								<strong>Полным квадратным уравнением</strong> называется уравнение вида:
+
+							</p>
+							<div class="math-container">
+								<div class="math-formula">
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>a</mi>
+											<msup>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msup>
+											<mo>+</mo>
+											<mi>b</mi>
+											<mi>x</mi>
+											<mo>+</mo>
+											<mi>c</mi>
+											<mo>=</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>
+								</div>
+							</div>
+							<p>где:</p>
+							<ul>
+								<li>
+									<strong>a, b, c</strong> — коэффициенты, причём
+
+									<strong>a ≠ 0</strong>
+								</li>
+								<li>Все три коэффициента отличны от нуля:
+
+									<strong>a ≠ 0, b ≠ 0, c ≠ 0</strong>
+								</li>
+							</ul>
+							<div class="explanation">
+								<p>
+									<strong>Пояснение:</strong> В отличие от неполных квадратных уравнений, в полных квадратных уравнениях присутствуют все три члена: квадратичный член (ax²), линейный член (bx) и свободный член (c).
+
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="lesson-section">
+						<h2>Дискриминант квадратного уравнения</h2>
+						<div class="definition">
+							<p>
+								<strong>Дискриминантом</strong> квадратного уравнения называется выражение:
+
+							</p>
+							<div class="math-container">
+								<div class="math-formula">
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>D</mi>
+											<mo>=</mo>
+											<msup>
+												<mi>b</mi>
+												<mn>2</mn>
+											</msup>
+											<mo>−</mo>
+											<mn>4</mn>
+											<mi>a</mi>
+											<mi>c</mi>
+										</mrow>
+									</math>
+								</div>
+							</div>
+							<p>Дискриминант (от латинского "discriminare" — различать) определяет количество и тип корней квадратного уравнения.</p>
+							<div class="example">
+								<div class="example-title">Правило определения корней по дискриминанту</div>
+								<table class="discriminant-table">
+									<tr>
+										<th>Дискриминант D</th>
+										<th>Количество корней</th>
+										<th>Тип корней</th>
+									</tr>
+									<tr>
+										<td>
+											<strong>D > 0</strong>
+										</td>
+										<td>Два различных корня</td>
+										<td>Действительные, различные</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>D = 0</strong>
+										</td>
+										<td>Один корень (два одинаковых)</td>
+										<td>Действительные, равные</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>D < 0
+
+											</strong>
+										</td>
+										<td>Нет действительных корней</td>
+										<td>Комплексные (в школьном курсе — "нет корней")</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="lesson-section">
+						<h2>Формула корней квадратного уравнения</h2>
+						<div class="definition">
+							<p>
+								<strong>Формула для нахождения корней квадратного уравнения:</strong>
+							</p>
+							<div class="math-container">
+								<div class="math-formula">
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msub>
+												<mi>x</mi>
+												<mn>1,2</mn>
+											</msub>
+											<mo>=</mo>
+											<mfrac>
+												<mrow>
+													<mo>−</mo>
+													<mi>b</mi>
+													<mo>±</mo>
+													<msqrt>
+														<mi>D</mi>
+													</msqrt>
+												</mrow>
+												<mrow>
+													<mn>2</mn>
+													<mi>a</mi>
+												</mrow>
+											</mfrac>
+										</mrow>
+									</math>
+								</div>
+							</div>
+							<p>где
+
+								<strong>D = b² - 4ac</strong> — дискриминант.
+
+							</p>
+							<div class="explanation">
+								<p>
+									<strong>Пояснение:</strong> Знак ± означает, что нужно вычислить два значения: одно со знаком плюс, другое со знаком минус. Формула работает для любого квадратного уравнения с действительными коэффициентами.
+
+
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="lesson-section">
+						<h2>Примеры решения полных квадратных уравнений</h2>
+						<div class="example">
+							<div class="example-title">Пример 1: Уравнение с D > 0 (два различных корня)</div>
+							<p>Решите уравнение:
+
+
+								<math
+									xmlns="http://www.w3.org/1998/Math/MathML">
+									<mrow>
+										<mn>2</mn>
+										<msup>
+											<mi>x</mi>
+											<mn>2</mn>
+										</msup>
+										<mo>−</mo>
+										<mn>5</mn>
+										<mi>x</mi>
+										<mo>+</mo>
+										<mn>2</mn>
+										<mo>=</mo>
+										<mn>0</mn>
+									</mrow>
+								</math>
+							</p>
+							<div class="solution">
+								<p>
+									<strong>Решение:</strong>
+								</p>
+								<p>1. Определяем коэффициенты:
+
+									<strong>a = 2, b = -5, c = 2</strong>
+								</p>
+								<p>2. Вычисляем дискриминант:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>D</mi>
+												<mo>=</mo>
+												<msup>
+													<mi>b</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>4</mn>
+												<mi>a</mi>
+												<mi>c</mi>
+												<mo>=</mo>
+												<msup>
+													<mrow>
+														<mo>(</mo>
+														<mo>−</mo>
+														<mn>5</mn>
+														<mo>)</mo>
+													</mrow>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>4</mn>
+												<mo>·</mo>
+												<mn>2</mn>
+												<mo>·</mo>
+												<mn>2</mn>
+												<mo>=</mo>
+												<mn>25</mn>
+												<mo>−</mo>
+												<mn>16</mn>
+												<mo>=</mo>
+												<mn>9</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>3. Так как D = 9 > 0, уравнение имеет два различных корня</p>
+								<p>4. Находим корни по формуле:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msub>
+													<mi>x</mi>
+													<mn>1,2</mn>
+												</msub>
+												<mo>=</mo>
+												<mfrac>
+													<mrow>
+														<mo>−</mo>
+														<mi>b</mi>
+														<mo>±</mo>
+														<msqrt>
+															<mi>D</mi>
+														</msqrt>
+													</mrow>
+													<mrow>
+														<mn>2</mn>
+														<mi>a</mi>
+													</mrow>
+												</mfrac>
+												<mo>=</mo>
+												<mfrac>
+													<mrow>
+														<mn>5</mn>
+														<mo>±</mo>
+														<msqrt>
+															<mn>9</mn>
+														</msqrt>
+													</mrow>
+													<mrow>
+														<mn>2</mn>
+														<mo>·</mo>
+														<mn>2</mn>
+													</mrow>
+												</mfrac>
+												<mo>=</mo>
+												<mfrac>
+													<mrow>
+														<mn>5</mn>
+														<mo>±</mo>
+														<mn>3</mn>
+													</mrow>
+													<mn>4</mn>
+												</mfrac>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>5. Вычисляем два корня:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msub>
+													<mi>x</mi>
+													<mn>1</mn>
+												</msub>
+												<mo>=</mo>
+												<mfrac>
+													<mrow>
+														<mn>5</mn>
+														<mo>+</mo>
+														<mn>3</mn>
+													</mrow>
+													<mn>4</mn>
+												</mfrac>
+												<mo>=</mo>
+												<mfrac>
+													<mn>8</mn>
+													<mn>4</mn>
+												</mfrac>
+												<mo>=</mo>
+												<mn>2</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msub>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msub>
+												<mo>=</mo>
+												<mfrac>
+													<mrow>
+														<mn>5</mn>
+														<mo>−</mo>
+														<mn>3</mn>
+													</mrow>
+													<mn>4</mn>
+												</mfrac>
+												<mo>=</mo>
+												<mfrac>
+													<mn>2</mn>
+													<mn>4</mn>
+												</mfrac>
+												<mo>=</mo>
+												<mfrac>
+													<mn>1</mn>
+													<mn>2</mn>
+												</mfrac>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>
+									<strong>Ответ:</strong>
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msub>
+												<mi>x</mi>
+												<mn>1</mn>
+											</msub>
+											<mo>=</mo>
+											<mn>2</mn>
+											<mo>,</mo>
+											<mtext>&#160;</mtext>
+											<msub>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msub>
+											<mo>=</mo>
+											<mfrac>
+												<mn>1</mn>
+												<mn>2</mn>
+											</mfrac>
+										</mrow>
+									</math>
+								</p>
+							</div>
+						</div>
+						<div class="example">
+							<div class="example-title">Пример 2: Уравнение с D = 0 (один корень)</div>
+							<p>Решите уравнение:
+
+
+								<math
+									xmlns="http://www.w3.org/1998/Math/MathML">
+									<mrow>
+										<msup>
+											<mi>x</mi>
+											<mn>2</mn>
+										</msup>
+										<mo>−</mo>
+										<mn>6</mn>
+										<mi>x</mi>
+										<mo>+</mo>
+										<mn>9</mn>
+										<mo>=</mo>
+										<mn>0</mn>
+									</mrow>
+								</math>
+							</p>
+							<div class="solution">
+								<p>
+									<strong>Решение:</strong>
+								</p>
+								<p>1. Определяем коэффициенты:
+
+									<strong>a = 1, b = -6, c = 9</strong>
+								</p>
+								<p>2. Вычисляем дискриминант:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>D</mi>
+												<mo>=</mo>
+												<msup>
+													<mi>b</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>4</mn>
+												<mi>a</mi>
+												<mi>c</mi>
+												<mo>=</mo>
+												<msup>
+													<mrow>
+														<mo>(</mo>
+														<mo>−</mo>
+														<mn>6</mn>
+														<mo>)</mo>
+													</mrow>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>4</mn>
+												<mo>·</mo>
+												<mn>1</mn>
+												<mo>·</mo>
+												<mn>9</mn>
+												<mo>=</mo>
+												<mn>36</mn>
+												<mo>−</mo>
+												<mn>36</mn>
+												<mo>=</mo>
+												<mn>0</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>3. Так как D = 0, уравнение имеет один корень (два одинаковых)</p>
+								<p>4. Находим корень по формуле:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>x</mi>
+												<mo>=</mo>
+												<mfrac>
+													<mrow>
+														<mo>−</mo>
+														<mi>b</mi>
+													</mrow>
+													<mrow>
+														<mn>2</mn>
+														<mi>a</mi>
+													</mrow>
+												</mfrac>
+												<mo>=</mo>
+												<mfrac>
+													<mrow>
+														<mn>6</mn>
+													</mrow>
+													<mrow>
+														<mn>2</mn>
+														<mo>·</mo>
+														<mn>1</mn>
+													</mrow>
+												</mfrac>
+												<mo>=</mo>
+												<mfrac>
+													<mn>6</mn>
+													<mn>2</mn>
+												</mfrac>
+												<mo>=</mo>
+												<mn>3</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>
+									<strong>Ответ:</strong>
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>x</mi>
+											<mo>=</mo>
+											<mn>3</mn>
+										</mrow>
+									</math>
+								</p>
+							</div>
+						</div>
+						<div class="example hard-example">
+							<div class="example-title">Пример 3: Уравнение с D
+            < 0 (нет действительных корней)
+
+							</div>
+							<p>Решите уравнение:
+
+
+								<math
+									xmlns="http://www.w3.org/1998/Math/MathML">
+									<mrow>
+										<mn>3</mn>
+										<msup>
+											<mi>x</mi>
+											<mn>2</mn>
+										</msup>
+										<mo>−</mo>
+										<mn>4</mn>
+										<mi>x</mi>
+										<mo>+</mo>
+										<mn>5</mn>
+										<mo>=</mo>
+										<mn>0</mn>
+									</mrow>
+								</math>
+							</p>
+							<div class="solution">
+								<p>
+									<strong>Решение:</strong>
+								</p>
+								<p>1. Определяем коэффициенты:
+
+									<strong>a = 3, b = -4, c = 5</strong>
+								</p>
+								<p>2. Вычисляем дискриминант:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>D</mi>
+												<mo>=</mo>
+												<msup>
+													<mi>b</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>4</mn>
+												<mi>a</mi>
+												<mi>c</mi>
+												<mo>=</mo>
+												<msup>
+													<mrow>
+														<mo>(</mo>
+														<mo>−</mo>
+														<mn>4</mn>
+														<mo>)</mo>
+													</mrow>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>4</mn>
+												<mo>·</mo>
+												<mn>3</mn>
+												<mo>·</mo>
+												<mn>5</mn>
+												<mo>=</mo>
+												<mn>16</mn>
+												<mo>−</mo>
+												<mn>60</mn>
+												<mo>=</mo>
+												<mo>−</mo>
+												<mn>44</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>3. Так как D = -44
+                  < 0, уравнение не имеет действительных корней
+
+								</p>
+								<p>
+									<strong>Ответ:</strong> уравнение не имеет действительных корней
+
+								</p>
+							</div>
+						</div>
+					</div>
+					<h1 id="3">Решение приведенных квадратных уравнений.</h1>
+					<div class="lesson-section">
+						<h2>Теорема Виета для приведённого квадратного уравнения</h2>
+						<div class="definition">
+							<p>
+								<strong>Теорема Виета</strong> устанавливает связь между корнями квадратного уравнения и его коэффициентами.
+
+							</p>
+							<p>Для
+
+								<strong>приведённого квадратного уравнения</strong> вида:
+
+							</p>
+							<div class="math-container">
+								<div class="math-formula">
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msup>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msup>
+											<mo>+</mo>
+											<mi>p</mi>
+											<mi>x</mi>
+											<mo>+</mo>
+											<mi>q</mi>
+											<mo>=</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>
+								</div>
+							</div>
+							<p>верны следующие соотношения:</p>
+							<div class="math-container">
+								<div class="math-formula">
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msub>
+												<mi>x</mi>
+												<mn>1</mn>
+											</msub>
+											<mo>+</mo>
+											<msub>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msub>
+											<mo>=</mo>
+											<mo>−</mo>
+											<mi>p</mi>
+										</mrow>
+									</math>
+								</div>
+							</div>
+							<div class="math-container">
+								<div class="math-formula">
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msub>
+												<mi>x</mi>
+												<mn>1</mn>
+											</msub>
+											<mo>·</mo>
+											<msub>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msub>
+											<mo>=</mo>
+											<mi>q</mi>
+										</mrow>
+									</math>
+								</div>
+							</div>
+							<p>где
+
+								<strong>x₁</strong> и
+
+								<strong>x₂</strong> — корни уравнения.
+
+							</p>
+							<div class="explanation">
+								<p>
+									<strong>Пояснение:</strong> Теорема Виета позволяет:
+
+
+									<ul>
+										<li>Находить корни уравнения подбором</li>
+										<li>Проверять правильность найденных корней</li>
+										<li>Находить выражения, составленные из корней, без вычисления самих корней</li>
+									</ul>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="lesson-section">
+						<h2>Теорема Виета для общего квадратного уравнения</h2>
+						<div class="definition">
+							<p>Для
+
+								<strong>общего квадратного уравнения</strong> вида:
+
+							</p>
+							<div class="math-container">
+								<div class="math-formula">
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>a</mi>
+											<msup>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msup>
+											<mo>+</mo>
+											<mi>b</mi>
+											<mi>x</mi>
+											<mo>+</mo>
+											<mi>c</mi>
+											<mo>=</mo>
+											<mn>0</mn>
+											<mtext>&#160;(</mtext>
+											<mi>a</mi>
+											<mo>≠</mo>
+											<mn>0</mn>
+											<mtext>)</mtext>
+										</mrow>
+									</math>
+								</div>
+							</div>
+							<p>соотношения Виета имеют вид:</p>
+							<div class="math-container">
+								<div class="math-formula">
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msub>
+												<mi>x</mi>
+												<mn>1</mn>
+											</msub>
+											<mo>+</mo>
+											<msub>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msub>
+											<mo>=</mo>
+											<mo>−</mo>
+											<mfrac>
+												<mi>b</mi>
+												<mi>a</mi>
+											</mfrac>
+										</mrow>
+									</math>
+								</div>
+							</div>
+							<div class="math-container">
+								<div class="math-formula">
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msub>
+												<mi>x</mi>
+												<mn>1</mn>
+											</msub>
+											<mo>·</mo>
+											<msub>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msub>
+											<mo>=</mo>
+											<mfrac>
+												<mi>c</mi>
+												<mi>a</mi>
+											</mfrac>
+										</mrow>
+									</math>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="lesson-section">
+						<h2>Примеры решения уравнений с помощью теоремы Виета</h2>
+						<div class="example">
+							<div class="example-title">Пример 1: Решение уравнения подбором</div>
+							<p>Решите уравнение:
+
+
+								<math
+									xmlns="http://www.w3.org/1998/Math/MathML">
+									<mrow>
+										<msup>
+											<mi>x</mi>
+											<mn>2</mn>
+										</msup>
+										<mo>−</mo>
+										<mn>4</mn>
+										<mi>x</mi>
+										<mo>+</mo>
+										<mn>3</mn>
+										<mo>=</mo>
+										<mn>0</mn>
+									</mrow>
+								</math>
+							</p>
+							<div class="solution">
+								<p>
+									<strong>Решение с использованием теоремы Виета:</strong>
+								</p>
+								<p>1. Запишем условия теоремы Виета для данного уравнения:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msub>
+													<mi>x</mi>
+													<mn>1</mn>
+												</msub>
+												<mo>+</mo>
+												<msub>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msub>
+												<mo>=</mo>
+												<mn>4</mn>
+												<mtext>&#160;(так как -p = -(-4) = 4)</mtext>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msub>
+													<mi>x</mi>
+													<mn>1</mn>
+												</msub>
+												<mo>·</mo>
+												<msub>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msub>
+												<mo>=</mo>
+												<mn>3</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>2. Подбираем пару чисел, сумма которых равна 4, а произведение равно 3:</p>
+								<p>Проверяем возможные варианты:</p>
+								<ul>
+									<li>1 + 3 = 4 и 1 × 3 = 3 ✓</li>
+									<li>2 + 2 = 4, но 2 × 2 = 4 ≠ 3</li>
+									<li>4 + 0 = 4, но 4 × 0 = 0 ≠ 3</li>
+								</ul>
+								<p>
+									<strong>Ответ:</strong>
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msub>
+												<mi>x</mi>
+												<mn>1</mn>
+											</msub>
+											<mo>=</mo>
+											<mn>1</mn>
+											<mo>,</mo>
+											<mtext>&#160;</mtext>
+											<msub>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msub>
+											<mo>=</mo>
+											<mn>3</mn>
+										</mrow>
+									</math>
+								</p>
+							</div>
+						</div>
+						<div class="example">
+							<div class="example-title">Пример 2: Решение уравнения подбором</div>
+							<p>Решите уравнение:
+
+
+								<math
+									xmlns="http://www.w3.org/1998/Math/MathML">
+									<mrow>
+										<msup>
+											<mi>x</mi>
+											<mn>2</mn>
+										</msup>
+										<mo>+</mo>
+										<mn>7</mn>
+										<mi>x</mi>
+										<mo>+</mo>
+										<mn>10</mn>
+										<mo>=</mo>
+										<mn>0</mn>
+									</mrow>
+								</math>
+							</p>
+							<div class="solution">
+								<p>
+									<strong>Решение с использованием теоремы Виета:</strong>
+								</p>
+								<p>1. Запишем условия теоремы Виета для данного уравнения:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msub>
+													<mi>x</mi>
+													<mn>1</mn>
+												</msub>
+												<mo>+</mo>
+												<msub>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msub>
+												<mo>=</mo>
+												<mo>−</mo>
+												<mn>7</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msub>
+													<mi>x</mi>
+													<mn>1</mn>
+												</msub>
+												<mo>·</mo>
+												<msub>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msub>
+												<mo>=</mo>
+												<mn>10</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>2. Подбираем пару чисел, сумма которых равна -7, а произведение равно 10:</p>
+								<p>Оба корня должны быть отрицательными (так как сумма отрицательна, а произведение положительно).</p>
+								<p>Проверяем возможные варианты:</p>
+								<ul>
+									<li>(-2) + (-5) = -7 и (-2) × (-5) = 10 ✓</li>
+									<li>(-1) + (-6) = -7, но (-1) × (-6) = 6 ≠ 10</li>
+									<li>(-3) + (-4) = -7, но (-3) × (-4) = 12 ≠ 10</li>
+								</ul>
+								<p>
+									<strong>Ответ:</strong>
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msub>
+												<mi>x</mi>
+												<mn>1</mn>
+											</msub>
+											<mo>=</mo>
+											<mo>−</mo>
+											<mn>2</mn>
+											<mo>,</mo>
+											<mtext>&#160;</mtext>
+											<msub>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msub>
+											<mo>=</mo>
+											<mo>−</mo>
+											<mn>5</mn>
+										</mrow>
+									</math>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="lesson-section">
+						<h2>Выражения, составленные из корней</h2>
+						<div class="definition">
+							<p>С помощью теоремы Виета можно вычислять различные выражения, составленные из корней,
+
+								<strong>не находя сами корни</strong>.
+
+							</p>
+							<p>Основные полезные формулы:</p>
+							<ol>
+								<li>
+									<strong>Сумма квадратов корней:</strong>
+									<div class="math-container">
+										<div class="math-formula">
+											<math
+												xmlns="http://www.w3.org/1998/Math/MathML">
+												<mrow>
+													<msubsup>
+														<mi>x</mi>
+														<mn>1</mn>
+														<mn>2</mn>
+													</msubsup>
+													<mo>+</mo>
+													<msubsup>
+														<mi>x</mi>
+														<mn>2</mn>
+														<mn>2</mn>
+													</msubsup>
+													<mo>=</mo>
+													<msup>
+														<mrow>
+															<mo>(</mo>
+															<msub>
+																<mi>x</mi>
+																<mn>1</mn>
+															</msub>
+															<mo>+</mo>
+															<msub>
+																<mi>x</mi>
+																<mn>2</mn>
+															</msub>
+															<mo>)</mo>
+														</mrow>
+														<mn>2</mn>
+													</msup>
+													<mo>−</mo>
+													<mn>2</mn>
+													<msub>
+														<mi>x</mi>
+														<mn>1</mn>
+													</msub>
+													<msub>
+														<mi>x</mi>
+														<mn>2</mn>
+													</msub>
+												</mrow>
+											</math>
+										</div>
+									</div>
+								</li>
+								<li>
+									<strong>Сумма кубов корней:</strong>
+									<div class="math-container">
+										<div class="math-formula">
+											<math
+												xmlns="http://www.w3.org/1998/Math/MathML">
+												<mrow>
+													<msubsup>
+														<mi>x</mi>
+														<mn>1</mn>
+														<mn>3</mn>
+													</msubsup>
+													<mo>+</mo>
+													<msubsup>
+														<mi>x</mi>
+														<mn>2</mn>
+														<mn>3</mn>
+													</msubsup>
+													<mo>=</mo>
+													<msup>
+														<mrow>
+															<mo>(</mo>
+															<msub>
+																<mi>x</mi>
+																<mn>1</mn>
+															</msub>
+															<mo>+</mo>
+															<msub>
+																<mi>x</mi>
+																<mn>2</mn>
+															</msub>
+															<mo>)</mo>
+														</mrow>
+														<mn>3</mn>
+													</msup>
+													<mo>−</mo>
+													<mn>3</mn>
+													<msub>
+														<mi>x</mi>
+														<mn>1</mn>
+													</msub>
+													<msub>
+														<mi>x</mi>
+														<mn>2</mn>
+													</msub>
+													<mrow>
+														<mo>(</mo>
+														<msub>
+															<mi>x</mi>
+															<mn>1</mn>
+														</msub>
+														<mo>+</mo>
+														<msub>
+															<mi>x</mi>
+															<mn>2</mn>
+														</msub>
+														<mo>)</mo>
+													</mrow>
+												</mrow>
+											</math>
+										</div>
+									</div>
+								</li>
+								<li>
+									<strong>Выражение вида x₁²x₂ + x₁x₂²:</strong>
+									<div class="math-container">
+										<div class="math-formula">
+											<math
+												xmlns="http://www.w3.org/1998/Math/MathML">
+												<mrow>
+													<msubsup>
+														<mi>x</mi>
+														<mn>1</mn>
+														<mn>2</mn>
+													</msubsup>
+													<msub>
+														<mi>x</mi>
+														<mn>2</mn>
+													</msub>
+													<mo>+</mo>
+													<msub>
+														<mi>x</mi>
+														<mn>1</mn>
+													</msub>
+													<msubsup>
+														<mi>x</mi>
+														<mn>2</mn>
+														<mn>2</mn>
+													</msubsup>
+													<mo>=</mo>
+													<msub>
+														<mi>x</mi>
+														<mn>1</mn>
+													</msub>
+													<msub>
+														<mi>x</mi>
+														<mn>2</mn>
+													</msub>
+													<mrow>
+														<mo>(</mo>
+														<msub>
+															<mi>x</mi>
+															<mn>1</mn>
+														</msub>
+														<mo>+</mo>
+														<msub>
+															<mi>x</mi>
+															<mn>2</mn>
+														</msub>
+														<mo>)</mo>
+													</mrow>
+												</mrow>
+											</math>
+										</div>
+									</div>
+								</li>
+							</ol>
+						</div>
+					</div>
+					<div class="lesson-section">
+						<h2>Пример вычисления выражений без нахождения корней</h2>
+						<div class="example">
+							<div class="example-title">Задача</div>
+							<p>Известно, что
+
+								<math
+									xmlns="http://www.w3.org/1998/Math/MathML">
+									<msub>
+										<mi>x</mi>
+										<mn>1</mn>
+									</msub>
+								</math> и
+
+								<math
+									xmlns="http://www.w3.org/1998/Math/MathML">
+									<msub>
+										<mi>x</mi>
+										<mn>2</mn>
+									</msub>
+								</math> — корни уравнения
+
+
+								<math
+									xmlns="http://www.w3.org/1998/Math/MathML">
+									<mrow>
+										<msup>
+											<mi>x</mi>
+											<mn>2</mn>
+										</msup>
+										<mo>+</mo>
+										<mn>7</mn>
+										<mi>x</mi>
+										<mo>−</mo>
+										<mn>12</mn>
+										<mo>=</mo>
+										<mn>0</mn>
+									</mrow>
+								</math>.
+    Не решая уравнения, найдите значение выражения:
+
+							</p>
+							<div class="solution">
+								<p>
+									<strong>Решение:</strong>
+								</p>
+								<p>1. Сначала определим по теореме Виета:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msub>
+													<mi>x</mi>
+													<mn>1</mn>
+												</msub>
+												<mo>+</mo>
+												<msub>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msub>
+												<mo>=</mo>
+												<mo>−</mo>
+												<mn>7</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msub>
+													<mi>x</mi>
+													<mn>1</mn>
+												</msub>
+												<mo>·</mo>
+												<msub>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msub>
+												<mo>=</mo>
+												<mo>−</mo>
+												<mn>12</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>
+									<strong>а) Найдём
+
+
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<msup>
+												<mrow>
+													<mo>(</mo>
+													<msub>
+														<mi>x</mi>
+														<mn>1</mn>
+													</msub>
+													<mo>+</mo>
+													<msub>
+														<mi>x</mi>
+														<mn>2</mn>
+													</msub>
+													<mo>)</mo>
+												</mrow>
+												<mn>2</mn>
+											</msup>
+										</math>:
+
+									</strong>
+								</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msup>
+													<mrow>
+														<mo>(</mo>
+														<msub>
+															<mi>x</mi>
+															<mn>1</mn>
+														</msub>
+														<mo>+</mo>
+														<msub>
+															<mi>x</mi>
+															<mn>2</mn>
+														</msub>
+														<mo>)</mo>
+													</mrow>
+													<mn>2</mn>
+												</msup>
+												<mo>=</mo>
+												<msup>
+													<mrow>
+														<mo>(</mo>
+														<mo>−</mo>
+														<mn>7</mn>
+														<mo>)</mo>
+													</mrow>
+													<mn>2</mn>
+												</msup>
+												<mo>=</mo>
+												<mn>49</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>
+									<strong>б) Найдём
+
+
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msubsup>
+													<mi>x</mi>
+													<mn>1</mn>
+													<mn>2</mn>
+												</msubsup>
+												<msub>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msub>
+												<mo>+</mo>
+												<msub>
+													<mi>x</mi>
+													<mn>1</mn>
+												</msub>
+												<msubsup>
+													<mi>x</mi>
+													<mn>2</mn>
+													<mn>2</mn>
+												</msubsup>
+											</mrow>
+										</math>:
+
+									</strong>
+								</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msubsup>
+													<mi>x</mi>
+													<mn>1</mn>
+													<mn>2</mn>
+												</msubsup>
+												<msub>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msub>
+												<mo>+</mo>
+												<msub>
+													<mi>x</mi>
+													<mn>1</mn>
+												</msub>
+												<msubsup>
+													<mi>x</mi>
+													<mn>2</mn>
+													<mn>2</mn>
+												</msubsup>
+												<mo>=</mo>
+												<msub>
+													<mi>x</mi>
+													<mn>1</mn>
+												</msub>
+												<msub>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msub>
+												<mrow>
+													<mo>(</mo>
+													<msub>
+														<mi>x</mi>
+														<mn>1</mn>
+													</msub>
+													<mo>+</mo>
+													<msub>
+														<mi>x</mi>
+														<mn>2</mn>
+													</msub>
+													<mo>)</mo>
+												</mrow>
+												<mo>=</mo>
+												<mo>(</mo>
+												<mo>−</mo>
+												<mn>12</mn>
+												<mo>)</mo>
+												<mo>·</mo>
+												<mo>(</mo>
+												<mo>−</mo>
+												<mn>7</mn>
+												<mo>)</mo>
+												<mo>=</mo>
+												<mn>84</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>
+									<strong>в) Найдём
+
+
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msubsup>
+													<mi>x</mi>
+													<mn>1</mn>
+													<mn>2</mn>
+												</msubsup>
+												<mo>+</mo>
+												<msubsup>
+													<mi>x</mi>
+													<mn>2</mn>
+													<mn>2</mn>
+												</msubsup>
+											</mrow>
+										</math>:
+
+									</strong>
+								</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msubsup>
+													<mi>x</mi>
+													<mn>1</mn>
+													<mn>2</mn>
+												</msubsup>
+												<mo>+</mo>
+												<msubsup>
+													<mi>x</mi>
+													<mn>2</mn>
+													<mn>2</mn>
+												</msubsup>
+												<mo>=</mo>
+												<msup>
+													<mrow>
+														<mo>(</mo>
+														<msub>
+															<mi>x</mi>
+															<mn>1</mn>
+														</msub>
+														<mo>+</mo>
+														<msub>
+															<mi>x</mi>
+															<mn>2</mn>
+														</msub>
+														<mo>)</mo>
+													</mrow>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>2</mn>
+												<msub>
+													<mi>x</mi>
+													<mn>1</mn>
+												</msub>
+												<msub>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msub>
+												<mo>=</mo>
+												<msup>
+													<mrow>
+														<mo>(</mo>
+														<mo>−</mo>
+														<mn>7</mn>
+														<mo>)</mo>
+													</mrow>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>2</mn>
+												<mo>·</mo>
+												<mo>(</mo>
+												<mo>−</mo>
+												<mn>12</mn>
+												<mo>)</mo>
+												<mo>=</mo>
+												<mn>49</mn>
+												<mo>+</mo>
+												<mn>24</mn>
+												<mo>=</mo>
+												<mn>73</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>
+									<strong>Ответ:</strong> а) 49, б) 84, в) 73
+
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="lesson-section">
+						<h2>Обратная теорема Виета</h2>
+						<div class="definition">
+							<p>
+								<strong>Обратная теорема Виета:</strong> Если числа x1 и x2 таковы, что
+
+							</p>
+							<div class="math-container">
+								<div class="math-formula">
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msub>
+												<mi>x</mi>
+												<mn>1</mn>
+											</msub>
+											<mo>+</mo>
+											<msub>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msub>
+											<mo>=</mo>
+											<mo>−</mo>
+											<mi>p</mi>
+										</mrow>
+									</math>
+								</div>
+							</div>
+							<div class="math-container">
+								<div class="math-formula">
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msub>
+												<mi>x</mi>
+												<mn>1</mn>
+											</msub>
+											<mo>·</mo>
+											<msub>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msub>
+											<mo>=</mo>
+											<mi>q</mi>
+										</mrow>
+									</math>
+								</div>
+							</div>
+							<p>то эти числа являются корнями квадратного уравнения:</p>
+							<div class="math-container">
+								<div class="math-formula">
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msup>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msup>
+											<mo>+</mo>
+											<mi>p</mi>
+											<mi>x</mi>
+											<mo>+</mo>
+											<mi>q</mi>
+											<mo>=</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>
+								</div>
+							</div>
+							<div class="example">
+								<div class="example-title">Пример использования обратной теоремы</div>
+								<p>Составьте квадратное уравнение, корни которого равны 2 и -5.</p>
+								<div class="solution">
+									<p>
+										<strong>Решение:</strong>
+									</p>
+									<p>1. Находим сумму корней:
+
+										<strong>2 + (-5) = -3</strong>
+									</p>
+									<p>2. Находим произведение корней:
+
+										<strong>2 × (-5) = -10</strong>
+									</p>
+									<p>3. По обратной теореме Виета, уравнение имеет вид:</p>
+									<div class="math-container">
+										<div class="math-formula">
+											<math
+												xmlns="http://www.w3.org/1998/Math/MathML">
+												<mrow>
+													<msup>
+														<mi>x</mi>
+														<mn>2</mn>
+													</msup>
+													<mo>+</mo>
+													<mn>3</mn>
+													<mi>x</mi>
+													<mo>−</mo>
+													<mn>10</mn>
+													<mo>=</mo>
+													<mn>0</mn>
+												</mrow>
+											</math>
+										</div>
+									</div>
+									<p>
+										<strong>Ответ:</strong>
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msup>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>+</mo>
+												<mn>3</mn>
+												<mi>x</mi>
+												<mo>−</mo>
+												<mn>10</mn>
+												<mo>=</mo>
+												<mn>0</mn>
+											</mrow>
+										</math>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<h1 id="4">Разложение на множители</h1>
+					<div class="lesson-section">
+						<h2>Теорема о разложении квадратного трехчлена на множители</h2>
+						<div class="definition">
+							<p>
+								<strong>Квадратный трехчлен</strong> — это выражение вида:
+
+							</p>
+							<div class="math-container">
+								<div class="math-formula">
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>a</mi>
+											<msup>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msup>
+											<mo>+</mo>
+											<mi>b</mi>
+											<mi>x</mi>
+											<mo>+</mo>
+											<mi>c</mi>
+										</mrow>
+									</math>
+								</div>
+							</div>
+							<p>где
+
+								<math
+									xmlns="http://www.w3.org/1998/Math/MathML">
+									<mrow>
+										<mi>a</mi>
+										<mo>≠</mo>
+										<mn>0</mn>
+									</mrow>
+								</math>.
+
+							</p>
+							<p>
+								<strong>Теорема:</strong> Если квадратное уравнение
+
+								<math
+									xmlns="http://www.w3.org/1998/Math/MathML">
+									<mrow>
+										<mi>a</mi>
+										<msup>
+											<mi>x</mi>
+											<mn>2</mn>
+										</msup>
+										<mo>+</mo>
+										<mi>b</mi>
+										<mi>x</mi>
+										<mo>+</mo>
+										<mi>c</mi>
+										<mo>=</mo>
+										<mn>0</mn>
+									</mrow>
+								</math> имеет корни
+
+								<math
+									xmlns="http://www.w3.org/1998/Math/MathML">
+									<mrow>
+										<msub>
+											<mi>x</mi>
+											<mn>1</mn>
+										</msub>
+									</mrow>
+								</math> и
+
+								<math
+									xmlns="http://www.w3.org/1998/Math/MathML">
+									<mrow>
+										<msub>
+											<mi>x</mi>
+											<mn>2</mn>
+										</msub>
+									</mrow>
+								</math>, то квадратный трехчлен можно разложить на множители:
+
+							</p>
+							<div class="math-container">
+								<div class="math-formula">
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>a</mi>
+											<msup>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msup>
+											<mo>+</mo>
+											<mi>b</mi>
+											<mi>x</mi>
+											<mo>+</mo>
+											<mi>c</mi>
+											<mo>=</mo>
+											<mi>a</mi>
+											<mrow>
+												<mo>(</mo>
+												<mi>x</mi>
+												<mo>−</mo>
+												<msub>
+													<mi>x</mi>
+													<mn>1</mn>
+												</msub>
+												<mo>)</mo>
+											</mrow>
+											<mrow>
+												<mo>(</mo>
+												<mi>x</mi>
+												<mo>−</mo>
+												<msub>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msub>
+												<mo>)</mo>
+											</mrow>
+										</mrow>
+									</math>
+								</div>
+							</div>
+							<div class="explanation">
+								<p>
+									<strong>Пояснение:</strong> Эта теорема позволяет разложить квадратный трехчлен на линейные множители, если соответствующее квадратное уравнение имеет корни. Если уравнение не имеет корней (
+
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>D</mi>
+											<mo><
+
+											</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>), то разложение на линейные множители с действительными коэффициентами невозможно.
+
+
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="lesson-section">
+						<h2>Алгоритм разложения квадратного трехчлена на множители</h2>
+						<div class="definition">
+							<p>
+								<strong>Шаги разложения:</strong>
+							</p>
+							<ol>
+								<li>Найти корни квадратного уравнения
+
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>a</mi>
+											<msup>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msup>
+											<mo>+</mo>
+											<mi>b</mi>
+											<mi>x</mi>
+											<mo>+</mo>
+											<mi>c</mi>
+											<mo>=</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>
+								</li>
+								<li>Если уравнение имеет два корня
+
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msub>
+												<mi>x</mi>
+												<mn>1</mn>
+											</msub>
+										</mrow>
+									</math> и
+
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msub>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msub>
+										</mrow>
+									</math>, то разложить по формуле:
+
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>a</mi>
+											<mrow>
+												<mo>(</mo>
+												<mi>x</mi>
+												<mo>−</mo>
+												<msub>
+													<mi>x</mi>
+													<mn>1</mn>
+												</msub>
+												<mo>)</mo>
+											</mrow>
+											<mrow>
+												<mo>(</mo>
+												<mi>x</mi>
+												<mo>−</mo>
+												<msub>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msub>
+												<mo>)</mo>
+											</mrow>
+										</mrow>
+									</math>
+								</li>
+								<li>Если уравнение имеет один корень
+
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msub>
+												<mi>x</mi>
+												<mn>1</mn>
+											</msub>
+										</mrow>
+									</math> (
+
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>D</mi>
+											<mo>=</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>), то:
+
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>a</mi>
+											<msup>
+												<mrow>
+													<mo>(</mo>
+													<mi>x</mi>
+													<mo>−</mo>
+													<msub>
+														<mi>x</mi>
+														<mn>1</mn>
+													</msub>
+													<mo>)</mo>
+												</mrow>
+												<mn>2</mn>
+											</msup>
+										</mrow>
+									</math>
+								</li>
+								<li>Если уравнение не имеет корней (
+
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>D</mi>
+											<mo><
+
+											</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>), то разложение на линейные множители с действительными коэффициентами невозможно
+
+								</li>
+							</ol>
+						</div>
+					</div>
+					<div class="lesson-section">
+						<h2>Примеры разложения квадратных трехчленов на множители</h2>
+
+						<div class="example">
+							<div class="example-title">Пример 1:
+
+								<math
+									xmlns="http://www.w3.org/1998/Math/MathML">
+									<mrow>
+										<mn>4</mn>
+										<msup>
+											<mi>x</mi>
+											<mn>2</mn>
+										</msup>
+										<mo>−</mo>
+										<mn>8</mn>
+										<mi>x</mi>
+										<mo>+</mo>
+										<mn>3</mn>
+									</mrow>
+								</math>
+							</div>
+							<div class="solution">
+								<p>
+									<strong>Решение:</strong>
+								</p>
+								<p>1. Составляем квадратное уравнение:
+
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mn>4</mn>
+											<msup>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msup>
+											<mo>−</mo>
+											<mn>8</mn>
+											<mi>x</mi>
+											<mo>+</mo>
+											<mn>3</mn>
+											<mo>=</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>
+								</p>
+								<p>2. Находим дискриминант:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>D</mi>
+												<mo>=</mo>
+												<msup>
+													<mi>b</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>4</mn>
+												<mi>a</mi>
+												<mi>c</mi>
+												<mo>=</mo>
+												<msup>
+													<mrow>
+														<mo>(</mo>
+														<mo>−</mo>
+														<mn>8</mn>
+														<mo>)</mo>
+													</mrow>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>4</mn>
+												<mo>·</mo>
+												<mn>4</mn>
+												<mo>·</mo>
+												<mn>3</mn>
+												<mo>=</mo>
+												<mn>64</mn>
+												<mo>−</mo>
+												<mn>48</mn>
+												<mo>=</mo>
+												<mn>16</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>3. Находим корни:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msub>
+													<mi>x</mi>
+													<mn>1,2</mn>
+												</msub>
+												<mo>=</mo>
+												<mfrac>
+													<mrow>
+														<mn>8</mn>
+														<mo>±</mo>
+														<msqrt>
+															<mn>16</mn>
+														</msqrt>
+													</mrow>
+													<mrow>
+														<mn>2</mn>
+														<mo>·</mo>
+														<mn>4</mn>
+													</mrow>
+												</mfrac>
+												<mo>=</mo>
+												<mfrac>
+													<mrow>
+														<mn>8</mn>
+														<mo>±</mo>
+														<mn>4</mn>
+													</mrow>
+													<mn>8</mn>
+												</mfrac>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>4. Вычисляем:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msub>
+													<mi>x</mi>
+													<mn>1</mn>
+												</msub>
+												<mo>=</mo>
+												<mfrac>
+													<mrow>
+														<mn>8</mn>
+														<mo>+</mo>
+														<mn>4</mn>
+													</mrow>
+													<mn>8</mn>
+												</mfrac>
+												<mo>=</mo>
+												<mfrac>
+													<mn>12</mn>
+													<mn>8</mn>
+												</mfrac>
+												<mo>=</mo>
+												<mfrac>
+													<mn>3</mn>
+													<mn>2</mn>
+												</mfrac>
+												<mo>,</mo>
+												<mtext></mtext>
+												<msub>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msub>
+												<mo>=</mo>
+												<mfrac>
+													<mrow>
+														<mn>8</mn>
+														<mo>−</mo>
+														<mn>4</mn>
+													</mrow>
+													<mn>8</mn>
+												</mfrac>
+												<mo>=</mo>
+												<mfrac>
+													<mn>4</mn>
+													<mn>8</mn>
+												</mfrac>
+												<mo>=</mo>
+												<mfrac>
+													<mn>1</mn>
+													<mn>2</mn>
+												</mfrac>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>5. Разлагаем на множители:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mn>4</mn>
+												<msup>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>8</mn>
+												<mi>x</mi>
+												<mo>+</mo>
+												<mn>3</mn>
+												<mo>=</mo>
+												<mn>4</mn>
+												<mrow>
+													<mo>(</mo>
+													<mi>x</mi>
+													<mo>−</mo>
+													<mfrac>
+														<mn>3</mn>
+														<mn>2</mn>
+													</mfrac>
+													<mo>)</mo>
+												</mrow>
+												<mrow>
+													<mo>(</mo>
+													<mi>x</mi>
+													<mo>−</mo>
+													<mfrac>
+														<mn>1</mn>
+														<mn>2</mn>
+													</mfrac>
+													<mo>)</mo>
+												</mrow>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>6. Можно записать без дробей, умножив коэффициенты:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mn>4</mn>
+												<msup>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>8</mn>
+												<mi>x</mi>
+												<mo>+</mo>
+												<mn>3</mn>
+												<mo>=</mo>
+												<mrow>
+													<mo>(</mo>
+													<mn>2</mn>
+													<mi>x</mi>
+													<mo>−</mo>
+													<mn>3</mn>
+													<mo>)</mo>
+												</mrow>
+												<mrow>
+													<mo>(</mo>
+													<mn>2</mn>
+													<mi>x</mi>
+													<mo>−</mo>
+													<mn>1</mn>
+													<mo>)</mo>
+												</mrow>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>
+									<strong>Ответ:</strong>
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mrow>
+												<mo>(</mo>
+												<mn>2</mn>
+												<mi>x</mi>
+												<mo>−</mo>
+												<mn>3</mn>
+												<mo>)</mo>
+											</mrow>
+											<mrow>
+												<mo>(</mo>
+												<mn>2</mn>
+												<mi>x</mi>
+												<mo>−</mo>
+												<mn>1</mn>
+												<mo>)</mo>
+											</mrow>
+										</mrow>
+									</math>
+								</p>
+							</div>
+						</div>
+						<div class="example">
+							<div class="example-title">Пример 2:
+
+								<math
+									xmlns="http://www.w3.org/1998/Math/MathML">
+									<mrow>
+										<mn>81</mn>
+										<msup>
+											<mi>t</mi>
+											<mn>2</mn>
+										</msup>
+										<mo>−</mo>
+										<mn>36</mn>
+										<mi>t</mi>
+										<mo>+</mo>
+										<mn>4</mn>
+									</mrow>
+								</math>
+							</div>
+							<div class="solution">
+								<p>
+									<strong>Решение:</strong>
+								</p>
+								<p>1. Составляем уравнение:
+
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mn>81</mn>
+											<msup>
+												<mi>t</mi>
+												<mn>2</mn>
+											</msup>
+											<mo>−</mo>
+											<mn>36</mn>
+											<mi>t</mi>
+											<mo>+</mo>
+											<mn>4</mn>
+											<mo>=</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>
+								</p>
+								<p>2. Находим дискриминант:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>D</mi>
+												<mo>=</mo>
+												<msup>
+													<mrow>
+														<mo>(</mo>
+														<mo>−</mo>
+														<mn>36</mn>
+														<mo>)</mo>
+													</mrow>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>4</mn>
+												<mo>·</mo>
+												<mn>81</mn>
+												<mo>·</mo>
+												<mn>4</mn>
+												<mo>=</mo>
+												<mn>1296</mn>
+												<mo>−</mo>
+												<mn>1296</mn>
+												<mo>=</mo>
+												<mn>0</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>3. Так как D = 0, уравнение имеет один корень:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>t</mi>
+												<mo>=</mo>
+												<mfrac>
+													<mn>36</mn>
+													<mrow>
+														<mn>2</mn>
+														<mo>·</mo>
+														<mn>81</mn>
+													</mrow>
+												</mfrac>
+												<mo>=</mo>
+												<mfrac>
+													<mn>36</mn>
+													<mn>162</mn>
+												</mfrac>
+												<mo>=</mo>
+												<mfrac>
+													<mn>2</mn>
+													<mn>9</mn>
+												</mfrac>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>4. Разлагаем на множители:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mn>81</mn>
+												<msup>
+													<mi>t</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>36</mn>
+												<mi>t</mi>
+												<mo>+</mo>
+												<mn>4</mn>
+												<mo>=</mo>
+												<mn>81</mn>
+												<msup>
+													<mrow>
+														<mo>(</mo>
+														<mi>t</mi>
+														<mo>−</mo>
+														<mfrac>
+															<mn>2</mn>
+															<mn>9</mn>
+														</mfrac>
+														<mo>)</mo>
+													</mrow>
+													<mn>2</mn>
+												</msup>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>5. Можно записать как полный квадрат:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mn>81</mn>
+												<msup>
+													<mi>t</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>36</mn>
+												<mi>t</mi>
+												<mo>+</mo>
+												<mn>4</mn>
+												<mo>=</mo>
+												<msup>
+													<mrow>
+														<mo>(</mo>
+														<mn>9</mn>
+														<mi>t</mi>
+														<mo>−</mo>
+														<mn>2</mn>
+														<mo>)</mo>
+													</mrow>
+													<mn>2</mn>
+												</msup>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>
+									<strong>Ответ:</strong>
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msup>
+												<mrow>
+													<mo>(</mo>
+													<mn>9</mn>
+													<mi>t</mi>
+													<mo>−</mo>
+													<mn>2</mn>
+													<mo>)</mo>
+												</mrow>
+												<mn>2</mn>
+											</msup>
+										</mrow>
+									</math>
+								</p>
+							</div>
+						</div>
+						<div class="example hard-example">
+							<div class="example-title">Пример 3:
+
+								<math
+									xmlns="http://www.w3.org/1998/Math/MathML">
+									<mrow>
+										<mn>8</mn>
+										<msup>
+											<mi>t</mi>
+											<mn>2</mn>
+										</msup>
+										<mo>−</mo>
+										<mn>6</mn>
+										<mi>t</mi>
+										<mo>+</mo>
+										<mn>3</mn>
+									</mrow>
+								</math>
+							</div>
+							<div class="solution">
+								<p>
+									<strong>Решение:</strong>
+								</p>
+								<p>1. Составляем уравнение:
+
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mn>8</mn>
+											<msup>
+												<mi>t</mi>
+												<mn>2</mn>
+											</msup>
+											<mo>−</mo>
+											<mn>6</mn>
+											<mi>t</mi>
+											<mo>+</mo>
+											<mn>3</mn>
+											<mo>=</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>
+								</p>
+								<p>2. Находим дискриминант:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>D</mi>
+												<mo>=</mo>
+												<msup>
+													<mrow>
+														<mo>(</mo>
+														<mo>−</mo>
+														<mn>6</mn>
+														<mo>)</mo>
+													</mrow>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>4</mn>
+												<mo>·</mo>
+												<mn>8</mn>
+												<mo>·</mo>
+												<mn>3</mn>
+												<mo>=</mo>
+												<mn>36</mn>
+												<mo>−</mo>
+												<mn>96</mn>
+												<mo>=</mo>
+												<mo>−</mo>
+												<mn>60</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>3. Так как D = -60 < 0, квадратное уравнение не имеет действительных корней
+
+								</p>
+								<p>4. Следовательно, квадратный трехчлен
+
+									<strong>нельзя разложить на линейные множители с действительными коэффициентами</strong>
+								</p>
+								<p>
+									<strong>Ответ:</strong> разложение на линейные множители с действительными коэффициентами невозможно
+
+								</p>
+							</div>
+						</div>
+					</div>
+					<h1 id="5">Приложение</h1>
+					<div class="lesson-section">
+						<h2>Биквадратные уравнения</h2>
+						<div class="definition">
+							<p>
+								<strong>Биквадратным уравнением</strong> называется уравнение вида:
+							</p>
+							<div class="math-container">
+								<div class="math-formula">
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>a</mi>
+											<msup>
+												<mi>x</mi>
+												<mn>4</mn>
+											</msup>
+											<mo>+</mo>
+											<mi>b</mi>
+											<msup>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msup>
+											<mo>+</mo>
+											<mi>c</mi>
+											<mo>=</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>
+								</div>
+							</div>
+							<p>где
+								<math
+									xmlns="http://www.w3.org/1998/Math/MathML">
+									<mrow>
+										<mi>a</mi>
+										<mo>≠</mo>
+										<mn>0</mn>
+									</mrow>
+								</math>.
+							</p>
+							<div class="explanation">
+								<p>
+									<strong>Пояснение:</strong> Биквадратное уравнение содержит только чётные степени переменной. Его можно свести к квадратному уравнению с помощью замены переменной.
+
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="lesson-section">
+						<h2>Метод решения биквадратных уравнений</h2>
+						<div class="definition">
+							<p>
+								<strong>Алгоритм решения:</strong>
+							</p>
+							<ol>
+								<li>Сделать замену переменной:
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>t</mi>
+											<mo>=</mo>
+											<msup>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msup>
+										</mrow>
+									</math>, при этом
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>t</mi>
+											<mo>≥</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>
+								</li>
+								<li>Получить квадратное уравнение:
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>a</mi>
+											<msup>
+												<mi>t</mi>
+												<mn>2</mn>
+											</msup>
+											<mo>+</mo>
+											<mi>b</mi>
+											<mi>t</mi>
+											<mo>+</mo>
+											<mi>c</mi>
+											<mo>=</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>
+								</li>
+								<li>Решить полученное квадратное уравнение</li>
+								<li>Для каждого неотрицательного корня
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>t</mi>
+											<mo>≥</mo>
+											<mn>0</mn>
+										</mrow>
+									</math> решить уравнение
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msup>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msup>
+											<mo>=</mo>
+											<mi>t</mi>
+										</mrow>
+									</math>
+								</li>
+								<li>Записать все действительные корни исходного уравнения</li>
+							</ol>
+						</div>
+					</div>
+					<div class="lesson-section">
+						<h2>Примеры решения биквадратных уравнений</h2>
+						<div class="example">
+							<div class="example-title">Пример a:
+								<math
+									xmlns="http://www.w3.org/1998/Math/MathML">
+									<mrow>
+										<msup>
+											<mi>x</mi>
+											<mn>4</mn>
+										</msup>
+										<mo>−</mo>
+										<mn>10</mn>
+										<msup>
+											<mi>x</mi>
+											<mn>2</mn>
+										</msup>
+										<mo>+</mo>
+										<mn>9</mn>
+										<mo>=</mo>
+										<mn>0</mn>
+									</mrow>
+								</math>
+							</div>
+							<div class="solution">
+								<p>
+									<strong>Решение:</strong>
+								</p>
+								<p>1. Делаем замену:
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>t</mi>
+											<mo>=</mo>
+											<msup>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msup>
+										</mrow>
+									</math>, тогда
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>t</mi>
+											<mo>≥</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>
+								</p>
+								<p>2. Получаем квадратное уравнение:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msup>
+													<mi>t</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>10</mn>
+												<mi>t</mi>
+												<mo>+</mo>
+												<mn>9</mn>
+												<mo>=</mo>
+												<mn>0</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>3. Решаем квадратное уравнение:</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>D</mi>
+												<mo>=</mo>
+												<msup>
+													<mrow>
+														<mo>(</mo>
+														<mo>−</mo>
+														<mn>10</mn>
+														<mo>)</mo>
+													</mrow>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>4</mn>
+												<mo>·</mo>
+												<mn>1</mn>
+												<mo>·</mo>
+												<mn>9</mn>
+												<mo>=</mo>
+												<mn>100</mn>
+												<mo>−</mo>
+												<mn>36</mn>
+												<mo>=</mo>
+												<mn>64</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msub>
+													<mi>t</mi>
+													<mn>1,2</mn>
+												</msub>
+												<mo>=</mo>
+												<mfrac>
+													<mrow>
+														<mn>10</mn>
+														<mo>±</mo>
+														<msqrt>
+															<mn>64</mn>
+														</msqrt>
+													</mrow>
+													<mn>2</mn>
+												</mfrac>
+												<mo>=</mo>
+												<mfrac>
+													<mrow>
+														<mn>10</mn>
+														<mo>±</mo>
+														<mn>8</mn>
+													</mrow>
+													<mn>2</mn>
+												</mfrac>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>4. Находим значения
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>t</mi>
+										</mrow>
+									</math>:
+								</p>
+								<div class="math-container">
+									<div class="math-formula">
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msub>
+													<mi>t</mi>
+													<mn>1</mn>
+												</msub>
+												<mo>=</mo>
+												<mfrac>
+													<mrow>
+														<mn>10</mn>
+														<mo>+</mo>
+														<mn>8</mn>
+													</mrow>
+													<mn>2</mn>
+												</mfrac>
+												<mo>=</mo>
+												<mn>9</mn>
+												<mo>,</mo>
+												<mtext></mtext>
+												<msub>
+													<mi>t</mi>
+													<mn>2</mn>
+												</msub>
+												<mo>=</mo>
+												<mfrac>
+													<mrow>
+														<mn>10</mn>
+														<mo>−</mo>
+														<mn>8</mn>
+													</mrow>
+													<mn>2</mn>
+												</mfrac>
+												<mo>=</mo>
+												<mn>1</mn>
+											</mrow>
+										</math>
+									</div>
+								</div>
+								<p>5. Возвращаемся к переменной
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>x</mi>
+										</mrow>
+									</math>:
+								</p>
+								<ul>
+									<li>Если
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>t</mi>
+												<mo>=</mo>
+												<mn>9</mn>
+											</mrow>
+										</math>, то
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msup>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>=</mo>
+												<mn>9</mn>
+											</mrow>
+										</math> ⇒
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>x</mi>
+												<mo>=</mo>
+												<mo>±</mo>
+												<mn>3</mn>
+											</mrow>
+										</math>
+									</li>
+									<li>Если
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>t</mi>
+												<mo>=</mo>
+												<mn>1</mn>
+											</mrow>
+										</math>, то
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msup>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>=</mo>
+												<mn>1</mn>
+											</mrow>
+										</math> ⇒
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>x</mi>
+												<mo>=</mo>
+												<mo>±</mo>
+												<mn>1</mn>
+											</mrow>
+										</math>
+									</li>
+								</ul>
+								<p>
+									<strong>Ответ:</strong>
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msub>
+												<mi>x</mi>
+												<mn>1</mn>
+											</msub>
+											<mo>=</mo>
+											<mo>−</mo>
+											<mn>3</mn>
+											<mo>,</mo>
+											<mtext></mtext>
+											<msub>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msub>
+											<mo>=</mo>
+											<mo>−</mo>
+											<mn>1</mn>
+											<mo>,</mo>
+											<mtext></mtext>
+											<msub>
+												<mi>x</mi>
+												<mn>3</mn>
+											</msub>
+											<mo>=</mo>
+											<mn>1</mn>
+											<mo>,</mo>
+											<mtext></mtext>
+											<msub>
+												<mi>x</mi>
+												<mn>4</mn>
+											</msub>
+											<mo>=</mo>
+											<mn>3</mn>
+										</mrow>
+									</math>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="lesson-section">
+						<h2>Уравнения, сводящиеся к квадратным с помощью замены переменной</h2>
+						<div class="definition">
+							<p> Некоторые уравнения более сложного вида можно свести к квадратным уравнениям с помощью замены переменной. </p>
+							<div class="example">
+								<div class="example-title">Пример:
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msup>
+												<mrow>
+													<mo>(</mo>
+													<msup>
+														<mi>x</mi>
+														<mn>2</mn>
+													</msup>
+													<mo>−</mo>
+													<mn>4</mn>
+													<mi>x</mi>
+													<mo>)</mo>
+												</mrow>
+												<mn>2</mn>
+											</msup>
+											<mo>+</mo>
+											<mn>7</mn>
+											<mrow>
+												<mo>(</mo>
+												<msup>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>4</mn>
+												<mi>x</mi>
+												<mo>)</mo>
+											</mrow>
+											<mo>+</mo>
+											<mn>12</mn>
+											<mo>=</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>
+								</div>
+								<div class="solution">
+									<p>
+										<strong>Решение:</strong>
+									</p>
+									<p>1. Замечаем повторяющееся выражение
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msup>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>4</mn>
+												<mi>x</mi>
+											</mrow>
+										</math>
+									</p>
+									<p>2. Делаем замену:
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>t</mi>
+												<mo>=</mo>
+												<msup>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>4</mn>
+												<mi>x</mi>
+											</mrow>
+										</math>
+									</p>
+									<p>3. Получаем квадратное уравнение:</p>
+									<div class="math-container">
+										<div class="math-formula">
+											<math
+												xmlns="http://www.w3.org/1998/Math/MathML">
+												<mrow>
+													<msup>
+														<mi>t</mi>
+														<mn>2</mn>
+													</msup>
+													<mo>+</mo>
+													<mn>7</mn>
+													<mi>t</mi>
+													<mo>+</mo>
+													<mn>12</mn>
+													<mo>=</mo>
+													<mn>0</mn>
+												</mrow>
+											</math>
+										</div>
+									</div>
+									<p>4. Решаем квадратное уравнение:</p>
+									<div class="math-container">
+										<div class="math-formula">
+											<math
+												xmlns="http://www.w3.org/1998/Math/MathML">
+												<mrow>
+													<mi>D</mi>
+													<mo>=</mo>
+													<msup>
+														<mn>7</mn>
+														<mn>2</mn>
+													</msup>
+													<mo>−</mo>
+													<mn>4</mn>
+													<mo>·</mo>
+													<mn>1</mn>
+													<mo>·</mo>
+													<mn>12</mn>
+													<mo>=</mo>
+													<mn>49</mn>
+													<mo>−</mo>
+													<mn>48</mn>
+													<mo>=</mo>
+													<mn>1</mn>
+												</mrow>
+											</math>
+										</div>
+									</div>
+									<div class="math-container">
+										<div class="math-formula">
+											<math
+												xmlns="http://www.w3.org/1998/Math/MathML">
+												<mrow>
+													<msub>
+														<mi>t</mi>
+														<mn>1,2</mn>
+													</msub>
+													<mo>=</mo>
+													<mfrac>
+														<mrow>
+															<mo>−</mo>
+															<mn>7</mn>
+															<mo>±</mo>
+															<mn>1</mn>
+														</mrow>
+														<mn>2</mn>
+													</mfrac>
+												</mrow>
+											</math>
+										</div>
+									</div>
+									<p>5. Находим значения
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>t</mi>
+											</mrow>
+										</math>:
+									</p>
+									<div class="math-container">
+										<div class="math-formula">
+											<math
+												xmlns="http://www.w3.org/1998/Math/MathML">
+												<mrow>
+													<msub>
+														<mi>t</mi>
+														<mn>1</mn>
+													</msub>
+													<mo>=</mo>
+													<mfrac>
+														<mrow>
+															<mo>−</mo>
+															<mn>7</mn>
+															<mo>+</mo>
+															<mn>1</mn>
+														</mrow>
+														<mn>2</mn>
+													</mfrac>
+													<mo>=</mo>
+													<mo>−</mo>
+													<mn>3</mn>
+													<mo>,</mo>
+													<mtext></mtext>
+													<msub>
+														<mi>t</mi>
+														<mn>2</mn>
+													</msub>
+													<mo>=</mo>
+													<mfrac>
+														<mrow>
+															<mo>−</mo>
+															<mn>7</mn>
+															<mo>−</mo>
+															<mn>1</mn>
+														</mrow>
+														<mn>2</mn>
+													</mfrac>
+													<mo>=</mo>
+													<mo>−</mo>
+													<mn>4</mn>
+												</mrow>
+											</math>
+										</div>
+									</div>
+									<p>6. Возвращаемся к переменной
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>x</mi>
+											</mrow>
+										</math>:
+									</p>
+									<p>
+										<strong>Случай 1:</strong>
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msup>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>4</mn>
+												<mi>x</mi>
+												<mo>=</mo>
+												<mo>−</mo>
+												<mn>3</mn>
+											</mrow>
+										</math>
+									</p>
+									<div class="math-container">
+										<div class="math-formula">
+											<math
+												xmlns="http://www.w3.org/1998/Math/MathML">
+												<mrow>
+													<msup>
+														<mi>x</mi>
+														<mn>2</mn>
+													</msup>
+													<mo>−</mo>
+													<mn>4</mn>
+													<mi>x</mi>
+													<mo>+</mo>
+													<mn>3</mn>
+													<mo>=</mo>
+													<mn>0</mn>
+												</mrow>
+											</math>
+										</div>
+									</div>
+									<p>Решаем:
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>D</mi>
+												<mo>=</mo>
+												<mn>16</mn>
+												<mo>−</mo>
+												<mn>12</mn>
+												<mo>=</mo>
+												<mn>4</mn>
+											</mrow>
+										</math>,
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>x</mi>
+												<mo>=</mo>
+												<mfrac>
+													<mrow>
+														<mn>4</mn>
+														<mo>±</mo>
+														<mn>2</mn>
+													</mrow>
+													<mn>2</mn>
+												</mfrac>
+											</mrow>
+										</math>
+									</p>
+									<p>
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msub>
+													<mi>x</mi>
+													<mn>1</mn>
+												</msub>
+												<mo>=</mo>
+												<mn>1</mn>
+												<mo>,</mo>
+												<mtext></mtext>
+												<msub>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msub>
+												<mo>=</mo>
+												<mn>3</mn>
+											</mrow>
+										</math>
+									</p>
+									<p>
+										<strong>Случай 2:</strong>
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msup>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>4</mn>
+												<mi>x</mi>
+												<mo>=</mo>
+												<mo>−</mo>
+												<mn>4</mn>
+											</mrow>
+										</math>
+									</p>
+									<div class="math-container">
+										<div class="math-formula">
+											<math
+												xmlns="http://www.w3.org/1998/Math/MathML">
+												<mrow>
+													<msup>
+														<mi>x</mi>
+														<mn>2</mn>
+													</msup>
+													<mo>−</mo>
+													<mn>4</mn>
+													<mi>x</mi>
+													<mo>+</mo>
+													<mn>4</mn>
+													<mo>=</mo>
+													<mn>0</mn>
+												</mrow>
+											</math>
+										</div>
+									</div>
+									<p>Решаем:
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msup>
+													<mrow>
+														<mo>(</mo>
+														<mi>x</mi>
+														<mo>−</mo>
+														<mn>2</mn>
+														<mo>)</mo>
+													</mrow>
+													<mn>2</mn>
+												</msup>
+												<mo>=</mo>
+												<mn>0</mn>
+											</mrow>
+										</math> ⇒
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>x</mi>
+												<mo>=</mo>
+												<mn>2</mn>
+											</mrow>
+										</math>
+									</p>
+									<p>
+										<strong>Ответ:</strong>
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msub>
+													<mi>x</mi>
+													<mn>1</mn>
+												</msub>
+												<mo>=</mo>
+												<mn>1</mn>
+												<mo>,</mo>
+												<mtext></mtext>
+												<msub>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msub>
+												<mo>=</mo>
+												<mn>2</mn>
+												<mo>,</mo>
+												<mtext></mtext>
+												<msub>
+													<mi>x</mi>
+													<mn>3</mn>
+												</msub>
+												<mo>=</mo>
+												<mn>3</mn>
+											</mrow>
+										</math>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="lesson-section">
+						<h2>Уравнения с модулем, сводящиеся к квадратным</h2>
+						<div class="definition">
+							<p> Уравнения, содержащие модуль, часто решаются рассмотрением случаев. </p>
+							<div class="example">
+								<div class="example-title">Пример:
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msup>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msup>
+											<mo>−</mo>
+											<mn>3</mn>
+											<mo>|</mo>
+											<mi>x</mi>
+											<mo>|</mo>
+											<mo>+</mo>
+											<mn>2</mn>
+											<mo>=</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>
+								</div>
+								<div class="solution">
+									<p>
+										<strong>Решение:</strong>
+									</p>
+									<p>1. Рассмотрим два случая в зависимости от знака
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>x</mi>
+											</mrow>
+										</math>
+									</p>
+									<p>
+										<strong>Случай 1:</strong>
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>x</mi>
+												<mo>≥</mo>
+												<mn>0</mn>
+											</mrow>
+										</math>, тогда
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mo>|</mo>
+												<mi>x</mi>
+												<mo>|</mo>
+												<mo>=</mo>
+												<mi>x</mi>
+											</mrow>
+										</math>
+									</p>
+									<p>Уравнение принимает вид:
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msup>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>−</mo>
+												<mn>3</mn>
+												<mi>x</mi>
+												<mo>+</mo>
+												<mn>2</mn>
+												<mo>=</mo>
+												<mn>0</mn>
+											</mrow>
+										</math>
+									</p>
+									<p>Решаем:
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>D</mi>
+												<mo>=</mo>
+												<mn>9</mn>
+												<mo>−</mo>
+												<mn>8</mn>
+												<mo>=</mo>
+												<mn>1</mn>
+											</mrow>
+										</math>,
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>x</mi>
+												<mo>=</mo>
+												<mfrac>
+													<mrow>
+														<mn>3</mn>
+														<mo>±</mo>
+														<mn>1</mn>
+													</mrow>
+													<mn>2</mn>
+												</mfrac>
+											</mrow>
+										</math>
+									</p>
+									<p>
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msub>
+													<mi>x</mi>
+													<mn>1</mn>
+												</msub>
+												<mo>=</mo>
+												<mn>1</mn>
+												<mo>,</mo>
+												<mtext></mtext>
+												<msub>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msub>
+												<mo>=</mo>
+												<mn>2</mn>
+											</mrow>
+										</math> (оба удовлетворяют условию
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>x</mi>
+												<mo>≥</mo>
+												<mn>0</mn>
+											</mrow>
+										</math>)
+									</p>
+									<p>
+										<strong>Случай 2:</strong>
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>x</mi>
+												<mo><
+												</mo>
+												<mn>0</mn>
+											</mrow>
+										</math>, тогда
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mo>|</mo>
+												<mi>x</mi>
+												<mo>|</mo>
+												<mo>=</mo>
+												<mo>−</mo>
+												<mi>x</mi>
+											</mrow>
+										</math>
+									</p>
+									<p>Уравнение принимает вид:
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msup>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msup>
+												<mo>+</mo>
+												<mn>3</mn>
+												<mi>x</mi>
+												<mo>+</mo>
+												<mn>2</mn>
+												<mo>=</mo>
+												<mn>0</mn>
+											</mrow>
+										</math>
+									</p>
+									<p>Решаем:
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>D</mi>
+												<mo>=</mo>
+												<mn>9</mn>
+												<mo>−</mo>
+												<mn>8</mn>
+												<mo>=</mo>
+												<mn>1</mn>
+											</mrow>
+										</math>,
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>x</mi>
+												<mo>=</mo>
+												<mfrac>
+													<mrow>
+														<mo>−</mo>
+														<mn>3</mn>
+														<mo>±</mo>
+														<mn>1</mn>
+													</mrow>
+													<mn>2</mn>
+												</mfrac>
+											</mrow>
+										</math>
+									</p>
+									<p>
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msub>
+													<mi>x</mi>
+													<mn>3</mn>
+												</msub>
+												<mo>=</mo>
+												<mo>−</mo>
+												<mn>1</mn>
+												<mo>,</mo>
+												<mtext></mtext>
+												<msub>
+													<mi>x</mi>
+													<mn>4</mn>
+												</msub>
+												<mo>=</mo>
+												<mo>−</mo>
+												<mn>2</mn>
+											</mrow>
+										</math> (оба удовлетворяют условию
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<mi>x</mi>
+												<mo><
+												</mo>
+												<mn>0</mn>
+											</mrow>
+										</math>)
+									</p>
+									<p>
+										<strong>Ответ:</strong>
+										<math
+											xmlns="http://www.w3.org/1998/Math/MathML">
+											<mrow>
+												<msub>
+													<mi>x</mi>
+													<mn>1</mn>
+												</msub>
+												<mo>=</mo>
+												<mo>−</mo>
+												<mn>2</mn>
+												<mo>,</mo>
+												<mtext></mtext>
+												<msub>
+													<mi>x</mi>
+													<mn>2</mn>
+												</msub>
+												<mo>=</mo>
+												<mo>−</mo>
+												<mn>1</mn>
+												<mo>,</mo>
+												<mtext></mtext>
+												<msub>
+													<mi>x</mi>
+													<mn>3</mn>
+												</msub>
+												<mo>=</mo>
+												<mn>1</mn>
+												<mo>,</mo>
+												<mtext></mtext>
+												<msub>
+													<mi>x</mi>
+													<mn>4</mn>
+												</msub>
+												<mo>=</mo>
+												<mn>2</mn>
+											</mrow>
+										</math>
+									</p>
+								</div>
+							</div>
+							<div class="explanation">
+								<p>
+									<strong>Альтернативный метод:</strong> Уравнение
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msup>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msup>
+											<mo>−</mo>
+											<mn>3</mn>
+											<mo>|</mo>
+											<mi>x</mi>
+											<mo>|</mo>
+											<mo>+</mo>
+											<mn>2</mn>
+											<mo>=</mo>
+											<mn>0</mn>
+										</mrow>
+									</math> можно решить с помощью замены
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>t</mi>
+											<mo>=</mo>
+											<mo>|</mo>
+											<mi>x</mi>
+											<mo>|</mo>
+										</mrow>
+									</math>,
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>t</mi>
+											<mo>≥</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>. Тогда уравнение принимает вид
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msup>
+												<mi>t</mi>
+												<mn>2</mn>
+											</msup>
+											<mo>−</mo>
+											<mn>3</mn>
+											<mi>t</mi>
+											<mo>+</mo>
+											<mn>2</mn>
+											<mo>=</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>.
+
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="lesson-section">
+						<h2>Другие типы уравнений, сводящихся к квадратным</h2>
+						<div class="definition">
+							<p>
+								<strong>1. Уравнения с дробными степенями:</strong>
+							</p>
+							<div class="example">
+								<div class="example-title">Пример:
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msup>
+												<mi>x</mi>
+												<mrow>
+													<mn>2</mn>
+													<mo>/</mo>
+													<mn>3</mn>
+												</mrow>
+											</msup>
+											<mo>−</mo>
+											<mn>5</mn>
+											<msup>
+												<mi>x</mi>
+												<mrow>
+													<mn>1</mn>
+													<mo>/</mo>
+													<mn>3</mn>
+												</mrow>
+											</msup>
+											<mo>+</mo>
+											<mn>6</mn>
+											<mo>=</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>
+								</div>
+								<p>
+									<strong>Решение:</strong> Замена
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>t</mi>
+											<mo>=</mo>
+											<msup>
+												<mi>x</mi>
+												<mrow>
+													<mn>1</mn>
+													<mo>/</mo>
+													<mn>3</mn>
+												</mrow>
+											</msup>
+										</mrow>
+									</math> ⇒
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msup>
+												<mi>t</mi>
+												<mn>2</mn>
+											</msup>
+											<mo>−</mo>
+											<mn>5</mn>
+											<mi>t</mi>
+											<mo>+</mo>
+											<mn>6</mn>
+											<mo>=</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>
+								</p>
+							</div>
+							<p>
+								<strong>2. Уравнения с радикалами:</strong>
+							</p>
+							<div class="example">
+								<div class="example-title">Пример:
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>x</mi>
+											<mo>−</mo>
+											<mn>3</mn>
+											<msqrt>
+												<mi>x</mi>
+											</msqrt>
+											<mo>+</mo>
+											<mn>2</mn>
+											<mo>=</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>
+								</div>
+								<p>
+									<strong>Решение:</strong> Замена
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>t</mi>
+											<mo>=</mo>
+											<msqrt>
+												<mi>x</mi>
+											</msqrt>
+										</mrow>
+									</math>,
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>t</mi>
+											<mo>≥</mo>
+											<mn>0</mn>
+										</mrow>
+									</math> ⇒
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msup>
+												<mi>t</mi>
+												<mn>2</mn>
+											</msup>
+											<mo>−</mo>
+											<mn>3</mn>
+											<mi>t</mi>
+											<mo>+</mo>
+											<mn>2</mn>
+											<mo>=</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>
+								</p>
+							</div>
+							<p>
+								<strong>3. Возвратные уравнения:</strong>
+							</p>
+							<div class="example">
+								<div class="example-title">Пример:
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msup>
+												<mi>x</mi>
+												<mn>4</mn>
+											</msup>
+											<mo>+</mo>
+											<msup>
+												<mi>x</mi>
+												<mn>3</mn>
+											</msup>
+											<mo>−</mo>
+											<mn>4</mn>
+											<msup>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msup>
+											<mo>+</mo>
+											<mi>x</mi>
+											<mo>+</mo>
+											<mn>1</mn>
+											<mo>=</mo>
+											<mn>0</mn>
+										</mrow>
+									</math>
+								</div>
+								<p>
+									<strong>Решение:</strong> Деление на
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<msup>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msup>
+										</mrow>
+									</math> и замена
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>t</mi>
+											<mo>=</mo>
+											<mi>x</mi>
+											<mo>+</mo>
+											<mfrac>
+												<mn>1</mn>
+												<mi>x</mi>
+											</mfrac>
+										</mrow>
+									</math>
+								</p>
+							</div>
+						</div>
+					</div>
+                   <div class="bottom-nav">
+    <select onchange="goToSection(this.value)">
+        <option value="">Перейти к теме…</option>
+        <option value="1">Введение в квадратные уравнения. Неполные квадратные уравнения</option>
+        <option value="2">Решение полных квадратных уравнений.</option>
+        <option value="3">Решение приведенных квадратных уравнений.</option>
+        <option value="4">Разложение на множители квадратного трёхчлена</option>
+        <option value="5">Приложение: Биквадратные уравнения, замена.</option>
+
+    </select>
+</div>
+
+<script>
+function goToSection(id) {
+    if (!id) return;
+    document.getElementById(id).scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+</script>
+				</div>
+				</body>
+			</html>

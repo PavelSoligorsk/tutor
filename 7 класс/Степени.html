@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>Натуральные и целые степени</title>
+				<style>
+   * {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 15px;
+  background-color: #f5f9ff;
+  color: #333;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 150, 0.1);
+  padding: 25px 20px;
+}
+
+h1 {
+  color: #2c3e50;
+  text-align: center;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 15px;
+  margin-top: 0;
+  font-size: 1.8em;
+}
+
+h2 {
+  color: #2980b9;
+  margin-top: 30px;
+  font-size: 1.4em;
+  padding: 0 5px;
+}
+
+.lesson-section {
+  background-color: #f8fafd;
+  border-radius: 10px;
+  padding: 18px;
+  margin: 20px 0;
+  border-left: 5px solid #3498db;
+}
+
+.definition {
+  background-color: #e8f4fc;
+  padding: 18px;
+  border-radius: 8px;
+  margin: 18px 0;
+  font-size: 1em;
+}
+
+.example {
+  background-color: #f0f7ff;
+  padding: 18px;
+  border-radius: 8px;
+  margin: 18px 0;
+  border-left: 4px solid #2ecc71;
+  font-size: 1em;
+}
+
+.example-title {
+  font-weight: bold;
+  color: #27ae60;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
+.hard-example {
+  border-left-color: #e74c3c;
+}
+
+.hard-example .example-title {
+  color: #e74c3c;
+}
+
+.math-container {
+  background-color: white;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin: 14px 0;
+  overflow-x: auto;
+}
+
+.math-formula {
+  font-size: 1.1em;
+  text-align: center;
+  padding: 10px;
+}
+
+.explanation {
+  background-color: #fffde7;
+  padding: 14px;
+  border-radius: 8px;
+  margin: 14px 0;
+  font-style: italic;
+  font-size: 0.95em;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
+  flex: 1;
+  min-width: 120px;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.lesson-number {
+  background-color: #3498db;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  color: #7f8c8d;
+  font-size: 0.9em;
+}
+
+.image-container {
+  text-align: center;
+  margin: 1rem 0;
+  padding: 0.8rem;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+
+/* Специальные медиа-запросы для изображений */
+@media (max-width: 768px) {
+  .image-container {
+    padding: 0.6rem;
+    margin: 0.8rem 0;
+  }
+
+  .function-image,
+  .sign-image {
+    max-height: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-container {
+    padding: 0.5rem;
+    margin: 0.6rem 0;
+  }
+
+  .function-image,
+  .sign-image {
+    max-height: 200px;
+  }
+}
+
+.function-image,
+.sign-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  transition: transform 0.3s ease;
+  max-height: 280px;
+  object-fit: contain;
+}
+
+.function-image:hover,
+.sign-image:hover {
+  transform: scale(1.02);
+}
+
+.function-analysis {
+  background: white;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.function-analysis h3 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.8rem;
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+.function-properties {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+.property {
+  background: #f8fafc;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #3498db;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.property:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.property h4 {
+  color: #2c3e50;
+  margin-top: 0;
+  font-size: 1.05rem;
+  margin-bottom: 0.6rem;
+}
+
+.explanation {
+  font-style: italic;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  padding-left: 0.8rem;
+  border-left: 2px solid #bdc3c7;
+}
+
+.sign-constancy-cases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.case {
+  background: white;
+  padding: 1.2rem;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease;
+}
+
+.case:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.sign-analysis {
+  background: #f8fafc;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 0.8rem;
+  border-left: 4px solid #2ecc71;
+}
+
+.sign-analysis h4 {
+  color: #27ae60;
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  font-size: 1.05rem;
+}
+
+.summary {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  padding: 1.2rem;
+  border-radius: 10px;
+  margin-top: 1.5rem;
+  border-left: 5px solid #2196F3;
+}
+
+.summary h4 {
+  color: #1565c0;
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin: 1.2rem 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sign-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  min-width: 600px;
+}
+
+.sign-table th {
+  background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+  color: white;
+  padding: 0.9rem;
+  text-align: left;
+  font-weight: 600;
+  border: 1px solid #388E3C;
+  font-size: 0.95em;
+}
+
+.sign-table td {
+  padding: 0.7rem 0.9rem;
+  border: 1px solid #e0e0e0;
+  color: #333;
+  font-size: 0.9em;
+}
+
+.sign-table tbody tr:nth-child(even) {
+  background: #f5f5f5;
+}
+
+.sign-table tbody tr:hover {
+  background: #e3f2fd;
+}
+
+.positive-a {
+  background: #e8f5e9 !important;
+  color: #1b5e20 !important;
+  font-weight: 600;
+}
+
+.negative-a {
+  background: #ffebee !important;
+  color: #b71c1c !important;
+  font-weight: 600;
+}
+
+.note {
+  background: #fff3e0;
+  padding: 1.2rem;
+  border-radius: 10px;
+  margin-top: 1.5rem;
+  border-left: 5px solid #ff9800;
+}
+
+.note h4 {
+  color: #e65100;
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .container {
+    padding: 18px 15px;
+    border-radius: 12px;
+  }
+
+  h1 {
+    font-size: 1.6em;
+    padding-bottom: 12px;
+  }
+
+  h2 {
+    font-size: 1.3em;
+    margin-top: 25px;
+  }
+
+  .lesson-section {
+    padding: 15px;
+    margin: 15px 0;
+  }
+
+  .definition,
+  .example {
+    padding: 15px;
+    margin: 15px 0;
+  }
+
+  .function-analysis {
+    padding: 1.2rem;
+    margin: 1.2rem 0;
+  }
+
+  .function-properties,
+  .sign-constancy-cases {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .property,
+  .case {
+    padding: 1rem;
+  }
+
+  .function-image,
+  .sign-image {
+    max-height: 220px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 0.95em;
+    min-width: 110px;
+  }
+
+  .navigation {
+    gap: 10px;
+  }
+
+  .sign-table {
+    min-width: 100%;
+    font-size: 0.85em;
+  }
+
+  .sign-table th,
+  .sign-table td {
+    padding: 0.6rem 0.8rem;
+  }
+}
+
+/* Адаптивность для очень маленьких экранов */
+@media (max-width: 480px) {
+  body {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 15px 12px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+
+  .function-image,
+  .sign-image {
+    max-height: 200px;
+  }
+
+  .math-formula {
+    font-size: 1em;
+    padding: 8px;
+  }
+
+  button {
+    min-width: 100px;
+    padding: 8px 16px;
+  }
+
+  .sign-table th,
+  .sign-table td {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8em;
+  }
+}
+  </style>
+			</head>
+			<body>
+				<div class="container">
+                    <h1>Натуральные и целые степени</h1>
+                  <div class="lesson-section">
+    <h2>Свойства степеней</h2>
+
+    <div class="function-properties">
+        <div class="property">
+            <h4>Умножение степеней с одинаковыми основаниями</h4>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <msup>
+                                <mi>a</mi>
+                                <mi>m</mi>
+                            </msup>
+                            <mo>·</mo>
+                            <msup>
+                                <mi>a</mi>
+                                <mi>n</mi>
+                            </msup>
+                            <mo>=</mo>
+                            <msup>
+                                <mi>a</mi>
+                                <mrow>
+                                    <mi>m</mi>
+                                    <mo>+</mo>
+                                    <mi>n</mi>
+                                </mrow>
+                            </msup>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="property">
+            <h4>Деление степеней с одинаковыми основаниями</h4>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mfrac>
+                                <msup>
+                                    <mi>a</mi>
+                                    <mi>m</mi>
+                                </msup>
+                                <msup>
+                                    <mi>a</mi>
+                                    <mi>n</mi>
+                                </msup>
+                            </mfrac>
+                            <mo>=</mo>
+                            <msup>
+                                <mi>a</mi>
+                                <mrow>
+                                    <mi>m</mi>
+                                    <mo>-</mo>
+                                    <mi>n</mi>
+                                </mrow>
+                            </msup>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="property">
+            <h4>Возведение степени в степень</h4>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <msup>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <msup>
+                                        <mi>a</mi>
+                                        <mi>m</mi>
+                                    </msup>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mi>n</mi>
+                            </msup>
+                            <mo>=</mo>
+                            <msup>
+                                <mi>a</mi>
+                                <mrow>
+                                    <mi>m</mi>
+                                    <mo>·</mo>
+                                    <mi>n</mi>
+                                </mrow>
+                            </msup>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="function-properties">
+        <div class="property">
+            <h4>Возведение произведения в степень</h4>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <msup>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mi>a</mi>
+                                    <mo>·</mo>
+                                    <mi>b</mi>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mi>n</mi>
+                            </msup>
+                            <mo>=</mo>
+                            <msup>
+                                <mi>a</mi>
+                                <mi>n</mi>
+                            </msup>
+                            <mo>·</mo>
+                            <msup>
+                                <mi>b</mi>
+                                <mi>n</mi>
+                            </msup>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="property">
+            <h4>Возведение дроби в степень</h4>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <msup>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mfrac>
+                                        <mi>a</mi>
+                                        <mi>b</mi>
+                                    </mfrac>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mi>n</mi>
+                            </msup>
+                            <mo>=</mo>
+                            <mfrac>
+                                <msup>
+                                    <mi>a</mi>
+                                    <mi>n</mi>
+                                </msup>
+                                <msup>
+                                    <mi>b</mi>
+                                    <mi>n</mi>
+                                </msup>
+                            </mfrac>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="property">
+            <h4>Степень с нулевым показателем</h4>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <msup>
+                                <mi>a</mi>
+                                <mn>0</mn>
+                            </msup>
+                            <mo>=</mo>
+                            <mn>1</mn>
+                            <mspace width="1em"/>
+                            <mtext>при</mtext>
+                            <mspace width="0.3em"/>
+                            <mi>a</mi>
+                            <mo>≠</mo>
+                            <mn>0</mn>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="function-properties">
+        <div class="property">
+            <h4>Степень с отрицательным показателем</h4>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <msup>
+                                <mi>a</mi>
+                                <mrow>
+                                    <mo>-</mo>
+                                    <mi>n</mi>
+                                </mrow>
+                            </msup>
+                            <mo>=</mo>
+                            <mfrac>
+                                <mn>1</mn>
+                                <msup>
+                                    <mi>a</mi>
+                                    <mi>n</mi>
+                                </msup>
+                            </mfrac>
+                            <mspace width="1em"/>
+                            <mtext>при</mtext>
+                            <mspace width="0.3em"/>
+                            <mi>a</mi>
+                            <mo>≠</mo>
+                            <mn>0</mn>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Стандартный вид числа</h2>
+
+    <div class="definition">
+        <p><strong>Стандартный вид числа:</strong></p>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>a</mi>
+                        <mo>·</mo>
+                        <msup>
+                            <mn>10</mn>
+                            <mi>n</mi>
+                        </msup>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+        <p>где:</p>
+        <ul>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>1</mn><mo>≤</mo><mo>|</mo><mi>a</mi><mo>|</mo><mo>&lt;</mo><mn>10</mn></mrow></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi><mo>∈</mo><mi>ℤ</mi></mrow></math> (<math><mi>n</mi></math> — целое число)</li>
+        </ul>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Практика: вычисление степеней</h2>
+
+    <div class="example">
+        <div class="example-title">Задание 1: Вычислите степени</div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mtext>а)</mtext>
+                        <mspace width="1em"/>
+                        <msup>
+                            <mrow>
+                                <mo>(</mo>
+                                <mo>-</mo>
+                                <mn>3</mn>
+                                <mo>)</mo>
+                            </mrow>
+                            <mn>4</mn>
+                        </msup>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <p><strong>Решение:</strong></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <msup>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mo>-</mo>
+                                    <mn>3</mn>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mn>4</mn>
+                            </msup>
+                            <mo>=</mo>
+                            <mn>81</mn>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mtext>б)</mtext>
+                        <mspace width="1em"/>
+                        <msup>
+                            <mrow>
+                                <mo>(</mo>
+                                <mn>2</mn>
+                                <mfrac>
+                                    <mn>1</mn>
+                                    <mn>3</mn>
+                                </mfrac>
+                                <mo>)</mo>
+                            </mrow>
+                            <mn>2</mn>
+                        </msup>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <p><strong>Решение:</strong></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <msup>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mfrac>
+                                        <mn>7</mn>
+                                        <mn>3</mn>
+                                    </mfrac>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mn>2</mn>
+                            </msup>
+                            <mo>=</mo>
+                            <mfrac>
+                                <mn>49</mn>
+                                <mn>9</mn>
+                            </mfrac>
+                            <mo>=</mo>
+                            <mn>5</mn>
+                            <mfrac>
+                                <mn>4</mn>
+                                <mn>9</mn>
+                            </mfrac>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mtext>в)</mtext>
+                        <mspace width="1em"/>
+                        <msup>
+                            <mrow>
+                                <mo>(</mo>
+                                <mo>-</mo>
+                                <mn>0.02</mn>
+                                <mo>)</mo>
+                            </mrow>
+                            <mn>2</mn>
+                        </msup>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <p><strong>Решение:</strong></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <msup>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mo>-</mo>
+                                    <mn>0.02</mn>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mn>2</mn>
+                            </msup>
+                            <mo>=</mo>
+                            <mn>0.0004</mn>
+                            <mo>=</mo>
+                            <mn>4</mn>
+                            <mo>·</mo>
+                            <msup>
+                                <mn>10</mn>
+                                <mrow>
+                                    <mo>-</mo>
+                                    <mn>4</mn>
+                                </mrow>
+                            </msup>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Практика: степени с отрицательным показателем</h2>
+
+    <div class="example">
+        <div class="example-title">Задание 2: Вычислите степени с отрицательным показателем</div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mtext>а)</mtext>
+                        <mspace width="1em"/>
+                        <mo>-</mo>
+                        <mn>0.5</mn>
+                        <msup>
+                            <mrow></mrow>
+                            <mrow>
+                                <mo>-</mo>
+                                <mn>3</mn>
+                            </mrow>
+                        </msup>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <p><strong>Решение:</strong></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mo>-</mo>
+                            <mn>0.5</mn>
+                            <msup>
+                                <mrow></mrow>
+                                <mrow>
+                                    <mo>-</mo>
+                                    <mn>3</mn>
+                                </mrow>
+                            </msup>
+                            <mo>=</mo>
+                            <mo>-</mo>
+                            <mfrac>
+                                <mn>1</mn>
+                                <msup>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mn>0.5</mn>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mn>3</mn>
+                                </msup>
+                            </mfrac>
+                            <mo>=</mo>
+                            <mo>-</mo>
+                            <mfrac>
+                                <mn>1</mn>
+                                <mn>0.125</mn>
+                            </mfrac>
+                            <mo>=</mo>
+                            <mo>-</mo>
+                            <mn>8</mn>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mtext>б)</mtext>
+                        <mspace width="1em"/>
+                        <msup>
+                            <mrow>
+                                <mo>(</mo>
+                                <mo>-</mo>
+                                <mn>2</mn>
+                                <mfrac>
+                                    <mn>3</mn>
+                                    <mn>7</mn>
+                                </mfrac>
+                                <mo>)</mo>
+                            </mrow>
+                            <mrow>
+                                <mo>-</mo>
+                                <mn>1</mn>
+                            </mrow>
+                        </msup>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <p><strong>Решение:</strong></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <msup>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mo>-</mo>
+                                    <mfrac>
+                                        <mn>17</mn>
+                                        <mn>7</mn>
+                                    </mfrac>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mrow>
+                                    <mo>-</mo>
+                                    <mn>1</mn>
+                                </mrow>
+                            </msup>
+                            <mo>=</mo>
+                            <mo>-</mo>
+                            <mfrac>
+                                <mn>7</mn>
+                                <mn>17</mn>
+                            </mfrac>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mtext>в)</mtext>
+                        <mspace width="1em"/>
+                        <msup>
+                            <mrow>
+                                <mo>(</mo>
+                                <mo>-</mo>
+                                <mn>2</mn>
+                                <mo>)</mo>
+                            </mrow>
+                            <mrow>
+                                <mo>-</mo>
+                                <mn>2</mn>
+                            </mrow>
+                        </msup>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <p><strong>Решение:</strong></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <msup>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mo>-</mo>
+                                    <mn>2</mn>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mrow>
+                                    <mo>-</mo>
+                                    <mn>2</mn>
+                                </mrow>
+                            </msup>
+                            <mo>=</mo>
+                            <mfrac>
+                                <mn>1</mn>
+                                <msup>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mo>-</mo>
+                                        <mn>2</mn>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mn>2</mn>
+                                </msup>
+                            </mfrac>
+                            <mo>=</mo>
+                            <mfrac>
+                                <mn>1</mn>
+                                <mn>4</mn>
+                            </mfrac>
+                            <mo>=</mo>
+                            <mn>0.25</mn>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mtext>г)</mtext>
+                        <mspace width="1em"/>
+                        <msup>
+                            <mrow>
+                                <mo>(</mo>
+                                <mo>-</mo>
+                                <mn>1</mn>
+                                <mfrac>
+                                    <mn>2</mn>
+                                    <mn>9</mn>
+                                </mfrac>
+                                <mo>)</mo>
+                            </mrow>
+                            <mrow>
+                                <mo>-</mo>
+                                <mn>2</mn>
+                            </mrow>
+                        </msup>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <p><strong>Решение:</strong></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <msup>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mo>-</mo>
+                                    <mfrac>
+                                        <mn>11</mn>
+                                        <mn>9</mn>
+                                    </mfrac>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mrow>
+                                    <mo>-</mo>
+                                    <mn>2</mn>
+                                </mrow>
+                            </msup>
+                            <mo>=</mo>
+                            <msup>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mfrac>
+                                        <mn>9</mn>
+                                        <mn>11</mn>
+                                    </mfrac>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mn>2</mn>
+                            </msup>
+                            <mo>=</mo>
+                            <mfrac>
+                                <mn>81</mn>
+                                <mn>121</mn>
+                            </mfrac>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Практика: упрощение выражений со степенями</h2>
+
+    <div class="example">
+        <div class="example-title">Задание 3: Упростите выражения</div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mtext>а)</mtext>
+                        <mspace width="1em"/>
+                        <mfrac>
+                            <mrow>
+                                <msup>
+                                    <mn>27</mn>
+                                    <mn>5</mn>
+                                </msup>
+                            </mrow>
+                            <mrow>
+                                <msup>
+                                    <mn>9</mn>
+                                    <mn>2</mn>
+                                </msup>
+                                <mo>·</mo>
+                                <msup>
+                                    <mn>81</mn>
+                                    <mn>2</mn>
+                                </msup>
+                            </mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <p><strong>Решение:</strong></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mfrac>
+                                <msup>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <msup>
+                                            <mn>3</mn>
+                                            <mn>3</mn>
+                                        </msup>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mn>5</mn>
+                                </msup>
+                                <mrow>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <msup>
+                                                <mn>3</mn>
+                                                <mn>2</mn>
+                                            </msup>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>·</mo>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <msup>
+                                                <mn>3</mn>
+                                                <mn>4</mn>
+                                            </msup>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>2</mn>
+                                    </msup>
+                                </mrow>
+                            </mfrac>
+                            <mo>=</mo>
+                            <mfrac>
+                                <msup>
+                                    <mn>3</mn>
+                                    <mn>15</mn>
+                                </msup>
+                                <mrow>
+                                    <msup>
+                                        <mn>3</mn>
+                                        <mn>4</mn>
+                                    </msup>
+                                    <mo>·</mo>
+                                    <msup>
+                                        <mn>3</mn>
+                                        <mn>8</mn>
+                                    </msup>
+                                </mrow>
+                            </mfrac>
+                            <mo>=</mo>
+                            <mfrac>
+                                <msup>
+                                    <mn>3</mn>
+                                    <mn>15</mn>
+                                </msup>
+                                <msup>
+                                    <mn>3</mn>
+                                    <mn>12</mn>
+                                </msup>
+                            </mfrac>
+                            <mo>=</mo>
+                            <msup>
+                                <mn>3</mn>
+                                <mn>3</mn>
+                            </msup>
+                            <mo>=</mo>
+                            <mn>27</mn>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mtext>б)</mtext>
+                        <mspace width="1em"/>
+                        <mfrac>
+                            <mrow>
+                                <msup>
+                                    <mn>64</mn>
+                                    <mn>2</mn>
+                                </msup>
+                                <mo>·</mo>
+                                <msup>
+                                    <mn>32</mn>
+                                    <mn>5</mn>
+                                </msup>
+                            </mrow>
+                            <mrow>
+                                <msup>
+                                    <mn>16</mn>
+                                    <mn>3</mn>
+                                </msup>
+                                <mo>·</mo>
+                                <msup>
+                                    <mn>8</mn>
+                                    <mn>8</mn>
+                                </msup>
+                            </mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <p><strong>Решение:</strong></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mfrac>
+                                <mrow>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <msup>
+                                                <mn>2</mn>
+                                                <mn>6</mn>
+                                            </msup>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>·</mo>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <msup>
+                                                <mn>2</mn>
+                                                <mn>5</mn>
+                                            </msup>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>5</mn>
+                                    </msup>
+                                </mrow>
+                                <mrow>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <msup>
+                                                <mn>2</mn>
+                                                <mn>4</mn>
+                                            </msup>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>3</mn>
+                                    </msup>
+                                    <mo>·</mo>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <msup>
+                                                <mn>2</mn>
+                                                <mn>3</mn>
+                                            </msup>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>8</mn>
+                                    </msup>
+                                </mrow>
+                            </mfrac>
+                            <mo>=</mo>
+                            <mfrac>
+                                <mrow>
+                                    <msup>
+                                        <mn>2</mn>
+                                        <mn>12</mn>
+                                    </msup>
+                                    <mo>·</mo>
+                                    <msup>
+                                        <mn>2</mn>
+                                        <mn>25</mn>
+                                    </msup>
+                                </mrow>
+                                <mrow>
+                                    <msup>
+                                        <mn>2</mn>
+                                        <mn>12</mn>
+                                    </msup>
+                                    <mo>·</mo>
+                                    <msup>
+                                        <mn>2</mn>
+                                        <mn>24</mn>
+                                    </msup>
+                                </mrow>
+                            </mfrac>
+                            <mo>=</mo>
+                            <mfrac>
+                                <msup>
+                                    <mn>2</mn>
+                                    <mn>37</mn>
+                                </msup>
+                                <msup>
+                                    <mn>2</mn>
+                                    <mn>36</mn>
+                                </msup>
+                            </mfrac>
+                            <mo>=</mo>
+                            <msup>
+                                <mn>2</mn>
+                                <mn>1</mn>
+                            </msup>
+                            <mo>=</mo>
+                            <mn>2</mn>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mtext>в)</mtext>
+                        <mspace width="1em"/>
+                        <mfrac>
+                            <mrow>
+                                <mn>64</mn>
+                                <mo>·</mo>
+                                <msup>
+                                    <mn>25</mn>
+                                    <mrow>
+                                        <mo>-</mo>
+                                        <mn>3</mn>
+                                    </mrow>
+                                </msup>
+                                <mo>·</mo>
+                                <msup>
+                                    <mn>14</mn>
+                                    <mrow>
+                                        <mo>-</mo>
+                                        <mn>7</mn>
+                                    </mrow>
+                                </msup>
+                            </mrow>
+                            <mrow>
+                                <msup>
+                                    <mn>35</mn>
+                                    <mrow>
+                                        <mo>-</mo>
+                                        <mn>6</mn>
+                                    </mrow>
+                                </msup>
+                            </mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <p><strong>Решение:</strong></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mfrac>
+                                <mrow>
+                                    <msup>
+                                        <mn>2</mn>
+                                        <mn>6</mn>
+                                    </msup>
+                                    <mo>·</mo>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <msup>
+                                                <mn>5</mn>
+                                                <mn>2</mn>
+                                            </msup>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mrow>
+                                            <mo>-</mo>
+                                            <mn>3</mn>
+                                        </mrow>
+                                    </msup>
+                                    <mo>·</mo>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mn>2</mn>
+                                            <mo>·</mo>
+                                            <mn>7</mn>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mrow>
+                                            <mo>-</mo>
+                                            <mn>7</mn>
+                                        </mrow>
+                                    </msup>
+                                </mrow>
+                                <mrow>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mn>5</mn>
+                                            <mo>·</mo>
+                                            <mn>7</mn>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mrow>
+                                            <mo>-</mo>
+                                            <mn>6</mn>
+                                        </mrow>
+                                    </msup>
+                                </mrow>
+                            </mfrac>
+                            <mo>=</mo>
+                            <mfrac>
+                                <mrow>
+                                    <msup>
+                                        <mn>2</mn>
+                                        <mn>6</mn>
+                                    </msup>
+                                    <mo>·</mo>
+                                    <msup>
+                                        <mn>5</mn>
+                                        <mrow>
+                                            <mo>-</mo>
+                                            <mn>6</mn>
+                                        </mrow>
+                                    </msup>
+                                    <mo>·</mo>
+                                    <msup>
+                                        <mn>2</mn>
+                                        <mrow>
+                                            <mo>-</mo>
+                                            <mn>7</mn>
+                                        </mrow>
+                                    </msup>
+                                    <mo>·</mo>
+                                    <msup>
+                                        <mn>7</mn>
+                                        <mrow>
+                                            <mo>-</mo>
+                                            <mn>7</mn>
+                                        </mrow>
+                                    </msup>
+                                </mrow>
+                                <mrow>
+                                    <msup>
+                                        <mn>5</mn>
+                                        <mrow>
+                                            <mo>-</mo>
+                                            <mn>6</mn>
+                                        </mrow>
+                                    </msup>
+                                    <mo>·</mo>
+                                    <msup>
+                                        <mn>7</mn>
+                                        <mrow>
+                                            <mo>-</mo>
+                                            <mn>6</mn>
+                                        </mrow>
+                                    </msup>
+                                </mrow>
+                            </mfrac>
+                            <mo>=</mo>
+                            <mfrac>
+                                <msup>
+                                    <mn>2</mn>
+                                    <mrow>
+                                        <mo>-</mo>
+                                        <mn>1</mn>
+                                    </mrow>
+                                </msup>
+                                <msup>
+                                    <mn>7</mn>
+                                    <mrow>
+                                        <mo>-</mo>
+                                        <mn>1</mn>
+                                    </mrow>
+                                </msup>
+                            </mfrac>
+                            <mo>=</mo>
+                            <mfrac>
+                                <mn>1</mn>
+                                <mrow>
+                                    <mn>2</mn>
+                                    <mo>·</mo>
+                                    <mn>7</mn>
+                                </mrow>
+                            </mfrac>
+                            <mo>=</mo>
+                            <mfrac>
+                                <mn>1</mn>
+                                <mn>14</mn>
+                            </mfrac>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Практика: стандартный вид числа</h2>
+
+    <div class="example">
+        <div class="example-title">Задание 4: Представьте числа в стандартном виде</div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mtext>а)</mtext>
+                        <mspace width="1em"/>
+                        <mn>892 140 000</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <p><strong>Решение:</strong></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mn>892 140 000</mn>
+                            <mo>=</mo>
+                            <mn>8.9214</mn>
+                            <mo>·</mo>
+                            <msup>
+                                <mn>10</mn>
+                                <mn>8</mn>
+                            </msup>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mtext>б)</mtext>
+                        <mspace width="1em"/>
+                        <mn>0.004507</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <p><strong>Решение:</strong></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mn>0.004507</mn>
+                            <mo>=</mo>
+                            <mn>4.507</mn>
+                            <mo>·</mo>
+                            <msup>
+                                <mn>10</mn>
+                                <mrow>
+                                    <mo>-</mo>
+                                    <mn>3</mn>
+                                </mrow>
+                            </msup>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mtext>в)</mtext>
+                        <mspace width="1em"/>
+                        <mn>32 145.25</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <p><strong>Решение:</strong></p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mn>32 145.25</mn>
+                            <mo>=</mo>
+                            <mn>3.214525</mn>
+                            <mo>·</mo>
+                            <msup>
+                                <mn>10</mn>
+                                <mn>4</mn>
+
+</div>
+
+					</body>
+																				</html>

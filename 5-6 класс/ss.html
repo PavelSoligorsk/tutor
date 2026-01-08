@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Математика: Типы чисел и делимость</title>
+
+    <!-- MathJax Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+
+    <!-- Load MathJax -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f9ff 0%, #e8f4fc 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Единый стиль для всех секций */
+        .lesson-section {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 150, 0.08);
+            margin-bottom: 30px;
+            border-top: 4px solid #3498db;
+        }
+
+        .section-title {
+            color: #2c3e50;
+            text-align: center;
+            padding-bottom: 15px;
+            margin-top: 0;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #3498db;
+            font-size: 1.8em;
+        }
+
+        /* Единый стиль для карточек/концептов */
+        .concept-card {
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #f8fafd 0%, #ffffff 100%);
+            border-left: 5px solid;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .concept-title {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .concept-symbol {
+            font-weight: bold;
+            background: #2c3e50;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 1.1em;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .definition {
+            color: #555;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        /* Единый стиль для примеров */
+        .example-box {
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 6px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .example-title::before {
+            content: "📌";
+        }
+
+        /* Единая таблица */
+        .unified-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .unified-table th {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 12px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .unified-table td {
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            text-align: center;
+        }
+
+        .unified-table tr:nth-child(even) {
+            background-color: #f8fafd;
+        }
+
+        /* Цвета для разных типов */
+        .color-natural { border-left-color: #3498db; }
+        .color-integer { border-left-color: #2ecc71; }
+        .color-rational { border-left-color: #e74c3c; }
+        .color-irrational { border-left-color: #f1c40f; }
+        .color-real { border-left-color: #9b59b6; }
+        .color-prime { border-left-color: #1abc9c; }
+        .color-divisibility { border-left-color: #e67e22; }
+
+        /* Специальные блоки */
+        .special-card {
+            background: linear-gradient(135deg, #e8f4fc 0%, #d4e6f1 100%);
+            border-left: 5px solid #3498db;
+        }
+
+        .special-card .concept-title {
+            color: #2980b9;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .lesson-section {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+
+            .section-title {
+                font-size: 1.5em;
+            }
+
+            .concept-card {
+                padding: 15px;
+                margin: 15px 0;
+            }
+
+            .unified-table {
+                font-size: 0.9em;
+            }
+
+            .unified-table th,
+            .unified-table td {
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .lesson-section {
+                padding: 15px;
+            }
+
+            .concept-title {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .unified-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Секция 1: Типы чисел -->
+        <div class="lesson-section">
+            <h2 class="section-title">Типы чисел</h2>
+
+            <!-- 1. Натуральные числа -->
+            <div class="concept-card color-natural">
+                <div class="concept-title">
+                    <span class="concept-symbol">ℕ</span>
+                    <span>Натуральные числа</span>
+                </div>
+                <div class="definition">
+                    <strong>Определение:</strong> Числа, используемые для счёта предметов.
+                </div>
+                <div class="example-box">
+                    <div class="example-title">Примеры</div>
+                    <div>$1, 2, 3, 42, 100$</div>
+                </div>
+            </div>
+
+            <!-- 2. Целые числа -->
+            <div class="concept-card color-integer">
+                <div class="concept-title">
+                    <span class="concept-symbol">ℤ</span>
+                    <span>Целые числа</span>
+                </div>
+                <div class="definition">
+                    <strong>Определение:</strong> Натуральные числа, им противоположные и ноль.
+                </div>
+                <div class="example-box">
+                    <div class="example-title">Примеры</div>
+                    <div>$-5, -1, 0, 1, 7$</div>
+                </div>
+            </div>
+
+            <!-- 3. Рациональные числа -->
+            <div class="concept-card color-rational">
+                <div class="concept-title">
+                    <span class="concept-symbol">ℚ</span>
+                    <span>Рациональные числа</span>
+                </div>
+                <div class="definition">
+                    <strong>Определение:</strong> Числа, которые можно представить в виде дроби $\frac{a}{b}$, где $a \in \mathbb{Z}$, $b \in \mathbb{N}$.
+                </div>
+                <div class="example-box">
+                    <div class="example-title">Примеры</div>
+                    <div>$\frac{1}{2}, 0.75, -3.25, 5$</div>
+                </div>
+            </div>
+
+            <!-- 4. Иррациональные числа -->
+            <div class="concept-card color-irrational">
+                <div class="concept-title">
+                    <span class="concept-symbol">𝕀</span>
+                    <span>Иррациональные числа</span>
+                </div>
+                <div class="definition">
+                    <strong>Определение:</strong> Действительные числа, которые нельзя представить в виде дроби.
+                </div>
+                <div class="example-box">
+                    <div class="example-title">Примеры</div>
+                    <div>$\sqrt{2}, \pi, e$</div>
+                </div>
+            </div>
+
+            <!-- 5. Действительные числа -->
+            <div class="concept-card color-real">
+                <div class="concept-title">
+                    <span class="concept-symbol">ℝ</span>
+                    <span>Действительные числа</span>
+                </div>
+                <div class="definition">
+                    <strong>Определение:</strong> Объединение всех рациональных и иррациональных чисел.
+                </div>
+                <div class="example-box">
+                    <div class="example-title">Примеры</div>
+                    <div>Все числа выше: $-5, \frac{1}{2}, \sqrt{2}, \pi$</div>
+                </div>
+            </div>
+
+            <!-- Схема вложенности -->
+            <div class="concept-card special-card">
+                <div class="concept-title">
+                    <span>📊</span>
+                    <span>Схема вложенности числовых множеств</span>
+                </div>
+                <div class="definition">
+                    Каждое следующее множество содержит предыдущее:
+                </div>
+                <div style="text-align: center; margin: 20px 0; font-size: 1.4em; font-weight: bold; color: #2c3e50;">
+                    $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}$
+                </div>
+                <div style="text-align: center; color: #7f8c8d;">
+                    Натуральные → Целые → Рациональные → Действительные
+                </div>
+            </div>
+        </div>
+
+        <!-- Секция 2: Делимость и простые числа -->
+        <div class="lesson-section">
+            <h2 class="section-title">Делимость и простые числа</h2>
+
+            <!-- 1. Простые и составные -->
+            <div class="concept-card color-prime">
+                <div class="concept-title">
+                    <span class="concept-symbol">#</span>
+                    <span>Простые и составные числа</span>
+                </div>
+                <div class="definition">
+                    <strong>Простое число:</strong> Имеет ровно два делителя: 1 и само число.<br>
+                    <strong>Составное число:</strong> Имеет больше двух делителей.
+                </div>
+                <div class="example-box">
+                    <div class="example-title">Примеры</div>
+                    <div>
+                        <strong>Простые:</strong> $2, 3, 5, 7, 11, 13, 17, 19$<br>
+                        <strong>Составные:</strong> $4, 6, 8, 9, 10, 12, 14, 15$<br>
+                        <strong>Особое:</strong> $1$ — не простое и не составное
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Делитель и кратное -->
+            <div class="concept-card color-prime">
+                <div class="concept-title">
+                    <span class="concept-symbol">÷</span>
+                    <span>Делитель и кратное</span>
+                </div>
+                <div class="definition">
+                    <strong>Делитель числа $b$:</strong> Число $a$, на которое $b$ делится без остатка.<br>
+                    <strong>Кратное числа $a$:</strong> Число $b$, которое делится на $a$ без остатка.
+                </div>
+                <div class="example-box">
+                    <div class="example-title">Примеры</div>
+                    <div>
+                        <strong>Делители 12:</strong> $1, 2, 3, 4, 6, 12$<br>
+                        <strong>Кратные 3:</strong> $3, 6, 9, 12, 15, 18, \dots$
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Четные и нечетные -->
+            <div class="concept-card color-prime">
+                <div class="concept-title">
+                    <span class="concept-symbol">2</span>
+                    <span>Четные и нечетные числа</span>
+                </div>
+                <div class="definition">
+                    <strong>Четные:</strong> Делятся на 2 (оканчиваются 0, 2, 4, 6, 8)<br>
+                    <strong>Нечетные:</strong> Не делятся на 2 (оканчиваются 1, 3, 5, 7, 9)
+                </div>
+                <div class="example-box">
+                    <div class="example-title">Примеры</div>
+                    <div>
+                        <strong>Четные:</strong> $2, 14, 100, 256$<br>
+                        <strong>Нечетные:</strong> $3, 17, 99, 255$
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Признаки делимости -->
+            <div class="concept-card color-divisibility">
+                <div class="concept-title">
+                    <span class="concept-symbol">✓</span>
+                    <span>Признаки делимости</span>
+                </div>
+                <div class="definition">
+                    Быстрые способы определить, делится ли число на другое.
+                </div>
+                <table class="unified-table">
+                    <thead>
+                        <tr>
+                            <th>На</th>
+                            <th>Правило</th>
+                            <th>Пример</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>2</strong></td>
+                            <td>Последняя цифра четная</td>
+                            <td>246: 6 — четное ⇒ делится</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3</strong></td>
+                            <td>Сумма цифр делится на 3</td>
+                            <td>123: 1+2+3=6 ⇒ делится</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4</strong></td>
+                            <td>Последние 2 цифры делятся на 4</td>
+                            <td>132: 32÷4=8 ⇒ делится</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5</strong></td>
+                            <td>Последняя цифра 0 или 5</td>
+                            <td>235: последняя 5 ⇒ делится</td>
+                        </tr>
+                        <tr>
+                            <td><strong>9</strong></td>
+                            <td>Сумма цифр делится на 9</td>
+                            <td>729: 7+2+9=18 ⇒ делится</td>
+                        </tr>
+                        <tr>
+                            <td><strong>10</strong></td>
+                            <td>Последняя цифра 0</td>
+                            <td>450: последняя 0 ⇒ делится</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 5. Деление с остатком -->
+            <div class="concept-card color-prime">
+                <div class="concept-title">
+                    <span class="concept-symbol">%</span>
+                    <span>Деление с остатком</span>
+                </div>
+                <div class="definition">
+                    <strong>Формула:</strong> $a = b \cdot q + r$, где $0 \leq r < b$<br>
+                    $a$ — делимое, $b$ — делитель, $q$ — частное, $r$ — остаток
+                </div>
+                <div class="example-box">
+                    <div class="example-title">Пример</div>
+                    <div>
+                        $17 : 5 = 3$ (остаток 2)<br>
+                        Проверка: $17 = 5 \cdot 3 + 2$<br>
+                        <strong>Если $r = 0$</strong> — делится нацело<br>
+                        <strong>Если $r \neq 0$</strong> — делится с остатком
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Разложение на простые множители -->
+            <div class="concept-card color-prime">
+                <div class="concept-title">
+                    <span class="concept-symbol">×</span>
+                    <span>Разложение на простые множители</span>
+                </div>
+                <div class="definition">
+                    Любое составное число можно представить в виде произведения простых чисел.
+                </div>
+                <div class="example-box">
+                    <div class="example-title">Примеры</div>
+                    <div>
+                        $36 = 2 \cdot 2 \cdot 3 \cdot 3 = 2^2 \cdot 3^2$<br>
+                        $60 = 2 \cdot 2 \cdot 3 \cdot 5 = 2^2 \cdot 3 \cdot 5$<br>
+                        $100 = 2 \cdot 2 \cdot 5 \cdot 5 = 2^2 \cdot 5^2$
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. НОД и НОК -->
+            <div class="concept-card color-divisibility">
+                <div class="concept-title">
+                    <span class="concept-symbol">↕</span>
+                    <span>НОД и НОК</span>
+                </div>
+                <div class="definition">
+                    <strong>НОД (Наибольший Общий Делитель):</strong> Наибольшее число, на которое делятся оба числа.<br>
+                    <strong>НОК (Наименьшее Общее Кратное):</strong> Наименьшее число, которое делится на оба числа.
+                </div>
+                <div class="example-box">
+                    <div class="example-title">Пример для 12 и 18</div>
+                    <div>
+                        <strong>НОД(12,18) = 6</strong><br>
+                        <strong>НОК(12,18) = 36</strong><br>
+                        <strong>Связь:</strong> НОД × НОК = произведение чисел<br>
+                        $6 \times 36 = 216 = 12 \times 18$
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. Алгоритм нахождения НОД и НОК -->
+            <div class="concept-card special-card">
+                <div class="concept-title">
+                    <span>🔍</span>
+                    <span>Алгоритм нахождения НОД и НОК</span>
+                </div>
+                <div class="example-box">
+                    <div class="example-title">Для чисел 36 и 48:</div>
+                    <div>
+                        <strong>1. Разложение:</strong><br>
+                        $36 = 2^2 \cdot 3^2$<br>
+                        $48 = 2^4 \cdot 3^1$<br><br>
+
+                        <strong>2. НОД:</strong> Общие множители с <u>меньшей</u> степенью<br>
+                        $2^{\min(2,4)} \cdot 3^{\min(2,1)} = 2^2 \cdot 3^1 = 12$<br><br>
+
+                        <strong>3. НОК:</strong> Все множители с <u>большей</u> степенью<br>
+                        $2^{\max(2,4)} \cdot 3^{\max(2,1)} = 2^4 \cdot 3^2 = 144$
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="lesson-section">
+    <h2 class="section-title">Обыкновенные дроби</h2>
+
+    <!-- 1. Основные понятия -->
+    <div class="concept-card color-natural">
+        <div class="concept-title">
+            <span class="concept-symbol">½</span>
+            <span>Основные понятия</span>
+        </div>
+        <div class="definition">
+            <strong>Дробь:</strong> $\frac{a}{b}$, где $a$ — числитель (сколько взяли), $b$ — знаменатель (на сколько частей разделили)
+        </div>
+        <div class="example-box">
+            <div class="example-title">Типы дробей</div>
+            <div>
+                <strong>Правильная:</strong> $\frac{3}{5}$ (числитель < знаменателя)<br>
+                <strong>Неправильная:</strong> $\frac{7}{4}$ (числитель ≥ знаменателя)<br>
+                <strong>Смешанная:</strong> $2\frac{1}{3}$ (целая часть + дробь)
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Основное свойство дроби -->
+    <div class="concept-card color-integer">
+        <div class="concept-title">
+            <span class="concept-symbol">=</span>
+            <span>Основное свойство дроби</span>
+        </div>
+        <div class="definition">
+            <strong>Формула:</strong> $\frac{a}{b} = \frac{a \times c}{b \times c} = \frac{a \div d}{b \div d}$ $(c \neq 0, d \neq 0)$
+        </div>
+        <div class="example-box">
+            <div class="example-title">Примеры преобразований</div>
+            <div>
+                $\frac{2}{3} = \frac{2 \times 4}{3 \times 4} = \frac{8}{12}$<br>
+                $\frac{12}{18} = \frac{12 \div 6}{18 \div 6} = \frac{2}{3}$<br>
+                $\frac{15}{45} = \frac{15 \div 15}{45 \div 15} = \frac{1}{3}$
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Сокращение дробей -->
+    <div class="concept-card color-rational">
+        <div class="concept-title">
+            <span class="concept-symbol">↔</span>
+            <span>Сокращение дробей</span>
+        </div>
+        <div class="definition">
+            <strong>Сократить дробь</strong> — разделить числитель и знаменатель на их общий делитель.
+            Дробь сокращают до тех пор, пока это возможно.
+        </div>
+        <table class="unified-table">
+            <thead>
+                <tr>
+                    <th>Дробь</th>
+                    <th>Сокращение</th>
+                    <th>Результат</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>$\frac{8}{12}$</td>
+                    <td>Делим на 4</td>
+                    <td>$\frac{2}{3}$</td>
+                </tr>
+                <tr>
+                    <td>$\frac{15}{25}$</td>
+                    <td>Делим на 5</td>
+                    <td>$\frac{3}{5}$</td>
+                </tr>
+                <tr>
+                    <td>$\frac{18}{27}$</td>
+                    <td>Делим на 9</td>
+                    <td>$\frac{2}{3}$</td>
+                </tr>
+                <tr>
+                    <td>$\frac{42}{56}$</td>
+                    <td>Делим на 14</td>
+                    <td>$\frac{3}{4}$</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 4. Сравнение дробей -->
+    <div class="concept-card color-irrational">
+        <div class="concept-title">
+            <span class="concept-symbol">⇔</span>
+            <span>Сравнение дробей</span>
+        </div>
+        <table class="unified-table">
+            <thead>
+                <tr>
+                    <th>Метод</th>
+                    <th>Правило</th>
+                    <th>Пример</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>К общему знаменателю</td>
+                    <td>Привести к одинаковому знаменателю</td>
+                    <td>$\frac{2}{3} ? \frac{3}{4}$ → $\frac{8}{12} < \frac{9}{12}$</td>
+                </tr>
+                <tr>
+                    <td>К общему числителю</td>
+                    <td>Привести к одинаковому числителю</td>
+                    <td>$\frac{3}{4} ? \frac{3}{5}$ → $\frac{3}{4} > \frac{3}{5}$</td>
+                </tr>
+                <tr>
+                    <td>Перекрестное умножение</td>
+                    <td>Сравнить $a \times d$ и $c \times b$</td>
+                    <td>$\frac{2}{3} ? \frac{3}{5}$ → $10 > 9$</td>
+                </tr>
+                <tr>
+                    <td>Сравнение с 1/2</td>
+                    <td>Проверить больше или меньше половины</td>
+                    <td>$\frac{5}{9} > \frac{1}{2}$ (т.к. 5 > 4.5)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 5. Сложение дробей -->
+    <div class="concept-card color-real">
+        <div class="concept-title">
+            <span class="concept-symbol">+</span>
+            <span>Сложение дробей</span>
+        </div>
+        <div class="definition">
+            <strong>С одинаковыми знаменателями:</strong> $\frac{a}{c} + \frac{b}{c} = \frac{a+b}{c}$<br>
+            <strong>С разными знаменателями:</strong> привести к общему знаменателю, затем сложить
+        </div>
+        <div class="example-box">
+            <div class="example-title">Примеры сложения</div>
+            <div>
+                <strong>Простые:</strong><br>
+                $\frac{2}{7} + \frac{3}{7} = \frac{5}{7}$<br>
+                $\frac{1}{4} + \frac{1}{6} = \frac{3}{12} + \frac{2}{12} = \frac{5}{12}$<br><br>
+
+                <strong>Смешанные числа:</strong><br>
+                $2\frac{1}{3} + 1\frac{1}{2} = 3\frac{5}{6}$
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Вычитание дробей -->
+    <div class="concept-card color-prime">
+        <div class="concept-title">
+            <span class="concept-symbol">−</span>
+            <span>Вычитание дробей</span>
+        </div>
+        <div class="definition">
+            <strong>С одинаковыми знаменателями:</strong> $\frac{a}{c} - \frac{b}{c} = \frac{a-b}{c}$<br>
+            <strong>С разными знаменателями:</strong> привести к общему знаменателю, затем вычесть
+        </div>
+        <div class="example-box">
+            <div class="example-title">Примеры вычитания</div>
+            <div>
+                $\frac{5}{8} - \frac{3}{8} = \frac{2}{8} = \frac{1}{4}$<br>
+                $\frac{2}{3} - \frac{1}{5} = \frac{10}{15} - \frac{3}{15} = \frac{7}{15}$<br>
+                $\frac{3}{4} - \frac{1}{6} = \frac{9}{12} - \frac{2}{12} = \frac{7}{12}$<br>
+                $3\frac{1}{4} - 1\frac{1}{2} = 1\frac{3}{4}$
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. Умножение дробей -->
+    <div class="concept-card color-divisibility">
+        <div class="concept-title">
+            <span class="concept-symbol">×</span>
+            <span>Умножение дробей</span>
+        </div>
+        <div class="definition">
+            <strong>Правило:</strong> $\frac{a}{b} \times \frac{c}{d} = \frac{a \times c}{b \times d}$<br>
+            <em>Совет:</em> сокращать можно до умножения!
+        </div>
+        <table class="unified-table">
+            <thead>
+                <tr>
+                    <th>Пример</th>
+                    <th>Решение</th>
+                    <th>Сокращение</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>$\frac{2}{3} \times \frac{4}{5}$</td>
+                    <td>$\frac{8}{15}$</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>$\frac{3}{4} \times \frac{8}{9}$</td>
+                    <td>$\frac{24}{36} = \frac{2}{3}$</td>
+                    <td>$\frac{1}{1} \times \frac{2}{3} = \frac{2}{3}$</td>
+                </tr>
+                <tr>
+                    <td>$\frac{1}{2} \times \frac{2}{3} \times \frac{3}{4}$</td>
+                    <td>$\frac{6}{24} = \frac{1}{4}$</td>
+                    <td>$\frac{1}{1} \times \frac{1}{1} \times \frac{1}{4} = \frac{1}{4}$</td>
+                </tr>
+                <tr>
+                    <td>$5 \times \frac{2}{3}$</td>
+                    <td>$\frac{5}{1} \times \frac{2}{3} = \frac{10}{3}$</td>
+                    <td>$3\frac{1}{3}$</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 8. Деление дробей -->
+    <div class="concept-card color-divisibility">
+        <div class="concept-title">
+            <span class="concept-symbol">÷</span>
+            <span>Деление дробей</span>
+        </div>
+        <div class="definition">
+            <strong>Правило:</strong> $\frac{a}{b} \div \frac{c}{d} = \frac{a}{b} \times \frac{d}{c}$<br>
+            <em>Важно:</em> умножаем на обратную (перевёрнутую) дробь!
+        </div>
+        <div class="example-box">
+            <div class="example-title">Примеры деления</div>
+            <div>
+                $\frac{3}{4} \div \frac{2}{5} = \frac{3}{4} \times \frac{5}{2} = \frac{15}{8} = 1\frac{7}{8}$<br>
+                $\frac{2}{3} \div 4 = \frac{2}{3} \times \frac{1}{4} = \frac{2}{12} = \frac{1}{6}$<br>
+                $\frac{5}{6} \div \frac{10}{12} = \frac{5}{6} \times \frac{12}{10} = 1$<br>
+                $3 \div \frac{3}{4} = \frac{3}{1} \times \frac{4}{3} = 4$
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. Смешанные числа -->
+    <div class="concept-card special-card">
+        <div class="concept-title">
+            <span>🔄</span>
+            <span>Смешанные числа</span>
+        </div>
+        <div class="definition">
+            <strong>Переходы между формами:</strong><br>
+            $\frac{7}{3} = 2\frac{1}{3}$ (7 ÷ 3 = 2 ост. 1)<br>
+            $3\frac{2}{5} = \frac{17}{5}$ (3 × 5 + 2 = 17)
+        </div>
+        <table class="unified-table">
+            <thead>
+                <tr>
+                    <th>Действие</th>
+                    <th>Пример</th>
+                    <th>Решение</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Сложение</td>
+                    <td>$2\frac{1}{3} + 1\frac{1}{2}$</td>
+                    <td>$3\frac{5}{6}$</td>
+                </tr>
+                <tr>
+                    <td>Вычитание</td>
+                    <td>$3\frac{1}{4} - 1\frac{1}{2}$</td>
+                    <td>$1\frac{3}{4}$</td>
+                </tr>
+                <tr>
+                    <td>Умножение</td>
+                    <td>$2\frac{1}{2} \times 1\frac{1}{3}$</td>
+                    <td>$3\frac{1}{3}$</td>
+                </tr>
+                <tr>
+                    <td>Деление</td>
+                    <td>$3\frac{1}{3} \div 1\frac{2}{3}$</td>
+                    <td>$2$</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 10. Практические задачи -->
+    <div class="concept-card special-card">
+        <div class="concept-title">
+            <span>🎯</span>
+            <span>Практические задачи</span>
+        </div>
+        <div class="example-box">
+            <div class="example-title">Жизненные примеры</div>
+            <div>
+                <strong>1. Пирог разрезали на 8 частей. Съели $\frac{3}{8}$, потом ещё $\frac{1}{4}$. Сколько осталось?</strong><br>
+                <em>Решение:</em> $\frac{3}{8} + \frac{1}{4} = \frac{3}{8} + \frac{2}{8} = \frac{5}{8}$ съели<br>
+                Осталось: $1 - \frac{5}{8} = \frac{3}{8}$<br><br>
+
+                <strong>2. Доска длиной $2\frac{1}{2}$ м. Отпилили $\frac{3}{4}$ м. Сколько осталось?</strong><br>
+                <em>Решение:</em> $2\frac{1}{2} - \frac{3}{4} = 2\frac{2}{4} - \frac{3}{4} = 1\frac{3}{4}$ м<br><br>
+
+                <strong>3. Рецепт на 4 порции: $1\frac{1}{2}$ стакана муки. Сколько на 6 порций?</strong><br>
+                <em>Решение:</em> На 1 порцию: $1\frac{1}{2} \div 4 = \frac{3}{2} \div 4 = \frac{3}{8}$<br>
+                На 6 порций: $\frac{3}{8} \times 6 = \frac{18}{8} = 2\frac{1}{4}$ стакана
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</body>
+</html>

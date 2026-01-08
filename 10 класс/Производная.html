@@ -1,0 +1,2546 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>Корень. Иррациональные уравнения</title>
+				<style>
+/* Общие стили */
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f9ff;
+            color: #333;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 150, 0.1);
+            padding: 30px;
+        }
+
+        /* Заголовки */
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+        }
+
+        /* Секции */
+        .lesson-section {
+            background-color: #f8fafd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 5px solid #3498db;
+        }
+
+        /* Определения и примеры */
+        .definition {
+            background-color: #e8f4fc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .example {
+            background-color: #f0f7ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #2ecc71;
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 10px;
+        }
+
+        .hard-example {
+            border-left-color: #e74c3c;
+        }
+
+        .hard-example .example-title {
+            color: #e74c3c;
+        }
+
+        /* Математические контейнеры */
+        .math-container {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin: 15px 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .math-formula {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .explanation {
+            background-color: #fffde7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+
+        /* Изображения - УПРОЩЕННЫЙ ВАРИАНТ */
+        .image-container {
+            text-align: center;
+            margin: 15px auto;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            max-width: 50%;
+        }
+
+        .function-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+
+        /* Таблицы */
+        .trig-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            overflow-x: auto;
+            display: block;
+        }
+
+        .trig-table th,
+        .trig-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .trig-table th {
+            background-color: #f2f2f2;
+        }
+
+        /* Нижняя навигация */
+        .bottom-nav {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 8px 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            z-index: 999;
+            width: 90%;
+            max-width: 300px;
+        }
+
+        .bottom-nav select {
+            width: 100%;
+            font-size: 16px;
+            padding: 8px;
+            cursor: pointer;
+            border: 1px solid #3498db;
+            border-radius: 6px;
+        }
+
+        .lesson-number {
+            background-color: #3498db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* ПРОСТАЯ АДАПТАЦИЯ ДЛЯ ТЕЛЕФОНА */
+        @media (max-width: 768px) {
+    body {
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    .container {
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+        padding-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 1.3em;
+        margin-top: 20px;
+    }
+
+    .lesson-section {
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    .definition,
+    .example {
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    .math-container {
+        padding: 12px;
+        margin: 12px 0;
+    }
+
+    .explanation {
+        padding: 12px;
+        margin: 12px 0;
+        font-size: 0.95em;
+    }
+
+    .image-container {
+        padding: 8px;
+        margin: 10px 0;
+        max-width: 100% !important; /* Принудительно на всю ширину */
+        width: 100% !important;
+    }
+
+    .function-image {
+        max-height: auto !important; /* Убираем ограничение по высоте */
+        height: auto;
+        width: 100%; /* Занимает всю ширину контейнера */
+        max-width: 100%;
+        display: block; /* Убираем лишние отступы */
+    }
+
+    .trig-table {
+        font-size: 14px;
+    }
+
+    .trig-table th,
+    .trig-table td {
+        padding: 6px;
+    }
+
+    .bottom-nav {
+        bottom: 5px;
+        padding: 6px 10px;
+    }
+
+    .bottom-nav select {
+        font-size: 14px;
+        padding: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    h1 {
+        font-size: 1.3em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    .lesson-section {
+        padding: 12px;
+        margin: 10px 0;
+    }
+
+    .definition,
+    .example {
+        padding: 12px;
+        margin: 10px 0;
+    }
+
+    .image-container {
+        padding: 5px;
+        margin: 8px 0;
+    }
+
+    .function-image {
+        width: 100%;
+        height: auto;
+        max-height: none; /* Убираем все ограничения по высоте */
+    }
+
+    .trig-table {
+        font-size: 13px;
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .trig-table th,
+    .trig-table td {
+        padding: 5px;
+        min-width: 50px; /* Минимальная ширина для ячеек */
+    }
+}
+
+  </style>
+			</head>
+			<body>
+
+    <div class="container">
+        <h1 id="1">Производная функции</h1>
+
+        <!-- Определение производной -->
+        <div class="lesson-section">
+            <div class="lesson-number">Определение</div>
+            <h2>Производная функции</h2>
+
+            <div class="definition">
+                <p><strong>Определение:</strong> Производной функции f(x) в точке x₀ называется предел отношения приращения функции к приращению аргумента при стремлении приращения аргумента к нулю:</p>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                            <msup>
+                                <mi>f</mi>
+                                <mo>′</mo>
+                            </msup>
+                            <mrow>
+                                <mo>(</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mn>0</mn>
+                                </msub>
+                                <mo>)</mo>
+                            </mrow>
+                            <mo>=</mo>
+                            <munder>
+                                <mrow>
+                                    <mi>lim</mi>
+                                </mrow>
+                                <mrow>
+                                    <mi>Δx</mi>
+                                    <mo>→</mo>
+                                    <mn>0</mn>
+                                </mrow>
+                            </munder>
+                            <mfrac>
+                                <mrow>
+                                    <mi>f</mi>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <msub>
+                                            <mi>x</mi>
+                                            <mn>0</mn>
+                                        </msub>
+                                        <mo>+</mo>
+                                        <mi>Δx</mi>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mo>−</mo>
+                                    <mi>f</mi>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <msub>
+                                            <mi>x</mi>
+                                            <mn>0</mn>
+                                        </msub>
+                                        <mo>)</mo>
+                                    </mrow>
+                                </mrow>
+                                <mrow>
+                                    <mi>Δx</mi>
+                                </mrow>
+                            </mfrac>
+                        </math>
+                    </div>
+                </div>
+                <p><strong>Обозначения:</strong> <math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>f</mi><mo>′</mo></msup><mo>(</mo><mi>x</mi><mo>)</mo></math>, <math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>y</mi><mo>′</mo></msup></math>, <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mi>df</mi></mrow><mrow><mi>dx</mi></mrow></mfrac></math>, <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mi>dy</mi></mrow><mrow><mi>dx</mi></mrow></mfrac></math></p>
+                <p><strong>Физический смысл:</strong> мгновенная скорость изменения функции</p>
+            </div>
+
+            <div class="example">
+                <div class="example-title">Графическая интерпретация:</div>
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/8cD2X9Qp/изображение.png" alt="Графическая интерпретация производной" class="function-image">
+                </div>
+                <p class="explanation">Производная в точке x₀ равна угловому коэффициенту касательной к графику функции в этой точке</p>
+            </div>
+        </div>
+
+        <!-- Вычисление производной по определению -->
+        <div class="lesson-section">
+            <div class="lesson-number">Пример</div>
+            <h2>Вычисление производной функции f(x) = x² по определению</h2>
+
+            <div class="example">
+                <div class="example-title">Решение:</div>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                            <mtable columnalign="left">
+                                <mtr>
+                                    <mtd>
+                                        <mn>1.</mn>
+                                        <mi>f</mi>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <msub>
+                                                <mi>x</mi>
+                                                <mn>0</mn>
+                                            </msub>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mo>=</mo>
+                                        <msubsup>
+                                            <mi>x</mi>
+                                            <mn>0</mn>
+                                            <mn>2</mn>
+                                        </msubsup>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <mn>2.</mn>
+                                        <mi>f</mi>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <msub>
+                                                <mi>x</mi>
+                                                <mn>0</mn>
+                                            </msub>
+                                            <mo>+</mo>
+                                            <mi>Δx</mi>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mo>=</mo>
+                                        <msup>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <msub>
+                                                    <mi>x</mi>
+                                                    <mn>0</mn>
+                                                </msub>
+                                                <mo>+</mo>
+                                                <mi>Δx</mi>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <mn>2</mn>
+                                        </msup>
+                                        <mo>=</mo>
+                                        <msubsup>
+                                            <mi>x</mi>
+                                            <mn>0</mn>
+                                            <mn>2</mn>
+                                        </msubsup>
+                                        <mo>+</mo>
+                                        <mn>2</mn>
+                                        <msub>
+                                            <mi>x</mi>
+                                            <mn>0</mn>
+                                        </msub>
+                                        <mi>Δx</mi>
+                                        <mo>+</mo>
+                                        <msup>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mi>Δx</mi>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <mn>2</mn>
+                                        </msup>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <mn>3.</mn>
+                                        <mi>f</mi>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <msub>
+                                                <mi>x</mi>
+                                                <mn>0</mn>
+                                            </msub>
+                                            <mo>+</mo>
+                                            <mi>Δx</mi>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mo>−</mo>
+                                        <mi>f</mi>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <msub>
+                                                <mi>x</mi>
+                                                <mn>0</mn>
+                                            </msub>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mo>=</mo>
+                                        <mn>2</mn>
+                                        <msub>
+                                            <mi>x</mi>
+                                            <mn>0</mn>
+                                        </msub>
+                                        <mi>Δx</mi>
+                                        <mo>+</mo>
+                                        <msup>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mi>Δx</mi>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <mn>2</mn>
+                                        </msup>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <mn>4.</mn>
+                                        <mfrac>
+                                            <mrow>
+                                                <mi>f</mi>
+                                                <mrow>
+                                                    <mo>(</mo>
+                                                    <msub>
+                                                        <mi>x</mi>
+                                                        <mn>0</mn>
+                                                    </msub>
+                                                    <mo>+</mo>
+                                                    <mi>Δx</mi>
+                                                    <mo>)</mo>
+                                                </mrow>
+                                                <mo>−</mo>
+                                                <mi>f</mi>
+                                                <mrow>
+                                                    <mo>(</mo>
+                                                    <msub>
+                                                        <mi>x</mi>
+                                                        <mn>0</mn>
+                                                    </msub>
+                                                    <mo>)</mo>
+                                                </mrow>
+                                            </mrow>
+                                            <mrow>
+                                                <mi>Δx</mi>
+                                            </mrow>
+                                        </mfrac>
+                                        <mo>=</mo>
+                                        <mfrac>
+                                            <mrow>
+                                                <mn>2</mn>
+                                                <msub>
+                                                    <mi>x</mi>
+                                                    <mn>0</mn>
+                                                </msub>
+                                                <mi>Δx</mi>
+                                                <mo>+</mo>
+                                                <msup>
+                                                    <mrow>
+                                                        <mo>(</mo>
+                                                        <mi>Δx</mi>
+                                                        <mo>)</mo>
+                                                    </mrow>
+                                                    <mn>2</mn>
+                                                </msup>
+                                            </mrow>
+                                            <mrow>
+                                                <mi>Δx</mi>
+                                            </mrow>
+                                        </mfrac>
+                                        <mo>=</mo>
+                                        <mn>2</mn>
+                                        <msub>
+                                            <mi>x</mi>
+                                            <mn>0</mn>
+                                        </msub>
+                                        <mo>+</mo>
+                                        <mi>Δx</mi>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <mn>5.</mn>
+                                        <msup>
+                                            <mi>f</mi>
+                                            <mo>′</mo>
+                                        </msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <msub>
+                                                <mi>x</mi>
+                                                <mn>0</mn>
+                                            </msub>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mo>=</mo>
+                                        <munder>
+                                            <mrow>
+                                                <mi>lim</mi>
+                                            </mrow>
+                                            <mrow>
+                                                <mi>Δx</mi>
+                                                <mo>→</mo>
+                                                <mn>0</mn>
+                                            </mrow>
+                                        </munder>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mn>2</mn>
+                                            <msub>
+                                                <mi>x</mi>
+                                                <mn>0</mn>
+                                            </msub>
+                                            <mo>+</mo>
+                                            <mi>Δx</mi>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mo>=</mo>
+                                        <mn>2</mn>
+                                        <msub>
+                                            <mi>x</mi>
+                                            <mn>0</mn>
+                                        </msub>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <mn>6.</mn>
+                                        <mtext>Ответ:</mtext>
+                                        <msup>
+                                            <mi>f</mi>
+                                            <mo>′</mo>
+                                        </msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mi>x</mi>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mo>=</mo>
+                                        <mn>2</mn>
+                                        <mi>x</mi>
+                                    </mtd>
+                                </mtr>
+                            </mtable>
+                        </math>
+                    </div>
+                </div>
+            </div>
+        </div>
+ <h1 id="2">Правила вычисления производных</h1>
+        <!-- Правила вычисления производных -->
+        <div class="lesson-section">
+    <div class="lesson-number">Правила дифференцирования</div>
+    <h2>Основные правила вычисления производных</h2>
+
+    <!-- Правило 1: Производная константы -->
+    <div class="definition">
+        <h3>1. Производная константы</h3>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mo>(</mo>
+                    <mi>c</mi>
+                    <msup><mo>)</mo><mo>′</mo></msup>
+                    <mo>=</mo>
+                    <mn>0</mn>
+                    <mo>,</mo>
+                    <mspace width="1em"/>
+                    <mtext>где</mtext>
+                    <mspace width="0.5em"/>
+                    <mi>c</mi>
+                    <mo>=</mo>
+                    <mtext>const</mtext>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="example">
+        <div class="example-title">Пример:</div>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mo>(</mo>
+                    <mn>5</mn>
+                    <msup><mo>)</mo><mo>′</mo></msup>
+                    <mo>=</mo>
+                    <mn>0</mn>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <!-- Правило 2: Производная степенной функции -->
+    <div class="definition">
+        <h3>2. Производная степенной функции</h3>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mo>(</mo>
+                    <msup>
+                        <mi>x</mi>
+                        <mi>n</mi>
+                    </msup>
+                    <msup><mo>)</mo><mo>′</mo></msup>
+                    <mo>=</mo>
+                    <mi>n</mi>
+                    <msup>
+                        <mi>x</mi>
+                        <mrow>
+                            <mi>n</mi>
+                            <mo>−</mo>
+                            <mn>1</mn>
+                        </mrow>
+                    </msup>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="example">
+        <div class="example-title">Примеры:</div>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mtable columnalign="left">
+                        <mtr>
+                            <mtd>
+                                <mo>(</mo>
+                                <msup>
+                                    <mi>x</mi>
+                                    <mn>3</mn>
+                                </msup>
+                                <msup><mo>)</mo><mo>′</mo></msup>
+                                <mo>=</mo>
+                                <mn>3</mn>
+                                <msup>
+                                    <mi>x</mi>
+                                    <mn>2</mn>
+                                </msup>
+                            </mtd>
+                        </mtr>
+                        <mtr>
+                            <mtd>
+                                <mo>(</mo>
+                                <msqrt>
+                                    <mi>x</mi>
+                                </msqrt>
+                                <msup><mo>)</mo><mo>′</mo></msup>
+                                <mo>=</mo>
+                                <mo>(</mo>
+                                <msup>
+                                    <mi>x</mi>
+                                    <mrow>
+                                        <mn>1</mn>
+                                        <mo>/</mo>
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msup>
+                                <msup><mo>)</mo><mo>′</mo></msup>
+                                <mo>=</mo>
+                                <mfrac>
+                                    <mn>1</mn>
+                                    <mn>2</mn>
+                                </mfrac>
+                                <msup>
+                                    <mi>x</mi>
+                                    <mrow>
+                                        <mo>−</mo>
+                                        <mn>1</mn>
+                                        <mo>/</mo>
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msup>
+                                <mo>=</mo>
+                                <mfrac>
+                                    <mn>1</mn>
+                                    <mrow>
+                                        <mn>2</mn>
+                                        <msqrt>
+                                            <mi>x</mi>
+                                        </msqrt>
+                                    </mrow>
+                                </mfrac>
+                            </mtd>
+                        </mtr>
+                    </mtable>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <!-- Правило 3: Производная суммы -->
+    <div class="definition">
+        <h3>3. Производная суммы (разности)</h3>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mo>(</mo>
+                    <mi>u</mi>
+                    <mrow>
+                        <mo>(</mo>
+                        <mi>x</mi>
+                        <mo>)</mo>
+                    </mrow>
+                    <mo>±</mo>
+                    <mi>v</mi>
+                    <mrow>
+                        <mo>(</mo>
+                        <mi>x</mi>
+                        <mo>)</mo>
+                    </mrow>
+                    <msup><mo>)</mo><mo>′</mo></msup>
+                    <mo>=</mo>
+                    <msup>
+                        <mi>u</mi>
+                        <mo>′</mo>
+                    </msup>
+                    <mrow>
+                        <mo>(</mo>
+                        <mi>x</mi>
+                        <mo>)</mo>
+                    </mrow>
+                    <mo>±</mo>
+                    <msup>
+                        <mi>v</mi>
+                        <mo>′</mo>
+                    </msup>
+                    <mrow>
+                        <mo>(</mo>
+                        <mi>x</mi>
+                        <mo>)</mo>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="example">
+        <div class="example-title">Пример:</div>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mo>(</mo>
+                    <msup>
+                        <mi>x</mi>
+                        <mn>3</mn>
+                    </msup>
+                    <mo>+</mo>
+                    <mn>2</mn>
+                    <msup>
+                        <mi>x</mi>
+                        <mn>2</mn>
+                    </msup>
+                    <mo>−</mo>
+                    <mn>5</mn>
+                    <mi>x</mi>
+                    <mo>+</mo>
+                    <mn>3</mn>
+                    <msup><mo>)</mo><mo>′</mo></msup>
+                    <mo>=</mo>
+                    <mn>3</mn>
+                    <msup>
+                        <mi>x</mi>
+                        <mn>2</mn>
+                    </msup>
+                    <mo>+</mo>
+                    <mn>4</mn>
+                    <mi>x</mi>
+                    <mo>−</mo>
+                    <mn>5</mn>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <!-- Правило 4: Производная произведения -->
+    <div class="definition">
+        <h3>4. Производная произведения</h3>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mo>(</mo>
+                    <mi>u</mi>
+                    <mrow>
+                        <mo>(</mo>
+                        <mi>x</mi>
+                        <mo>)</mo>
+                    </mrow>
+                    <mo>⋅</mo>
+                    <mi>v</mi>
+                    <mrow>
+                        <mo>(</mo>
+                        <mi>x</mi>
+                        <mo>)</mo>
+                    </mrow>
+                    <msup><mo>)</mo><mo>′</mo></msup>
+                    <mo>=</mo>
+                    <msup>
+                        <mi>u</mi>
+                        <mo>′</mo>
+                    </msup>
+                    <mrow>
+                        <mo>(</mo>
+                        <mi>x</mi>
+                        <mo>)</mo>
+                    </mrow>
+                    <mo>⋅</mo>
+                    <mi>v</mi>
+                    <mrow>
+                        <mo>(</mo>
+                        <mi>x</mi>
+                        <mo>)</mo>
+                    </mrow>
+                    <mo>+</mo>
+                    <mi>u</mi>
+                    <mrow>
+                        <mo>(</mo>
+                        <mi>x</mi>
+                        <mo>)</mo>
+                    </mrow>
+                    <mo>⋅</mo>
+                    <msup>
+                        <mi>v</mi>
+                        <mo>′</mo>
+                    </msup>
+                    <mrow>
+                        <mo>(</mo>
+                        <mi>x</mi>
+                        <mo>)</mo>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="example">
+        <div class="example-title">Пример:</div>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mtable columnalign="left">
+                        <mtr>
+                            <mtd>
+                                <mo>(</mo>
+                                <mi>x</mi>
+                                <mo>⋅</mo>
+                                <mo>(</mo>
+                                <msup>
+                                    <mi>x</mi>
+                                    <mn>2</mn>
+                                </msup>
+                                <mo>+</mo>
+                                <mn>1</mn>
+                                <mo>)</mo>
+                                <msup><mo>)</mo><mo>′</mo></msup>
+                                <mo>=</mo>
+                                <msup>
+                                    <mi>x</mi>
+                                    <mo>′</mo>
+                                </msup>
+                                <mo>⋅</mo>
+                                <mo>(</mo>
+                                <msup>
+                                    <mi>x</mi>
+                                    <mn>2</mn>
+                                </msup>
+                                <mo>+</mo>
+                                <mn>1</mn>
+                                <mo>)</mo>
+                                <mo>+</mo>
+                                <mi>x</mi>
+                                <mo>⋅</mo>
+                                <mo>(</mo>
+                                <msup>
+                                    <mi>x</mi>
+                                    <mn>2</mn>
+                                </msup>
+                                <mo>+</mo>
+                                <mn>1</mn>
+                                <msup><mo>)</mo><mo>′</mo></msup>
+                            </mtd>
+                        </mtr>
+                        <mtr>
+                            <mtd>
+                                <mo>=</mo>
+                                <mn>1</mn>
+                                <mo>⋅</mo>
+                                <mo>(</mo>
+                                <msup>
+                                    <mi>x</mi>
+                                    <mn>2</mn>
+                                </msup>
+                                <mo>+</mo>
+                                <mn>1</mn>
+                                <mo>)</mo>
+                                <mo>+</mo>
+                                <mi>x</mi>
+                                <mo>⋅</mo>
+                                <mn>2</mn>
+                                <mi>x</mi>
+                            </mtd>
+                        </mtr>
+                        <mtr>
+                            <mtd>
+                                <mo>=</mo>
+                                <msup>
+                                    <mi>x</mi>
+                                    <mn>2</mn>
+                                </msup>
+                                <mo>+</mo>
+                                <mn>1</mn>
+                                <mo>+</mo>
+                                <mn>2</mn>
+                                <msup>
+                                    <mi>x</mi>
+                                    <mn>2</mn>
+                                </msup>
+                                <mo>=</mo>
+                                <mn>3</mn>
+                                <msup>
+                                    <mi>x</mi>
+                                    <mn>2</mn>
+                                </msup>
+                                <mo>+</mo>
+                                <mn>1</mn>
+                            </mtd>
+                        </mtr>
+                    </mtable>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <!-- Правило 5: Производная частного -->
+    <div class="definition">
+        <h3>5. Производная частного</h3>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mrow>
+                        <mo>(</mo>
+                        <mfrac>
+                            <mrow>
+                                <mi>u</mi>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mi>x</mi>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                            <mrow>
+                                <mi>v</mi>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mi>x</mi>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                        </mfrac>
+                        <msup><mo>)</mo><mo>′</mo></msup>
+                    </mrow>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <msup>
+                                <mi>u</mi>
+                                <mo>′</mo>
+                            </msup>
+                            <mrow>
+                                <mo>(</mo>
+                                <mi>x</mi>
+                                <mo>)</mo>
+                            </mrow>
+                            <mo>⋅</mo>
+                            <mi>v</mi>
+                            <mrow>
+                                <mo>(</mo>
+                                <mi>x</mi>
+                                <mo>)</mo>
+                            </mrow>
+                            <mo>−</mo>
+                            <mi>u</mi>
+                            <mrow>
+                                <mo>(</mo>
+                                <mi>x</mi>
+                                <mo>)</mo>
+                            </mrow>
+                            <mo>⋅</mo>
+                            <msup>
+                                <mi>v</mi>
+                                <mo>′</mo>
+                            </msup>
+                            <mrow>
+                                <mo>(</mo>
+                                <mi>x</mi>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                        <mrow>
+                            <msup>
+                                <mrow>
+                                    <mo>[</mo>
+                                    <mi>v</mi>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mi>x</mi>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mo>]</mo>
+                                </mrow>
+                                <mn>2</mn>
+                            </msup>
+                        </mrow>
+                    </mfrac>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="example">
+        <div class="example-title">Пример:</div>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mtable columnalign="left">
+                        <mtr>
+                            <mtd>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mfrac>
+                                        <mi>x</mi>
+                                        <mrow>
+                                            <mi>x</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+                                        </mrow>
+                                    </mfrac>
+                                    <msup><mo>)</mo><mo>′</mo></msup>
+                                </mrow>
+                                <mo>=</mo>
+                                <mfrac>
+                                    <mrow>
+                                        <msup>
+                                            <mi>x</mi>
+                                            <mo>′</mo>
+                                        </msup>
+                                        <mo>⋅</mo>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mi>x</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mo>−</mo>
+                                        <mi>x</mi>
+                                        <mo>⋅</mo>
+                                        <mo>(</mo>
+                                        <mi>x</mi>
+                                        <mo>+</mo>
+                                        <mn>1</mn>
+                                        <msup><mo>)</mo><mo>′</mo></msup>
+                                    </mrow>
+                                    <mrow>
+                                        <msup>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mi>x</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <mn>2</mn>
+                                        </msup>
+                                    </mrow>
+                                </mfrac>
+                            </mtd>
+                        </mtr>
+                        <mtr>
+                            <mtd>
+                                <mo>=</mo>
+                                <mfrac>
+                                    <mrow>
+                                        <mn>1</mn>
+                                        <mo>⋅</mo>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mi>x</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mo>−</mo>
+                                        <mi>x</mi>
+                                        <mo>⋅</mo                                        <mn>1</mn>
+                                    </mrow>
+                                    <mrow>
+                                        <msup>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mi>x</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <mn>2</mn>
+                                        </msup>
+                                    </mrow>
+                                </mfrac>
+                            </mtd>
+                        </mtr>
+                        <mtr>
+                            <mtd>
+                                <mo>=</mo>
+                                <mfrac>
+                                    <mrow>
+                                        <mi>x</mi>
+                                        <mo>+</mo>
+                                        <mn>1</mn>
+                                        <mo>−</mo>
+                                        <mi>x</mi>
+                                    </mrow>
+                                    <mrow>
+                                        <msup>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mi>x</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <mn>2</mn>
+                                        </msup>
+                                    </mrow>
+                                </mfrac>
+                                <mo>=</mo>
+                                <mfrac>
+                                    <mn>1</mn>
+                                    <mrow>
+                                        <msup>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mi>x</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <mn>2</mn>
+                                        </msup>
+                                    </mrow>
+                                </mfrac>
+                            </mtd>
+                        </mtr>
+                    </mtable>
+                </math>
+            </div>
+        </div>
+    </div>
+</div>
+        <h1 id="3">Геометрический смысл производной</h1>
+        <!-- Геометрический смысл производной -->
+        <div class="lesson-section">
+            <div class="lesson-number">Геометрический смысл</div>
+            <h2>Геометрический смысл производной</h2>
+
+            <div class="definition">
+                <p><strong>Теорема:</strong> Производная функции f(x) в точке x₀ равна угловому коэффициенту касательной к графику функции в точке M₀(x₀, f(x₀)):</p>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                            <msup>
+                                <mi>f</mi>
+                                <mo>′</mo>
+                            </msup>
+                            <mrow>
+                                <mo>(</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mn>0</mn>
+                                </msub>
+                                <mo>)</mo>
+                            </mrow>
+                            <mo>=</mo>
+                            <mi>k</mi>
+                            <mo>=</mo>
+                            <mi>tg</mi>
+                            <mi>α</mi>
+                        </math>
+                    </div>
+                </div>
+                <p>где α - угол наклона касательной к положительному направлению оси OX</p>
+            </div>
+
+            <div class="example">
+                <div class="example-title">Графическая иллюстрация:</div>
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/CdThmmMh/изображение.png" alt="Геометрический смысл производной" class="function-image">
+                </div>
+                <p class="explanation">Касательная к графику функции в точке M₀. Угол α определяет наклон касательной</p>
+            </div>
+        </div>
+        <h1 id="4">Монотонность. Экстремумы</h1>
+        <!-- Монотонность функции -->
+        <div class="lesson-section">
+            <div class="lesson-number">Применение</div>
+            <h2>Исследование функции на монотонность</h2>
+
+            <div class="definition">
+                <p><strong>Теорема:</strong></p>
+                <ol>
+                    <li>Если <math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>f</mi><mo>′</mo></msup><mo>(</mo><mi>x</mi><mo>)</mo><mo>></mo><mn>0</mn></math> на интервале (a, b), то f(x) возрастает на этом интервале</li>
+                    <li>Если <math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>f</mi><mo>′</mo></msup><mo>(</mo><mi>x</mi><mo>)</mo><mo><</mo><mn>0</mn></math> на интервале (a, b), то f(x) убывает на этом интервале</li>
+                </ol>
+            </div>
+
+            <div class="example">
+                <div class="example-title">Графики возрастающей и убывающей функций:</div>
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/gkHjgbRb/изображение.png" alt="Возрастающая функция" class="function-image">
+                </div>
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/8kKNckhC/изображение.png" alt="Убывающая функция" class="function-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- Экстремумы функции -->
+        <div class="lesson-section">
+            <div class="lesson-number">Экстремумы</div>
+            <h2>Точки экстремума функции</h2>
+
+            <div class="definition">
+                <p><strong>Определения:</strong></p>
+                <ul>
+                    <li><strong>Точка экстремума:</strong> точки минимума и максимума </li>
+                    <li><strong>Точка максимума:</strong> точка x₀, в которой f'(x₀) = 0 и производная меняет знак с "+" на "-"</li>
+                    <li><strong>Точка минимума:</strong> точка x₀, в которой f'(x₀) = 0 и производная меняет знак с "-" на "+"</li>
+                    <li><strong>Экстремум:</strong> максимум или минимум функции</li>
+                    <li><strong>Максимум функции:</strong> значение f(x) в точке максимума</li>
+                    <li><strong>Минимум функции:</strong> значение f(x) в точке минимума</li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <div class="example-title">Пример 1: Определение точек экстремума по графику</div>
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/mgTvy03d/изображение.png" alt="График функции с экстремумами" class="function-image">
+                </div>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                            <mtable columnalign="left">
+                                <mtr>
+                                    <mtd>
+                                        <mtext>Точки минимума:&nbsp;</mtext>
+                                        <msub>
+                                            <mi>x</mi>
+                                            <mn>1</mn>
+                                        </msub>
+                                        <mo>,</mo>
+                                        <msub>
+                                            <mi>x</mi>
+                                            <mn>3</mn>
+                                        </msub>
+                                        <mo>,</mo>
+                                        <msub>
+                                            <mi>x</mi>
+                                            <mn>5</mn>
+                                        </msub>
+                                        <mo>,</mo>
+                                        <msub>
+                                            <mi>x</mi>
+                                            <mn>7</mn>
+                                        </msub>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <mtext>Значения:</mtext>
+                                        <mo>−</mo>
+                                        <mn>8</mn>
+                                        <mo>,</mo>
+                                        <mo>−</mo>
+                                        <mn>4</mn>
+                                        <mo>,</mo>
+                                        <mo>−</mo>
+                                        <mn>1</mn>
+                                        <mo>,</mo>
+                                        <mn>1</mn>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <mtext>Точки максимума:&nbsp;</mtext>
+                                        <msub>
+                                            <mi>x</mi>
+                                            <mn>2</mn>
+                                        </msub>
+                                        <mo>,</mo>
+                                        <msub>
+                                            <mi>x</mi>
+                                            <mn>4</mn>
+                                        </msub>
+                                        <mo>,</mo>
+                                        <msub>
+                                            <mi>x</mi>
+                                            <mn>6</mn>
+                                        </msub>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <mtext>Значения:</mtext>
+                                        <mo>−</mo>
+                                        <mn>5</mn>
+                                        <mo>,</mo>
+                                        <mo>−</mo>
+                                        <mn>3</mn>
+                                        <mo>,</mo>
+                                        <mn>0</mn>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <mtext>Минимумы функции:</mtext>
+                                        <mo>−</mo>
+                                        <mn>4</mn>
+                                        <mo>,</mo>
+                                        <mn>1</mn>
+                                        <mo>,</mo>
+                                        <mo>−</mo>
+                                        <mn>3</mn>
+                                        <mo>,</mo>
+                                        <mo>−</mo>
+                                        <mn>4</mn>
+                                    </mtd>
+                                </mtr>
+                                <mtr>
+                                    <mtd>
+                                        <mtext>Максимумы функции:&nbsp;</mtext>
+                                        <mn>2</mn>
+                                        <mo>,</mo>
+                                        <mn>2.2</mn>
+                                        <mo>,</mo>
+                                        <mo>−</mo>
+                                        <mn>2</mn>
+                                    </mtd>
+                                </mtr>
+                            </mtable>
+                        </math>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example hard-example">
+                <div class="example-title">Важное замечание:</div>
+                <p>Если функция не имеет производной в точке, но непрерывна в ней, эта точка может быть точкой экстремума.</p>
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/Gmb8Rmrb/изображение.png" alt="Функция модуля - точка минимума без производной" class="function-image">
+                </div>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                            <mi>f</mi>
+                            <mrow>
+                                <mo>(</mo>
+                                <mi>x</mi>
+                                <mo>)</mo>
+                            </mrow>
+                            <mo>=</mo>
+                            <mo>|</mo>
+                            <mi>x</mi>
+                            <mo>|</mo>
+                            <mo>,</mo>
+                            <mspace width="1em"/>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>0</mn>
+                            </msub>
+                            <mo>=</mo>
+                            <mn>0</mn>
+                            <mo>−</mo>
+                            <mtext>точка минимума</mtext>
+                        </math>
+                    </div>
+                </div>
+                <p class="explanation">Функция |x| имеет минимум в точке x=0, но производной в этой точке не существует (излома)</p>
+            </div>
+        </div>
+<h1 id="5">Примеры решения типовых задач</h1>
+<div class="lesson-section">
+    <div class="lesson-number">Пример 1</div>
+    <h2>Нахождение промежутков монотонности функции</h2>
+
+    <div class="example">
+        <div class="example-title">Дано: <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mn>1</mn><mo>+</mo><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mfrac><mrow><msup><mi>x</mi><mn>3</mn></msup></mrow><mrow><mn>3</mn></mrow></mfrac><mo>−</mo><mfrac><mrow><msup><mi>x</mi><mn>4</mn></msup></mrow><mrow><mn>4</mn></mrow></mfrac></math></div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mtext>Решение:</mtext>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mn>1.</mn>
+                    <mi>D</mi>
+                    <mo>(</mo>
+                    <mi>f</mi>
+                    <mo>)</mo>
+                    <mo>=</mo>
+                    <mi>ℝ</mi>
+                    <mtext>&nbsp;(все действительные числа)</mtext>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mn>2.</mn>
+                    <mtext>Находим производную:</mtext>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <msup>
+                        <mi>f</mi>
+                        <mo>′</mo>
+                    </msup>
+                    <mo>(</mo>
+                    <mi>x</mi>
+                    <mo>)</mo>
+                    <mo>=</mo>
+                    <mn>0</mn>
+                    <mo>+</mo>
+                    <mn>6</mn>
+                    <mi>x</mi>
+                    <mo>+</mo>
+                    <msup><mi>x</mi><mn>2</mn></msup>
+                    <mo>−</mo>
+                    <msup><mi>x</mi><mn>3</mn></msup>
+                    <mo>=</mo>
+                    <mo>−</mo>
+                    <msup><mi>x</mi><mn>3</mn></msup>
+                    <mo>+</mo>
+                    <msup><mi>x</mi><mn>2</mn></msup>
+                    <mo>+</mo>
+                    <mn>6</mn>
+                    <mi>x</mi>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <msup>
+                        <mi>f</mi>
+                        <mo>′</mo>
+                    </msup>
+                    <mo>(</mo>
+                    <mi>x</mi>
+                    <mo>)</mo>
+                    <mo>=</mo>
+                    <mo>−</mo>
+                    <mi>x</mi>
+                    <mo>(</mo>
+                    <msup><mi>x</mi><mn>2</mn></msup>
+                    <mo>−</mo>
+                    <mi>x</mi>
+                    <mo>−</mo>
+                    <mn>6</mn>
+                    <mo>)</mo>
+                    <mo>=</mo>
+                    <mo>−</mo>
+                    <mi>x</mi>
+                    <mo>(</mo>
+                    <mi>x</mi>
+                    <mo>−</mo>
+                    <mn>3</mn>
+                    <mo>)</mo>
+                    <mo>(</mo>
+                    <mi>x</mi>
+                    <mo>+</mo>
+                    <mn>2</mn>
+                    <mo>)</mo>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mn>3.</mn>
+                    <mtext>Находим критические точки:</mtext>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <msup>
+                        <mi>f</mi>
+                        <mo>′</mo>
+                    </msup>
+                    <mo>(</mo>
+                    <mi>x</mi>
+                    <mo>)</mo>
+                    <mo>=</mo>
+                    <mn>0</mn>
+                    <mtext>&nbsp;при&nbsp;</mtext>
+                    <mo>−</mo>
+                    <mi>x</mi>
+                    <mo>(</mo>
+                    <mi>x</mi>
+                    <mo>−</mo>
+                    <mn>3</mn>
+                    <mo>)</mo>
+                    <mo>(</mo>
+                    <mi>x</mi>
+                    <mo>+</mo>
+                    <mn>2</mn>
+                    <mo>)</mo>
+                    <mo>=</mo>
+                    <mn>0</mn>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mi>x</mi>
+                    <mo>=</mo>
+                    <mo>−</mo>
+                    <mn>2</mn>
+                    <mo>,</mo>
+                    <mspace width="1em"/>
+                    <mi>x</mi>
+                    <mo>=</mo>
+                    <mn>0</mn>
+                    <mo>,</mo>
+                    <mspace width="1em"/>
+                    <mi>x</mi>
+                    <mo>=</mo>
+                    <mn>3</mn>
+                </math>
+            </div>
+        </div>
+
+        <div class="example-title">Схема знаков производной:</div>
+
+        <div class="image-container">
+            <img src="https://i.postimg.cc/qRHGHCJG/изображение.png" alt="Схема знаков производной для примера 4" class="function-image">
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mn>4.</mn>
+                    <mtext>Определяем экстремумы:</mtext>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mtable>
+                        <mtr>
+                            <mtd>
+                                <mtext>Точка минимума:</mtext>
+                            </mtd>
+                            <mtd>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mtext>min</mtext>
+                                </msub>
+                                <mo>=</mo>
+                                <mo>−</mo>
+                                <mn>2</mn>
+                            </mtd>
+                            <mtd>
+                                <mo>(</mo>
+                                <msup>
+                                    <mi>f</mi>
+                                    <mo>′</mo>
+                                </msup>
+                                <mtext> меняет знак с − на +</mtext>
+                                <mo>)</mo>
+                            </mtd>
+                        </mtr>
+                        <mtr>
+                            <mtd>
+                                <mtext>Точка максимума:</mtext>
+                            </mtd>
+                            <mtd>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mtext>max</mtext>
+                                </msub>
+                                <mo>=</mo>
+                                <mn>3</mn>
+                            </mtd>
+                            <mtd>
+                                <mo>(</mo>
+                                <msup>
+                                    <mi>f</mi>
+                                    <mo>′</mo>
+                                </msup>
+                                <mtext> меняет знак с + на −</mtext>
+                                <mo>)</mo>
+                            </mtd>
+                        </mtr>
+                    </mtable>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mtext>Точка x = 0 не является экстремумом, так как производная не меняет знак (остаётся +)</mtext>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mn>5.</mn>
+                    <mtext>Вычисляем значения функции в точках экстремума:</mtext>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mtable>
+                        <mtr>
+                            <mtd>
+                                <msub>
+                                    <mi>f</mi>
+                                    <mtext>min</mtext>
+                                </msub>
+                                <mo>(</mo>
+                                <mo>−</mo>
+                                <mn>2</mn>
+                                <mo>)</mo>
+                                <mo>=</mo>
+                                <mn>1</mn>
+                                <mo>+</mo>
+                                <mn>3</mn>
+                                <mo>⋅</mo>
+                                <mn>4</mn>
+                                <mo>+</mo>
+                                <mfrac>
+                                    <mrow><mo>(</mo><mo>−</mo><mn>8</mn><mo>)</mo></mrow>
+                                    <mn>3</mn>
+                                </mfrac>
+                                <mo>−</mo>
+                                <mfrac>
+                                    <mrow><mn>16</mn></mrow>
+                                    <mn>4</mn>
+                                </mfrac>
+                                <mo>=</mo>
+                                <mn>1</mn>
+                                <mo>+</mo>
+                                <mn>12</mn>
+                                <mo>−</mo>
+                                <mfrac><mn>8</mn><mn>3</mn></mfrac>
+                                <mo>−</mo>
+                                <mn>4</mn>
+                                <mo>=</mo>
+                                <mn>9</mn>
+                                <mo>−</mo>
+                                <mfrac><mn>8</mn><mn>3</mn></mfrac>
+                                <mo>=</mo>
+                                <mfrac><mn>27</mn><mn>3</mn></mfrac>
+                                <mo>−</mo>
+                                <mfrac><mn>8</mn><mn>3</mn></mfrac>
+                                <mo>=</mo>
+                                <mfrac><mn>19</mn><mn>3</mn></mfrac>
+                            </mtd>
+                        </mtr>
+                        <mtr>
+                            <mtd>
+                                <msub>
+                                    <mi>f</mi>
+                                    <mtext>max</mtext>
+                                </msub>
+                                <mo>(</mo>
+                                <mn>3</mn>
+                                <mo>)</mo>
+                                <mo>=</mo>
+                                <mn>1</mn>
+                                <mo>+</mo>
+                                <mn>3</mn>
+                                <mo>⋅</mo>
+                                <mn>9</mn>
+                                <mo>+</mo>
+                                <mfrac>
+                                    <mrow><mn>27</mn></mrow>
+                                    <mn>3</mn>
+                                </mfrac>
+                                <mo>−</mo>
+                                <mfrac>
+                                    <mrow><mn>81</mn></mrow>
+                                    <mn>4</mn>
+                                </mfrac>
+                                <mo>=</mo>
+                                <mn>1</mn>
+                                <mo>+</mo>
+                                <mn>27</mn>
+                                <mo>+</mo>
+                                <mn>9</mn>
+                                <mo>−</mo>
+                                <mfrac><mn>81</mn><mn>4</mn></mfrac>
+                                <mo>=</mo>
+                                <mn>37</mn>
+                                <mo>−</mo>
+                                <mfrac><mn>81</mn><mn>4</mn></mfrac>
+                                <mo>=</mo>
+                                <mfrac><mn>148</mn><mn>4</mn></mfrac>
+                                <mo>−</mo>
+                                <mfrac><mn>81</mn><mn>4</mn></mfrac>
+                                <mo>=</mo>
+                                <mfrac><mn>67</mn><mn>4</mn></mfrac>
+                            </mtd>
+                        </mtr>
+                    </mtable>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mtext>Ответ:</mtext>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mtable>
+                        <mtr>
+                            <mtd>
+                                <mtext>Убывает на:</mtext>
+                            </mtd>
+                            <mtd>
+                                <mo>(</mo>
+                                <mo>−</mo>
+                                <mi>∞</mi>
+                                <mo>;</mo>
+                                <mo>−</mo>
+                                <mn>2</mn>
+                                <mo>]</mo>
+                                <mtext>&nbsp;и&nbsp;</mtext>
+                                <mo>[</mo>
+                                <mn>3</mn>
+                                <mo>;</mo>
+                                <mo>+</mo>
+                                <mi>∞</mi>
+                                <mo>)</mo>
+                            </mtd>
+                        </mtr>
+                        <mtr>
+                            <mtd>
+                                <mtext>Возрастает на:</mtext>
+                            </mtd>
+                            <mtd>
+                                <mo>[</mo>
+                                <mo>−</mo>
+                                <mn>2</mn>
+                                <mo>;</mo>
+                                <mn>3</mn>
+                                <mo>]</mo>
+                            </mtd>
+                        </mtr>
+                        <mtr>
+                            <mtd>
+                                <mtext>Точка минимума:</mtext>
+                            </mtd>
+                            <mtd>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mtext>min</mtext>
+                                </msub>
+                                <mo>=</mo>
+                                <mo>−</mo>
+                                <mn>2</mn>
+                                <mo>,</mo>
+                                <msub>
+                                    <mi>f</mi>
+                                    <mtext>min</mtext>
+                                </msub>
+                                <mo>=</mo>
+                                <mfrac><mn>19</mn><mn>3</mn></mfrac>
+                            </mtd>
+                        </mtr>
+                        <mtr>
+                            <mtd>
+                                <mtext>Точка максимума:</mtext>
+                            </mtd>
+                            <mtd>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mtext>max</mtext>
+                                </msub>
+                                <mo>=</mo>
+                                <mn>3</mn>
+                                <mo>,</mo>
+                                <msub>
+                                    <mi>f</mi>
+                                    <mtext>max</mtext>
+                                </msub>
+                                <mo>=</mo>
+                                <mfrac><mn>67</mn><mn>4</mn></mfrac>
+                            </mtd>
+                        </mtr>
+                    </mtable>
+                </math>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="lesson-section">
+    <div class="lesson-number">Пример 2</div>
+    <h2>Нахождение точек экстремума функции</h2>
+
+    <div class="example">
+        <div class="example-title">Дано: <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mfrac><mrow><mn>3</mn><mi>x</mi><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow></mfrac></math></div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mtext>Решение:</mtext>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mn>1.</mn>
+                    <mi>D</mi>
+                    <mo>(</mo>
+                    <mi>f</mi>
+                    <mo>)</mo>
+                    <mo>=</mo>
+                    <mo>(</mo>
+                    <mo>−</mo>
+                    <mi>∞</mi>
+                    <mo>;</mo>
+                    <mn>1</mn>
+                    <mo>)</mo>
+                    <mo>∪</mo>
+                    <mo>(</mo>
+                    <mn>1</mn>
+                    <mo>;</mo>
+                    <mo>+</mo>
+                    <mi>∞</mi>
+                    <mo>)</mo>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mn>2.</mn>
+                    <msup>
+                        <mi>f</mi>
+                        <mo>′</mo>
+                    </msup>
+                    <mo>(</mo>
+                    <mi>x</mi>
+                    <mo>)</mo>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <mo>(</mo>
+                            <mn>3</mn>
+                            <mo>+</mo>
+                            <mn>2</mn>
+                            <mi>x</mi>
+                            <mo>)</mo>
+                            <mo>(</mo>
+                            <mi>x</mi>
+                            <mo>−</mo>
+                            <mn>1</mn>
+                            <mo>)</mo>
+                            <mo>−</mo>
+                            <mo>(</mo>
+                            <mn>3</mn>
+                            <mi>x</mi>
+                            <mo>+</mo>
+                            <msup>
+                                <mi>x</mi>
+                                <mn>2</mn>
+                            </msup>
+                            <mo>)</mo>
+                            <mo>⋅</mo>
+                            <mn>1</mn>
+                        </mrow>
+                        <mrow>
+                            <msup>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mi>x</mi>
+                                    <mo>−</mo>
+                                    <mn>1</mn>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mn>2</mn>
+                            </msup>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <msup>
+                                <mi>x</mi>
+                                <mn>2</mn>
+                            </msup>
+                            <mo>−</mo>
+                            <mn>2</mn>
+                            <mi>x</mi>
+                            <mo>−</mo>
+                            <mn>3</mn>
+                        </mrow>
+                        <mrow>
+                            <msup>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mi>x</mi>
+                                    <mo>−</mo>
+                                    <mn>1</mn>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mn>2</mn>
+                            </msup>
+                        </mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <mo>(</mo>
+                            <mi>x</mi>
+                            <mo>−</mo>
+                            <mn>3</mn>
+                            <mo>)</mo>
+                            <mo>(</mo>
+                            <mi>x</mi>
+                            <mo>+</mo>
+                            <mn>1</mn>
+                            <mo>)</mo>
+                        </mrow>
+                        <mrow>
+                            <msup>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mi>x</mi>
+                                    <mo>−</mo>
+                                    <mn>1</mn>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mn>2</mn>
+                            </msup>
+                        </mrow>
+                    </mfrac>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mn>3.</mn>
+                    <msup>
+                        <mi>f</mi>
+                        <mo>′</mo>
+                    </msup>
+                    <mo>(</mo>
+                    <mi>x</mi>
+                    <mo>)</mo>
+                    <mo>=</mo>
+                    <mn>0</mn>
+                    <mtext> при </mtext>
+                    <mi>x</mi>
+                    <mo>=</mo>
+                    <mo>−</mo>
+                    <mn>1</mn>
+                    <mtext> и </mtext>
+                    <mi>x</mi>
+                    <mo>=</mo>
+                    <mn>3</mn>
+                </math>
+            </div>
+        </div>
+
+        <div class="example-title">Схема знаков производной:</div>
+        <div class="image-container">
+            <img src="https://i.postimg.cc/m21W80nB/изображение.png" alt="Схема знаков производной для примера 4" class="function-image">
+        </div>
+
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mn>4.</mn>
+                    <mtext>Определяем экстремумы:</mtext>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mtable>
+                        <mtr>
+                            <mtd>
+                                <mtext>Точка максимума:</mtext>
+                            </mtd>
+                            <mtd>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mtext>max</mtext>
+                                </msub>
+                                <mo>=</mo>
+                                <mo>−</mo>
+                                <mn>1</mn>
+                            </mtd>
+                            <mtd>
+                                <mo>(</mo>
+                                <msup>
+                                    <mi>f</mi>
+                                    <mo>′</mo>
+                                </msup>
+                                <mtext> меняет знак с </mtext>
+                                <mo>+</mo>
+                                <mtext> на </mtext>
+                                <mo>−</mo>
+                                <mo>)</mo>
+                            </mtd>
+                        </mtr>
+                        <mtr>
+                            <mtd>
+                                <mtext>Точка минимума:</mtext>
+                            </mtd>
+                            <mtd>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mtext>min</mtext>
+                                </msub>
+                                <mo>=</mo>
+                                <mn>3</mn>
+                            </mtd>
+                            <mtd>
+                                <mo>(</mo>
+                                <msup>
+                                    <mi>f</mi>
+                                    <mo>′</mo>
+                                </msup>
+                                <mtext> меняет знак с </mtext>
+                                <mo>−</mo>
+                                <mtext> на </mtext>
+                                <mo>+</mo>
+                                <mo>)</mo>
+                            </mtd>
+                        </mtr>
+                    </mtable>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mtext>Вычисляем экстремумы:</mtext>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mtable>
+                        <mtr>
+                            <mtd>
+                                <msub>
+                                    <mi>f</mi>
+                                    <mtext>max</mtext>
+                                </msub>
+                                <mo>=</mo>
+                                <mi>f</mi>
+                                <mo>(</mo>
+                                <mo>−</mo>
+                                <mn>1</mn>
+                                <mo>)</mo>
+                                <mo>=</mo>
+                                <mfrac>
+                                    <mrow>
+                                        <mn>3</mn>
+                                        <mo>(</mo>
+                                        <mo>−</mo>
+                                        <mn>1</mn>
+                                        <mo>)</mo>
+                                        <mo>+</mo>
+                                        <msup>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mo>−</mo>
+                                                <mn>1</mn>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <mn>2</mn>
+                                        </msup>
+                                    </mrow>
+                                    <mrow>
+                                        <mo>−</mo>
+                                        <mn>1</mn>
+                                        <mo>−</mo>
+                                        <mn>1</mn>
+                                    </mrow>
+                                </mfrac>
+                                <mo>=</mo>
+                                <mfrac>
+                                    <mrow>
+                                        <mo>−</mo>
+                                        <mn>3</mn>
+                                        <mo>+</mo>
+                                        <mn>1</mn>
+                                    </mrow>
+                                    <mrow>
+                                        <mo>−</mo>
+                                        <mn>2</mn>
+                                    </mrow>
+                                </mfrac>
+                                <mo>=</mo>
+                                <mfrac>
+                                    <mrow>
+                                        <mo>−</mo>
+                                        <mn>2</mn>
+                                    </mrow>
+                                    <mrow>
+                                        <mo>−</mo>
+                                        <mn>2</mn>
+                                    </mrow>
+                                </mfrac>
+                                <mo>=</mo>
+                                <mn>1</mn>
+                            </mtd>
+                        </mtr>
+                        <mtr>
+                            <mtd>
+                                <msub>
+                                    <mi>f</mi>
+                                    <mtext>min</mtext>
+                                </msub>
+                                <mo>=</mo>
+                                <mi>f</mi>
+                                <mo>(</mo>
+                                <mn>3</mn>
+                                <mo>)</mo>
+                                <mo>=</mo>
+                                <mfrac>
+                                    <mrow>
+                                        <mn>3</mn>
+                                        <mo>⋅</mo>
+                                        <mn>3</mn>
+                                        <mo>+</mo>
+                                        <msup>
+                                            <mn>3</mn>
+                                            <mn>2</mn>
+                                        </msup>
+                                    </mrow>
+                                    <mrow>
+                                        <mn>3</mn>
+                                        <mo>−</mo>
+                                        <mn>1</mn>
+                                    </mrow>
+                                </mfrac>
+                                <mo>=</mo>
+                                <mfrac>
+                                    <mrow>
+                                        <mn>9</mn>
+                                        <mo>+</mo>
+                                        <mn>9</mn>
+                                    </mrow>
+                                    <mrow>
+                                        <mn>2</mn>
+                                    </mrow>
+                                </mfrac>
+                                <mo>=</mo>
+                                <mfrac>
+                                    <mrow>
+                                        <mn>18</mn>
+                                    </mrow>
+                                    <mrow>
+                                        <mn>2</mn>
+                                    </mrow>
+                                </mfrac>
+                                <mo>=</mo>
+                                <mn>9</mn>
+                            </mtd>
+                        </mtr>
+                    </mtable>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mtext>Ответ:</mtext>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mtable>
+                        <mtr>
+                            <mtd>
+                                <mtext>Точка максимума:</mtext>
+                            </mtd>
+                            <mtd>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mtext>max</mtext>
+                                </msub>
+                                <mo>=</mo>
+                                <mo>−</mo>
+                                <mn>1</mn>
+                            </mtd>
+                            <mtd>
+                                <msub>
+                                    <mi>f</mi>
+                                    <mtext>max</mtext>
+                                </msub>
+                                <mo>=</mo>
+                                <mn>1</mn>
+                            </mtd>
+                        </mtr>
+                        <mtr>
+                            <mtd>
+                                <mtext>Точка минимума:</mtext>
+                            </mtd>
+                            <mtd>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mtext>min</mtext>
+                                </msub>
+                                <mo>=</mo>
+                                <mn>3</mn>
+                            </mtd>
+                            <mtd>
+                                <msub>
+                                    <mi>f</mi>
+                                    <mtext>min</mtext>
+                                </msub>
+                                <mo>=</mo>
+                                <mn>9</mn>
+                            </mtd>
+                        </mtr>
+                    </mtable>
+                </math>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="lesson-section">
+    <div class="lesson-number">Пример 4</div>
+    <h2>Наибольшее и наименьшее значение функции на отрезке</h2>
+
+    <div class="example">
+        <div class="example-title">Дано:
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>−</mo><mn>2</mn><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>6</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>5</mn>
+            </math>
+            на отрезке
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mo>[</mo><mo>−</mo><mn>1</mn><mo>;</mo><mn>1</mn><mo>]</mo>
+            </math>
+        </div>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-title">Шаг 1: Находим производную</div>
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <msup><mi>f</mi><mo>′</mo></msup><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>−</mo><mn>6</mn><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>12</mn><mi>x</mi>
+                    </math>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-title">Шаг 2: Критические точки</div>
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mo>−</mo><mn>6</mn><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>12</mn><mi>x</mi><mo>=</mo><mn>0</mn>
+                    </math>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>x</mi><mo>=</mo><mn>0</mn>
+                    </math>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mi>x</mi><mo>(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo>)</mo><mo>=</mo><mn>0</mn>
+                    </math>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="1em"/>
+                        <msub><mi>x</mi><mn>2</mn></msub><mo>=</mo><mo>−</mo><mn>2</mn>
+                    </math>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-title">Шаг 3: Выбираем точки из отрезка</div>
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mn>0</mn><mo>∈</mo><mo>[</mo><mo>−</mo><mn>1</mn><mo>;</mo><mn>1</mn><mo>]</mo><mo>,</mo>
+                        <mspace width="1em"/>
+                        <msub><mi>x</mi><mn>2</mn></msub><mo>=</mo><mo>−</mo><mn>2</mn><mo>∉</mo><mo>[</mo><mo>−</mo><mn>1</mn><mo>;</mo><mn>1</mn><mo>]</mo>
+                    </math>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-title">Шаг 4: Вычисляем значения функции</div>
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mtable>
+                            <mtr>
+                                <mtd><mi>f</mi><mo>(</mo><mn>0</mn><mo>)</mo><mo>=</mo><mo>−</mo><mn>2</mn><mo>⋅</mo><msup><mn>0</mn><mn>3</mn></msup><mo>−</mo><mn>6</mn><mo>⋅</mo><msup><mn>0</mn><mn>2</mn></msup><mo>+</mo><mn>5</mn><mo>=</mo><mn>5</mn></mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd><mi>f</mi><mo>(</mo><mo>−</mo><mn>1</mn><mo>)</mo><mo>=</mo><mo>−</mo><mn>2</mn><mo>⋅</mo><msup><mo>(</mo><mo>−</mo><mn>1</mn><mo>)</mo><mn>3</mn></msup><mo>−</mo><mn>6</mn><mo>⋅</mo><msup><mo>(</mo><mo>−</mo><mn>1</mn><mo>)</mo><mn>2</mn></msup><mo>+</mo><mn>5</mn><mo>=</mo><mn>1</mn></mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd><mi>f</mi><mo>(</mo><mn>1</mn><mo>)</mo><mo>=</mo><mo>−</mo><mn>2</mn><mo>⋅</mo><msup><mn>1</mn><mn>3</mn></msup><mo>−</mo><mn>6</mn><mo>⋅</mo><msup><mn>1</mn><mn>2</mn></msup><mo>+</mo><mn>5</mn><mo>=</mo><mo>−</mo><mn>3</mn></mtd>
+                            </mtr>
+                        </mtable>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="graphical-summary">
+            <div class="example-title">Графическое представление:</div>
+            <div class="image-container">
+                <img src="https://i.postimg.cc/nLSxh7SM/izobrazenie.png" alt="График функции f(x) = -2x³ - 6x² + 5 на отрезке [-1; 1]" class="function-image">
+            </div>
+
+            <div class="graph-legend">
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #ff6b6b;"></span>
+                    <span>Отрезок [-1; 1]</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #4ecdc4;"></span>
+                    <span>Критическая точка x = 0</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #45b7d1;"></span>
+                    <span>Максимум: f(0) = 5</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #96ceb4;"></span>
+                    <span>Минимум: f(1) = -3</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="final-result">
+            <div class="step-title">Шаг 5: Находим наибольшее и наименьшее значения</div>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mtable>
+                        <mtr>
+                            <mtd><munder><mi>max</mi><mrow><mo>[</mo><mo>−</mo><mn>1</mn><mo>;</mo><mn>1</mn><mo>]</mo></mrow></munder><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>f</mi><mo>(</mo><mn>0</mn><mo>)</mo><mo>=</mo><mn>5</mn></mtd>
+                        </mtr>
+                        <mtr>
+                            <mtd><munder><mi>min</mi><mrow><mo>[</mo><mo>−</mo><mn>1</mn><mo>;</mo><mn>1</mn><mo>]</mo></mrow></munder><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>f</mi><mo>(</mo><mn>1</mn><mo>)</mo><mo>=</mo><mo>−</mo><mn>3</mn></mtd>
+                        </mtr>
+                    </mtable>
+                </math>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <div class="example-title">Вывод:</div>
+            <p>На отрезке [-1; 1] функция достигает:</p>
+            <ul>
+                <li><strong>Наибольшего значения 5</strong> в точке x = 0 (внутренняя критическая точка)</li>
+                <li><strong>Наименьшего значения -3</strong> в точке x = 1 (правый конец отрезка)</li>
+            </ul>
+            <p class="note">Заметим, что наименьшее значение находится не в критической точке, а на конце отрезка — это важно при решении задач на нахождение экстремумов на отрезке.</p>
+        </div>
+    </div>
+</div>
+                            <div class="bottom-nav">
+    <select onchange="goToSection(this.value)">
+        <option value="">Перейти к теме…</option>
+        <option value="1">Производная функции</option>
+        <option value="2">Правила вычисления производных</option>
+        <option value="3">Геометрический смысл производной</option>
+        <option value="4">Монотонность. Экстремумы</option>
+        <option value="5">Примеры решения типовых задач</option>
+
+    </select>
+</div>
+
+<script>
+function goToSection(id) {
+    if (!id) return;
+    document.getElementById(id).scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+</script>
+    </div>
+</body>
+</html>

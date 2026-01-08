@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>Функции</title>
+				<style>
+         /* Общие стили */
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f9ff;
+            color: #333;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 150, 0.1);
+            padding: 30px;
+        }
+
+        /* Заголовки */
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+        }
+
+        /* Секции */
+        .lesson-section {
+            background-color: #f8fafd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 5px solid #3498db;
+        }
+
+        /* Определения и примеры */
+        .definition {
+            background-color: #e8f4fc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .example {
+            background-color: #f0f7ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #2ecc71;
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 10px;
+        }
+
+        .hard-example {
+            border-left-color: #e74c3c;
+        }
+
+        .hard-example .example-title {
+            color: #e74c3c;
+        }
+
+        /* Математические контейнеры */
+        .math-container {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin: 15px 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .math-formula {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .explanation {
+            background-color: #fffde7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+
+        /* Изображения - УПРОЩЕННЫЙ ВАРИАНТ */
+        .image-container {
+            text-align: center;
+            margin: 15px auto;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            max-width: 25%;
+        }
+
+        .function-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+
+        /* Таблицы */
+        .trig-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            overflow-x: auto;
+            display: block;
+        }
+
+        .trig-table th,
+        .trig-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .trig-table th {
+            background-color: #f2f2f2;
+        }
+
+        /* Нижняя навигация */
+        .bottom-nav {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 8px 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            z-index: 999;
+            width: 90%;
+            max-width: 300px;
+        }
+
+        .bottom-nav select {
+            width: 100%;
+            font-size: 16px;
+            padding: 8px;
+            cursor: pointer;
+            border: 1px solid #3498db;
+            border-radius: 6px;
+        }
+
+        .lesson-number {
+            background-color: #3498db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* ПРОСТАЯ АДАПТАЦИЯ ДЛЯ ТЕЛЕФОНА */
+        @media (max-width: 768px) {
+    body {
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    .container {
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+        padding-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 1.3em;
+        margin-top: 20px;
+    }
+
+    .lesson-section {
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    .definition,
+    .example {
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    .math-container {
+        padding: 12px;
+        margin: 12px 0;
+    }
+
+    .explanation {
+        padding: 12px;
+        margin: 12px 0;
+        font-size: 0.95em;
+    }
+
+    .image-container {
+        padding: 8px;
+        margin: 10px 0;
+        max-width: 100% !important; /* Принудительно на всю ширину */
+        width: 100% !important;
+    }
+
+    .function-image {
+        max-height: auto !important; /* Убираем ограничение по высоте */
+        height: auto;
+        width: 100%; /* Занимает всю ширину контейнера */
+        max-width: 100%;
+        display: block; /* Убираем лишние отступы */
+    }
+
+    .trig-table {
+        font-size: 14px;
+    }
+
+    .trig-table th,
+    .trig-table td {
+        padding: 6px;
+    }
+
+    .bottom-nav {
+        bottom: 5px;
+        padding: 6px 10px;
+    }
+
+    .bottom-nav select {
+        font-size: 14px;
+        padding: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    h1 {
+        font-size: 1.3em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    .lesson-section {
+        padding: 12px;
+        margin: 10px 0;
+    }
+
+    .definition,
+    .example {
+        padding: 12px;
+        margin: 10px 0;
+    }
+
+    .image-container {
+        padding: 5px;
+        margin: 8px 0;
+    }
+
+    .function-image {
+        width: 100%;
+        height: auto;
+        max-height: none; /* Убираем все ограничения по высоте */
+    }
+
+    .trig-table {
+        font-size: 13px;
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .trig-table th,
+    .trig-table td {
+        padding: 5px;
+        min-width: 50px; /* Минимальная ширина для ячеек */
+    }
+}
+    </style>
+			</head>
+			<body>
+				<div class="container">
+
+					<h1>Функция</h1>
+					<div class="lesson-section"> <h2>Определение функции</h2> <div class="definition"> <p><strong>Функцией</strong> называется правило, которое каждому элементу <math><mrow><mi>x</mi></mrow></math> из множества <math><mrow><mi>X</mi></mrow></math> ставит в соответствие единственный элемент <math><mrow><mi>y</mi></mrow></math> из множества <math><mrow><mi>Y</mi></mrow></math>.</p>
+
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>f</mi><mo>:</mo><mi>X</mi><mo>→</mo><mi>Y</mi>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>Обозначение: <math><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math>, где:</p>
+    <ul>
+        <li><math><mrow><mi>x</mi></mrow></math> — аргумент (независимая переменная)</li>
+        <li><math><mrow><mi>y</mi></mrow></math> — значение функции (зависимая переменная)</li>
+        <li><math><mrow><mi>f</mi></mrow></math> — правило соответствия</li>
+    </ul>
+</div>
+
+</div>
+                    <div class="lesson-section"> <h2>График функции</h2> <div class="definition"> <p><strong>Графиком функции</strong> <math><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math> называется множество всех точек плоскости с координатами <math><mrow><mo>(</mo><mi>x</mi><mo>,</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo></mrow></math>.</p>
+
+    <p><strong>Основное свойство:</strong> Любая вертикальная прямая пересекает график функции не более чем в одной точке.</p>
+</div>
+
+</div>
+                    <div class="lesson-section"> <h2>Пример графика, который НЕ является функцией</h2> <div class="definition"> <p>На этом графике одна вертикальная линия пересекает кривую в двух точках, что нарушает определение функции:</p>
+
+    <div class="image-container">
+        <img src="https://i.postimg.cc/PxFB4Z2D/изображение.png" class="function-image" alt="График, не являющийся функцией">
+    </div>
+
+    <p class="explanation">Для значения <math><mrow><mi>x</mi></mrow></math> существует два различных значения <math><mrow><mi>y</mi></mrow></math>, что противоречит определению функции.</p>
+</div>
+
+</div>
+                    <div class="lesson-section"> <h2>Пример графика, который ЯВЛЯЕТСЯ функцией</h2> <div class="definition"> <p>На этом графике каждая вертикальная прямая пересекает кривую не более чем в одной точке:</p>
+
+    <div class="image-container">
+        <img src="https://i.postimg.cc/NM7K2s4N/изображение.png" class="function-image" alt="График функции">
+    </div>
+
+    <p class="explanation">Для каждого значения <math><mrow><mi>x</mi></mrow></math> существует ровно одно значение <math><mrow><mi>y</mi></mrow></math>.</p>
+</div>
+
+</div>
+                    <div class="lesson-section"> <h2>Определение значения функции в точке</h2> <div class="definition"> <p>Чтобы найти значение функции <math><mrow><mi>f</mi><mo>(</mo><mi>a</mi><mo>)</mo></mrow></math>:</p> <ol> <li>Находим точку <math><mrow><mi>a</mi></mrow></math> на оси OX</li> <li>Проводим вертикальную прямую до пересечения с графиком</li> <li>От точки пересечения проводим горизонтальную прямую к оси OY</li> <li>Координата на оси OY — значение функции</li> </ol>
+
+    <div class="image-container">
+        <img src="https://i.postimg.cc/Wp043132/изображение.png" class="function-image" alt="Определение значения функции">
+    </div>
+
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>f</mi><mo>(</mo><mo>-</mo><mn>4</mn><mo>)</mo><mo>=</mo><mn>2</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>f</mi><mo>(</mo><mn>7</mn><mo>)</mo><mo>=</mo><mo>-</mo><mn>3</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+</div>
+
+</div>
+                    <div class="lesson-section"> <h2>Нахождение аргумента по значению функции</h2> <div class="definition"> <p>Чтобы найти <math><mrow><mi>x</mi></mrow></math>, при котором <math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>c</mi></mrow></math>:</p> <ol> <li>Находим точку <math><mrow><mi>c</mi></mrow></math> на оси OY</li> <li>Проводим горизонтальную прямую до пересечения с графиком</li> <li>От точек пересечения проводим вертикальные прямые к оси OX</li> <li>Координаты на оси OX — искомые значения аргумента</li> </ol>
+
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mn>3&nbsp;</mn><mtext> при &nbsp;</mtext><mi>x</mi><mo>=</mo><mo>-</mo><mn>7</mn><mo>,</mo><mo>-</mo><mn>5</mn><mo>,</mo><mo>-</mo><mn>2</mn><mo>,</mo><mn>1</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+</div>
+
+</div>
+                    <div class="lesson-section"> <h2>Область определения и множество значений</h2> <div class="definition"> <p><strong>Область определения</strong> <math><mrow><mi>D</mi><mo>(</mo><mi>f</mi><mo>)</mo></mrow></math> — множество всех значений аргумента <math><mrow><mi>x</mi></mrow></math>, при которых функция определена.</p>
+
+    <p><strong>Множество значений</strong> <math><mrow><mi>E</mi><mo>(</mo><mi>f</mi><mo>)</mo></mrow></math> — множество всех значений, которые принимает функция.</p>
+
+    <div class="image-container">
+        <img src="https://i.postimg.cc/CKJyR988/изображение.png" class="function-image" alt="Область определения и множество значений">
+    </div>
+
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>D</mi><mo>(</mo><mi>f</mi><mo>)</mo><mo>=</mo><mo>[</mo><mn>1</mn><mo>,</mo><mn>6</mn><mo>]</mo>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>E</mi><mo>(</mo><mi>f</mi><mo>)</mo><mo>=</mo><mo>[</mo><mn>1</mn><mo>,</mo><mn>5</mn><mo>]</mo>
+                </mrow>
+            </math>
+        </div>
+    </div>
+</div>
+
+</div>
+                    <div class="lesson-section"> <h2>Задание 1: Нахождение значения функции</h2> <div class="example"> <p class="example-title">Найдите значение функции, если значение аргумента равно -2:</p>
+
+    <p>а) <math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>-</mo><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>1</mn></mrow></math></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>f</mi><mo>(</mo><mo>-</mo><mn>2</mn><mo>)</mo><mo>=</mo><mo>-</mo><mo>(</mo><mo>-</mo><mn>2</mn><msup><mo>)</mo><mn>2</mn></msup><mo>-</mo><mn>1</mn><mo>=</mo><mo>-</mo><mn>4</mn><mo>-</mo><mn>1</mn><mo>=</mo><mo>-</mo><mn>5</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>б) <math><mrow><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mfrac><mrow><mn>2</mn><mi>x</mi></mrow><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>+</mo><mn>4</mn></mrow></mfrac></mrow></math></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>g</mi><mo>(</mo><mo>-</mo><mn>2</mn><mo>)</mo><mo>=</mo><mfrac><mrow><mn>2</mn><mo>·</mo><mo>(</mo><mo>-</mo><mn>2</mn><mo>)</mo></mrow><mrow><mo>(</mo><mo>-</mo><mn>2</mn><msup><mo>)</mo><mn>3</mn></msup><mo>+</mo><mn>4</mn></mrow></mfrac><mo>=</mo>
+                    <mfrac><mrow><mo>-</mo><mn>4</mn></mrow><mrow><mo>-</mo><mn>8</mn><mo>+</mo><mn>4</mn></mrow></mfrac><mo>=</mo>
+                    <mfrac><mrow><mo>-</mo><mn>4</mn></mrow><mrow><mo>-</mo><mn>4</mn></mrow></mfrac><mo>=</mo><mn>1</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>в) <math><mrow><mi>h</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>4</mn></mrow></msqrt></mrow></math></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>h</mi><mo>(</mo><mo>-</mo><mn>2</mn><mo>)</mo><mo>=</mo><msqrt><mrow><mo>(</mo><mo>-</mo><mn>2</mn><msup><mo>)</mo><mn>2</mn></msup><mo>+</mo><mn>4</mn></mrow></msqrt><mo>=</mo>
+                    <msqrt><mrow><mn>4</mn><mo>+</mo><mn>4</mn></mrow></msqrt><mo>=</mo><msqrt><mn>8</mn></msqrt><mo>=</mo><mn>2</mn><msqrt><mn>2</mn></msqrt>
+                </mrow>
+            </math>
+        </div>
+    </div>
+</div>
+
+</div>
+                    <div class="lesson-section"> <h2>Задание 2: Нахождение аргумента по значению функции</h2> <div class="example"> <p class="example-title">Найдите, при каком значении аргумента значение функции равно 1:</p>
+    <p>а) <math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>8</mn></mrow></math></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>8</mn><mo>=</mo><mn>1</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mn>9</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>x</mi><mo>=</mo><mo>±</mo><mn>3</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>б) <math><mrow><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mfrac><mn>8</mn><mi>x</mi></mfrac></mrow></math></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mfrac><mn>8</mn><mi>x</mi></mfrac><mo>=</mo><mn>1</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>x</mi><mo>=</mo><mn>8</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>в) <math><mrow><mi>h</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>|</mo><mi>x</mi><mo>|</mo></mrow></math></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>|</mo><mi>x</mi><mo>|</mo><mo>=</mo><mn>1</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>x</mi><mo>=</mo><mo>±</mo><mn>1</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+</div>
+
+</div>
+                    <div class="lesson-section"> <h2>Задание 3: Нахождение области определения функции</h2> <div class="example"> <p class="example-title">Найдите область определения функции:</p>
+
+    <p>а) <math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>5</mn><mi>x</mi><mo>+</mo><mn>4</mn></mrow></msqrt></mrow></math></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>5</mn><mi>x</mi><mo>+</mo><mn>4</mn><mo>≥</mo><mn>0</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>(</mo><mi>x</mi><mo>-</mo><mn>4</mn><mo>)</mo><mo>≥</mo><mn>0</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>x</mi><mo>∈</mo><mo>(</mo><mo>-</mo><mo>∞</mo><mo>,</mo><mn>1</mn><mo>]</mo><mo>∪</mo><mo>[</mo><mn>4</mn><mo>,</mo><mo>+</mo><mo>∞</mo><mo>)</mo>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>б) <math><mrow><mi>h</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mfrac><mn>5</mn><msqrt><mrow><mi>x</mi><mo>-</mo><mn>4</mn></mrow></msqrt></mfrac><mo>+</mo><msqrt><mrow><mn>13</mn><mo>-</mo><mn>2</mn><mi>x</mi></mrow></msqrt></mrow></math></p>
+    <div class="math-container">
+        <div class="math-formula">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mrow>
+            <mo>{</mo>
+            <mtable columnalign="left left">
+                <mtr>
+                    <mtd>
+                        <mi>x</mi>
+                        <mo>&#x2212;</mo>
+                        <mn>4</mn>
+                        <mo>&gt;</mo>
+                        <mn>0</mn>
+                    </mtd>
+                    <mtd>
+                        <mtext>(знаменатель не равен 0 и подкоренное выражение > 0)</mtext>
+                    </mtd>
+                </mtr>
+                <mtr>
+                    <mtd>
+                        <mn>13</mn>
+                        <mo>&#x2212;</mo>
+                        <mn>2</mn>
+                        <mi>x</mi>
+                        <mo>&ge;</mo>
+                        <mn>0</mn>
+                    </mtd>
+                </mtr>
+            </mtable>
+        </mrow>
+    </math>
+    <br>
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mrow>
+            <mo>{</mo>
+            <mtable columnalign="left">
+                <mtr>
+                    <mtd>
+                        <mi>x</mi>
+                        <mo>&gt;</mo>
+                        <mn>4</mn>
+                    </mtd>
+                </mtr>
+                <mtr>
+                    <mtd>
+                        <mi>x</mi>
+                        <mo>&le;</mo>
+                        <mn>6,5</mn>
+                    </mtd>
+                </mtr>
+            </mtable>
+        </mrow>
+    </math>
+    <br>
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mrow>
+            <mi>D</mi>
+            <mo>(</mo>
+            <mi>h</mi>
+            <mo>)</mo>
+            <mo>=</mo>
+            <mo>(</mo>
+            <mn>4</mn>
+            <mo>;</mo>
+            <mn>6,5</mn>
+            <mo>]</mo>
+        </mrow>
+    </math>
+</div>
+    </div>
+</div>
+
+</div>
+                    <div class="lesson-section"> <h2>Задание 4: Нахождение множества значений функции</h2> <div class="example"> <p class="example-title">Найдите множество значений функции:</p>
+
+    <p>а) <math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>|</mo><mi>x</mi><mo>|</mo><mo>+</mo><mn>4</mn></mrow></math></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>|</mo><mi>x</mi><mo>|</mo><mo>≥</mo><mn>0</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mo>|</mo><mi>x</mi><mo>|</mo><mo>+</mo><mn>4</mn><mo>≥</mo><mn>4</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>E</mi><mo>(</mo><mi>f</mi><mo>)</mo><mo>=</mo><mo>[</mo><mn>4</mn><mo>,</mo><mo>+</mo><mo>∞</mo><mo>)</mo>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>б) <math><mrow><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>-</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>6</mn><mi>x</mi><mo>-</mo><mn>2</mn></mrow></math></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>a</mi><mo>=</mo><mo>-</mo><mn>1</mn><mo><</mo><mn>0</mn><mo>,</mo><mspace width="1em"/><mi>b</mi><mo>=</mo><mn>6</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>x</mi><mi>в</mi></msub><mo>=</mo><mo>-</mo><mfrac><mi>b</mi><mrow><mn>2</mn><mi>a</mi></mrow></mfrac><mo>=</mo><mo>-</mo><mfrac><mn>6</mn><mrow><mn>2</mn><mo>·</mo><mo>(</mo><mo>-</mo><mn>1</mn><mo>)</mo></mrow></mfrac><mo>=</mo><mn>3</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msub><mi>y</mi><mi>в</mi></msub><mo>=</mo><mo>-</mo><msup><mn>3</mn><mn>2</mn></msup><mo>+</mo><mn>6</mn><mo>·</mo><mn>3</mn><mo>-</mo><mn>2</mn><mo>=</mo><mo>-</mo><mn>9</mn><mo>+</mo><mn>18</mn><mo>-</mo><mn>2</mn><mo>=</mo><mn>7</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>E</mi><mo>(</mo><mi>g</mi><mo>)</mo><mo>=</mo><mo>(</mo><mo>-</mo><mo>∞</mo><mo>,</mo><mn>7</mn><mo>]</mo>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>в) <math><mrow><mi>h</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msqrt><mrow><mi>x</mi><mo>+</mo><mn>3</mn></mrow></msqrt><mo>-</mo><mn>5</mn></mrow></math></p>
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msqrt><mrow><mi>x</mi><mo>+</mo><mn>3</mn></mrow></msqrt><mo>≥</mo><mn>0</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <msqrt><mrow><mi>x</mi><mo>+</mo><mn>3</mn></mrow></msqrt><mo>-</mo><mn>5</mn><mo>≥</mo><mo>-</mo><mn>5</mn>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>E</mi><mo>(</mo><mi>h</mi><mo>)</mo><mo>=</mo><mo>[</mo><mo>-</mo><mn>5</mn><mo>,</mo><mo>+</mo><mo>∞</mo><mo>)</mo>
+                </mrow>
+            </math>
+        </div>
+    </div>
+</div>
+
+</div>
+
+                    <div class="lesson-section"> <h2>Нули функции</h2> <div class="definition"> <p><strong>Нули функции</strong> — это значения аргумента <math><mrow><mi>x</mi></mrow></math>, при которых значение функции равно нулю.</p>
+
+    <p>Математически: <math><mrow><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>)</mo><mo>=</mo><mn>0</mn></mrow></math>, где <math><mrow><msub><mi>x</mi><mn>0</mn></msub></mrow></math> — нуль функции.</p>
+
+    <p><strong>Геометрический смысл:</strong> Нули функции — это абсциссы точек пересечения графика функции с осью OX.</p>
+
+    <div class="image-container">
+        <img src="https://i.postimg.cc/66z1XdXD/изображение.png" class="function-image" alt="Нули функции на графике">
+    </div>
+
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mn>0</mn><mtext>&ensp;при&ensp; </mtext><mi>x</mi><mo>=</mo><mo>-</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>8</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>На графике видно, что функция пересекает ось OX в трех точках: <math><mrow><mi>x</mi><mo>=</mo><mo>-</mo><mn>2</mn></mrow></math>, <math><mrow><mi>x</mi><mo>=</mo><mn>4</mn></mrow></math> и <math><mrow><mi>x</mi><mo>=</mo><mn>8</mn></mrow></math>.</p>
+</div>
+
+</div>
+                    <div class="lesson-section"> <h2>Промежутки знакопостоянства функции</h2> <div class="definition"> <p><strong>Промежутками знакопостоянства</strong> называются интервалы значений аргумента, на которых функция сохраняет постоянный знак (положительный или отрицательный).</p>
+
+    <div class="image-container">
+        <img src="https://i.postimg.cc/HshZJdjQ/изображение.png" class="function-image" alt="Промежутки знакопостоянства">
+    </div>
+
+    <div class="function-properties">
+        <div class="property">
+            <h4>Функция положительна (<math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>></mo><mn>0</mn></mrow></math>):</h4>
+            <p>Там, где график находится <strong>выше</strong> оси OX</p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mi>x</mi><mo>∈</mo><mo>(</mo><mo>-</mo><mn>9</mn><mo>,</mo><mo>-</mo><mn>2</mn><mo>)</mo><mo>∪</mo><mo>(</mo><mn>4</mn><mo>,</mo><mn>8</mn><mo>)</mo>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="property">
+            <h4>Функция отрицательна (<math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo><</mo><mn>0</mn></mrow></math>):</h4>
+            <p>Там, где график находится <strong>ниже</strong> оси OX</p>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mi>x</mi><mo>∈</mo><mo>(</mo><mo>-</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo>)</mo><mo>∪</mo><mo>(</mo><mn>8</mn><mo>,</mo><mn>9</mn><mo>)</mo>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="explanation">На концах промежутков функция равна нулю (в точках -2, 4, 8), поэтому эти точки не включаются в промежутки знакопостоянства.</p>
+</div>
+
+</div>
+                    <div class="lesson-section"> <h2>Монотонность функции</h2> <div class="definition"> <p><strong>Возрастающая функция:</strong> Функция <math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math> называется возрастающей на промежутке, если для любых <math><mrow><msub><mi>x</mi><mn>1</mn></msub><mo><</mo><msub><mi>x</mi><mn>2</mn></msub></mrow></math> из этого промежутка выполняется неравенство <math><mrow><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo><mo><</mo><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>)</mo></mrow></math>.</p>
+
+    <div class="image-container">
+        <img src="https://i.postimg.cc/DZvdjM80/изображение.png" class="function-image" alt="Возрастающая функция">
+    </div>
+
+    <p><strong>Убывающая функция:</strong> Функция <math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math> называется убывающей на промежутке, если для любых <math><mrow><msub><mi>x</mi><mn>1</mn></msub><mo><</mo><msub><mi>x</mi><mn>2</mn></msub></mrow></math> из этого промежутка выполняется неравенство <math><mrow><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo><mo>></mo><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>)</mo></mrow></math>.</p>
+
+    <div class="image-container">
+        <img src="https://i.postimg.cc/T1hjG5VF/изображение.png" class="function-image" alt="Убывающая функция">
+    </div>
+
+    <p class="explanation">На графике возрастающей функции при движении слева направо график "поднимается вверх". На графике убывающей функции при движении слева направо график "опускается вниз".</p>
+</div>
+
+</div>
+                    <div class="lesson-section"> <h2>Пример анализа монотонности</h2> <div class="definition"> <div class="image-container"> <img src="https://i.postimg.cc/59kqgp1y/изображение.png" class="function-image" alt="Пример монотонности функции"> </div>
+
+    <div class="function-properties">
+        <div class="property">
+            <h4>Функция возрастает:</h4>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mi>x</mi><mo>∈</mo><mo>(</mo><mo>-</mo><mn>9</mn><mo>,</mo><mo>-</mo><mn>8</mn><mo>)</mo><mo>∪</mo><mo>(</mo><mo>-</mo><mn>7.5</mn><mo>,</mo><mn>1.5</mn><mo>)</mo><mo>∪</mo><mo>(</mo><mn>6</mn><mo>,</mo><mn>9</mn><mo>)</mo>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+            <p class="explanation">На этих промежутках график "поднимается" при движении слева направо</p>
+        </div>
+
+        <div class="property">
+            <h4>Функция убывает:</h4>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mi>x</mi><mo>∈</mo><mo>(</mo><mo>-</mo><mn>8</mn><mo>,</mo><mo>-</mo><mn>6.5</mn><mo>)</mo><mo>∪</mo><mo>(</mo><mn>1.5</mn><mo>,</mo><mn>6</mn><mo>)</mo>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+            <p class="explanation">На этих промежутках график "опускается" при движении слева направо</p>
+        </div>
+    </div>
+
+    <div class="property">
+        <h4>Важные точки:</h4>
+        <ul>
+            <li><strong>Точки максимума:</strong> <math><mrow><mi>x</mi><mo>=</mo><mo>-</mo><mn>8</mn></mrow></math> и <math><mrow><mi>x</mi><mo>=</mo><mn>1.5</mn></mrow></math> (переход от возрастания к убыванию)</li>
+            <li><strong>Точки минимума:</strong> <math><mrow><mi>x</mi><mo>=</mo><mo>-</mo><mn>6.5</mn></mrow></math> и <math><mrow><mi>x</mi><mo>=</mo><mn>6</mn></mrow></math> (переход от убывания к возрастанию)</li>
+        </ul>
+    </div>
+</div>
+
+</div>
+                    <div class="lesson-section">
+                        <h2>Анализ конкретных функций</h2> <div class="example"> <p class="example-title">Для данных функций найдите: нули, промежутки знакопостоянства, промежутки монотонности</p>
+
+    <div class="function-analysis">
+        <h3>а) <math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mn>6</mn><mo>-</mo><mn>1.5</mn><mi>x</mi></mrow></math></h3>
+
+        <div class="function-properties">
+            <div class="property">
+                <h4>Нули функции:</h4>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mn>6</mn><mo>-</mo><mn>1.5</mn><mi>x</mi><mo>=</mo><mn>0</mn>
+                            </mrow>
+                        </math>
+                        <br>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mn>1.5</mn><mi>x</mi><mo>=</mo><mn>6</mn>
+                            </mrow>
+                        </math>
+                        <br>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mi>x</mi><mo>=</mo><mn>4</mn>
+                            </mrow>
+                        </math>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property">
+                <h4>Промежутки знакопостоянства:</h4>
+                <p>Линейная функция меняет знак в нуле</p>
+                <ul>
+                    <li><math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>></mo><mn>0</mn></mrow></math> при <math><mrow><mi>x</mi><mo><</mo><mn>4</mn></mrow></math></li>
+                    <li><math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo><</mo><mn>0</mn></mrow></math> при <math><mrow><mi>x</mi><mo>></mo><mn>4</mn></mrow></math></li>
+                </ul>
+            </div>
+
+            <div class="property">
+                <h4>Монотонность:</h4>
+                <p>Коэффициент при <math><mrow><mi>x</mi></mrow></math> равен <math><mrow><mo>-</mo><mn>1.5</mn><mo><</mo><mn>0</mn></mrow></math>, поэтому:</p>
+                <ul>
+                    <li>Функция <strong>убывает</strong> на всей области определения <math><mrow><mo>(</mo><mo>-</mo><mo>∞</mo><mo>,</mo><mo>+</mo><mo>∞</mo><mo>)</mo></mrow></math></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="function-analysis">
+        <h3>б) <math><mrow><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>4</mn><mi>x</mi><mo>+</mo><mn>3</mn></mrow></math></h3>
+
+        <div class="function-properties">
+            <div class="property">
+                <h4>Нули функции:</h4>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>4</mn><mi>x</mi><mo>+</mo><mn>3</mn><mo>=</mo><mn>0</mn>
+                            </mrow>
+                        </math>
+                        <br>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mi>D</mi><mo>=</mo><msup><mn>4</mn><mn>2</mn></msup><mo>-</mo><mn>4</mn><mo>·</mo><mn>1</mn><mo>·</mo><mn>3</mn><mo>=</mo><mn>16</mn><mo>-</mo><mn>12</mn><mo>=</mo><mn>4</mn>
+                            </mrow>
+                        </math>
+                        <br>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mfrac><mrow><mn>4</mn><mo>-</mo><mn>2</mn></mrow><mn>2</mn></mfrac><mo>=</mo><mn>1</mn>
+                            </mrow>
+                        </math>
+                        <br>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <msub><mi>x</mi><mn>2</mn></msub><mo>=</mo><mfrac><mrow><mn>4</mn><mo>+</mo><mn>2</mn></mrow><mn>2</mn></mfrac><mo>=</mo><mn>3</mn>
+                            </mrow>
+                        </math>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property">
+                <h4>Промежутки знакопостоянства:</h4>
+                <p>Квадратичная функция с <math><mrow><mi>a</mi><mo>=</mo><mn>1</mn><mo>></mo><mn>0</mn></mrow></math> (ветви вверх):</p>
+                <ul>
+                    <li><math><mrow><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>></mo><mn>0</mn></mrow></math> при <math><mrow><mi>x</mi><mo>∈</mo><mo>(</mo><mo>-</mo><mo>∞</mo><mo>,</mo><mn>1</mn><mo>)</mo><mo>∪</mo><mo>(</mo><mn>3</mn><mo>,</mo><mo>+</mo><mo>∞</mo><mo>)</mo></mrow></math></li>
+                    <li><math><mrow><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo><</mo><mn>0</mn></mrow></math> при <math><mrow><mi>x</mi><mo>∈</mo><mo>(</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo>)</mo></mrow></math></li>
+                </ul>
+            </div>
+
+            <div class="property">
+                <h4>Монотонность:</h4>
+                <p>Вершина параболы:</p>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <msub><mi>x</mi><mi>в</mi></msub><mo>=</mo><mo>-</mo><mfrac><mi>b</mi><mrow><mn>2</mn><mi>a</mi></mrow></mfrac><mo>=</mo><mo>-</mo><mfrac><mrow><mo>-</mo><mn>4</mn></mrow><mrow><mn>2</mn><mo>·</mo><mn>1</mn></mrow></mfrac><mo>=</mo><mn>2</mn>
+                            </mrow>
+                        </math>
+                    </div>
+                </div>
+                <ul>
+                    <li><strong>Убывает</strong> на <math><mrow><mo>(</mo><mo>-</mo><mo>∞</mo><mo>,</mo><mn>2</mn><mo>]</mo></mrow></math></li>
+                    <li><strong>Возрастает</strong> на <math><mrow><mo>[</mo><mn>2</mn><mo>,</mo><mo>+</mo><mo>∞</mo><mo>)</mo></mrow></math></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="function-analysis">
+        <h3>в) <math><mrow><mi>h</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>|</mo><mi>x</mi><mo>|</mo><mo>+</mo><mn>5</mn></mrow></math></h3>
+
+        <div class="function-properties">
+            <div class="property">
+                <h4>Нули функции:</h4>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mo>|</mo><mi>x</mi><mo>|</mo><mo>+</mo><mn>5</mn><mo>=</mo><mn>0</mn>
+                            </mrow>
+                        </math>
+                        <br>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mo>|</mo><mi>x</mi><mo>|</mo><mo>=</mo><mo>-</mo><mn>5</mn>
+                            </mrow>
+                        </math>
+                    </div>
+                </div>
+                <p>Решений нет, так как модуль не может быть отрицательным.</p>
+                <p><strong>Нулей нет</strong></p>
+            </div>
+
+            <div class="property">
+                <h4>Промежутки знакопостоянства:</h4>
+                <p>Поскольку <math><mrow><mo>|</mo><mi>x</mi><mo>|</mo><mo>≥</mo><mn>0</mn></mrow></math> для всех <math><mrow><mi>x</mi></mrow></math>:</p>
+                <ul>
+                    <li><math><mrow><mi>h</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>></mo><mn>0</mn></mrow></math> при всех <math><mrow><mi>x</mi><mo>∈</mo><mi>ℝ</mi></mrow></math></li>
+                    <li>Отрицательных значений функция не принимает</li>
+                </ul>
+            </div>
+
+            <div class="property">
+                <h4>Монотонность:</h4>
+                <p>Функция имеет "угловую точку" при <math><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow></math>:</p>
+                <ul>
+                    <li><strong>Убывает</strong> на <math><mrow><mo>(</mo><mo>-</mo><mo>∞</mo><mo>,</mo><mn>0</mn><mo>]</mo></mrow></math></li>
+                    <li><strong>Возрастает</strong> на <math><mrow><mo>[</mo><mn>0</mn><mo>,</mo><mo>+</mo><mo>∞</mo><mo>)</mo></mrow></math></li>
+                </ul>
+                <p class="explanation">При <math><mrow><mi>x</mi><mo><</mo><mn>0</mn></mrow></math>: <math><mrow><mi>h</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>-</mo><mi>x</mi><mo>+</mo><mn>5</mn></mrow></math> (убывает)<br>
+                При <math><mrow><mi>x</mi><mo>≥</mo><mn>0</mn></mrow></math>: <math><mrow><mi>h</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>x</mi><mo>+</mo><mn>5</mn></mrow></math> (возрастает)</p>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+                    <div class="lesson-section">
+                        <h2>Определение четной функции</h2> <div class="definition"> <p><strong>Функция <math><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math> называется четной</strong>, если для любого <math><mrow><mi>x</mi></mrow></math> из области определения выполняется:</p>
+
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>1)</mn><mspace width="1em"/><mi>x</mi><mo>∈</mo><mi>D</mi><mo>(</mo><mi>f</mi><mo>)</mo><mo>⇒</mo><mo>-</mo><mi>x</mi><mo>∈</mo><mi>D</mi><mo>(</mo><mi>f</mi><mo>)</mo>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>2)</mn><mspace width="1em"/><mi>f</mi><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p><strong>Геометрический смысл:</strong> График четной функции симметричен относительно оси OY.</p>
+
+    <div class="image-container">
+        <img src=https://i.postimg.cc/TwQSCsqB/изображение.png" class="function-image" alt="Симметрия четной функции">
+    </div>
+
+    <p>Если точка <math><mrow><mo>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>)</mo></mrow></math> принадлежит графику четной функции, то и точка <math><mrow><mo>(</mo><mo>-</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>)</mo></mrow></math> также принадлежит графику.</p>
+</div>
+                    </div>
+                    <div class="lesson-section"> <h2>Примеры графиков четных функций</h2>
+
+
+        <div class="image-container">
+            <img src="https://i.postimg.cc/kGpHdtZ3/изображение.png" class="function-image" alt="Четная функция - парабола">
+        </div>
+
+
+        <div class="image-container">
+            <img src="https://i.postimg.cc/7PsdzpLK/изображение.png" class="function-image" alt="Четная функция - модуль">
+        </div>
+
+        <div class="image-container">
+            <img src="https://i.postimg.cc/NfKVkp9B/изображение.png" class="function-image" alt="Четная функция - косинус">
+        </div>
+    </div>
+
+
+
+</div>
+                    <div class="lesson-section"> <h2>Определение нечетной функции</h2>
+                        <div class="definition">
+                            <p><strong>Функция <math><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math> называется нечетной</strong>, если для любого <math><mrow><mi>x</mi></mrow></math> из области определения выполняется:</p>
+
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>1)</mn><mspace width="1em"/><mi>x</mi><mo>∈</mo><mi>D</mi><mo>(</mo><mi>f</mi><mo>)</mo><mo>⇒</mo><mo>-</mo><mi>x</mi><mo>∈</mo><mi>D</mi><mo>(</mo><mi>f</mi><mo>)</mo>
+                </mrow>
+            </math>
+            <br>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mn>2)</mn><mspace width="1em"/><mi>f</mi><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>-</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p><strong>Геометрический смысл:</strong> График нечетной функции симметричен относительно начала координат.</p>
+
+    <div class="image-container">
+        <img src="https://i.postimg.cc/TYm8XtRt/изображение.png" class="function-image" alt="Симметрия нечетной функции">
+    </div>
+
+    <p>Если точка <math><mrow><mo>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>)</mo></mrow></math> принадлежит графику нечетной функции, то и точка <math><mrow><mo>(</mo><mo>-</mo><mi>x</mi><mo>,</mo><mo>-</mo><mi>y</mi><mo>)</mo></mrow></math> также принадлежит графику.</p>
+</div>
+
+</div>
+                    <div class="lesson-section"> <h2>Примеры графиков нечетных функций</h2>
+
+    <div class="image-container">
+        <img src="https://i.postimg.cc/9QtvDzwC/изображение.png" class="function-image" alt="Нечетная функция - кубическая парабола">
+    </div>
+
+    <div class="image-container">
+        <img src="https://i.postimg.cc/W4Nxgj0H/изображение.png" class="function-image" alt="Нечетная функция - синус">
+    </div>
+
+    <div class="image-container">
+        <img src="https://i.postimg.cc/KzVW6MwH/изображение.png" class="function-image" alt="Нечетная функция - гипербола">
+    </div>
+
+</div>
+
+
+                    <div class="lesson-section">
+                        <h2>Алгоритм определения четности функции</h2> <div class="definition"> <ol> <li><strong>Проверить область определения:</strong> Должна быть симметрична относительно нуля (если <math><mrow><mi>x</mi><mo>∈</mo><mi>D</mi><mo>(</mo><mi>f</mi><mo>)</mo></mrow></math>, то <math><mrow><mo>-</mo><mi>x</mi><mo>∈</mo><mi>D</mi><mo>(</mo><mi>f</mi><mo>)</mo></mrow></math>)</li> <li><strong>Вычислить <math><mrow><mi>f</mi><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo></mrow></math>:</strong> Упростить выражение</li> <li><strong>Сравнить с <math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math>:</strong> <ul> <li>Если <math><mrow><mi>f</mi><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math> — функция четная</li> <li>Если <math><mrow><mi>f</mi><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>-</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math> — функция нечетная</li> <li>Если оба условия не выполняются — функция ни четная, ни нечетная</li> </ul> </li> </ol> </div> </div>
+                        <div class="lesson-section"> <h2>Задание 3: Определение четности функций</h2>
+
+<div class="example">
+    <div class="function-analysis">
+        <h3>а) <math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mn>7</mn><msup><mi>x</mi><mn>3</mn></msup></mrow></math></h3>
+
+        <div class="function-properties">
+            <div class="property">
+                <h4>Область определения:</h4>
+                <p><math><mrow><mi>D</mi><mo>(</mo><mi>f</mi><mo>)</mo><mo>=</mo><mi>ℝ</mi></mrow></math> — симметрична относительно нуля</p>
+            </div>
+
+            <div class="property">
+                <h4>Проверка:</h4>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mi>f</mi><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo><mo>=</mo><mn>7</mn><msup><mrow><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo></mrow><mn>3</mn></msup><mo>=</mo><mn>7</mn><mo>(</mo><mo>-</mo><msup><mi>x</mi><mn>3</mn></msup><mo>)</mo><mo>=</mo><mo>-</mo><mn>7</mn><msup><mi>x</mi><mn>3</mn></msup>
+                            </mrow>
+                        </math>
+                        <br>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mi>f</mi><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>-</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo>
+                            </mrow>
+                        </math>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property">
+                <h4>Ответ:</h4>
+                <p><strong>Функция нечетная</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="function-analysis">
+        <h3>б) <math><mrow><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mfrac><mi>x</mi><mrow><mo>|</mo><mi>x</mi><mo>|</mo></mrow></mfrac></mrow></math></h3>
+
+        <div class="function-properties">
+            <div class="property">
+                <h4>Область определения:</h4>
+                <p><math><mrow><mi>D</mi><mo>(</mo><mi>g</mi><mo>)</mo><mo>=</mo><mo>(</mo><mo>-</mo><mo>∞</mo><mo>,</mo><mn>0</mn><mo>)</mo><mo>∪</mo><mo>(</mo><mn>0</mn><mo>,</mo><mo>+</mo><mo>∞</mo><mo>)</mo></mrow></math> — симметрична относительно нуля (кроме нуля)</p>
+            </div>
+
+            <div class="property">
+                <h4>Проверка:</h4>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mi>g</mi><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo><mo>=</mo><mfrac><mrow><mo>-</mo><mi>x</mi></mrow><mrow><mo>|</mo><mo>-</mo><mi>x</mi><mo>|</mo></mrow></mfrac><mo>=</mo><mfrac><mrow><mo>-</mo><mi>x</mi></mrow><mrow><mo>|</mo><mi>x</mi><mo>|</mo></mrow></mfrac><mo>=</mo><mo>-</mo><mfrac><mi>x</mi><mrow><mo>|</mo><mi>x</mi><mo>|</mo></mrow></mfrac>
+                            </mrow>
+                        </math>
+                        <br>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mi>g</mi><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>-</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo>
+                            </mrow>
+                        </math>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property">
+                <h4>Ответ:</h4>
+                <p><strong>Функция нечетная</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="function-analysis">
+        <h3>в) <math><mrow><mi>h</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>-</mo><msqrt><mrow><mn>2</mn><mi>x</mi></mrow></msqrt></mrow></math></h3>
+
+        <div class="function-properties">
+            <div class="property">
+                <h4>Область определения:</h4>
+                <p><math><mrow><mn>2</mn><mi>x</mi><mo>≥</mo><mn>0</mn><mo>⇒</mo><mi>x</mi><mo>≥</mo><mn>0</mn></mrow></math></p>
+                <p><math><mrow><mi>D</mi><mo>(</mo><mi>h</mi><mo>)</mo><mo>=</mo><mo>[</mo><mn>0</mn><mo>,</mo><mo>+</mo><mo>∞</mo><mo>)</mo></mrow></math> — НЕ симметрична относительно нуля</p>
+            </div>
+
+            <div class="property">
+                <h4>Вывод:</h4>
+                <p>Область определения не симметрична относительно начала координат, поэтому функция <strong>не является ни четной, ни нечетной</strong>.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="function-analysis">
+        <h3>г) <math><mrow><mi>d</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>-</mo><mn>6</mn><msup><mi>x</mi><mn>4</mn></msup><mo>-</mo><mn>8</mn></mrow></math></h3>
+
+        <div class="function-properties">
+            <div class="property">
+                <h4>Область определения:</h4>
+                <p><math><mrow><mi>D</mi><mo>(</mo><mi>d</mi><mo>)</mo><mo>=</mo><mi>ℝ</mi></mrow></math> — симметрична относительно нуля</p>
+            </div>
+
+            <div class="property">
+                <h4>Проверка:</h4>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mi>d</mi><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>-</mo><mn>6</mn><msup><mrow><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo></mrow><mn>4</mn></msup><mo>-</mo><mn>8</mn><mo>=</mo><mo>-</mo><mn>6</mn><msup><mi>x</mi><mn>4</mn></msup><mo>-</mo><mn>8</mn>
+                            </mrow>
+                        </math>
+                        <br>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mi>d</mi><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>d</mi><mo>(</mo><mi>x</mi><mo>)</mo>
+                            </mrow>
+                        </math>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property">
+                <h4>Ответ:</h4>
+                <p><strong>Функция четная</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="function-analysis">
+        <h3>д) <math><mrow><mi>q</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>2</mn></mrow></math></h3>
+
+        <div class="function-properties">
+            <div class="property">
+                <h4>Область определения:</h4>
+                <p><math><mrow><mi>D</mi><mo>(</mo><mi>q</mi><mo>)</mo><mo>=</mo><mi>ℝ</mi></mrow></math> — симметрична относительно нуля</p>
+            </div>
+
+            <div class="property">
+                <h4>Проверка:</h4>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mi>q</mi><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo><mo>=</mo><mn>2</mn><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo><mo>+</mo><mn>2</mn><mo>=</mo><mo>-</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>2</mn>
+                            </mrow>
+                        </math>
+                        <br>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mi>q</mi><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo><mo>≠</mo><mi>q</mi><mo>(</mo><mi>x</mi><mo>)</mo><mspace width="1em"/><mtext>и</mtext><mspace width="1em"/><mi>q</mi><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo><mo>≠</mo><mo>-</mo><mi>q</mi><mo>(</mo><mi>x</mi><mo>)</mo>
+                            </mrow>
+                        </math>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property">
+                <h4>Ответ:</h4>
+                <p><strong>Функция ни четная, ни нечетная</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="function-analysis">
+        <h3>е) <math><mrow><mi>p</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>|</mo><mi>x</mi><mo>-</mo><mn>5</mn><mo>|</mo><mo>+</mo><mo>|</mo><mi>x</mi><mo>+</mo><mn>5</mn><mo>|</mo></mrow></math></h3>
+
+        <div class="function-properties">
+            <div class="property">
+                <h4>Область определения:</h4>
+                <p><math><mrow><mi>D</mi><mo>(</mo><mi>p</mi><mo>)</mo><mo>=</mo><mi>ℝ</mi></mrow></math> — симметрична относительно нуля</p>
+            </div>
+
+            <div class="property">
+                <h4>Проверка:</h4>
+                <div class="math-container">
+                    <div class="math-formula">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mi>p</mi><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>|</mo><mo>-</mo><mi>x</mi><mo>-</mo><mn>5</mn><mo>|</mo><mo>+</mo><mo>|</mo><mo>-</mo><mi>x</mi><mo>+</mo><mn>5</mn><mo>|</mo><mo>=</mo><mo>|</mo><mo>-</mo><mo>(</mo><mi>x</mi><mo>+</mo><mn>5</mn><mo>)</mo><mo>|</mo><mo>+</mo><mo>|</mo><mo>-</mo><mo>(</mo><mi>x</mi><mo>-</mo><mn>5</mn><mo>)</mo><mo>|</mo>
+                            </mrow>
+                        </math>
+                        <br>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mo>=</mo><mo>|</mo><mi>x</mi><mo>+</mo><mn>5</mn><mo>|</mo><mo>+</mo><mo>|</mo><mi>x</mi><mo>-</mo><mn>5</mn><mo>|</mo>
+                            </mrow>
+                        </math>
+                        <br>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mo>=</mo><mo>|</mo><mi>x</mi><mo>-</mo><mn>5</mn><mo>|</mo><mo>+</mo><mo>|</mo><mi>x</mi><mo>+</mo><mn>5</mn><mo>|</mo>
+                            </mrow>
+                        </math>
+                        <br>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mi>p</mi><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>p</mi><mo>(</mo><mi>x</mi><mo>)</mo>
+                            </mrow>
+                        </math>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property">
+                <h4>Ответ:</h4>
+                <p><strong>Функция четная</strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+                    </div>
+                        <div class="lesson-section">
+                            <h2>Задание 5: Использование свойства четности</h2>
+
+<div class="example">
+    <p class="example-title">Известно, что функция <math><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math> является четной и <math><mrow><mi>f</mi><mo>(</mo><mn>3</mn><mo>)</mo><mo>=</mo><mo>-</mo><mn>7</mn></mrow></math>; <math><mrow><mi>f</mi><mo>(</mo><mo>-</mo><mn>4</mn><mo>)</mo><mo>=</mo><mn>5</mn></mrow></math>. Найдите значение выражения <math><mrow><mn>2</mn><mi>f</mi><mo>(</mo><mo>-</mo><mn>3</mn><mo>)</mo><mo>-</mo><mi>f</mi><mo>(</mo><mn>4</mn><mo>)</mo></mrow></math>.</p>
+
+    <div class="function-properties">
+        <div class="property">
+            <h4>Решение:</h4>
+            <p>Для четной функции: <math><mrow><mi>f</mi><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math></p>
+
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mn>1)</mn><mspace width="1em"/><mi>f</mi><mo>(</mo><mo>-</mo><mn>3</mn><mo>)</mo><mo>=</mo><mi>f</mi><mo>(</mo><mn>3</mn><mo>)</mo><mo>=</mo><mo>-</mo><mn>7</mn>
+                        </mrow>
+                    </math>
+                    <br>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mn>2)</mn><mspace width="1em"/><mi>f</mi><mo>(</mo><mn>4</mn><mo>)</mo><mo>=</mo><mi>f</mi><mo>(</mo><mo>-</mo><mn>4</mn><mo>)</mo><mo>=</mo><mn>5</mn>
+                        </mrow>
+                    </math>
+                    <br>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mn>3)</mn><mspace width="1em"/><mn>2</mn><mi>f</mi><mo>(</mo><mo>-</mo><mn>3</mn><mo>)</mo><mo>-</mo><mi>f</mi><mo>(</mo><mn>4</mn><mo>)</mo><mo>=</mo><mn>2</mn><mo>·</mo><mo>(</mo><mo>-</mo><mn>7</mn><mo>)</mo><mo>-</mo><mn>5</mn><mo>=</mo><mo>-</mo><mn>14</mn><mo>-</mo><mn>5</mn><mo>=</mo><mo>-</mo><mn>19</mn>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="property">
+            <h4>Ответ:</h4>
+            <p><math><mrow><mn>2</mn><mi>f</mi><mo>(</mo><mo>-</mo><mn>3</mn><mo>)</mo><mo>-</mo><mi>f</mi><mo>(</mo><mn>4</mn><mo>)</mo><mo>=</mo><mo>-</mo><mn>19</mn></mrow></math></p>
+        </div>
+    </div>
+</div>
+
+</div>
+                    <div class="lesson-section"> <h2>Задание 6: Использование свойства нечетности</h2>
+
+<div class="example">
+    <p class="example-title">Известно, что функция <math><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math> является нечетной и <math><mrow><mi>f</mi><mo>(</mo><mo>-</mo><mn>5</mn><mo>)</mo><mo>=</mo><mn>3</mn></mrow></math>; <math><mrow><mi>f</mi><mo>(</mo><mn>2</mn><mo>)</mo><mo>=</mo><mo>-</mo><mn>8</mn></mrow></math>. Найдите значение выражения <math><mrow><mn>4</mn><mi>f</mi><mo>(</mo><mn>5</mn><mo>)</mo><mo>+</mo><mi>f</mi><mo>(</mo><mo>-</mo><mn>2</mn><mo>)</mo></mrow></math>.</p>
+
+    <div class="function-properties">
+        <div class="property">
+            <h4>Решение:</h4>
+            <p>Для нечетной функции: <math><mrow><mi>f</mi><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>-</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math></p>
+
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mn>1)</mn><mspace width="1em"/><mi>f</mi><mo>(</mo><mn>5</mn><mo>)</mo><mo>=</mo><mo>-</mo><mi>f</mi><mo>(</mo><mo>-</mo><mn>5</mn><mo>)</mo><mo>=</mo><mo>-</mo><mn>3</mn>
+                        </mrow>
+                    </math>
+                    <br>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mn>2)</mn><mspace width="1em"/><mi>f</mi><mo>(</mo><mo>-</mo><mn>2</mn><mo>)</mo><mo>=</mo><mo>-</mo><mi>f</mi><mo>(</mo><mn>2</mn><mo>)</mo><mo>=</mo><mo>-</mo><mo>(</mo><mo>-</mo><mn>8</mn><mo>)</mo><mo>=</mo><mn>8</mn>
+                        </mrow>
+                    </math>
+                    <br>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mn>3)</mn><mspace width="1em"/><mn>4</mn><mi>f</mi><mo>(</mo><mn>5</mn><mo>)</mo><mo>+</mo><mi>f</mi><mo>(</mo><mo>-</mo><mn>2</mn><mo>)</mo><mo>=</mo><mn>4</mn><mo>·</mo><mo>(</mo><mo>-</mo><mn>3</mn><mo>)</mo><mo>+</mo><mn>8</mn><mo>=</mo><mo>-</mo><mn>12</mn><mo>+</mo><mn>8</mn><mo>=</mo><mo>-</mo><mn>4</mn>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+
+        <div class="property">
+            <h4>Ответ:</h4>
+            <p><math><mrow><mn>4</mn><mi>f</mi><mo>(</mo><mn>5</mn><mo>)</mo><mo>+</mo><mi>f</mi><mo>(</mo><mo>-</mo><mn>2</mn><mo>)</mo><mo>=</mo><mo>-</mo><mn>4</mn></mrow></math></p>
+        </div>
+    </div>
+</div>
+
+</div>
+                    <div class="lesson-section"> <h2>Дополнение графиков до четной и нечетной функций</h2>
+
+<div class="definition">
+    <p>Дана часть графика функции:</p>
+
+    <div class="image-container">
+        <img src="https://i.postimg.cc/1zXJyzGm/изображение.png" class="function-image" alt="Часть графика функции">
+    </div>
+</div>
+
+<div class="function-properties">
+    <div class="property">
+        <h4>Дополнение до четной функции:</h4>
+        <p>Четная функция симметрична относительно оси OY</p>
+        <div class="image-container">
+            <img src="https://i.postimg.cc/bv5LrjgH/изображение.png" class="function-image" alt="Четная функция">
+        </div>
+        <p class="explanation">Отображаем данную часть графика симметрично относительно оси OY</p>
+    </div>
+
+    <div class="property">
+        <h4>Дополнение до нечетной функции:</h4>
+        <p>Нечетная функция симметрична относительно начала координат</p>
+        <div class="image-container">
+            <img src="https://i.postimg.cc/3N5BjCPk/изображение.png" class="function-image" alt="Нечетная функция">
+        </div>
+        <p class="explanation">Отображаем данную часть графика симметрично относительно начала координат (поворот на 180°)</p>
+    </div>
+</div>
+
+</div>
+<div class="lesson-section">
+    <h2>Преобразования графиков функций</h2> <div class="definition"> <p>Графики функций можно перемещать (сдвигать) вдоль осей координат. Эти преобразования сохраняют форму графика, меняя только его положение.</p>
+
+    <p>Рассмотрим основные виды преобразований:</p>
+    <ol>
+        <li>Сдвиг вверх/вниз (параллельный перенос вдоль оси OY)</li>
+        <li>Сдвиг влево/вправо (параллельный перенос вдоль оси OX)</li>
+    </ol>
+</div>
+
+</div>
+                        <div class="lesson-section">
+                            <h2>Сдвиг графика вдоль оси OY (вверх/вниз)</h2>
+
+<div class="function-properties">
+    <div class="property">
+        <h4>Исходная функция: <math><mrow><mi>y</mi><mo>=</mo><msqrt><mi>x</mi></msqrt></mrow></math></h4>
+        <div class="image-container">
+            <img src="https://i.postimg.cc/Jz37q1vk/изображение.png" class="function-image" alt="Сдвиг на 4 единицы вверх">
+        </div>
+        <p><math><mrow><mi>y</mi><mo>=</mo><msqrt><mi>x</mi></msqrt><mo>+</mo><mn>4</mn></mrow></math> — сдвиг на 4 единицы вверх</p>
+    </div>
+
+    <div class="property">
+        <h4>Исходная функция: <math><mrow><mi>y</mi><mo>=</mo><msqrt><mi>x</mi></msqrt></mrow></math></h4>
+        <div class="image-container">
+            <img src="https://i.postimg.cc/YSprD5wK/изображение.png" class="function-image" alt="Сдвиг на 4 единицы вниз">
+        </div>
+        <p><math><mrow><mi>y</mi><mo>=</mo><msqrt><mi>x</mi></msqrt><mo>-</mo><mn>4</mn></mrow></math> — сдвиг на 4 единицы вниз</p>
+    </div>
+</div>
+
+<div class="definition">
+    <p><strong>Общее правило:</strong> График функции <math><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>+</mo><mi>a</mi></mrow></math> получается из графика <math><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math> сдвигом на <math><mrow><mi>a</mi></mrow></math> единиц вдоль оси OY.</p>
+
+        <div class="image-container">
+            <img src="https://i.postimg.cc/85YT5sJB/изображение.png" class="function-image" alt="Сдвиг вверх">
+        </div>
+
+        <div class="image-container">
+            <img src="https://i.postimg.cc/Bb141s2j/изображение.png" class="function-image" alt="Сдвиг вниз">
+        </div>
+
+
+    <ul>
+        <li>Если <math><mrow><mi>a</mi><mo>></mo><mn>0</mn></mrow></math> — сдвиг вверх</li>
+        <li>Если <math><mrow><mi>a</mi><mo><</mo><mn>0</mn></mrow></math> — сдвиг вниз</li>
+    </ul>
+</div>
+
+</div>
+                        <div class="lesson-section"> <h2>Сдвиг графика вдоль оси OX (влево/вправо)</h2>
+
+<div class="function-properties">
+    <div class="property">
+        <h4>Исходная функция: <math><mrow><mi>y</mi><mo>=</mo><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup></mrow></math></h4>
+        <div class="image-container">
+            <img src="https://i.postimg.cc/kgCR9hd6/изображение.png" class="function-image" alt="Сдвиг на 6 единиц вправо">
+        </div>
+        <p><math><mrow><mi>y</mi><mo>=</mo><mn>2</mn><msup><mrow><mo>(</mo><mi>x</mi><mo>-</mo><mn>6</mn><mo>)</mo></mrow><mn>2</mn></msup></mrow></math> — сдвиг на 6 единиц вправо</p>
+    </div>
+
+    <div class="property">
+        <h4>Исходная функция: <math><mrow><mi>y</mi><mo>=</mo><mfrac><mn>1</mn><mi>x</mi></mfrac></mrow></math></h4>
+        <div class="image-container">
+            <img src="https://i.postimg.cc/mgSzrNbv/изображение.png" class="function-image" alt="Сдвиг на 2 единицы влево">
+        </div>
+        <p><math><mrow><mi>y</mi><mo>=</mo><mfrac><mn>1</mn><mrow><mi>x</mi><mo>+</mo><mn>2</mn></mrow></mfrac></mrow></math> — сдвиг на 2 единицы влево</p>
+    </div>
+</div>
+
+<div class="definition">
+    <p><strong>Общее правило:</strong> График функции <math><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>-</mo><mi>a</mi><mo>)</mo></mrow></math> получается из графика <math><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math> сдвигом на <math><mrow><mi>a</mi></mrow></math> единиц вдоль оси OX.</p>
+
+        <div class="image-container">
+            <img src="https://i.postimg.cc/BvYjTSP2/изображение.png" class="function-image" alt="Сдвиг вправо">
+        </div>
+
+        <div class="image-container">
+            <img src="https://i.postimg.cc/rmDKgBS8/изображение.png" class="function-image" alt="Сдвиг влево">
+        </div>
+
+
+    <ul>
+        <li>Если <math><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>-</mo><mi>a</mi><mo>)</mo></mrow></math> — сдвиг на <math><mrow><mi>a</mi></mrow></math> единиц вправо</li>
+        <li>Если <math><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>+</mo><mi>a</mi><mo>)</mo></mrow></math> — сдвиг на <math><mrow><mi>a</mi></mrow></math> единиц влево</li>
+    </ul>
+
+    <p class="explanation"><strong>Важно запомнить:</strong> Знак в скобке противоположен направлению сдвига!</p>
+</div>
+
+
+
+</div>
+                        <div class="lesson-section"> <h2>Задание 4: Построение графиков с помощью преобразований</h2>
+
+
+<div class="example">
+    <p class="example-title">С помощью преобразований графика функции <math><mrow><mi>y</mi><mo>=</mo><mo>|</mo><mi>x</mi><mo>|</mo></mrow></math> построите графики:</p>
+
+    <div class="function-analysis">
+        <h3>а) <math><mrow><mi>y</mi><mo>=</mo><mo>|</mo><mi>x</mi><mo>+</mo><mn>4</mn><mo>|</mo></mrow></math></h3>
+
+        <div class="function-properties">
+            <div class="property">
+                <h4>Решение:</h4>
+                <p>Исходная функция: <math><mrow><mi>y</mi><mo>=</mo><mo>|</mo><mi>x</mi><mo>|</mo></mrow></math></p>
+                <p>Преобразование: <math><mrow><mi>y</mi><mo>=</mo><mo>|</mo><mi>x</mi><mo>+</mo><mn>4</mn><mo>|</mo><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>+</mo><mn>4</mn><mo>)</mo></mrow></math></p>
+                <p>Так как <math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>+</mo><mn>4</mn><mo>)</mo></mrow></math> — это сдвиг на 4 единицы влево</p>
+            </div>
+
+            <div class="property">
+                <h4>График:</h4>
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/ZY3qRFHF/изображение.png" class="function-image" alt="График y=|x+4|">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="function-analysis">
+        <h3>б) <math><mrow><mi>y</mi><mo>=</mo><mo>|</mo><mi>x</mi><mo>|</mo><mo>-</mo><mn>4</mn></mrow></math></h3>
+
+        <div class="function-properties">
+            <div class="property">
+                <h4>Решение:</h4>
+                <p>Исходная функция: <math><mrow><mi>y</mi><mo>=</mo><mo>|</mo><mi>x</mi><mo>|</mo></mrow></math></p>
+                <p>Преобразование: <math><mrow><mi>y</mi><mo>=</mo><mo>|</mo><mi>x</mi><mo>|</mo><mo>-</mo><mn>4</mn><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>-</mo><mn>4</mn></mrow></math></p>
+                <p>Так как <math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>-</mo><mn>4</mn></mrow></math> — это сдвиг на 4 единицы вниз</p>
+            </div>
+
+            <div class="property">
+                <h4>График:</h4>
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/gkW26XtC/изображение.png" class="function-image" alt="График y=|x|-4">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="function-analysis">
+        <h3>в) <math><mrow><mi>y</mi><mo>=</mo><mo>|</mo><mi>x</mi><mo>-</mo><mn>3</mn><mo>|</mo><mo>+</mo><mn>2</mn></mrow></math></h3>
+
+        <div class="function-properties">
+            <div class="property">
+                <h4>Решение:</h4>
+                <p>Исходная функция: <math><mrow><mi>y</mi><mo>=</mo><mo>|</mo><mi>x</mi><mo>|</mo></mrow></math></p>
+                <p>Два преобразования:</p>
+                <ol>
+                    <li><math><mrow><mi>y</mi><mo>=</mo><mo>|</mo><mi>x</mi><mo>-</mo><mn>3</mn><mo>|</mo></mrow></math> — сдвиг на 3 единицы вправо</li>
+                    <li><math><mrow><mi>y</mi><mo>=</mo><mo>|</mo><mi>x</mi><mo>-</mo><mn>3</mn><mo>|</mo><mo>+</mo><mn>2</mn></mrow></math> — сдвиг на 2 единицы вверх</li>
+                </ol>
+                <p>Итого: сдвиг на 3 единицы вправо и на 2 единицы вверх</p>
+            </div>
+
+            <div class="property">
+                <h4>График:</h4>
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/Nfkf8sW2/изображение.png" class="function-image" alt="График y=|x-3|+2">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+                        <div class="lesson-section">
+                            <h2>Алгоритм построения графиков с помощью преобразований</h2>
+
+<div class="definition">
+    <ol>
+        <li><strong>Определить исходную функцию</strong> (базовый график)</li>
+        <li><strong>Проанализировать преобразования:</strong>
+            <ul>
+                <li>Если <math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>±</mo><mi>a</mi><mo>)</mo></mrow></math> — сдвиг вдоль OX</li>
+                <li>Если <math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>±</mo><mi>a</mi></mrow></math> — сдвиг вдоль OY</li>
+            </ul>
+        </li>
+        <li><strong>Определить направление сдвигов:</strong>
+            <ul>
+                <li><math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>+</mo><mi>a</mi><mo>)</mo></mrow></math> — сдвиг влево на <math><mrow><mi>a</mi></mrow></math></li>
+                <li><math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>-</mo><mi>a</mi><mo>)</mo></mrow></math> — сдвиг вправо на <math><mrow><mi>a</mi></mrow></math></li>
+                <li><math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>+</mo><mi>a</mi></mrow></math> — сдвиг вверх на <math><mrow><mi>a</mi></mrow></math></li>
+                <li><math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>-</mo><mi>a</mi></mrow></math> — сдвиг вниз на <math><mrow><mi>a</mi></mrow></math></li>
+            </ul>
+        </li>
+        <li><strong>Выполнить преобразования последовательно</strong> (если их несколько)</li>
+        <li><strong>Построить график</strong></li>
+    </ol>
+
+    <p class="explanation"><strong>Важно:</strong> При нескольких преобразованиях порядок выполнения иногда важен. Сначала выполняют сдвиги вдоль OX, затем вдоль OY.</p>
+</div>
+
+</div>
+                        <div class="lesson-section">
+                            <h2>Примеры сложных преобразований</h2>
+
+<div class="example">
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>y</mi><mo>=</mo><msqrt><mrow><mi>x</mi><mo>-</mo><mn>2</mn></mrow></msqrt><mo>+</mo><mn>3</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>Преобразования для <math><mrow><mi>y</mi><mo>=</mo><msqrt><mi>x</mi></msqrt></mrow></math>:</p>
+    <ul>
+        <li><math><mrow><mi>y</mi><mo>=</mo><msqrt><mrow><mi>x</mi><mo>-</mo><mn>2</mn></mrow></msqrt></mrow></math> — сдвиг на 2 единицы вправо</li>
+        <li><math><mrow><mi>y</mi><mo>=</mo><msqrt><mrow><mi>x</mi><mo>-</mo><mn>2</mn></mrow></msqrt><mo>+</mo><mn>3</mn></mrow></math> — сдвиг на 3 единицы вверх</li>
+    </ul>
+
+    <div class="math-container">
+        <div class="math-formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>y</mi><mo>=</mo><mo>|</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo>|</mo><mo>-</mo><mn>2</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+
+    <p>Преобразования для <math><mrow><mi>y</mi><mo>=</mo><mo>|</mo><mi>x</mi><mo>|</mo></mrow></math>:</p>
+    <ul>
+        <li><math><mrow><mi>y</mi><mo>=</mo><mo>|</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo>|</mo></mrow></math> — сдвиг на 1 единицу влево</li>
+        <li><math><mrow><mi>y</mi><mo>=</mo><mo>|</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo>|</mo><mo>-</mo><mn>2</mn></mrow></math> — сдвиг на 2 единицы вниз</li>
+    </ul>
+</div>
+
+</div>
+
+
+			</div>
+			<script>
+        document.getElementById('nextLesson').addEventListener('click', function() {
+            alert('Это последний готовый урок в текущей серии. Для продолжения запросите следующий урок.');
+        });
+    </script>
+		</div>
+	</body>
+</html>

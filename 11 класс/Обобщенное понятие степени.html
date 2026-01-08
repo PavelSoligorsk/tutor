@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Степень с рациональным и действительным показателем</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        /* Стили для уроков */
+        .lesson-section {
+            background-color: #f8fafd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 5px solid #3498db;
+            scroll-margin-top: 20px;
+        }
+
+        .lesson-number {
+            background-color: #3498db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #2980b9;
+            margin-top: 0;
+        }
+
+        .math-container {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .example {
+            background-color: #f0f7ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 8px 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            z-index: 999;
+            width: 90%;
+            max-width: 300px;
+        }
+
+        .bottom-nav select {
+            width: 100%;
+            font-size: 16px;
+            padding: 8px;
+            cursor: pointer;
+            border: 1px solid #3498db;
+            border-radius: 6px;
+        }
+
+        @media (max-width: 768px) {
+            .lesson-section {
+                padding: 15px;
+                margin: 15px 0;
+            }
+
+            .bottom-nav {
+                bottom: 5px;
+                padding: 6px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="1">Степень с рациональным показателем</h1>
+
+        <!-- Секция 1: Определение -->
+        <div class="lesson-section" id="section1">
+            <div class="lesson-number">1</div>
+            <h2>Определение степени с рациональным показателем</h2>
+
+            <div class="math-container">
+                Если \( a > 0 \), \( m \in \mathbb{Z} \), \( n \in \mathbb{N} \), \( n > 1 \), то:
+                \[
+                a^{\frac{m}{n}} = \sqrt[n]{a^m} = (\sqrt[n]{a})^m
+                \]
+            </div>
+
+            <p><strong>Пример:</strong></p>
+            <div class="example">
+                \[
+                8^{\frac{2}{3}} = \sqrt[3]{8^2} = \sqrt[3]{64} = 4
+                \]
+                \[
+                27^{\frac{1}{3}} = \sqrt[3]{27} = 3
+                \]
+            </div>
+        </div>
+
+        <!-- Секция 2: Свойства степеней -->
+        <div class="lesson-section" id="section2">
+            <div class="lesson-number">2</div>
+            <h2>Свойства степеней с рациональными показателями</h2>
+
+            <p>Для любых \( a > 0 \), \( b > 0 \) и рациональных чисел \( r \), \( s \):</p>
+
+            <div class="math-container">
+                \[
+                \begin{aligned}
+                &1.\ a^r \cdot a^s = a^{r+s} \\
+                &2.\ \frac{a^r}{a^s} = a^{r-s} \\
+                &3.\ (a^r)^s = a^{r \cdot s} \\
+                &4.\ (ab)^r = a^r \cdot b^r \\
+                &5.\ \left(\frac{a}{b}\right)^r = \frac{a^r}{b^r}
+                \end{aligned}
+                \]
+            </div>
+
+            <div class="example">
+                <p><strong>Пример 1:</strong></p>
+                \[
+                x^{\frac{1}{2}} \cdot x^{\frac{3}{2}} = x^{\frac{1}{2} + \frac{3}{2}} = x^2
+                \]
+
+                <p><strong>Пример 2:</strong></p>
+                \[
+                \frac{a^{\frac{5}{3}}}{a^{\frac{2}{3}}} = a^{\frac{5}{3} - \frac{2}{3}} = a^1 = a
+                \]
+            </div>
+        </div>
+
+        <!-- Секция 3: Степень с действительным показателем -->
+        <div class="lesson-section" id="section3">
+            <div class="lesson-number">3</div>
+            <h2>Степень с действительным показателем</h2>
+
+            <p>Для любого действительного числа \( \alpha \) и \( a > 0 \):</p>
+
+            <div class="math-container">
+                Если \( \alpha \) — иррациональное число, то степень \( a^\alpha \) определяется как предел:
+                \[
+                a^\alpha = \lim_{n \to \infty} a^{r_n}
+                \]
+                где \( \{r_n\} \) — последовательность рациональных чисел, сходящаяся к \( \alpha \).
+            </div>
+
+            <p>Все свойства степеней сохраняются и для действительных показателей.</p>
+
+            <div class="example">
+                <p><strong>Примеры:</strong></p>
+                \[
+                2^{\sqrt{2}} \approx 2.665
+                \]
+                \[
+                e^{\pi} \approx 23.141
+                \]
+            </div>
+        </div>
+
+        <!-- Секция 4: Примеры вычислений -->
+        <div class="lesson-section" id="section4">
+            <div class="lesson-number">4</div>
+            <h2>Примеры вычислений и преобразований</h2>
+
+            <div class="example">
+                <p><strong>Пример 1:</strong> Упростить выражение</p>
+                <div class="math-container">
+                    \[
+                    \frac{a^{1.2} \cdot a^{0.8}}{a^{1.5}} = a^{1.2 + 0.8 - 1.5} = a^{0.5} = \sqrt{a}
+                    \]
+                </div>
+            </div>
+
+            <div class="example">
+                <p><strong>Пример 2:</strong> Вычислить</p>
+                <div class="math-container">
+                    \[
+                    \left(\frac{16}{81}\right)^{-0.75} = \left(\frac{16}{81}\right)^{-\frac{3}{4}} =
+                    \left(\frac{81}{16}\right)^{\frac{3}{4}} = \sqrt[4]{\left(\frac{81}{16}\right)^3} =
+                    \sqrt[4]{\frac{81^3}{16^3}} = \frac{27}{8}
+                    \]
+                </div>
+            </div>
+
+            <div class="example">
+                <p><strong>Пример 3:</strong> Представить в виде степени с основанием \( a \)</p>
+                <div class="math-container">
+                    \[
+                    \frac{a^{2.4}}{\sqrt[5]{a^2}} = \frac{a^{2.4}}{a^{2/5}} = a^{2.4 - 0.4} = a^{2}
+                    \quad \text{(так как } 2/5 = 0.4\text{)}
+                    \]
+                </div>
+            </div>
+        </div>
+
+        <!-- Секция 5: Задачи для самостоятельного решения -->
+        <div class="lesson-section" id="section5">
+            <div class="lesson-number">5</div>
+            <h2>Задачи для самостоятельного решения</h2>
+
+            <div class="example">
+                <p><strong>1.</strong> Вычислите: \( \left( \frac{27}{8} \right)^{-\frac{2}{3}} \)</p>
+            </div>
+
+            <div class="example">
+                <p><strong>2.</strong> Упростите: \( \frac{x^{1.5} \cdot x^{2.5}}{x^{2}} \)</p>
+            </div>
+
+            <div class="example">
+                <p><strong>3.</strong> Представьте в виде степени: \( \sqrt[3]{a^2} \cdot \sqrt[4]{a^3} \)</p>
+            </div>
+
+            <div class="example">
+                <p><strong>4.</strong> Вычислите: \( \left( 1\frac{11}{25} \right)^{-0.25} \cdot \left( \frac{5}{6} \right)^{-0.5} \)</p>
+            </div>
+        </div>
+
+        <!-- Навигация -->
+        <div class="bottom-nav">
+            <select onchange="goToSection(this.value)">
+                <option value="">Перейти к теме...</option>
+                <option value="section1">1. Определение степени</option>
+                <option value="section2">2. Свойства степеней</option>
+                <option value="section3">3. Действительный показатель</option>
+                <option value="section4">4. Примеры вычислений</option>
+                <option value="section5">5. Задачи для решения</option>
+            </select>
+        </div>
+    </div>
+
+    <script>
+        function goToSection(sectionId) {
+            if (!sectionId) return;
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }
+        }
+
+        // Обновляем MathJax после загрузки страницы
+        window.addEventListener('load', function() {
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        });
+    </script>
+</body>
+</html>

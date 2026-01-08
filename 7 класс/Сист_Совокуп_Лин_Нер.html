@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Системы и совокупности неравенств</title>
+				<style>
+/* Общие стили */
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f9ff;
+            color: #333;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 150, 0.1);
+            padding: 30px;
+        }
+
+        /* Заголовки */
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+        }
+
+        /* Секции */
+        .lesson-section {
+            background-color: #f8fafd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 5px solid #3498db;
+        }
+
+        /* Определения и примеры */
+        .definition {
+            background-color: #e8f4fc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .example {
+            background-color: #f0f7ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #2ecc71;
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 10px;
+        }
+
+        .hard-example {
+            border-left-color: #e74c3c;
+        }
+
+        .hard-example .example-title {
+            color: #e74c3c;
+        }
+
+        /* Математические контейнеры */
+        .math-container {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin: 15px 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .math-formula {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .explanation {
+            background-color: #fffde7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+
+        /* Изображения - УПРОЩЕННЫЙ ВАРИАНТ */
+        .image-container {
+            text-align: center;
+            margin: 15px auto;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            max-width: 50%;
+        }
+
+        .function-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+
+        /* Таблицы */
+        .trig-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            overflow-x: auto;
+            display: block;
+        }
+
+        .trig-table th,
+        .trig-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .trig-table th {
+            background-color: #f2f2f2;
+        }
+
+        /* Нижняя навигация */
+        .bottom-nav {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 8px 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            z-index: 999;
+            width: 90%;
+            max-width: 300px;
+        }
+
+        .bottom-nav select {
+            width: 100%;
+            font-size: 16px;
+            padding: 8px;
+            cursor: pointer;
+            border: 1px solid #3498db;
+            border-radius: 6px;
+        }
+
+        .lesson-number {
+            background-color: #3498db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* ПРОСТАЯ АДАПТАЦИЯ ДЛЯ ТЕЛЕФОНА */
+        @media (max-width: 768px) {
+    body {
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    .container {
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+        padding-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 1.3em;
+        margin-top: 20px;
+    }
+
+    .lesson-section {
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    .definition,
+    .example {
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    .math-container {
+        padding: 12px;
+        margin: 12px 0;
+    }
+
+    .explanation {
+        padding: 12px;
+        margin: 12px 0;
+        font-size: 0.95em;
+    }
+
+    .image-container {
+        padding: 8px;
+        margin: 10px 0;
+        max-width: 100% !important; /* Принудительно на всю ширину */
+        width: 100% !important;
+    }
+
+    .function-image {
+        max-height: auto !important; /* Убираем ограничение по высоте */
+        height: auto;
+        width: 100%; /* Занимает всю ширину контейнера */
+        max-width: 100%;
+        display: block; /* Убираем лишние отступы */
+    }
+
+    .trig-table {
+        font-size: 14px;
+    }
+
+    .trig-table th,
+    .trig-table td {
+        padding: 6px;
+    }
+
+    .bottom-nav {
+        bottom: 5px;
+        padding: 6px 10px;
+    }
+
+    .bottom-nav select {
+        font-size: 14px;
+        padding: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    h1 {
+        font-size: 1.3em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    .lesson-section {
+        padding: 12px;
+        margin: 10px 0;
+    }
+
+    .definition,
+    .example {
+        padding: 12px;
+        margin: 10px 0;
+    }
+
+    .image-container {
+        padding: 5px;
+        margin: 8px 0;
+    }
+
+    .function-image {
+        width: 100%;
+        height: auto;
+        max-height: none; /* Убираем все ограничения по высоте */
+    }
+
+    .trig-table {
+        font-size: 13px;
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .trig-table th,
+    .trig-table td {
+        padding: 5px;
+        min-width: 50px; /* Минимальная ширина для ячеек */
+    }
+}
+
+  </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="1">Системы неравенств</h1>
+<div class="lesson-section">
+    <div class="lesson-number">Теория</div>
+    <h2>Системы неравенств</h2>
+
+    <div class="definition">
+        <p><strong>Определение:</strong> Система неравенств — это набор из двух или более неравенств, которые должны выполняться <strong>одновременно</strong> (логическая операция "И").</p>
+        <div class="math-container">
+            <div class="math-formula">
+                \[
+                \begin{cases}
+                f_1(x) > g_1(x) \\
+                f_2(x) < g_2(x) \\
+                \vdots \\
+                f_n(x) > g_n(x)
+                \end{cases}
+                \]
+            </div>
+        </div>
+        <p><strong>Решение системы:</strong> Находится как <strong>пересечение</strong> решений всех неравенств, входящих в систему.</p>
+    </div>
+</div>
+        <!-- СИСТЕМА 1 -->
+        <div class="lesson-section">
+            <div class="lesson-number">Система 1</div>
+            <h2>Решение системы \( \begin{cases} x > -3 \\ x > -5 \end{cases} \)</h2>
+            <div class="definition">
+                <p><strong>Тип:</strong> Система неравенств (логическое "И")</p>
+            </div>
+            <div class="example">
+                <div class="example-title">Решение:</div>
+
+    <h2>Решение системы неравенств</h2>
+    <div class="math-container">
+    <div class="math-formula">
+        \[
+        \begin{aligned}
+        &x > -3 \Rightarrow x \in (-3; +\infty) \\
+        &x > -5 \Rightarrow x \in (-5; +\infty) \\
+        &\text{Пересечение: } (-3; +\infty) \cap (-5; +\infty) = (-3; +\infty) \\
+        &\text{Ответ: } x \in (-3; +\infty)
+        \end{aligned}
+        \]
+    </div></div>
+
+                <div class="example-title">Графическое решение:</div>
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/wxwRj0QT/изображение.png" alt="График системы 1" class="function-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- СИСТЕМА 2 -->
+        <div class="lesson-section">
+            <div class="lesson-number">Система 2</div>
+            <h2>Решение системы \( \begin{cases} x > -3 \\ x < 5 \end{cases} \)</h2>
+            <div class="definition">
+                <p><strong>Тип:</strong> Система неравенств (двойное неравенство)</p>
+            </div>
+            <div class="example">
+                <div class="example-title">Решение:</div>
+                <div class="math-container">
+                    <div class="math-formula">
+                        \[
+                        \begin{aligned}
+                        &x > -3 \Rightarrow x \in (-3; +\infty) \\
+                        &x < 5 \Rightarrow x \in (-\infty; 5) \\
+                        &\text{Пересечение: } (-3; +\infty) \cap (-\infty; 5) = (-3; 5) \\
+                        &\text{Ответ: } x \in (-3; 5)
+                        \end{aligned}
+                        \]
+                    </div>
+                </div>
+                <div class="example-title">Графическое решение:</div>
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/Gh988GX7/изображение.png" alt="График системы 2" class="function-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- СИСТЕМА 3 -->
+        <div class="lesson-section">
+            <div class="lesson-number">Система 3</div>
+            <h2>Решение системы \( \begin{cases} x \geq -3 \\ x \leq 5 \end{cases} \)</h2>
+            <div class="definition">
+                <p><strong>Тип:</strong> Система неравенств (замкнутый интервал)</p>
+            </div>
+            <div class="example">
+                <div class="example-title">Решение:</div>
+                <div class="math-container">
+                    <div class="math-formula">
+                        \[
+                        \begin{aligned}
+                        &x \geq -3 \Rightarrow x \in [-3; +\infty) \\
+                        &x \leq 5 \Rightarrow x \in (-\infty; 5] \\
+                        &\text{Пересечение: } [-3; +\infty) \cap (-\infty; 5] = [-3; 5] \\
+                        &\text{Ответ: } x \in [-3; 5]
+                        \end{aligned}
+                        \]
+                    </div>
+                </div>
+                <div class="example-title">Графическое решение:</div>
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/vmwcNjbJ/изображение.png" alt="График системы 3" class="function-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- СИСТЕМА 4 -->
+        <div class="lesson-section">
+            <div class="lesson-number">Система 4</div>
+            <h2>Решение системы \( \begin{cases} x \geq -2 \\ x \leq -4 \end{cases} \)</h2>
+            <div class="definition">
+                <p><strong>Тип:</strong> Система неравенств (противоречие)</p>
+            </div>
+            <div class="example">
+                <div class="example-title">Решение:</div>
+                <div class="math-container">
+                    <div class="math-formula">
+                        \[
+                        \begin{aligned}
+                        &x \geq -2 \Rightarrow x \in [-2; +\infty) \\
+                        &x \leq -4 \Rightarrow x \in (-\infty; -4] \\
+                        &\text{Пересечение: } [-2; +\infty) \cap (-\infty; -4] = \varnothing \\
+                        &\text{Ответ: } \varnothing
+                        \end{aligned}
+                        \]
+                    </div>
+                </div>
+                <div class="example-title">Графическое решение:</div>
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/wB578VB3/изображение.png" alt="График системы 4" class="function-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- СИСТЕМА 5 -->
+        <div class="lesson-section">
+            <div class="lesson-number">Система 5</div>
+            <h2>Решение системы \( \begin{cases} x \geq -3 \\ x \leq -3 \end{cases} \)</h2>
+            <div class="definition">
+                <p><strong>Тип:</strong> Система неравенств (единственное решение)</p>
+            </div>
+            <div class="example">
+                <div class="example-title">Решение:</div>
+                <div class="math-container">
+                    <div class="math-formula">
+                        \[
+                        \begin{aligned}
+                        &x \geq -3 \Rightarrow x \in [-3; +\infty) \\
+                        &x \leq -3 \Rightarrow x \in (-\infty; -3] \\
+                        &\text{Пересечение: } [-3; +\infty) \cap (-\infty; -3] = \{-3\} \\
+                        &\text{Ответ: } x = -3
+                        \end{aligned}
+                        \]
+                    </div>
+                </div>
+                <div class="example-title">Графическое решение:</div>
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/xCt8q1HM/изображение.png" alt="График системы 5" class="function-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- СИСТЕМА 6 -->
+        <div class="lesson-section">
+            <div class="lesson-number">Система 6</div>
+            <h2>Решение системы \( \begin{cases} x \geq 5 \\ x < 5 \end{cases} \)</h2>
+            <div class="definition">
+                <p><strong>Тип:</strong> Система неравенств (противоречие на границе)</p>
+            </div>
+            <div class="example">
+                <div class="example-title">Решение:</div>
+                <div class="math-container">
+                    <div class="math-formula">
+                        \[
+                        \begin{aligned}
+                        &x \geq 5 \Rightarrow x \in [5; +\infty) \\
+                        &x < 5 \Rightarrow x \in (-\infty; 5) \\
+                        &\text{Пересечение: } [5; +\infty) \cap (-\infty; 5) = \varnothing \\
+                        &\text{Ответ: } \varnothing
+                        \end{aligned}
+                        \]
+                    </div>
+                </div>
+                <div class="example-title">Графическое решение:</div>
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/fyyLdQfX/изображение.png" alt="График системы 6" class="function-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- СИСТЕМА 7 -->
+        <div class="lesson-section">
+            <div class="lesson-number">Система 7</div>
+            <h2>Решение системы \( \begin{cases} x \geq 2 \\ x > 2 \end{cases} \)</h2>
+            <div class="definition">
+                <p><strong>Тип:</strong> Система неравенств (объединение условий)</p>
+            </div>
+            <div class="example">
+                <div class="example-title">Решение:</div>
+                <div class="math-container">
+                    <div class="math-formula">
+                        \[
+                        \begin{aligned}
+                        &x \geq 2 \Rightarrow x \in [2; +\infty) \\
+                        &x > 2 \Rightarrow x \in (2; +\infty) \\
+                        &\text{Пересечение: } [2; +\infty) \cap (2; +\infty) = (2; +\infty) \\
+                        &\text{Ответ: } x \in (2; +\infty)
+                        \end{aligned}
+                        \]
+                    </div>
+                </div>
+                <div class="example-title">Графическое решение:</div>
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/QMqxnd6L/изображение.png" alt="График системы 7" class="function-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- СИСТЕМА 8 -->
+        <div class="lesson-section">
+            <div class="lesson-number">Система 8</div>
+            <h2>Решение системы \( \begin{cases} x \geq -2 \\ x < 9 \end{cases} \)</h2>
+            <div class="definition">
+                <p><strong>Тип:</strong> Система неравенств (полуинтервал)</p>
+            </div>
+            <div class="example">
+                <div class="example-title">Решение:</div>
+                <div class="math-container">
+                    <div class="math-formula">
+                        \[
+                        \begin{aligned}
+                        &x \geq -2 \Rightarrow x \in [-2; +\infty) \\
+                        &x < 9 \Rightarrow x \in (-\infty; 9) \\
+                        &\text{Пересечение: } [-2; +\infty) \cap (-\infty; 9) = [-2; 9) \\
+                        &\text{Ответ: } x \in [-2; 9)
+                        \end{aligned}
+                        \]
+                    </div>
+                </div>
+                <div class="example-title">Графическое решение:</div>
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/ZRKKkzgs/изображение.png" alt="График системы 8" class="function-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- СИСТЕМА 9 -->
+        <div class="lesson-section">
+            <div class="lesson-number">Система 9</div>
+            <h2>Решение системы \( \begin{cases} 0 \cdot x > -2 \\ x \geq 4 \end{cases} \)</h2>
+            <div class="definition">
+                <p><strong>Тип:</strong> Система с тождественно истинным неравенством</p>
+            </div>
+            <div class="example">
+                <div class="example-title">Решение:</div>
+                <div class="math-container">
+                    <div class="math-formula">
+                        \[
+                        \begin{aligned}
+                        &0 \cdot x > -2 \Rightarrow 0 > -2 \text{ (верно для любого } x) \\
+                        &x \geq 4 \Rightarrow x \in [4; +\infty) \\
+                        &\text{Пересечение: } \mathbb{R} \cap [4; +\infty) = [4; +\infty) \\
+                        &\text{Ответ: } x \in [4; +\infty)
+                        \end{aligned}
+                        \]
+                    </div>
+                </div>
+                <div class="example-title">Графическое решение:</div>
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/QCF8tkj5/изображение.png" alt="График системы 9" class="function-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- СИСТЕМА 10 -->
+        <div class="lesson-section">
+            <div class="lesson-number">Система 10</div>
+            <h2>Решение системы \( \begin{cases} 0 \cdot x \leq 4 \\ 0 \cdot x \geq -4 \end{cases} \)</h2>
+            <div class="definition">
+                <p><strong>Тип:</strong> Система с двумя тождественно истинными неравенствами</p>
+            </div>
+            <div class="example">
+                <div class="example-title">Решение:</div>
+                <div class="math-container">
+                    <div class="math-formula">
+                        \[
+                        \begin{aligned}
+                        &0 \cdot x \leq 4 \Rightarrow 0 \leq 4 \text{ (верно для любого } x) \\
+                        &0 \cdot x \geq -4 \Rightarrow 0 \geq -4 \text{ (верно для любого } x) \\
+                        &\text{Пересечение: } \mathbb{R} \cap \mathbb{R} = \mathbb{R} \\
+                        &\text{Ответ: } x \in \mathbb{R}
+                        \end{aligned}
+                        \]
+                    </div>
+                </div>
+                <div class="example-title">Графическое решение:</div>
+                <div class="image-container">
+                    <img src="https://i.postimg.cc/RCYCY8Tf/изображение.png" alt="График системы 10" class="function-image">
+                </div>
+            </div>
+        </div>
+
+        <h1 id="2">Совокупности неравенств</h1>
+
+        <div class="lesson-section">
+    <div class="lesson-number">Теория</div>
+    <h2>Совокупности неравенств</h2>
+
+    <div class="definition">
+        <p><strong>Определение:</strong> Совокупность неравенств — это набор неравенств, из которых должно выполняться <strong>хотя бы одно</strong> (логическая операция "ИЛИ").</p>
+        <div class="math-container">
+            <div class="math-formula">
+                \[
+                \left[
+                \begin{array}{l}
+                f_1(x) > g_1(x) \\
+                f_2(x) < g_2(x) \\
+                \vdots \\
+                f_n(x) > g_n(x)
+                \end{array}
+                \right.
+                \]
+            </div>
+        </div>
+        <p><strong>Решение совокупности:</strong> Находится как <strong>объединение</strong> решений всех неравенств, входящих в совокупность.</p>
+    </div>
+        </div>
+
+        <div class="lesson-section">
+    <div class="lesson-number">Совокупность 1</div>
+    <h2>Решение совокупности \( \left[ \begin{array}{l} x > -3 \\ x > -5 \end{array} \right. \)</h2>
+    <div class="definition">
+        <p><strong>Тип:</strong> Совокупность неравенств (логическое "ИЛИ")</p>
+    </div>
+    <div class="example">
+        <div class="example-title">Решение:</div>
+        <div class="math-container">
+            <div class="math-formula">
+                \[
+                \begin{aligned}
+                &x > -3 \Rightarrow x \in (-3; +\infty) \\
+                &x > -5 \Rightarrow x \in (-5; +\infty) \\
+                &\text{Объединение: } (-3; +\infty) \cup (-5; +\infty) = (-5; +\infty) \\
+                &\text{Ответ: } x \in (-5; +\infty)
+                \end{aligned}
+                \]
+            </div>
+        </div>
+        <div class="example-title">Графическое решение:</div>
+        <div class="image-container">
+            <img src="https://i.postimg.cc/wxwRj0QT/изображение.png" alt="График совокупности 1" class="function-image">
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <div class="lesson-number">Совокупность 2</div>
+    <h2>Решение совокупности \( \left[ \begin{array}{l} x > -3 \\ x < 5 \end{array} \right. \)</h2>
+    <div class="definition">
+        <p><strong>Тип:</strong> Совокупность неравенств (объединение интервалов)</p>
+    </div>
+    <div class="example">
+        <div class="example-title">Решение:</div>
+        <div class="math-container">
+            <div class="math-formula">
+                \[
+                \begin{aligned}
+                &x > -3 \Rightarrow x \in (-3; +\infty) \\
+                &x < 5 \Rightarrow x \in (-\infty; 5) \\
+                &\text{Объединение: } (-3; +\infty) \cup (-\infty; 5) = \mathbb{R} \\
+                &\text{Ответ: } x \in \mathbb{R} \text{ (любое число)}
+                \end{aligned}
+                \]
+            </div>
+        </div>
+        <div class="example-title">Графическое решение:</div>
+        <div class="image-container">
+            <img src="https://i.postimg.cc/Gh988GX7/изображение.png" alt="График совокупности 2" class="function-image">
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <div class="lesson-number">Совокупность 3</div>
+    <h2>Решение совокупности \( \left[ \begin{array}{l} x \geq -3 \\ x \leq 5 \end{array} \right. \)</h2>
+    <div class="definition">
+        <p><strong>Тип:</strong> Совокупность неравенств (объединение множеств)</p>
+    </div>
+    <div class="example">
+        <div class="example-title">Решение:</div>
+        <div class="math-container">
+            <div class="math-formula">
+                \[
+                \begin{aligned}
+                &x \geq -3 \Rightarrow x \in [-3; +\infty) \\
+                &x \leq 5 \Rightarrow x \in (-\infty; 5] \\
+                &\text{Объединение: } [-3; +\infty) \cup (-\infty; 5] = \mathbb{R} \\
+                &\text{Ответ: } x \in \mathbb{R}
+                \end{aligned}
+                \]
+            </div>
+        </div>
+        <div class="example-title">Графическое решение:</div>
+        <div class="image-container">
+            <img src="https://i.postimg.cc/vmwcNjbJ/изображение.png" alt="График совокупности 3" class="function-image">
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <div class="lesson-number">Совокупность 4</div>
+    <h2>Решение совокупности \( \left[ \begin{array}{l} x \geq -2 \\ x \leq -4 \end{array} \right. \)</h2>
+    <div class="definition">
+        <p><strong>Тип:</strong> Совокупность неравенств (объединение непересекающихся множеств)</p>
+    </div>
+    <div class="example">
+        <div class="example-title">Решение:</div>
+        <div class="math-container">
+            <div class="math-formula">
+                \[
+                \begin{aligned}
+                &x \geq -2 \Rightarrow x \in [-2; +\infty) \\
+                &x \leq -4 \Rightarrow x \in (-\infty; -4] \\
+                &\text{Объединение: } [-2; +\infty) \cup (-\infty; -4] = (-\infty; -4] \cup [-2; +\infty) \\
+                &\text{Ответ: } x \in (-\infty; -4] \cup [-2; +\infty)
+                \end{aligned}
+                \]
+            </div>
+        </div>
+        <div class="example-title">Графическое решение:</div>
+        <div class="image-container">
+            <img src="https://i.postimg.cc/wB578VB3/изображение.png" alt="График совокупности 4" class="function-image">
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <div class="lesson-number">Совокупность 5</div>
+    <h2>Решение совокупности \( \left[ \begin{array}{l} x \geq -3 \\ x \leq -3 \end{array} \right. \)</h2>
+    <div class="definition">
+        <p><strong>Тип:</strong> Совокупность неравенств (объединение с общей точкой)</p>
+    </div>
+    <div class="example">
+        <div class="example-title">Решение:</div>
+        <div class="math-container">
+            <div class="math-formula">
+                \[
+                \begin{aligned}
+                &x \geq -3 \Rightarrow x \in [-3; +\infty) \\
+                &x \leq -3 \Rightarrow x \in (-\infty; -3] \\
+                &\text{Объединение: } [-3; +\infty) \cup (-\infty; -3] = \mathbb{R} \\
+                &\text{Ответ: } x \in \mathbb{R}
+                \end{aligned}
+                \]
+            </div>
+        </div>
+        <div class="example-title">Графическое решение:</div>
+        <div class="image-container">
+            <img src="https://i.postimg.cc/xCt8q1HM/изображение.png" alt="График совокупности 5" class="function-image">
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <div class="lesson-number">Совокупность 6</div>
+    <h2>Решение совокупности \( \left[ \begin{array}{l} x \geq 5 \\ x < 5 \end{array} \right. \)</h2>
+    <div class="definition">
+        <p><strong>Тип:</strong> Совокупность неравенств (все числа кроме одной точки)</p>
+    </div>
+    <div class="example">
+        <div class="example-title">Решение:</div>
+        <div class="math-container">
+            <div class="math-formula">
+                \[
+                \begin{aligned}
+                &x \geq 5 \Rightarrow x \in [5; +\infty) \\
+                &x < 5 \Rightarrow x \in (-\infty; 5) \\
+                &\text{Объединение: } [5; +\infty) \cup (-\infty; 5) = \mathbb{R} \\
+                &\text{Ответ: } x \in \mathbb{R}
+                \end{aligned}
+                \]
+            </div>
+        </div>
+        <div class="example-title">Графическое решение:</div>
+        <div class="image-container">
+            <img src="https://i.postimg.cc/fyyLdQfX/изображение.png" alt="График совокупности 6" class="function-image">
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <div class="lesson-number">Совокупность 7</div>
+    <h2>Решение совокупности \( \left[ \begin{array}{l} x \geq 2 \\ x > 2 \end{array} \right. \)</h2>
+    <div class="definition">
+        <p><strong>Тип:</strong> Совокупность неравенств (объединение вложенных множеств)</p>
+    </div>
+    <div class="example">
+        <div class="example-title">Решение:</div>
+        <div class="math-container">
+            <div class="math-formula">
+                \[
+                \begin{aligned}
+                &x \geq 2 \Rightarrow x \in [2; +\infty) \\
+                &x > 2 \Rightarrow x \in (2; +\infty) \\
+                &\text{Объединение: } [2; +\infty) \cup (2; +\infty) = [2; +\infty) \\
+                &\text{Ответ: } x \in [2; +\infty)
+                \end{aligned}
+                \]
+            </div>
+        </div>
+        <div class="example-title">Графическое решение:</div>
+        <div class="image-container">
+            <img src="https://i.postimg.cc/QMqxnd6L/изображение.png" alt="График совокупности 7" class="function-image">
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <div class="lesson-number">Совокупность 8</div>
+    <h2>Решение совокупности \( \left[ \begin{array}{l} x \geq -2 \\ x < 9 \end{array} \right. \)</h2>
+    <div class="definition">
+        <p><strong>Тип:</strong> Совокупность неравенств (все действительные числа)</p>
+    </div>
+    <div class="example">
+        <div class="example-title">Решение:</div>
+        <div class="math-container">
+            <div class="math-formula">
+                \[
+                \begin{aligned}
+                &x \geq -2 \Rightarrow x \in [-2; +\infty) \\
+                &x < 9 \Rightarrow x \in (-\infty; 9) \\
+                &\text{Объединение: } [-2; +\infty) \cup (-\infty; 9) = \mathbb{R} \\
+                &\text{Ответ: } x \in \mathbb{R}
+                \end{aligned}
+                \]
+            </div>
+        </div>
+        <div class="example-title">Графическое решение:</div>
+        <div class="image-container">
+            <img src="https://i.postimg.cc/ZRKKkzgs/изображение.png" alt="График совокупности 8" class="function-image">
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <div class="lesson-number">Совокупность 9</div>
+    <h2>Решение совокупности \( \left[ \begin{array}{l} 0 \cdot x > -2 \\ x \geq 4 \end{array} \right. \)</h2>
+    <div class="definition">
+        <p><strong>Тип:</strong> Совокупность с тождественно истинным неравенством</p>
+    </div>
+    <div class="example">
+        <div class="example-title">Решение:</div>
+        <div class="math-container">
+            <div class="math-formula">
+                \[
+                \begin{aligned}
+                &0 \cdot x > -2 \Rightarrow 0 > -2 \text{ (верно для любого } x \in \mathbb{R}) \\
+                &x \geq 4 \Rightarrow x \in [4; +\infty) \\
+                &\text{Объединение: } \mathbb{R} \cup [4; +\infty) = \mathbb{R} \\
+                &\text{Ответ: } x \in \mathbb{R}
+                \end{aligned}
+                \]
+            </div>
+        </div>
+        <div class="example-title">Графическое решение:</div>
+        <div class="image-container">
+            <img src="https://i.postimg.cc/QCF8tkj5/изображение.png" alt="График совокупности 9" class="function-image">
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <div class="lesson-number">Совокупность 10</div>
+    <h2>Решение совокупности \( \left[ \begin{array}{l} 0 \cdot x \leq 4 \\ 0 \cdot x \geq -4 \end{array} \right. \)</h2>
+    <div class="definition">
+        <p><strong>Тип:</strong> Совокупность с двумя тождественно истинными неравенствами</p>
+    </div>
+    <div class="example">
+        <div class="example-title">Решение:</div>
+        <div class="math-container">
+            <div class="math-formula">
+                \[
+                \begin{aligned}
+                &0 \cdot x \leq 4 \Rightarrow 0 \leq 4 \text{ (верно для любого } x \in \mathbb{R}) \\
+                &0 \cdot x \geq -4 \Rightarrow 0 \geq -4 \text{ (верно для любого } x \in \mathbb{R}) \\
+                &\text{Объединение: } \mathbb{R} \cup \mathbb{R} = \mathbb{R} \\
+                &\text{Ответ: } x \in \mathbb{R}
+                \end{aligned}
+                \]
+            </div>
+        </div>
+        <div class="example-title">Графическое решение:</div>
+        <div class="image-container">
+            <img src="https://i.postimg.cc/RCYCY8Tf/изображение.png" alt="График совокупности 10" class="function-image">
+        </div>
+    </div>
+</div>
+
+                                    <div class="bottom-nav">
+    <select onchange="goToSection(this.value)">
+        <option value="">Перейти к теме…</option>
+        <option value="1">Системы неравенств</option>
+        <option value="2">Совокупность неравенств</option>
+
+
+    </select>
+</div>
+
+<script>
+function goToSection(id) {
+    if (!id) return;
+    document.getElementById(id).scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+</script>
+    </div>
+</body>
+</html>

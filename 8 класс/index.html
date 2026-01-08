@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>Квадратичная функция</title>
+				<style>
+   * {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 15px;
+  background-color: #f5f9ff;
+  color: #333;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 150, 0.1);
+  padding: 25px 20px;
+}
+
+h1 {
+  color: #2c3e50;
+  text-align: center;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 15px;
+  margin-top: 0;
+  font-size: 1.8em;
+}
+
+h2 {
+  color: #2980b9;
+  margin-top: 30px;
+  font-size: 1.4em;
+  padding: 0 5px;
+}
+
+.lesson-section {
+  background-color: #f8fafd;
+  border-radius: 10px;
+  padding: 18px;
+  margin: 20px 0;
+  border-left: 5px solid #3498db;
+}
+
+.definition {
+  background-color: #e8f4fc;
+  padding: 18px;
+  border-radius: 8px;
+  margin: 18px 0;
+  font-size: 1em;
+}
+
+.example {
+  background-color: #f0f7ff;
+  padding: 18px;
+  border-radius: 8px;
+  margin: 18px 0;
+  border-left: 4px solid #2ecc71;
+  font-size: 1em;
+}
+
+.function-image, .sign-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  transition: transform 0.3s ease;
+  max-height: 280px;
+  object-fit: contain;
+}
+
+.example-title {
+  font-weight: bold;
+  color: #27ae60;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
+.hard-example {
+  border-left-color: #e74c3c;
+}
+
+.hard-example .example-title {
+  color: #e74c3c;
+}
+
+.math-container {
+  background-color: white;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin: 14px 0;
+  overflow-x: auto;
+}
+
+.math-formula {
+  font-size: 1.1em;
+  text-align: center;
+  padding: 10px;
+}
+
+.explanation {
+  background-color: #fffde7;
+  padding: 14px;
+  border-radius: 8px;
+  margin: 14px 0;
+  font-style: italic;
+  font-size: 0.95em;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
+  flex: 1;
+  min-width: 120px;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.lesson-number {
+  background-color: #3498db;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  color: #7f8c8d;
+  font-size: 0.9em;
+}
+
+.image-container {
+  text-align: center;
+  margin: 1rem 0;
+  padding: 0.8rem;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+
+/* Специальные медиа-запросы для изображений */
+@media (max-width: 768px) {
+  .image-container {
+    padding: 0.6rem;
+    margin: 0.8rem 0;
+  }
+
+  .function-image,
+  .sign-image {
+    max-height: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-container {
+    padding: 0.5rem;
+    margin: 0.6rem 0;
+  }
+
+  .function-image,
+  .sign-image {
+    max-height: 200px;
+  }
+}
+
+.function-image,
+.sign-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  transition: transform 0.3s ease;
+  max-height: 280px;
+  object-fit: contain;
+}
+
+.function-image:hover,
+.sign-image:hover {
+  transform: scale(1.02);
+}
+
+.function-analysis {
+  background: white;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+
+  /* 🔧 ДОБАВЬТЕ ЭТИ 3 СТРОКИ: */
+  max-width: 100%;
+  overflow: hidden; /* Скрывает всё, что вылезает */
+  box-sizing: border-box; /* Учитывает padding в ширине */
+}
+
+/* Тогда для .property можно упростить: */
+.property {
+  background: #f8fafc;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #3498db;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease;
+
+  /* 🔧 ДОБАВЬТЕ ТОЛЬКО ЭТО: */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.function-analysis h3 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.8rem;
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+.function-properties {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+.property {
+  background: #f8fafc;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #3498db;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease;
+
+  /* 🔧 ДОБАВЬТЕ ЭТИ СТРОКИ: */
+  word-wrap: break-word;       /* Перенос длинных слов */
+  overflow-wrap: break-word;   /* Современный аналог */
+  hyphens: auto;              /* Автоперенос по слогам */
+  max-width: 100%;            /* Не шире контейнера */
+  box-sizing: border-box;     /* Учитывать padding в ширине */
+}
+
+.property:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.property h4 {
+  color: #2c3e50;
+  margin-top: 0;
+  font-size: 1.05rem;
+  margin-bottom: 0.6rem;
+}
+
+.explanation {
+  font-style: italic;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  padding-left: 0.8rem;
+  border-left: 2px solid #bdc3c7;
+}
+
+.sign-constancy-cases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.case {
+  background: white;
+  padding: 1.2rem;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease;
+}
+
+.case:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.sign-analysis {
+  background: #f8fafc;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 0.8rem;
+  border-left: 4px solid #2ecc71;
+}
+
+.sign-analysis h4 {
+  color: #27ae60;
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  font-size: 1.05rem;
+}
+
+.summary {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  padding: 1.2rem;
+  border-radius: 10px;
+  margin-top: 1.5rem;
+  border-left: 5px solid #2196F3;
+}
+
+.summary h4 {
+  color: #1565c0;
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin: 1.2rem 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sign-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  min-width: 600px;
+}
+
+.sign-table th {
+  background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+  color: white;
+  padding: 0.9rem;
+  text-align: left;
+  font-weight: 600;
+  border: 1px solid #388E3C;
+  font-size: 0.95em;
+}
+
+.sign-table td {
+  padding: 0.7rem 0.9rem;
+  border: 1px solid #e0e0e0;
+  color: #333;
+  font-size: 0.9em;
+}
+
+.sign-table tbody tr:nth-child(even) {
+  background: #f5f5f5;
+}
+
+.sign-table tbody tr:hover {
+  background: #e3f2fd;
+}
+
+.positive-a {
+  background: #e8f5e9 !important;
+  color: #1b5e20 !important;
+  font-weight: 600;
+}
+
+.negative-a {
+  background: #ffebee !important;
+  color: #b71c1c !important;
+  font-weight: 600;
+}
+
+.note {
+  background: #fff3e0;
+  padding: 1.2rem;
+  border-radius: 10px;
+  margin-top: 1.5rem;
+  border-left: 5px solid #ff9800;
+}
+
+.note h4 {
+  color: #e65100;
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .container {
+    padding: 18px 15px;
+    border-radius: 12px;
+  }
+
+  h1 {
+    font-size: 1.6em;
+    padding-bottom: 12px;
+  }
+
+  h2 {
+    font-size: 1.3em;
+    margin-top: 25px;
+  }
+
+  .lesson-section {
+    padding: 15px;
+    margin: 15px 0;
+  }
+
+  .definition,
+  .example {
+    padding: 15px;
+    margin: 15px 0;
+  }
+
+  .function-analysis {
+    padding: 1.2rem;
+    margin: 1.2rem 0;
+  }
+
+  .function-properties,
+  .sign-constancy-cases {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .property,
+  .case {
+    padding: 1rem;
+  }
+
+  .function-image,
+  .sign-image {
+    max-height: 220px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 0.95em;
+    min-width: 110px;
+  }
+
+  .navigation {
+    gap: 10px;
+  }
+
+  .sign-table {
+    min-width: 100%;
+    font-size: 0.85em;
+  }
+
+  .sign-table th,
+  .sign-table td {
+    padding: 0.6rem 0.8rem;
+  }
+}
+
+/* Адаптивность для очень маленьких экранов */
+@media (max-width: 480px) {
+  body {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 15px 12px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+
+  .function-image,
+  .sign-image {
+    max-height: 200px;
+  }
+
+  .math-formula {
+    font-size: 1em;
+    padding: 8px;
+  }
+
+  button {
+    min-width: 100px;
+    padding: 8px 16px;
+  }
+
+  .sign-table th,
+  .sign-table td {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8em;
+  }
+}
+
+    .bottom-nav {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 8px 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            z-index: 999;
+            width: 90%;
+            max-width: 300px;
+        }
+
+        .bottom-nav select {
+            width: 100%;
+            font-size: 16px;
+            padding: 8px;
+            cursor: pointer;
+            border: 1px solid #3498db;
+            border-radius: 6px;
+        }
+  </style>
+			</head>
+			<body>
+				<div class="container">
+					<h1 id="">Квадратичная функция и её свойства</h1>
+					<div class="lesson-section">
+						<h2>Основные свойства квадратичной функции и её графика</h2>
+						<div class="definition">
+							<p>
+								<strong>Квадратичной функцией</strong> называется функция вида:
+
+							</p>
+							<div class="math-container">
+								<div class="math-formula">
+									<math
+										xmlns="http://www.w3.org/1998/Math/MathML">
+										<mrow>
+											<mi>y</mi>
+											<mo>=</mo>
+											<mi>a</mi>
+											<msup>
+												<mi>x</mi>
+												<mn>2</mn>
+											</msup>
+											<mo>+</mo>
+											<mi>b</mi>
+											<mi>x</mi>
+											<mo>+</mo>
+											<mi>c</mi>
+										</mrow>
+									</math>
+								</div>
+							</div>
+							<p>где:</p>
+							<ul>
+								<li>
+									<strong>a, b, c</strong> — коэффициенты, причём
+
+									<strong>a ≠ 0</strong>
+								</li>
+								<li>Графиком квадратичной функции является
+
+									<strong>парабола</strong>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<h1 id="1">Направление ветвей</h1>
+					<div class="lesson-section">
+						<h2>Направление ветвей параболы</h2>
+						<div class="definition">
+							<p>Направление ветвей параболы зависит от коэффициента
+
+								<strong>a</strong>:
+
+							</p>
+
+							<div class="property-grid">
+								<div class="property-item">
+									<h3>Если a > 0</h3>
+									<div class="image-container">
+										<img src="https://i.postimg.cc/fbnB2LNL/Вершина_Параболы.png" class="function-image" alt="Парабола с ветвями вверх">
+										</div>
+										<ul>
+											<li>Ветви параболы направлены
+
+												<strong>вверх</strong>
+											</li>
+											<li>Парабола имеет
+
+												<strong>минимум</strong> в вершине
+
+											</li>
+											<li>Множество значений:
+
+												<math>
+													<mrow>
+														<mi>E</mi>
+														<mo>(</mo>
+														<mi>f</mi>
+														<mo>)</mo>
+														<mo>=</mo>
+														<mo>[</mo>
+														<msub>
+															<mi>y</mi>
+															<mi>в</mi>
+														</msub>
+														<mo>,</mo>
+														<mo>+</mo>
+														<mo>∞</mo>
+														<mo>)</mo>
+													</mrow>
+												</math>
+											</li>
+										</ul>
+									</div>
+									<div class="property-item">
+										<h3>Если a < 0
+
+										</h3>
+										<div class="image-container">
+											<img src="https://i.postimg.cc/g2RKZW6K/Вершина_Параболы_a___0.png"  class="function-image" alt="Парабола с ветвями вниз">
+											</div>
+											<ul>
+												<li>Ветви параболы направлены
+
+													<strong>вниз</strong>
+												</li>
+												<li>Парабола имеет
+
+													<strong>максимум</strong> в вершине
+
+												</li>
+												<li>Множество значений:
+
+													<math>
+														<mrow>
+															<mi>E</mi>
+															<mo>(</mo>
+															<mi>f</mi>
+															<mo>)</mo>
+															<mo>=</mo>
+															<mo>(</mo>
+															<mo>-</mo>
+															<mo>∞</mo>
+															<mo>,</mo>
+															<msub>
+																<mi>y</mi>
+																<mi>в</mi>
+															</msub>
+															<mo>]</mo>
+														</mrow>
+													</math>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+					<h1 id="2">Нули функции</h1>
+					<div class="lesson-section">
+								<h2>Нули функции и дискриминант</h2>
+								<div class="definition">
+									<p>
+										<strong>Нули функции</strong> — точки пересечения графика с осью OX (значения x, при которых y = 0). Определяются через дискриминант:
+
+									</p>
+
+
+									<div class="math-container">
+										<div class="math-formula">
+											<math
+												xmlns="http://www.w3.org/1998/Math/MathML">
+												<mrow>
+													<mi>D</mi>
+													<mo>=</mo>
+													<msup>
+														<mi>b</mi>
+														<mn>2</mn>
+													</msup>
+													<mo>−</mo>
+													<mn>4</mn>
+													<mi>a</mi>
+													<mi>c</mi>
+												</mrow>
+											</math>
+										</div>
+									</div>
+									<div class="discriminant-cases">
+										<div class="case">
+											<h3>D > 0 — два различных нуля</h3>
+											<div class="image-container">
+												<img src="https://i.postimg.cc/4yqzYL44/Нули_функции.png" class="function-image" alt="Парабола с двумя точками пересечения">
+												</div>
+												<p>Парабола пересекает ось OX в двух точках:
+
+													<math>
+														<mrow>
+															<msub>
+																<mi>x</mi>
+																<mn>1</mn>
+															</msub>
+															<mo>,</mo>
+															<msub>
+																<mi>x</mi>
+																<mn>2</mn>
+															</msub>
+														</mrow>
+													</math>
+												</p>
+												<p>Функция в разложенном виде:
+
+													<math>
+														<mrow>
+															<mi>y</mi>
+															<mo>=</mo>
+															<mi>a</mi>
+															<mo>(</mo>
+															<mi>x</mi>
+															<mo>−</mo>
+															<msub>
+																<mi>x</mi>
+																<mn>1</mn>
+															</msub>
+															<mo>)</mo>
+															<mo>(</mo>
+															<mi>x</mi>
+															<mo>−</mo>
+															<msub>
+																<mi>x</mi>
+																<mn>2</mn>
+															</msub>
+															<mo>)</mo>
+														</mrow>
+													</math>
+												</p>
+											</div>
+											<div class="case">
+												<h3>D = 0 — один нуль (касание)</h3>
+												<div class="image-container">
+													<img src="https://i.postimg.cc/K8nnYD6z/Нули_функции_D=0.png" class="function-image" alt="Парабола касается оси OX">
+													</div>
+													<p>Парабола касается оси OX в одной точке:
+
+														<math>
+															<mrow>
+																<msub>
+																	<mi>x</mi>
+																	<mn>0</mn>
+																</msub>
+															</mrow>
+														</math>
+													</p>
+													<p>Функция в разложенном виде:
+
+														<math>
+															<mrow>
+																<mi>y</mi>
+																<mo>=</mo>
+																<mi>a</mi>
+																<msup>
+																	<mrow>
+																		<mo>(</mo>
+																		<mi>x</mi>
+																		<mo>−</mo>
+																		<msub>
+																			<mi>x</mi>
+																			<mn>0</mn>
+																		</msub>
+																		<mo>)</mo>
+																	</mrow>
+																	<mn>2</mn>
+																</msup>
+															</mrow>
+														</math>
+													</p>
+												</div>
+												<div class="case">
+													<h3>D < 0 — нет нулей
+
+													</h3>
+													<div class="image-container">
+														<img src="https://i.postimg.cc/sxkhjMKh/Нули_функции_D___0.png" class="function-image" alt="Парабола не пересекает ось OX">
+														</div>
+														<p>Парабола не пересекает ось OX</p>
+														<p>Функция не раскладывается на линейные множители</p>
+													</div>
+												</div>
+											</div>
+										</div>
+					<h1 id="3">Ось симметрии и вершина параболы</h1>
+					<div class="lesson-section">
+											<h2>Ось симметрии и вершина параболы</h2>
+											<div class="definition">
+												<p>
+													<strong>Ось симметрии</strong> параболы — вертикальная прямая, проходящая через вершину:
+
+												</p>
+												<div class="image-container">
+													<img src="https://i.postimg.cc/yNL3JQnM/Ось_симметрии.png" alt="Ось симметрии параболы" class="function-image">
+													</div>
+													<div class="math-container">
+														<div class="math-formula">
+															<math
+																xmlns="http://www.w3.org/1998/Math/MathML">
+																<mrow>
+																	<msub>
+																		<mi>x</mi>
+																		<mi>в</mi>
+																	</msub>
+																	<mo>=</mo>
+																	<mo>−</mo>
+																	<mfrac>
+																		<mi>b</mi>
+																		<mrow>
+																			<mn>2</mn>
+																			<mi>a</mi>
+																		</mrow>
+																	</mfrac>
+																</mrow>
+															</math>
+														</div>
+													</div>
+													<p>
+														<strong>Координаты вершины</strong> параболы:
+
+													</p>
+													<div class="math-container">
+														<div class="math-formula">
+															<math
+																xmlns="http://www.w3.org/1998/Math/MathML">
+																<mrow>
+																	<msub>
+																		<mi>x</mi>
+																		<mi>в</mi>
+																	</msub>
+																	<mo>=</mo>
+																	<mo>−</mo>
+																	<mfrac>
+																		<mi>b</mi>
+																		<mrow>
+																			<mn>2</mn>
+																			<mi>a</mi>
+																		</mrow>
+																	</mfrac>
+																	<mo>,</mo>
+																	<mspace width="1em"/>
+																	<msub>
+																		<mi>y</mi>
+																		<mi>в</mi>
+																	</msub>
+																	<mo>=</mo>
+																	<mi>f</mi>
+																	<mo>(</mo>
+																	<msub>
+																		<mi>x</mi>
+																		<mi>в</mi>
+																	</msub>
+																	<mo>)</mo>
+																	<mo>=</mo>
+																	<mo>−</mo>
+																	<mfrac>
+																		<mi>D</mi>
+																		<mrow>
+																			<mn>4</mn>
+																			<mi>a</mi>
+																		</mrow>
+																	</mfrac>
+																</mrow>
+															</math>
+														</div>
+													</div>
+													<p>Функция в виде через вершину:
+
+														<math>
+															<mrow>
+																<mi>y</mi>
+																<mo>=</mo>
+																<mi>a</mi>
+																<msup>
+																	<mrow>
+																		<mo>(</mo>
+																		<mi>x</mi>
+																		<mo>−</mo>
+																		<mi>m</mi>
+																		<mo>)</mo>
+																	</mrow>
+																	<mn>2</mn>
+																</msup>
+																<mo>+</mo>
+																<mi>n</mi>
+															</mrow>
+														</math>, где
+
+														<math>
+															<mrow>
+																<mo>(</mo>
+																<mi>m</mi>
+																<mo>,</mo>
+																<mi>n</mi>
+																<mo>)</mo>
+															</mrow>
+														</math> — координаты вершины.
+
+													</p>
+												</div>
+											</div>
+					<h1 id="4">Построение графика квадратичной функции</h1>
+					<div class="lesson-section">
+												<h2>Построение графика квадратичной функции</h2>
+												<div class="definition">
+													<p>Алгоритм построения параболы:</p>
+													<ol class="construction-steps">
+														<li>
+															<h3>Найти вершину и ось симметрии</h3>
+															<div class="image-container">
+																<img src="https://i.postimg.cc/PxNK3Fqy/Построение_1.png" class="function-image" alt="Шаг 1: Вершина и ось симметрии">
+																</div>
+																<p>Вычисляем координаты вершины:
+
+																	<math>
+																		<mrow>
+																			<msub>
+																				<mi>x</mi>
+																				<mi>в</mi>
+																			</msub>
+																			<mo>=</mo>
+																			<mo>−</mo>
+																			<mfrac>
+																				<mi>b</mi>
+																				<mrow>
+																					<mn>2</mn>
+																					<mi>a</mi>
+																				</mrow>
+																			</mfrac>
+																		</mrow>
+																	</math>,
+
+																	<math>
+																		<mrow>
+																			<msub>
+																				<mi>y</mi>
+																				<mi>в</mi>
+																			</msub>
+																			<mo>=</mo>
+																			<mi>f</mi>
+																			<mo>(</mo>
+																			<msub>
+																				<mi>x</mi>
+																				<mi>в</mi>
+																			</msub>
+																			<mo>)</mo>
+																		</mrow>
+																	</math>
+																</p>
+															</li>
+															<li>
+																<h3>Найти нули функции</h3>
+																<div class="image-container">
+																	<img src="https://i.postimg.cc/3r4n26Vk/Построение_2.png" class="function-image" alt="Шаг 2: Нули функции">
+																	</div>
+																	<p>Решаем уравнение
+
+																		<math>
+																			<mrow>
+																				<mi>a</mi>
+																				<msup>
+																					<mi>x</mi>
+																					<mn>2</mn>
+																				</msup>
+																				<mo>+</mo>
+																				<mi>b</mi>
+																				<mi>x</mi>
+																				<mo>+</mo>
+																				<mi>c</mi>
+																				<mo>=</mo>
+																				<mn>0</mn>
+																			</mrow>
+																		</math>
+																	</p>
+																	<p>Находим точки пересечения с осью OX (если они существуют)</p>
+																</li>
+																<li>
+																	<h3>Найти точку пересечения с OY и симметричные точки</h3>
+																	<div class="image-container">
+																		<img src="https://i.postimg.cc/mgRjfrD5/Построение_3-4.png"  class="function-image" alt="Шаг 3: Пересечение с OY и симметрия">
+																		</div>
+																		<p>Точка пересечения с осью OY:
+
+																			<math>
+																				<mrow>
+																					<mo>(</mo>
+																					<mn>0</mn>
+																					<mo>,</mo>
+																					<mi>c</mi>
+																					<mo>)</mo>
+																				</mrow>
+																			</math>
+																		</p>
+																		<p>Используем симметрию параболы для нахождения дополнительных точек</p>
+																	</li>
+																</ol>
+															</div>
+														</div>
+					<h1 id="5">Монотонность</h1>
+					<div class="lesson-section">
+						<h2>Монотонность квадратичной функции</h2>
+						<div class="definition">
+							<div class="image-container">
+																	<img src="https://i.postimg.cc/hv1J9Kqw/Монотонность.png" class="function-image" alt="Монотонность квадратичной функции">
+																	</div>
+																	<div class="property-grid">
+																		<div class="property-item">
+																			<h3>При a > 0</h3>
+																			<ul>
+																				<li>Убывает на промежутке:
+
+																					<math>
+																						<mrow>
+																							<mo>(</mo>
+																							<mo>−</mo>
+																							<mo>∞</mo>
+																							<mo>,</mo>
+																							<msub>
+																								<mi>x</mi>
+																								<mi>в</mi>
+																							</msub>
+																							<mo>]</mo>
+																						</mrow>
+																					</math>
+																				</li>
+																				<li>Возрастает на промежутке:
+
+																					<math>
+																						<mrow>
+																							<mo>[</mo>
+																							<msub>
+																								<mi>x</mi>
+																								<mi>в</mi>
+																							</msub>
+																							<mo>,</mo>
+																							<mo>+</mo>
+																							<mo>∞</mo>
+																							<mo>)</mo>
+																						</mrow>
+																					</math>
+																				</li>
+																			</ul>
+																		</div>
+																		<div class="property-item">
+																			<h3>При a < 0
+
+																			</h3>
+																			<ul>
+																				<li>Возрастает на промежутке:
+
+																					<math>
+																						<mrow>
+																							<mo>(</mo>
+																							<mo>−</mo>
+																							<mo>∞</mo>
+																							<mo>,</mo>
+																							<msub>
+																								<mi>x</mi>
+																								<mi>в</mi>
+																							</msub>
+																							<mo>]</mo>
+																						</mrow>
+																					</math>
+																				</li>
+																				<li>Убывает на промежутке:
+
+																					<math>
+																						<mrow>
+																							<mo>[</mo>
+																							<msub>
+																								<mi>x</mi>
+																								<mi>в</mi>
+																							</msub>
+																							<mo>,</mo>
+																							<mo>+</mo>
+																							<mo>∞</mo>
+																							<mo>)</mo>
+																						</mrow>
+																					</math>
+																				</li>
+																			</ul>
+																		</div>
+																	</div>
+																</div>
+															</div>
+						<h1 id="6">Знакопостоянство</h1>
+					<div class="lesson-section">
+						<h2>Промежутки знакопостоянства квадратичной функции</h2>
+						<div class="definition">
+							<p>
+								<strong>Промежутками знакопостоянства</strong>
+								квадратичной функции называются интервалы значений аргумента <math><mi>x</mi></math>, на которых функция сохраняет постоянный знак (положительный или отрицательный). </p> <p>Знакопостоянство зависит от:</p> <ol> <li>Знака коэффициента <strong>a</strong></li> <li>Значения дискриминанта <strong>D</strong></li> <li>Расположения нулей функции (если они существуют)</li> </ol> </div>
+
+
+					<h2>Знакопостоянство при a > 0</h2>
+
+<div class="sign-constancy-cases">
+
+	<!-- Случай D > 0 -->
+	<div class="case">
+		<h3>Случай 1: a > 0, D > 0</h3>
+		<div class="image-container">
+			<img src="https://i.postimg.cc/rsfVVsTr/Знакопостоянство.png" alt="Знакопостоянство при a>0 D>0" class="sign-image">
+		</div>
+		<div class="sign-analysis">
+			<h4>Анализ:</h4>
+			<ul>
+				<li>Функция имеет <strong>два различных нуля</strong>: <math><mrow><msub><mi>x</mi><mn>1</mn></msub></mrow></math> и <math><mrow><msub><mi>x</mi><mn>2</mn></msub></mrow></math> (<math><mrow><msub><mi>x</mi><mn>1</mn></msub><mo><</mo><msub><mi>x</mi><mn>2</mn></msub></mrow></math>)</li>
+				<li><strong>Положительна</strong> на промежутках:
+					<math><mrow><mo>(</mo><mo>-</mo><mo>∞</mo><mo>,</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo></mrow></math> и
+					<math><mrow><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mo>+</mo><mo>∞</mo><mo>)</mo></mrow></math>
+				</li>
+				<li><strong>Отрицательна</strong> на промежутке:
+					<math><mrow><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>)</mo></mrow></math>
+				</li>
+				<li><strong>Равна нулю</strong> в точках: <math><mrow><mi>x</mi><mo>=</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></math> и <math><mrow><mi>x</mi><mo>=</mo><msub><mi>x</mi><mn>2</mn></msub></mrow></math></li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Случай D = 0 -->
+	<div class="case">
+		<h3>Случай 2: a > 0, D = 0</h3>
+		<div class="image-container">
+			<img src="https://i.postimg.cc/HW9jvWqV/Знакопостоянство_a___0.png" alt="Знакопостоянство при a>0 D=0" class="sign-image">
+		</div>
+		<div class="sign-analysis">
+			<h4>Анализ:</h4>
+			<ul>
+				<li>Функция имеет <strong>один нуль</strong> (касание оси OX): <math><mrow><msub><mi>x</mi><mn>0</mn></msub></mrow></math></li>
+				<li><strong>Положительна</strong> на всей области определения, кроме нуля:
+					<math><mrow><mo>(</mo><mo>-</mo><mo>∞</mo><mo>,</mo><msub><mi>x</mi><mn>0</mn></msub><mo>)</mo><mo>∪</mo><mo>(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><mo>+</mo><mo>∞</mo><mo>)</mo></mrow></math>
+				</li>
+				<li><strong>Отрицательных значений нет</strong></li>
+				<li><strong>Равна нулю</strong> только в точке: <math><mrow><mi>x</mi><mo>=</mo><msub><mi>x</mi><mn>0</mn></msub></mrow></math></li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Случай D < 0 -->
+	<div class="case">
+		<h3>Случай 3: a > 0, D < 0</h3>
+		<div class="image-container">
+			<img src="https://i.postimg.cc/BvPXmT0c/Знакопостоянство_a___0.png" alt="Знакопостоянство при a>0 D<0" class="sign-image">
+		</div>
+		<div class="sign-analysis">
+			<h4>Анализ:</h4>
+			<ul>
+				<li>Функция <strong>не имеет нулей</strong> (парабола не пересекает ось OX)</li>
+				<li><strong>Положительна</strong> на всей области определения:
+					<math><mrow><mo>(</mo><mo>-</mo><mo>∞</mo><mo>,</mo><mo>+</mo><mo>∞</mo><mo>)</mo></mrow></math>
+				</li>
+				<li><strong>Отрицательных значений нет</strong></li>
+				<li>Нигде <strong>не равна нулю</strong></li>
+			</ul>
+		</div>
+	</div>
+
+</div>
+
+<div class="summary">
+	<h4>Общее правило для a > 0:</h4>
+	<p>При <strong>a > 0</strong> парабола направлена ветвями вверх. Функция принимает положительные значения вне интервала между нулями (если они есть), и отрицательные значения между нулями. Если нулей нет, функция всегда положительна.</p>
+</div>
+</div>
+				<div class="lesson-section">
+					<h2>Знакопостоянство при a < 0</h2>
+<div class="sign-constancy-cases">
+
+	<!-- Случай D > 0 при a < 0 -->
+	<div class="case">
+		<h3>Случай 1: a < 0, D > 0</h3>
+		<div class="image-container">
+			<img src="https://i.postimg.cc/TPjX21qG/изображение.png" alt="Знакопостоянство при a<0 D>0" class="sign-image">
+		</div>
+		<div class="sign-analysis">
+			<h4>Анализ:</h4>
+			<ul>
+				<li>Функция имеет <strong>два различных нуля</strong>: <math><mrow><msub><mi>x</mi><mn>1</mn></msub></mrow></math> и <math><mrow><msub><mi>x</mi><mn>2</mn></msub></mrow></math> (<math><mrow><msub><mi>x</mi><mn>1</mn></msub><mo><</mo><msub><mi>x</mi><mn>2</mn></msub></mrow></math>)</li>
+				<li><strong>Отрицательна</strong> на промежутках:
+					<math><mrow><mo>(</mo><mo>-</mo><mo>∞</mo><mo>,</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo></mrow></math> и
+					<math><mrow><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mo>+</mo><mo>∞</mo><mo>)</mo></mrow></math>
+				</li>
+				<li><strong>Положительна</strong> на промежутке:
+					<math><mrow><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>)</mo></mrow></math>
+				</li>
+				<li><strong>Равна нулю</strong> в точках: <math><mrow><mi>x</mi><mo>=</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></math> и <math><mrow><mi>x</mi><mo>=</mo><msub><mi>x</mi><mn>2</mn></msub></mrow></math></li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Случай D = 0 при a < 0 -->
+	<div class="case">
+		<h3>Случай 2: a < 0, D = 0</h3>
+		<div class="image-container">
+			<img src="https://i.postimg.cc/SxMh5Dnj/изображение.png" alt="Знакопостоянство при a<0 D=0" class="sign-image">
+		</div>
+		<div class="sign-analysis">
+			<h4>Анализ:</h4>
+			<ul>
+				<li>Функция имеет <strong>один нуль</strong> (касание оси OX): <math><mrow><msub><mi>x</mi><mn>0</mn></msub></mrow></math></li>
+				<li><strong>Отрицательна</strong> на всей области определения, кроме нуля:
+					<math><mrow><mo>(</mo><mo>-</mo><mo>∞</mo><mo>,</mo><msub><mi>x</mi><mn>0</mn></msub><mo>)</mo><mo>∪</mo><mo>(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><mo>+</mo><mo>∞</mo><mo>)</mo></mrow></math>
+				</li>
+				<li><strong>Положительных значений нет</strong></li>
+				<li><strong>Равна нулю</strong> только в точке: <math><mrow><mi>x</mi><mo>=</mo><msub><mi>x</mi><mn>0</mn></msub></mrow></math></li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Случай D < 0 при a < 0 -->
+	<div class="case">
+		<h3>Случай 3: a < 0, D < 0</h3>
+		<div class="image-container">
+			<img src="https://i.postimg.cc/4y2GC0vd/изображение.png" alt="Знакопостоянство при a<0 D<0" class="sign-image">
+		</div>
+		<div class="sign-analysis">
+			<h4>Анализ:</h4>
+			<ul>
+				<li>Функция <strong>не имеет нулей</strong> (парабола не пересекает ось OX)</li>
+				<li><strong>Отрицательна</strong> на всей области определения:
+					<math><mrow><mo>(</mo><mo>-</mo><mo>∞</mo><mo>,</mo><mo>+</mo><mo>∞</mo><mo>)</mo></mrow></math>
+				</li>
+				<li><strong>Положительных значений нет</strong></li>
+				<li>Нигде <strong>не равна нулю</strong></li>
+			</ul>
+		</div>
+	</div>
+
+</div>
+
+<div class="summary">
+	<h4>Общее правило для a < 0:</h4>
+	<p>При <strong>a < 0</strong> парабола направлена ветвями вниз. Функция принимает отрицательные значения вне интервала между нулями (если они есть), и положительные значения между нулями. Если нулей нет, функция всегда отрицательна.</p>
+</div>
+
+</div>
+				<div class="lesson-section"> <h2>Таблица знакопостоянства квадратичной функции</h2>
+
+<div class="table-container">
+	<table class="sign-table">
+		<thead>
+			<tr>
+				<th>Коэффициент a</th>
+				<th>Дискриминант D</th>
+				<th>Нули функции</th>
+				<th>y > 0 (положительные значения)</th>
+				<th>y < 0 (отрицательные значения)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td rowspan="3" class="positive-a">a > 0</td>
+				<td>D > 0</td>
+				<td>Два нуля: x₁, x₂ (x₁ < x₂)</td>
+				<td>(-∞, x₁) ∪ (x₂, +∞)</td>
+				<td>(x₁, x₂)</td>
+			</tr>
+			<tr>
+				<td>D = 0</td>
+				<td>Один нуль: x₀</td>
+				<td>(-∞, x₀) ∪ (x₀, +∞)</td>
+				<td>∅ (нет)</td>
+			</tr>
+			<tr>
+				<td>D < 0</td>
+				<td>Нет нулей</td>
+				<td>(-∞, +∞)</td>
+				<td>∅ (нет)</td>
+			</tr>
+			<tr>
+				<td rowspan="3" class="negative-a">a < 0</td>
+				<td>D > 0</td>
+				<td>Два нуля: x₁, x₂ (x₁ < x₂)</td>
+				<td>(x₁, x₂)</td>
+				<td>(-∞, x₁) ∪ (x₂, +∞)</td>
+			</tr>
+			<tr>
+				<td>D = 0</td>
+				<td>Один нуль: x₀</td>
+				<td>∅ (нет)</td>
+				<td>(-∞, x₀) ∪ (x₀, +∞)</td>
+			</tr>
+			<tr>
+				<td>D < 0</td>
+				<td>Нет нулей</td>
+				<td>∅ (нет)</td>
+				<td>(-∞, +∞)</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div class="note">
+	<h4>Запомните:</h4>
+	<ol>
+		<li>При <strong>a > 0</strong>: функция положительна "снаружи" нулей и отрицательна "между" нулями</li>
+		<li>При <strong>a < 0</strong>: функция отрицательна "снаружи" нулей и положительна "между" нулями</li>
+		<li>Если нулей нет (D < 0): знак функции совпадает со знаком коэффициента a на всей числовой прямой</li>
+	</ol>
+</div>
+
+</div>
+						<h1 id="7">Примеры анализа функций</h1>
+					<div class="lesson-section">
+																<h2>Анализ конкретных функций</h2>
+
+
+
+																<!-- Функция 10 класс -->
+<!-- Функция 1 -->
+<div class="function-analysis">
+    <h3>Функция 1: f(x) = −(x − 1,2)² + 25</h3>
+    <div class="function-properties">
+
+        <div class="property">
+            <h4>Форма записи:</h4>
+            <p><em>Вид через координаты вершины:</em></p>
+            <p>y = a(x − m)² + n</p>
+        </div>
+
+        <div class="property">
+            <h4>Область определения:</h4>
+            <p>D(f) = (−∞, +∞) или D(f) = ℝ</p>
+            <p class="explanation">Квадратичная функция определена для всех действительных чисел</p>
+        </div>
+
+        <div class="property">
+            <h4>Коэффициент a:</h4>
+            <p>a = −1 < 0</p>
+            <p class="explanation">Ветви параболы направлены <strong>вниз</strong></p>
+        </div>
+
+        <div class="property">
+            <h4>Координаты вершины:</h4>
+            <p>m = 1,2, &nbsp; n = 25</p>
+            <p><strong>Вершина:</strong> (1,2; 25)</p>
+            <p><strong>Ось симметрии:</strong> x = 1,2</p>
+        </div>
+
+        <div class="property">
+            <h4>Множество значений:</h4>
+            <p>E(f) = (−∞, 25]</p>
+            <p class="explanation">При a < 0 функция имеет максимум в вершине</p>
+        </div>
+
+        <div class="property">
+            <h4>Нули функции:</h4>
+            <p>−(x − 1,2)² + 25 = 0</p>
+            <p>= (x − 1,2)² = 25</p>
+            <p>= x − 1,2 = ±5</p>
+            <p><strong>Нули:</strong><br>
+            x₁ = 1,2 − 5<br>
+            = −3,8<br>
+            x₂ = 1,2 + 5<br>
+            = 6,2</p>
+            <p class="explanation">D > 0 — два различных нуля</p>
+        </div>
+
+        <div class="property">
+            <h4>Промежутки монотонности:</h4>
+            <ul>
+                <li><strong>Возрастает:</strong> (−∞, 1,2]</li>
+                <li><strong>Убывает:</strong> [1,2, +∞)</li>
+            </ul>
+        </div>
+
+    </div>
+</div>																				<!-- Функция 2 -->
+<!-- Функция 2 -->
+<div class="function-analysis">
+    <h3>Функция 2: h(x) = 2(x − 1)(x + 4)</h3>
+    <div class="function-properties">
+
+        <div class="property">
+            <h4>Форма записи:</h4>
+            <p><em>Факторизованный вид:</em></p>
+            <p>y = a(x − x₁)(x − x₂)</p>
+        </div>
+
+        <div class="property">
+            <h4>Область определения:</h4>
+            <p>D(h) = ℝ</p>
+        </div>
+
+        <div class="property">
+            <h4>Коэффициент a:</h4>
+            <p>a = 2 > 0</p>
+            <p class="explanation">Ветви параболы направлены <strong>вверх</strong></p>
+        </div>
+
+        <div class="property">
+            <h4>Нули функции:</h4>
+            <p>Из факторизованного вида сразу видно:</p>
+            <p><strong>Нули:</strong><br>
+            x₁ = 1,<br>
+            x₂ = −4</p>
+            <p class="explanation">D > 0 — два различных нуля</p>
+        </div>
+
+        <div class="property">
+            <h4>Координаты вершины:</h4>
+            <p>Находим среднее арифметическое нулей:</p>
+            <p>xᵥ = (1 + (−4)) : 2<br>
+            = (−3) : 2<br>
+            = −1,5</p>
+            <p>yᵥ = h(−1,5) <br>
+            = 2 × (−2,5) × 2,5<br>
+            = −12,5</p>
+            <p><strong>Вершина:</strong> (−1,5; −12,5)</p>
+        </div>
+
+        <div class="property">
+            <h4>Множество значений:</h4>
+            <p>E(h) = [−12,5, +∞)</p>
+            <p class="explanation">При a > 0 функция имеет минимум в вершине</p>
+        </div>
+
+        <div class="property">
+            <h4>Промежутки монотонности:</h4>
+            <ul>
+                <li><strong>Убывает:</strong> (−∞, −1,5]</li>
+                <li><strong>Возрастает:</strong> [−1,5, +∞)</li>
+            </ul>
+        </div>
+
+    </div>
+</div>																						<!-- Функция 3 -->
+<!-- Функция 3 -->
+<div class="function-analysis">
+    <h3>Функция 3: p(x) = −2x² + 4x − 2</h3>
+    <div class="function-properties">
+
+        <div class="property">
+            <h4>Форма записи:</h4>
+            <p><em>Общий вид:</em></p>
+            <p>y = ax² + bx + c</p>
+        </div>
+
+        <div class="property">
+            <h4>Область определения:</h4>
+            <p>D(p) = ℝ</p>
+        </div>
+
+        <div class="property">
+            <h4>Коэффициенты:</h4>
+            <p>a = −2 < 0, &nbsp; b = 4, &nbsp; c = −2</p>
+            <p class="explanation">Ветви параболы направлены <strong>вниз</strong></p>
+        </div>
+
+        <div class="property">
+            <h4>Дискриминант:</h4>
+            <p>D = b² − 4ac<br>
+            = 4² − 4 × (−2) × (−2)<br>
+            = 16 − 16<br>
+            = 0</p>
+            <p class="explanation">D = 0 — один нуль (касание оси OX)</p>
+        </div>
+
+        <div class="property">
+            <h4>Нуль функции:</h4>
+            <p>x₀ = −b / (2a)<br>
+            = −4 / [2 × (−2)]<br>
+            = −4 / (−4)<br>
+            = 1</p>
+            <p><strong>Нуль:</strong> x = 1</p>
+        </div>
+
+        <div class="property">
+            <h4>Координаты вершины:</h4>
+            <p>xᵥ = 1 (совпадает с нулём)</p>
+            <p>yᵥ = p(1) = −2 × 1² + 4 × 1 − 2<br>
+            = −2 + 4 − 2<br>
+            = 0</p>
+            <p><strong>Вершина:</strong> (1; 0)</p>
+            <p><strong>Ось симметрии:</strong> x = 1</p>
+        </div>
+
+        <div class="property">
+            <h4>Множество значений:</h4>
+            <p>E(p) = (−∞, 0]</p>
+        </div>
+
+        <div class="property">
+            <h4>Промежутки монотонности:</h4>
+            <ul>
+                <li><strong>Возрастает:</strong> (−∞, 1]</li>
+                <li><strong>Убывает:</strong> [1, +∞)</li>
+            </ul>
+        </div>
+
+        <div class="property">
+            <h4>Факторизованный вид:</h4>
+            <p>p(x) = −2(x − 1)²</p>
+            <p class="explanation">При D = 0 функция имеет вид y = a(x − x₀)²</p>
+        </div>
+
+    </div>
+</div>																						</div>
+
+					<div class="bottom-nav">
+    <select onchange="goToSection(this.value)">
+        <option value="">Перейти к теме…</option>
+        <option value="1">Направление ветвей</option>
+        <option value="2">Нули функции</option>
+        <option value="3">Ось симметрии и вершина параболы</option>
+        <option value="4">Построение графика квадратичной функции</option>
+        <option value="5">Монотонность</option>
+        <option value="6">Знакопостоянство</option>
+        <option value="7">Примеры анализа функций</option>
+
+    </select>
+</div>
+
+<script>
+function goToSection(id) {
+    if (!id) return;
+    document.getElementById(id).scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+</script>
+
+				</div>
+			</body>
+</html>

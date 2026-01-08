@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>Рациональная дробь</title>
+				<style>
+        * {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f9ff;
+    color: #333;
+    line-height: 1.6;
+    font-size: 16px; /* Базовый размер шрифта */
+}
+
+.container {
+    max-width: 2000px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 150, 0.1);
+    padding: 30px;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 15px;
+    margin-top: 0;
+    font-size: 1.8em; /* Главный заголовок */
+}
+
+h2 {
+    color: #2980b9;
+    margin-top: 30px;
+    font-size: 1.4em; /* Второстепенные заголовки */
+}
+
+.lesson-section {
+    background-color: #f8fafd;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 25px 0;
+    border-left: 5px solid #3498db;
+}
+
+.definition {
+    background-color: #e8f4fc;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-size: 1em; /* Обычный размер шрифта */
+}
+
+.example {
+    background-color: #f0f7ff;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-left: 4px solid #2ecc71;
+    font-size: 1em; /* Обычный размер шрифта */
+}
+
+.example-title {
+    font-weight: bold;
+    color: #27ae60;
+    margin-bottom: 10px;
+    font-size: 1.1em; /* Чуть больше обычного для заголовков примеров */
+}
+
+.hard-example {
+    border-left-color: #e74c3c;
+}
+
+.hard-example .example-title {
+    color: #e74c3c;
+}
+
+.math-container {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin: 15px 0;
+    overflow-x: auto;
+}
+
+.math-formula {
+    font-size: 1.1em; /* Чуть больше для формул */
+    text-align: center;
+    padding: 10px;
+}
+
+.explanation {
+    background-color: #fffde7;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    font-style: italic;
+    font-size: 1em; /* Обычный размер шрифта */
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em; /* Обычный размер шрифта */
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+.lesson-number {
+    background-color: #3498db;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 0.9em; /* Немного меньше для меток */
+}
+
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #7f8c8d;
+    font-size: 0.9em; /* Меньше для подвала */
+}
+    </style>
+			</head>
+			<body>
+				<div class="container">
+
+					<h1>Рациональная дробь</h1>
+
+                    <div class="lesson-section">
+    <h2>Рациональные дроби: основные понятия</h2>
+
+    <div class="definition">
+        <p><strong>Определение рациональной дроби:</strong></p>
+        <p>Дробь, числитель и знаменатель которой — многочлены, называется <strong>рациональной дробью</strong>.</p>
+
+        <div class="example">
+            <div class="example-title">Примеры рациональных дробей:</div>
+            <div class="math-container">
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mfrac><mrow><mi>a</mi><mo>-</mo><mi>b</mi></mrow><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow></mfrac>
+                            <mo>,</mo>
+                            <mspace width="1em"/>
+                            <mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>1</mn></mrow><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>+</mo><mn>7</mn></mrow></mfrac>
+                            <mo>,</mo>
+                            <mspace width="1em"/>
+                            <mi>y</mi><mo>-</mo><mn>6</mn>
+                            <mo>,</mo>
+                            <mspace width="1em"/>
+                            <mi>m</mi>
+                            <mo>,</mo>
+                            <mspace width="1em"/>
+                            <mi>c</mi><mo>+</mo><mn>2</mn><mi>d</mi>
+                            <mo>,</mo>
+                            <mspace width="1em"/>
+                            <mfrac><mn>8</mn><mn>11</mn></mfrac>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+            <p>Замечание: целые выражения (как <math><mi>y</mi><mo>-</mo><mn>6</mn></math>, <math><mi>m</mi></math>) также считаются рациональными дробями, так как их можно записать как дробь со знаменателем 1.</p>
+        </div>
+    </div>
+
+    <div class="definition">
+        <p><strong>Область определения рациональной дроби:</strong></p>
+        <p>Областью определения рациональной дроби является множество всех значений входящих в нее переменных, <strong>кроме тех, которые обращают ее знаменатель в нуль</strong>.</p>
+    </div>
+
+    <div class="example">
+        <div class="example-title">Пример 1: Нахождение области определения</div>
+
+        <div class="step">
+            <p><strong>Найдите область определения дроби:</strong> <math><mrow><mfrac><mrow><mn>5</mn><mi>x</mi></mrow><mrow><mi>x</mi><mo>-</mo><mn>4</mn></mrow></mfrac></mrow></math></p>
+        </div>
+
+        <div class="step">
+            <p><strong>Решение:</strong> Знаменатель обращается в нуль при <math><mi>x</mi><mo>=</mo><mn>4</mn></math>.</p>
+            <p>Следовательно, область определения: все действительные числа, кроме 4.</p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>x</mi><mo>∈</mo><mo>(</mo><mo>-</mo><mi>∞</mi><mo>;</mo><mn>4</mn><mo>)</mo><mo>∪</mo><mo>(</mo><mn>4</mn><mo>;</mo><mo>+</mo><mi>∞</mi><mo>)</mo>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="example">
+        <div class="example-title">Пример 2: Нахождение области определения</div>
+
+        <div class="step">
+            <p><strong>Найдите область определения дроби:</strong> <math><mrow><mfrac><mrow><mn>6</mn><mi>y</mi><mo>-</mo><mn>1</mn></mrow><mrow><mi>y</mi><mo>(</mo><mi>y</mi><mo>+</mo><mn>8</mn><mo>)</mo></mrow></mfrac></mrow></math></p>
+        </div>
+
+        <div class="step">
+            <p><strong>Решение:</strong> Знаменатель равен нулю при <math><mi>y</mi><mo>(</mo><mi>y</mi><mo>+</mo><mn>8</mn><mo>)</mo><mo>=</mo><mn>0</mn></math>.</p>
+            <p>Корни: <math><mi>y</mi><mo>=</mo><mn>0</mn></math> и <math><mi>y</mi><mo>=</mo><mo>-</mo><mn>8</mn></math>.</p>
+            <p>Область определения: все действительные числа, кроме 0 и -8.</p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>y</mi><mo>∈</mo><mo>(</mo><mo>-</mo><mi>∞</mi><mo>;</mo><mo>-</mo><mn>8</mn><mo>)</mo><mo>∪</mo><mo>(</mo><mo>-</mo><mn>8</mn><mo>;</mo><mn>0</mn><mo>)</mo><mo>∪</mo><mo>(</mo><mn>0</mn><mo>;</mo><mo>+</mo><mi>∞</mi><mo>)</mo>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="example">
+        <div class="example-title">Пример 3: Нахождение области определения</div>
+
+        <div class="step">
+            <p><strong>Найдите область определения дроби:</strong> <math><mrow><mfrac><mrow><mn>7</mn><mi>a</mi><mo>-</mo><mn>4</mn></mrow><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><mn>9</mn></mrow></mfrac></mrow></math></p>
+        </div>
+
+        <div class="step">
+            <p><strong>Решение:</strong> Выражение <math><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><mn>9</mn></math> всегда положительно (так как квадрат любого числа неотрицателен, а +9 делает его строго положительным).</p>
+            <p>Знаменатель никогда не обращается в нуль.</p>
+            <p>Область определения: все действительные числа.</p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mi>a</mi><mo>∈</mo><mi>ℝ</mi>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Основное свойство рациональной дроби</h2>
+
+    <div class="definition">
+        <p><strong>Основное свойство:</strong> Для любой рациональной дроби <math><mfrac><mi>A</mi><mi>B</mi></mfrac></math> справедливо тождество:</p>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac><mi>A</mi><mi>B</mi></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><mi>A</mi><mo>·</mo><mi>C</mi></mrow><mrow><mi>B</mi><mo>·</mo><mi>C</mi></mrow></mfrac>
+                        <mo>,</mo>
+                        <mspace width="1em"/>
+                        <mtext>где</mtext>
+                        <mspace width="0.3em"/>
+                        <mi>C</mi><mo>≠</mo><mn>0</mn>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+        <p>Это означает, что числитель и знаменатель рациональной дроби можно умножить (или разделить) на одно и то же ненулевое выражение.</p>
+    </div>
+
+    <div class="example">
+        <div class="example-title">Примеры применения основного свойства:</div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac><mrow><mi>a</mi><mo>+</mo><mn>1</mn></mrow><mi>a</mi></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><mo>(</mo><mi>a</mi><mo>+</mo><mn>1</mn><mo>)</mo><mo>·</mo><mo>(</mo><mi>a</mi><mo>-</mo><mn>1</mn><mo>)</mo></mrow><mrow><mi>a</mi><mo>·</mo><mo>(</mo><mi>a</mi><mo>-</mo><mn>1</mn><mo>)</mo></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>-</mo><mn>1</mn></mrow><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>-</mo><mi>a</mi></mrow></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac><mn>5</mn><mrow><mi>x</mi><mo>-</mo><mn>4</mn></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><mn>5</mn><mo>·</mo><mo>(</mo><mi>x</mi><mo>+</mo><mn>4</mn><mo>)</mo></mrow><mrow><mo>(</mo><mi>x</mi><mo>-</mo><mn>4</mn><mo>)</mo><mo>·</mo><mo>(</mo><mi>x</mi><mo>+</mo><mn>4</mn><mo>)</mo></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><mn>5</mn><mo>(</mo><mi>x</mi><mo>+</mo><mn>4</mn><mo>)</mo></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>16</mn></mrow></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="definition">
+        <p><strong>Приведение дроби к новому знаменателю:</strong></p>
+        <p>Основное свойство используется для приведения дробей к общему знаменателю.</p>
+
+        <div class="example">
+            <div class="example-title">Задача: Приведите дробь <math><mfrac><mrow><mn>3</mn><mi>x</mi><mo>-</mo><mn>1</mn></mrow><mrow><mn>2</mn><mi>x</mi><mo>+</mo><mn>3</mn></mrow></mfrac></math> к знаменателю:</p>
+            <p>а) <math><mn>4</mn><mi>x</mi><mo>+</mo><mn>6</mn></math>; б) <math><mn>4</mn><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>9</mn></math></p>
+
+            <div class="step">
+                <p><strong>Решение а):</strong></p>
+                <p>Заметим, что <math><mn>4</mn><mi>x</mi><mo>+</mo><mn>6</mn><mo>=</mo><mn>2</mn><mo>(</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>3</mn><mo>)</mo></math>.</p>
+                <p>Умножаем числитель и знаменатель исходной дроби на 2:</p>
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mfrac><mrow><mn>3</mn><mi>x</mi><mo>-</mo><mn>1</mn></mrow><mrow><mn>2</mn><mi>x</mi><mo>+</mo><mn>3</mn></mrow></mfrac>
+                            <mo>=</mo>
+                            <mfrac><mrow><mo>(</mo><mn>3</mn><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>·</mo><mn>2</mn></mrow><mrow><mo>(</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>3</mn><mo>)</mo><mo>·</mo><mn>2</mn></mrow></mfrac>
+                            <mo>=</mo>
+                            <mfrac><mrow><mn>6</mn><mi>x</mi><mo>-</mo><mn>2</mn></mrow><mrow><mn>4</mn><mi>x</mi><mo>+</mo><mn>6</mn></mrow></mfrac>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+
+            <div class="step">
+                <p><strong>Решение б):</strong></p>
+                <p>Заметим, что <math><mn>4</mn><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>9</mn><mo>=</mo><mo>(</mo><mn>2</mn><mi>x</mi><mo>-</mo><mn>3</mn><mo>)</mo><mo>(</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>3</mn><mo>)</mo></math>.</p>
+                <p>Умножаем числитель и знаменатель исходной дроби на <math><mo>(</mo><mn>2</mn><mi>x</mi><mo>-</mo><mn>3</mn><mo>)</mo></math>:</p>
+                <div class="math-formula">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mfrac><mrow><mn>3</mn><mi>x</mi><mo>-</mo><mn>1</mn></mrow><mrow><mn>2</mn><mi>x</mi><mo>+</mo><mn>3</mn></mrow></mfrac>
+                            <mo>=</mo>
+                            <mfrac><mrow><mo>(</mo><mn>3</mn><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>·</mo><mo>(</mo><mn>2</mn><mi>x</mi><mo>-</mo><mn>3</mn><mo>)</mo></mrow><mrow><mo>(</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>3</mn><mo>)</mo><mo>·</mo><mo>(</mo><mn>2</mn><mi>x</mi><mo>-</mo><mn>3</mn><mo>)</mo></mrow></mfrac>
+                            <mo>=</mo>
+                            <mfrac><mrow><mo>(</mo><mn>3</mn><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>(</mo><mn>2</mn><mi>x</mi><mo>-</mo><mn>3</mn><mo>)</mo></mrow><mrow><mn>4</mn><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>9</mn></mrow></mfrac>
+                        </mrow>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Сокращение рациональных дробей</h2>
+
+    <div class="definition">
+        <p><strong>Определение:</strong> Сократить рациональную дробь — значит разделить ее числитель и знаменатель на их общий множитель.</p>
+    </div>
+
+    <div class="example">
+        <div class="example-title">Пример 1: Простое сокращение</div>
+
+        <div class="step">
+            <p><strong>Сократите дробь:</strong> <math><mrow><mfrac><mrow><mn>15</mn><msup><mi>x</mi><mn>2</mn></msup><mi>y</mi></mrow><mrow><mn>12</mn><mi>x</mi><msup><mi>y</mi><mn>2</mn></msup></mrow></mfrac></mrow></math></p>
+        </div>
+
+        <div class="step">
+            <p><strong>Решение:</strong> Находим общий множитель числителя и знаменателя: <math><mn>3</mn><mi>x</mi><mi>y</mi></math>.</p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac><mrow><mn>15</mn><msup><mi>x</mi><mn>2</mn></msup><mi>y</mi></mrow><mrow><mn>12</mn><mi>x</mi><msup><mi>y</mi><mn>2</mn></msup></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><mn>5</mn><mi>x</mi><mo>·</mo><menclose notation="updiagonalstrike"><mn>3</mn><mi>x</mi><mi>y</mi></menclose></mrow><mrow><mn>4</mn><mi>y</mi><mo>·</mo><menclose notation="updiagonalstrike"><mn>3</mn><mi>x</mi><mi>y</mi></menclose></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><mn>5</mn><mi>x</mi></mrow><mrow><mn>4</mn><mi>y</mi></mrow></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="example">
+        <div class="example-title">Пример 2: Сокращение с разложением на множители</div>
+
+        <div class="step">
+            <p><strong>Сократите дробь:</strong> <math><mrow><mfrac><mrow><mn>18</mn><mi>m</mi><mi>n</mi><mo>-</mo><mn>27</mn><mi>n</mi></mrow><mrow><mn>9</mn><mi>m</mi><mi>n</mi></mrow></mfrac></mrow></math></p>
+        </div>
+
+        <div class="step">
+            <p><strong>Решение:</strong> Выносим общий множитель в числителе:</p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac><mrow><mn>18</mn><mi>m</mi><mi>n</mi><mo>-</mo><mn>27</mn><mi>n</mi></mrow><mrow><mn>9</mn><mi>m</mi><mi>n</mi></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><mn>9</mn><mi>n</mi><mo>(</mo><mn>2</mn><mi>m</mi><mo>-</mo><mn>3</mn><mo>)</mo></mrow><mrow><mn>9</mn><mi>m</mi><mi>n</mi></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><menclose notation="updiagonalstrike"><mn>9</mn><mi>n</mi></menclose><mo>(</mo><mn>2</mn><mi>m</mi><mo>-</mo><mn>3</mn><mo>)</mo></mrow><mrow><mi>m</mi><menclose notation="updiagonalstrike"><mn>9</mn><mi>n</mi></menclose></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><mn>2</mn><mi>m</mi><mo>-</mo><mn>3</mn></mrow><mi>m</mi></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="example">
+        <div class="example-title">Пример 3: Использование формул сокращенного умножения</div>
+
+        <div class="step">
+            <p><strong>Сократите дробь:</strong> <math><mrow><mfrac><mrow><msup><mi>m</mi><mn>2</mn></msup><mo>-</mo><msup><mi>n</mi><mn>2</mn></msup></mrow><mrow><msup><mi>m</mi><mn>2</mn></msup><mo>+</mo><msup><mi>n</mi><mn>2</mn></msup><mo>-</mo><mn>2</mn><mi>n</mi><mi>m</mi></mrow></mfrac></mrow></math></p>
+        </div>
+
+        <div class="step">
+            <p><strong>Решение:</strong> Применяем формулы разности квадратов и квадрата разности:</p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac><mrow><msup><mi>m</mi><mn>2</mn></msup><mo>-</mo><msup><mi>n</mi><mn>2</mn></msup></mrow><mrow><msup><mi>m</mi><mn>2</mn></msup><mo>+</mo><msup><mi>n</mi><mn>2</mn></msup><mo>-</mo><mn>2</mn><mi>n</mi><mi>m</mi></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><mo>(</mo><mi>m</mi><mo>-</mo><mi>n</mi><mo>)</mo><mo>(</mo><mi>m</mi><mo>+</mo><mi>n</mi><mo>)</mo></mrow><mrow><mo>(</mo><mi>m</mi><mo>-</mo><mi>n</mi><msup><mo>)</mo><mn>2</mn></msup></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><menclose notation="updiagonalstrike"><mo>(</mo><mi>m</mi><mo>-</mo><mi>n</mi><mo>)</mo></menclose><mo>(</mo><mi>m</mi><mo>+</mo><mi>n</mi><mo>)</mo></mrow><mrow><menclose notation="updiagonalstrike"><mo>(</mo><mi>m</mi><mo>-</mo><mi>n</mi><mo>)</mo></menclose><mo>(</mo><mi>m</mi><mo>-</mo><mi>n</mi><mo>)</mo></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><mi>m</mi><mo>+</mo><mi>n</mi></mrow><mrow><mi>m</mi><mo>-</mo><mi>n</mi></mrow></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="example hard-example">
+        <div class="example-title">Пример 4: Особый случай — противоположные множители</div>
+
+        <div class="step">
+            <p><strong>Сократите дробь:</strong> <math><mrow><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mrow><mn>3</mn><mi>y</mi><mo>-</mo><mn>3</mn><mi>x</mi></mrow></mfrac></mrow></math></p>
+        </div>
+
+        <div class="step">
+            <p><strong>Решение:</strong> Заметим, что <math><mi>y</mi><mo>-</mo><mi>x</mi><mo>=</mo><mo>-</mo><mo>(</mo><mi>x</mi><mo>-</mo><mi>y</mi><mo>)</mo></math>.</p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mrow><mn>3</mn><mi>y</mi><mo>-</mo><mn>3</mn><mi>x</mi></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><mo>(</mo><mi>x</mi><mo>-</mo><mi>y</mi><mo>)</mo><mo>(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo>)</mo></mrow><mrow><mn>3</mn><mo>(</mo><mi>y</mi><mo>-</mo><mi>x</mi><mo>)</mo></mrow></mfrac>
+                    </mrow>
+                </math>
+            </div>
+            <p>Выносим знак "минус" из второго множителя в знаменателе:</p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mfrac><mrow><mo>(</mo><mi>x</mi><mo>-</mo><mi>y</mi><mo>)</mo><mo>(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo>)</mo></mrow><mrow><mo>-</mo><mn>3</mn><mo>(</mo><mi>x</mi><mo>-</mo><mi>y</mi><mo>)</mo></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><menclose notation="updiagonalstrike"><mo>(</mo><mi>x</mi><mo>-</mo><mi>y</mi><mo>)</mo></menclose><mo>(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo>)</mo></mrow><mrow><mo>-</mo><mn>3</mn><menclose notation="updiagonalstrike"><mo>(</mo><mi>x</mi><mo>-</mo><mi>y</mi><mo>)</mo></menclose></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow><mrow><mo>-</mo><mn>3</mn></mrow></mfrac>
+                        <mo>=</mo>
+                        <mo>-</mo><mfrac><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow><mn>3</mn></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lesson-section">
+    <h2>Сложение и вычитание рациональных дробей</h2>
+
+    <div class="definition">
+        <p><strong>Сложение дробей с одинаковыми знаменателями:</strong></p>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac><mi>A</mi><mi>C</mi></mfrac>
+                        <mo>+</mo>
+                        <mfrac><mi>B</mi><mi>C</mi></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><mi>A</mi><mo>+</mo><mi>B</mi></mrow><mi>C</mi></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="definition">
+        <p><strong>Вычитание дробей с одинаковыми знаменателями:</strong></p>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac><mi>A</mi><mi>C</mi></mfrac>
+                        <mo>-</mo>
+                        <mfrac><mi>B</mi><mi>C</mi></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><mi>A</mi><mo>-</mo><mi>B</mi></mrow><mi>C</mi></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="example">
+        <div class="example-title">Пример 1</div>
+
+        <div class="step">
+            <p><strong>Выполните сложение:</strong> <math><mrow><mfrac><mrow><mn>3</mn><mi>x</mi><mo>-</mo><mn>1</mn></mrow><mrow><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mrow><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac></mrow></math></p>
+        </div>
+
+        <div class="step">
+            <p><strong>Решение:</strong> Знаменатели одинаковы, складываем числители:</p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac><mrow><mn>3</mn><mi>x</mi><mo>-</mo><mn>1</mn></mrow><mrow><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac>
+                        <mo>+</mo>
+                        <mfrac><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mrow><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><mo>(</mo><mn>3</mn><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>+</mo><mo>(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mrow><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac>
+                    </mrow>
+                </math>
+            </div>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mfrac><mrow><mn>3</mn><mi>x</mi><mo>-</mo><mn>1</mn><mo>+</mo><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mrow><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><mn>4</mn><mi>x</mi></mrow><mrow><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mn>2</mn><mi>x</mi></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="example">
+        <div class="example-title">Пример 2</div>
+
+        <div class="step">
+            <p><strong>Выполните сложение:</strong> <math><mrow><mfrac><mn>1</mn><mrow><mi>x</mi><mo>-</mo><mn>1</mn></mrow></mfrac><mo>-</mo><mfrac><mrow><mi>x</mi><mo>+</mo><mn>2</mn></mrow><mrow><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>3</mn><mi>x</mi></mrow></mfrac></mrow></math></p>
+        </div>
+
+        <div class="step">
+            <p><strong>Решение:</strong></p>
+            <p>1. Разложим знаменатели на множители:</p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>3</mn><mi>x</mi>
+                        <mo>=</mo>
+                        <mn>3</mn><mi>x</mi><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo>
+                    </mrow>
+                </math>
+            </div>
+
+            <p>2. Приведем к общему знаменателю <math><mn>3</mn><mi>x</mi><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo></math>:</p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac><mn>1</mn><mrow><mi>x</mi><mo>-</mo><mn>1</mn></mrow></mfrac>
+                        <mo>-</mo>
+                        <mfrac><mrow><mi>x</mi><mo>+</mo><mn>2</mn></mrow><mrow><mn>3</mn><mi>x</mi><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><mn>1</mn><mo>·</mo><mn>3</mn><mi>x</mi></mrow><mrow><mn>3</mn><mi>x</mi><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo></mrow></mfrac>
+                        <mo>-</mo>
+                        <mfrac><mrow><mi>x</mi><mo>+</mo><mn>2</mn></mrow><mrow><mn>3</mn><mi>x</mi><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo></mrow></mfrac>
+                    </mrow>
+                </math>
+            </div>
+
+            <p>3. Выполним вычитание:</p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mfrac><mrow><mn>3</mn><mi>x</mi><mo>-</mo><mo>(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo>)</mo></mrow><mrow><mn>3</mn><mi>x</mi><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><mn>3</mn><mi>x</mi><mo>-</mo><mi>x</mi><mo>-</mo><mn>2</mn></mrow><mrow><mn>3</mn><mi>x</mi><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo></mrow></mfrac>
+                    </mrow>
+                </math>
+            </div>
+
+            <p>4. Упрощаем и сокращаем:</p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mfrac><mrow><mn>2</mn><mi>x</mi><mo>-</mo><mn>2</mn></mrow><mrow><mn>3</mn><mi>x</mi><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><mn>2</mn><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo></mrow><mrow><mn>3</mn><mi>x</mi><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mn>2</mn><mrow><mn>3</mn><mi>x</mi></mrow></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="example">
+        <div class="example-title">Пример 3</div>
+
+        <div class="step">
+            <p><strong>Выполните вычитание:</strong></p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac>
+                            <mrow><mn>12</mn><mo>-</mo><mi>a</mi></mrow>
+                            <mrow><mn>6</mn><mi>a</mi><mo>-</mo><mn>36</mn></mrow>
+                        </mfrac>
+                        <mo>-</mo>
+                        <mfrac>
+                            <mn>6</mn>
+                            <mrow><msup><mi>a</mi><mn>2</mn></msup><mo>-</mo><mn>6</mn><mi>a</mi></mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="step">
+            <p><strong>Шаг 1: Разложим знаменатели на множители</strong></p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn>6</mn><mi>a</mi><mo>-</mo><mn>36</mn>
+                        <mo>=</mo>
+                        <mn>6</mn><mo>(</mo><mi>a</mi><mo>-</mo><mn>6</mn><mo>)</mo>
+                    </mrow>
+                </math>
+            </div>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <msup><mi>a</mi><mn>2</mn></msup><mo>-</mo><mn>6</mn><mi>a</mi>
+                        <mo>=</mo>
+                        <mi>a</mi><mo>(</mo><mi>a</mi><mo>-</mo><mn>6</mn><mo>)</mo>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="step">
+            <p><strong>Шаг 2: Перепишем выражение с разложенными знаменателями</strong></p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac>
+                            <mrow><mn>12</mn><mo>-</mo><mi>a</mi></mrow>
+                            <mrow><mn>6</mn><mo>(</mo><mi>a</mi><mo>-</mo><mn>6</mn><mo>)</mo></mrow>
+                        </mfrac>
+                        <mo>-</mo>
+                        <mfrac>
+                            <mn>6</mn>
+                            <mrow><mi>a</mi><mo>(</mo><mi>a</mi><mo>-</mo><mn>6</mn><mo>)</mo></mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="step">
+            <p><strong>Шаг 3: Найдем общий знаменатель</strong></p>
+            <p>Общий знаменатель: <math><mn>6</mn><mi>a</mi><mo>(</mo><mi>a</mi><mo>-</mo><mn>6</mn><mo>)</mo></math></p>
+        </div>
+
+        <div class="step">
+            <p><strong>Шаг 4: Приведем дроби к общему знаменателю</strong></p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mrow><mi>a</mi><mo>·</mo><mo>(</mo><mn>12</mn><mo>-</mo><mi>a</mi><mo>)</mo></mrow>
+                            <mrow><mn>6</mn><mi>a</mi><mo>(</mo><mi>a</mi><mo>-</mo><mn>6</mn><mo>)</mo></mrow>
+                        </mfrac>
+                        <mo>-</mo>
+                        <mfrac>
+                            <mrow><mn>6</mn><mo>·</mo><mn>6</mn></mrow>
+                            <mrow><mn>6</mn><mi>a</mi><mo>(</mo><mi>a</mi><mo>-</mo><mn>6</mn><mo>)</mo></mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="step">
+            <p><strong>Шаг 5: Выполним вычитание</strong></p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mrow><mi>a</mi><mo>(</mo><mn>12</mn><mo>-</mo><mi>a</mi><mo>)</mo><mo>-</mo><mn>36</mn></mrow>
+                            <mrow><mn>6</mn><mi>a</mi><mo>(</mo><mi>a</mi><mo>-</mo><mn>6</mn><mo>)</mo></mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="step">
+            <p><strong>Шаг 6: Упростим числитель</strong></p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mrow><mn>12</mn><mi>a</mi><mo>-</mo><msup><mi>a</mi><mn>2</mn></msup><mo>-</mo><mn>36</mn></mrow>
+                            <mrow><mn>6</mn><mi>a</mi><mo>(</mo><mi>a</mi><mo>-</mo><mn>6</mn><mo>)</mo></mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="step">
+            <p><strong>Шаг 7: Вынесем знак "минус" в числителе</strong></p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mrow><mo>-</mo><mo>(</mo><msup><mi>a</mi><mn>2</mn></msup><mo>-</mo><mn>12</mn><mi>a</mi><mo>+</mo><mn>36</mn><mo>)</mo></mrow>
+                            <mrow><mn>6</mn><mi>a</mi><mo>(</mo><mi>a</mi><mo>-</mo><mn>6</mn><mo>)</mo></mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="step">
+            <p><strong>Шаг 8: Разложим числитель на множители</strong></p>
+            <p>Заметим, что <math><msup><mi>a</mi><mn>2</mn></msup><mo>-</mo><mn>12</mn><mi>a</mi><mo>+</mo><mn>36</mn><mo>=</mo><msup><mrow><mo>(</mo><mi>a</mi><mo>-</mo><mn>6</mn><mo>)</mo></mrow><mn>2</mn></msup></math></p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mrow><mo>-</mo><msup><mrow><mo>(</mo><mi>a</mi><mo>-</mo><mn>6</mn><mo>)</mo></mrow><mn>2</mn></msup></mrow>
+                            <mrow><mn>6</mn><mi>a</mi><mo>(</mo><mi>a</mi><mo>-</mo><mn>6</mn><mo>)</mo></mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="step">
+            <p><strong>Шаг 9: Сократим дробь</strong></p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mrow><mo>-</mo><mo>(</mo><mi>a</mi><mo>-</mo><mn>6</mn><mo>)</mo></mrow>
+                            <mrow><mn>6</mn><mi>a</mi></mrow>
+                        </mfrac>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mrow><mn>6</mn><mo>-</mo><mi>a</mi></mrow>
+                            <mrow><mn>6</mn><mi>a</mi></mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="answer">
+            <strong>Ответ:</strong> <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow><mfrac><mrow><mn>6</mn><mo>-</mo><mi>a</mi></mrow><mrow><mn>6</mn><mi>a</mi></mrow></mfrac></mrow>
+            </math>
+        </div>
+    </div>
+
+    <!-- Пример r -->
+    <div class="example">
+        <div class="example-title">Пример 4</div>
+
+        <div class="step">
+            <p><strong>Выполните вычитание:</strong></p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac>
+                            <mrow><mn>3</mn><msup><mi>n</mi><mn>2</mn></msup></mrow>
+                            <mrow><mi>n</mi><mo>-</mo><mn>4</mn></mrow>
+                        </mfrac>
+                        <mo>-</mo>
+                        <mn>3</mn><mi>n</mi>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="step">
+            <p><strong>Шаг 1: Представим второе слагаемое как дробь со знаменателем 1</strong></p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mrow><mn>3</mn><msup><mi>n</mi><mn>2</mn></msup></mrow>
+                            <mrow><mi>n</mi><mo>-</mo><mn>4</mn></mrow>
+                        </mfrac>
+                        <mo>-</mo>
+                        <mfrac>
+                            <mrow><mn>3</mn><mi>n</mi></mrow>
+                            <mn>1</mn>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="step">
+            <p><strong>Шаг 2: Приведем дроби к общему знаменателю (n - 4)</strong></p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mrow><mn>3</mn><msup><mi>n</mi><mn>2</mn></msup></mrow>
+                            <mrow><mi>n</mi><mo>-</mo><mn>4</mn></mrow>
+                        </mfrac>
+                        <mo>-</mo>
+                        <mfrac>
+                            <mrow><mn>3</mn><mi>n</mi><mo>·</mo><mo>(</mo><mi>n</mi><mo>-</mo><mn>4</mn><mo>)</mo></mrow>
+                            <mrow><mi>n</mi><mo>-</mo><mn>4</mn></mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="step">
+            <p><strong>Шаг 3: Выполним вычитание</strong></p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mrow><mn>3</mn><msup><mi>n</mi><mn>2</mn></msup><mo>-</mo><mn>3</mn><mi>n</mi><mo>(</mo><mi>n</mi><mo>-</mo><mn>4</mn><mo>)</mo></mrow>
+                            <mrow><mi>n</mi><mo>-</mo><mn>4</mn></mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="step">
+            <p><strong>Шаг 4: Раскроем скобки в числителе</strong></p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mrow><mn>3</mn><msup><mi>n</mi><mn>2</mn></msup><mo>-</mo><mn>3</mn><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mn>12</mn><mi>n</mi></mrow>
+                            <mrow><mi>n</mi><mo>-</mo><mn>4</mn></mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="step">
+            <p><strong>Шаг 5: Упростим числитель</strong></p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mrow><mn>12</mn><mi>n</mi></mrow>
+                            <mrow><mi>n</mi><mo>-</mo><mn>4</mn></mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="answer">
+            <strong>Ответ:</strong> <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow><mfrac><mrow><mn>12</mn><mi>n</mi></mrow><mrow><mi>n</mi><mo>-</mo><mn>4</mn></mrow></mfrac></mrow>
+            </math>
+        </div>
+    </div>
+
+    <!-- Пример д -->
+    <div class="example">
+        <div class="example-title">Пример 5</div>
+
+        <div class="step">
+            <p><strong>Выполните вычитание:</strong></p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac>
+                            <msup><mi>x</mi><mn>2</mn></msup>
+                            <mrow><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>3</mn><mi>x</mi><mo>+</mo><mn>1</mn></mrow>
+                        </mfrac>
+                        <mo>-</mo>
+                        <mfrac>
+                            <mn>1</mn>
+                            <mrow><mi>x</mi><mo>-</mo><mn>1</mn></mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="step">
+            <p><strong>Шаг 1: Разложим знаменатель первой дроби на множители</strong></p>
+            <p>Разложим квадратный трехчлен: <math><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>3</mn><mi>x</mi><mo>+</mo><mn>1</mn></math></p>
+            <p>Найдем корни уравнения <math><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>3</mn><mi>x</mi><mo>+</mo><mn>1</mn><mo>=</mo><mn>0</mn></math>:</p>
+            <p>D = (-3)² - 4·2·1 = 9 - 8 = 1</p>
+            <p><math><msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mfrac><mrow><mn>3</mn><mo>-</mo><mn>1</mn></mrow><mrow><mn>2</mn><mo>·</mo><mn>2</mn></mrow></mfrac><mo>=</mo><mfrac><mn>2</mn><mn>4</mn></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></math></p>
+            <p><math><msub><mi>x</mi><mn>2</mn></msub><mo>=</mo><mfrac><mrow><mn>3</mn><mo>+</mo><mn>1</mn></mrow><mrow><mn>2</mn><mo>·</mo><mn>2</mn></mrow></mfrac><mo>=</mo><mfrac><mn>4</mn><mn>4</mn></mfrac><mo>=</mo><mn>1</mn></math></p>
+            <p>Тогда: <math><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>3</mn><mi>x</mi><mo>+</mo><mn>1</mn><mo>=</mo><mn>2</mn><mo>(</mo><mi>x</mi><mo>-</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>)</mo><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>=</mo><mo>(</mo><mn>2</mn><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo></math></p>
+        </div>
+
+        <div class="step">
+            <p><strong>Шаг 2: Перепишем выражение с разложенными знаменателями</strong></p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mfrac>
+                            <msup><mi>x</mi><mn>2</mn></msup>
+                            <mrow><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>(</mo><mn>2</mn><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo></mrow>
+                        </mfrac>
+                        <mo>-</mo>
+                        <mfrac>
+                            <mn>1</mn>
+                            <mrow><mi>x</mi><mo>-</mo><mn>1</mn></mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="step">
+            <p><strong>Шаг 3: Приведем дроби к общему знаменателю</strong></p>
+            <p>Общий знаменатель: <math><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>(</mo><mn>2</mn><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo></math></p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mfrac>
+                            <msup><mi>x</mi><mn>2</mn></msup>
+                            <mrow><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>(</mo><mn>2</mn><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo></mrow>
+                        </mfrac>
+                        <mo>-</mo>
+                        <mfrac>
+                            <mrow><mn>1</mn><mo>·</mo><mo>(</mo><mn>2</mn><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo></mrow>
+                            <mrow><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>(</mo><mn>2</mn><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo></mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="step">
+            <p><strong>Шаг 4: Выполним вычитание</strong></p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mo>(</mo><mn>2</mn><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo></mrow>
+                            <mrow><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>(</mo><mn>2</mn><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo></mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="step">
+            <p><strong>Шаг 5: Раскроем скобки в числителе</strong></p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>1</mn></mrow>
+                            <mrow><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>(</mo><mn>2</mn><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo></mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="step">
+            <p><strong>Шаг 6: Разложим числитель на множители</strong></p>
+            <p><math><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>1</mn><mo>=</mo><msup><mrow><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup></math></p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mfrac>
+                            <msup><mrow><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                            <mrow><mo>(</mo><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>(</mo><mn>2</mn><mi>x</mi><mo>-</mo><mn>1</mn><mo>)</mo></mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="step">
+            <p><strong>Шаг 7: Сократим дробь</strong></p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mrow><mi>x</mi><mo>-</mo><mn>1</mn></mrow>
+                            <mrow><mn>2</mn><mi>x</mi><mo>-</mo><mn>1</mn></mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+
+        <div class="answer">
+            <strong>Ответ:</strong> <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow><mfrac><mrow><mi>x</mi><mo>-</mo><mn>1</mn></mrow><mrow><mn>2</mn><mi>x</mi><mo>-</mo><mn>1</mn></mrow></mfrac></mrow>
+            </math>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="lesson-section">
+    <h2>Умножение, деление и возведение в степень рациональных дробей</h2>
+
+    <div class="definition">
+        <p><strong>Умножение рациональных дробей:</strong></p>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac><mi>A</mi><mi>B</mi></mfrac>
+                        <mo>·</mo>
+                        <mfrac><mi>C</mi><mi>D</mi></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><mi>A</mi><mo>·</mo><mi>C</mi></mrow><mrow><mi>B</mi><mo>·</mo><mi>D</mi></mrow></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="definition">
+        <p><strong>Деление рациональных дробей:</strong></p>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac><mi>A</mi><mi>B</mi></mfrac>
+                        <mo>:</mo>
+                        <mfrac><mi>C</mi><mi>D</mi></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mi>A</mi><mi>B</mi></mfrac>
+                        <mo>·</mo>
+                        <mfrac><mi>D</mi><mi>C</mi></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><mi>A</mi><mo>·</mo><mi>D</mi></mrow><mrow><mi>B</mi><mo>·</mo><mi>C</mi></mrow></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="definition">
+        <p><strong>Возведение рациональной дроби в степень:</strong></p>
+        <div class="math-container">
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <msup><mrow><mo>(</mo><mfrac><mi>A</mi><mi>B</mi></mfrac><mo>)</mo></mrow><mi>n</mi></msup>
+                        <mo>=</mo>
+                        <mfrac><mrow><msup><mi>A</mi><mi>n</mi></msup></mrow><mrow><msup><mi>B</mi><mi>n</mi></msup></mrow></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="example">
+        <div class="example-title">Пример 1: Умножение с сокращением</div>
+
+        <div class="step">
+            <p><strong>Выполните умножение:</strong> <math><mrow><mfrac><msup><mi>a</mi><mn>2</mn></msup><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>-</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mfrac><mo>·</mo><mfrac><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow><mi>a</mi></mfrac></mrow></math></p>
+        </div>
+
+        <div class="step">
+            <p><strong>Решение:</strong></p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mfrac><msup><mi>a</mi><mn>2</mn></msup><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>-</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mfrac>
+                        <mo>·</mo>
+                        <mfrac><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow><mi>a</mi></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>·</mo><mo>(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>)</mo></mrow><mrow><mo>(</mo><msup><mi>a</mi><mn>2</mn></msup><mo>-</mo><msup><mi>b</mi><mn>2</mn></msup><mo>)</mo><mo>·</mo><mi>a</mi></mrow></mfrac>
+                    </mrow>
+                </math>
+            </div>
+
+            <p>Раскладываем на множители и сокращаем:</p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mo>=</mo>
+                        <mfrac><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>·</mo><mo>(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>)</mo></mrow><mrow><mo>(</mo><mi>a</mi><mo>-</mo><mi>b</mi><mo>)</mo><mo>(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>)</mo><mo>·</mo><mi>a</mi></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><menclose notation="updiagonalstrike"><msup><mi>a</mi><mn>2</mn></msup></menclose><mo>·</mo><menclose notation="updiagonalstrike"><mo>(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>)</mo></menclose></mrow><mrow><mo>(</mo><mi>a</mi><mo>-</mo><mi>b</mi><mo>)</mo><mo>·</mo><menclose notation="updiagonalstrike"><mo>(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>)</mo></menclose><mo>·</mo><menclose notation="updiagonalstrike"><mi>a</mi></menclose></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mi>a</mi><mrow><mi>a</mi><mo>-</mo><mi>b</mi></mrow></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+
+    <div class="example">
+        <div class="example-title">Пример 2: Возведение в степень</div>
+
+        <div class="step">
+            <p><strong>Возведите в степень:</strong> <math><mrow><msup><mrow><mo>(</mo><mfrac><mrow><mi>x</mi><msup><mi>y</mi><mn>3</mn></msup></mrow><mrow><mn>2</mn><mi>z</mi></mrow></mfrac><mo>)</mo></mrow><mn>5</mn></msup></mrow></math></p>
+        </div>
+
+        <div class="step">
+            <p><strong>Решение:</strong> Возводим в степень числитель и знаменатель отдельно:</p>
+            <div class="math-formula">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <msup><mrow><mo>(</mo><mfrac><mrow><mi>x</mi><msup><mi>y</mi><mn>3</mn></msup></mrow><mrow><mn>2</mn><mi>z</mi></mrow></mfrac><mo>)</mo></mrow><mn>5</mn></msup>
+                        <mo>=</mo>
+                        <mfrac><mrow><msup><mrow><mo>(</mo><mi>x</mi><msup><mi>y</mi><mn>3</mn></msup><mo>)</mo></mrow><mn>5</mn></msup></mrow><mrow><msup><mrow><mo>(</mo><mn>2</mn><mi>z</mi><mo>)</mo></mrow><mn>5</mn></msup></mrow></mfrac>
+                        <mo>=</mo>
+                        <mfrac><mrow><msup><mi>x</mi><mn>5</mn></msup><msup><mi>y</mi><mn>15</mn></msup></mrow><mrow><mn>32</mn><msup><mi>z</mi><mn>5</mn></msup></mrow></mfrac>
+                    </mrow>
+                </math>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+				</div>
+			</div>
+			<script>
+        document.getElementById('nextLesson').addEventListener('click', function() {
+            alert('Это последний готовый урок в текущей серии. Для продолжения запросите следующий урок.');
+        });
+    </script>
+		</div>
+	</body>
+</html>
