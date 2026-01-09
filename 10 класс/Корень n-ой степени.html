@@ -2701,7 +2701,10 @@
 
 <script>
 function goToSection(id) {
-    if (!id) return;
+    if (id === "0")
+    {
+        window.location.href = "/index.html"; // Замените на нужный URL
+        return;}
     document.getElementById(id).scrollIntoView({
         behavior: "smooth",
         block: "start"

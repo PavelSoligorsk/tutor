@@ -1696,7 +1696,7 @@
                                 </msub>
                                 <mo>=</mo>
                                 <mo>−</mo>
-                                <mn>2</mn>
+                                <mn>0</mn>
                             </mtd>
                             <mtd>
                                 <mo>(</mo>
@@ -1730,6 +1730,28 @@
                                 <mo>)</mo>
                             </mtd>
                         </mtr>
+                        <mtr>
+                            <mtd>
+                                <mtext>Точка максимума:</mtext>
+                            </mtd>
+                            <mtd>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mtext>max</mtext>
+                                </msub>
+                                <mo>=</mo>
+                                <mn>-2</mn>
+                            </mtd>
+                            <mtd>
+                                <mo>(</mo>
+                                <msup>
+                                    <mi>f</mi>
+                                    <mo>′</mo>
+                                </msup>
+                                <mtext> меняет знак с + на −</mtext>
+                                <mo>)</mo>
+                            </mtd>
+                        </mtr>
                     </mtable>
                 </math>
             </div>
@@ -1738,16 +1760,8 @@
         <div class="math-container">
             <div class="math-formula">
                 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-                    <mtext>Точка x = 0 не является экстремумом, так как производная не меняет знак (остаётся +)</mtext>
-                </math>
-            </div>
-        </div>
-
-        <div class="math-container">
-            <div class="math-formula">
-                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
                     <mn>5.</mn>
-                    <mtext>Вычисляем значения функции в точках экстремума:</mtext>
+                    <mtext>Вычисляем значения функции (максимумы функции) в точках максимума:</mtext>
                 </math>
             </div>
         </div>
@@ -1760,7 +1774,7 @@
                             <mtd>
                                 <msub>
                                     <mi>f</mi>
-                                    <mtext>min</mtext>
+                                    <mtext>max</mtext>
                                 </msub>
                                 <mo>(</mo>
                                 <mo>−</mo>
@@ -1866,7 +1880,7 @@
                     <mtable>
                         <mtr>
                             <mtd>
-                                <mtext>Убывает на:</mtext>
+                                <mtext>Возрастает на:</mtext>
                             </mtd>
                             <mtd>
                                 <mo>(</mo>
@@ -1875,6 +1889,25 @@
                                 <mo>;</mo>
                                 <mo>−</mo>
                                 <mn>2</mn>
+                                <mo>]</mo>
+                                <mtext>&nbsp;и&nbsp;</mtext>
+                                <mo>[</mo>
+                                <mn>0</mn>
+                                <mo>;</mo>
+                                <mi>3</mi>
+                                <mo>]</mo>
+                            </mtd>
+                        </mtr>
+                        <mtr>
+                            <mtd>
+                                <mtext>Убывает на:</mtext>
+                            </mtd>
+                            <mtd>
+                                <mo>[</mo>
+                                <mo>−</mo>
+                                <mi>2</mi>
+                                <mo>;</mo>
+                                <mn>0</mn>
                                 <mo>]</mo>
                                 <mtext>&nbsp;и&nbsp;</mtext>
                                 <mo>[</mo>
@@ -1887,25 +1920,12 @@
                         </mtr>
                         <mtr>
                             <mtd>
-                                <mtext>Возрастает на:</mtext>
-                            </mtd>
-                            <mtd>
-                                <mo>[</mo>
-                                <mo>−</mo>
-                                <mn>2</mn>
-                                <mo>;</mo>
-                                <mn>3</mn>
-                                <mo>]</mo>
-                            </mtd>
-                        </mtr>
-                        <mtr>
-                            <mtd>
-                                <mtext>Точка минимума:</mtext>
+                                <mtext>Точка максимума:</mtext>
                             </mtd>
                             <mtd>
                                 <msub>
                                     <mi>x</mi>
-                                    <mtext>min</mtext>
+                                    <mtext>max</mtext>
                                 </msub>
                                 <mo>=</mo>
                                 <mo>−</mo>
@@ -1913,7 +1933,7 @@
                                 <mo>,</mo>
                                 <msub>
                                     <mi>f</mi>
-                                    <mtext>min</mtext>
+                                    <mtext>max</mtext>
                                 </msub>
                                 <mo>=</mo>
                                 <mfrac><mn>19</mn><mn>3</mn></mfrac>
@@ -2534,7 +2554,10 @@
 
 <script>
 function goToSection(id) {
-    if (!id) return;
+    if (id === "0")
+    {
+        window.location.href = "/index.html"; // Замените на нужный URL
+        return;}
     document.getElementById(id).scrollIntoView({
         behavior: "smooth",
         block: "start"

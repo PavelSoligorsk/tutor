@@ -313,12 +313,35 @@
         min-width: 50px; /* Минимальная ширина для ячеек */
     }
 }
+         .bottom-nav {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 8px 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            z-index: 999;
+            width: 90%;
+            max-width: 300px;
+        }
+
+        .bottom-nav select {
+            width: 100%;
+            font-size: 16px;
+            padding: 8px;
+            cursor: pointer;
+            border: 1px solid #3498db;
+            border-radius: 6px;
+        }
     </style>
 			</head>
 			<body>
 				<div class="container">
 
-					<h1>Функция</h1>
+					<h1 id = "1">Функция</h1>
 					<div class="lesson-section"> <h2>Определение функции</h2> <div class="definition"> <p><strong>Функцией</strong> называется правило, которое каждому элементу <math><mrow><mi>x</mi></mrow></math> из множества <math><mrow><mi>X</mi></mrow></math> ставит в соответствие единственный элемент <math><mrow><mi>y</mi></mrow></math> из множества <math><mrow><mi>Y</mi></mrow></math>.</p>
 
     <div class="math-container">
@@ -340,6 +363,7 @@
 </div>
 
 </div>
+                    <h1 id = "2">График функции</h1>
                     <div class="lesson-section"> <h2>График функции</h2> <div class="definition"> <p><strong>Графиком функции</strong> <math><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math> называется множество всех точек плоскости с координатами <math><mrow><mo>(</mo><mi>x</mi><mo>,</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo></mrow></math>.</p>
 
     <p><strong>Основное свойство:</strong> Любая вертикальная прямая пересекает график функции не более чем в одной точке.</p>
@@ -366,6 +390,7 @@
 </div>
 
 </div>
+                    <h1 id = "3">Работа со значениями функций</h1>
                     <div class="lesson-section"> <h2>Определение значения функции в точке</h2> <div class="definition"> <p>Чтобы найти значение функции <math><mrow><mi>f</mi><mo>(</mo><mi>a</mi><mo>)</mo></mrow></math>:</p> <ol> <li>Находим точку <math><mrow><mi>a</mi></mrow></math> на оси OX</li> <li>Проводим вертикальную прямую до пересечения с графиком</li> <li>От точки пересечения проводим горизонтальную прямую к оси OY</li> <li>Координата на оси OY — значение функции</li> </ol>
 
     <div class="image-container">
@@ -404,6 +429,7 @@
 </div>
 
 </div>
+                    <h1 id = "4">Область определения и множество значений</h1>
                     <div class="lesson-section"> <h2>Область определения и множество значений</h2> <div class="definition"> <p><strong>Область определения</strong> <math><mrow><mi>D</mi><mo>(</mo><mi>f</mi><mo>)</mo></mrow></math> — множество всех значений аргумента <math><mrow><mi>x</mi></mrow></math>, при которых функция определена.</p>
 
     <p><strong>Множество значений</strong> <math><mrow><mi>E</mi><mo>(</mo><mi>f</mi><mo>)</mo></mrow></math> — множество всех значений, которые принимает функция.</p>
@@ -430,6 +456,7 @@
 </div>
 
 </div>
+                    <h1 id = "5">Примеры разбора функций</h1>
                     <div class="lesson-section"> <h2>Задание 1: Нахождение значения функции</h2> <div class="example"> <p class="example-title">Найдите значение функции, если значение аргумента равно -2:</p>
 
     <p>а) <math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>-</mo><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>1</mn></mrow></math></p>
@@ -708,7 +735,7 @@
 </div>
 
 </div>
-
+                    <h1 id = "6">Нули функции</h1>
                     <div class="lesson-section"> <h2>Нули функции</h2> <div class="definition"> <p><strong>Нули функции</strong> — это значения аргумента <math><mrow><mi>x</mi></mrow></math>, при которых значение функции равно нулю.</p>
 
     <p>Математически: <math><mrow><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>)</mo><mo>=</mo><mn>0</mn></mrow></math>, где <math><mrow><msub><mi>x</mi><mn>0</mn></msub></mrow></math> — нуль функции.</p>
@@ -733,6 +760,7 @@
 </div>
 
 </div>
+                    <h1 id = "7">Промежутки знакопостоянства</h1>
                     <div class="lesson-section"> <h2>Промежутки знакопостоянства функции</h2> <div class="definition"> <p><strong>Промежутками знакопостоянства</strong> называются интервалы значений аргумента, на которых функция сохраняет постоянный знак (положительный или отрицательный).</p>
 
     <div class="image-container">
@@ -773,6 +801,7 @@
 </div>
 
 </div>
+                    <h1 id = "8">Монотонность функции</h1>
                     <div class="lesson-section"> <h2>Монотонность функции</h2> <div class="definition"> <p><strong>Возрастающая функция:</strong> Функция <math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math> называется возрастающей на промежутке, если для любых <math><mrow><msub><mi>x</mi><mn>1</mn></msub><mo><</mo><msub><mi>x</mi><mn>2</mn></msub></mrow></math> из этого промежутка выполняется неравенство <math><mrow><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo><mo><</mo><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>)</mo></mrow></math>.</p>
 
     <div class="image-container">
@@ -995,6 +1024,12 @@
 
 
 </div>
+
+
+
+
+</div>
+                    <h1 id = "9">Четная функция</h1>
                     <div class="lesson-section">
                         <h2>Определение четной функции</h2> <div class="definition"> <p><strong>Функция <math><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math> называется четной</strong>, если для любого <math><mrow><mi>x</mi></mrow></math> из области определения выполняется:</p>
 
@@ -1039,10 +1074,7 @@
             <img src="https://i.postimg.cc/NfKVkp9B/изображение.png" class="function-image" alt="Четная функция - косинус">
         </div>
     </div>
-
-
-
-</div>
+                    <h1 id = "10">Нечетная функция</h1>
                     <div class="lesson-section"> <h2>Определение нечетной функции</h2>
                         <div class="definition">
                             <p><strong>Функция <math><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math> называется нечетной</strong>, если для любого <math><mrow><mi>x</mi></mrow></math> из области определения выполняется:</p>
@@ -1092,6 +1124,7 @@
 
                     <div class="lesson-section">
                         <h2>Алгоритм определения четности функции</h2> <div class="definition"> <ol> <li><strong>Проверить область определения:</strong> Должна быть симметрична относительно нуля (если <math><mrow><mi>x</mi><mo>∈</mo><mi>D</mi><mo>(</mo><mi>f</mi><mo>)</mo></mrow></math>, то <math><mrow><mo>-</mo><mi>x</mi><mo>∈</mo><mi>D</mi><mo>(</mo><mi>f</mi><mo>)</mo></mrow></math>)</li> <li><strong>Вычислить <math><mrow><mi>f</mi><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo></mrow></math>:</strong> Упростить выражение</li> <li><strong>Сравнить с <math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math>:</strong> <ul> <li>Если <math><mrow><mi>f</mi><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math> — функция четная</li> <li>Если <math><mrow><mi>f</mi><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>-</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math> — функция нечетная</li> <li>Если оба условия не выполняются — функция ни четная, ни нечетная</li> </ul> </li> </ol> </div> </div>
+                    <h1 id = "11">Типовые задания на четность</h1>
                         <div class="lesson-section"> <h2>Задание 3: Определение четности функций</h2>
 
 <div class="example">
@@ -1384,6 +1417,7 @@
 </div>
 
 </div>
+                    <h1 id="12">Дополнение графиков</h1>
                     <div class="lesson-section"> <h2>Дополнение графиков до четной и нечетной функций</h2>
 
 <div class="definition">
@@ -1415,7 +1449,8 @@
 </div>
 
 </div>
-<div class="lesson-section">
+<h1 id="13">Преобразования графиков</h1>
+                    <div class="lesson-section">
     <h2>Преобразования графиков функций</h2> <div class="definition"> <p>Графики функций можно перемещать (сдвигать) вдоль осей координат. Эти преобразования сохраняют форму графика, меняя только его положение.</p>
 
     <p>Рассмотрим основные виды преобразований:</p>
@@ -1426,6 +1461,7 @@
 </div>
 
 </div>
+
                         <div class="lesson-section">
                             <h2>Сдвиг графика вдоль оси OY (вверх/вниз)</h2>
 
@@ -1648,13 +1684,40 @@
 
 </div>
 
+                    <div class="bottom-nav">
+    <select onchange="goToSection(this.value)">
+        <option value="0">Назад</option>
+        <option value="1">Функция</option>
+        <option value="2">График функции</option>
+        <option value="3">Работа со значениями функций</option>
+        <option value="4">Область определения и множество значений</option>
+        <option value="5">Примеры разбора функций</option>
+        <option value="6">Нули функции</option>
+        <option value="7">Промежутки знакопостоянства</option>
+        <option value="8">Монотонность функции</option>
+        <option value="9">Четная функция</option>
+        <option value="10">Нечетная функция</option>
+        <option value="11">Типовые задания на четность</option>
+        <option value="12">Дополнение графиков</option>
+        <option value="13">Преобразования графиков</option>
+
+
+    </select>
+</div>
+
+<script>
+function goToSection(id) {
+    if (id === "0")
+    {
+        window.location.href = "/index.html"; // Замените на нужный URL
+        return;}
+    document.getElementById(id).scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+</script>
 
 			</div>
-			<script>
-        document.getElementById('nextLesson').addEventListener('click', function() {
-            alert('Это последний готовый урок в текущей серии. Для продолжения запросите следующий урок.');
-        });
-    </script>
-		</div>
 	</body>
 </html>
