@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "buildCommand": "bun run build",
+  "devCommand": "bun run dev",
+  "installCommand": "bun install",
+  "framework": "nextjs",
+  "regions": ["fra1"],
+  "env": {
+    "AUTH_SECRET": "@auth-secret"
+  }
+}

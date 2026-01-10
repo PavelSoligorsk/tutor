@@ -1,0 +1,419 @@
+---
+title: 'Системы и совокупности неравенств'
+description: 'Решение систем и совокупностей линейных неравенств, пересечение и объединение множеств'
+grade: 7
+order: 5
+---
+
+## Системы неравенств
+
+<Definition>
+**Определение:**
+
+Система неравенств — это набор из двух или более неравенств, которые должны выполняться **одновременно** (логическая операция "И").
+
+$$
+\begin{cases}
+f_1(x) > g_1(x) \\
+f_2(x) < g_2(x) \\
+\vdots \\
+f_n(x) > g_n(x)
+\end{cases}
+$$
+
+**Решение системы:** Находится как **пересечение** решений всех неравенств, входящих в систему.
+
+</Definition>
+
+### Система 1
+
+<Example title="Решение системы">
+$$\begin{cases}
+x > -3 \\
+x > -5
+\end{cases}$$
+
+$x > -3 \Rightarrow x \in (-3; +\infty)$
+
+$x > -5 \Rightarrow x \in (-5; +\infty)$
+
+Пересечение: $(-3; +\infty) \cap (-5; +\infty) = (-3; +\infty)$
+
+**Ответ:** $x \in (-3; +\infty)$
+
+</Example>
+
+### Система 2
+
+<Example title="Решение системы (двойное неравенство)">
+$$\begin{cases}
+x > -3 \\
+x < 5
+\end{cases}$$
+
+$x > -3 \Rightarrow x \in (-3; +\infty)$
+
+$x < 5 \Rightarrow x \in (-\infty; 5)$
+
+Пересечение: $(-3; +\infty) \cap (-\infty; 5) = (-3; 5)$
+
+**Ответ:** $x \in (-3; 5)$
+
+</Example>
+
+### Система 3
+
+<Example title="Решение системы (замкнутый интервал)">
+$$\begin{cases}
+x \geq -3 \\
+x \leq 5
+\end{cases}$$
+
+$x \geq -3 \Rightarrow x \in [-3; +\infty)$
+
+$x \leq 5 \Rightarrow x \in (-\infty; 5]$
+
+Пересечение: $[-3; +\infty) \cap (-\infty; 5] = [-3; 5]$
+
+**Ответ:** $x \in [-3; 5]$
+
+</Example>
+
+### Система 4
+
+<Example title="Решение системы (противоречие)" variant="hard">
+$$\begin{cases}
+x \geq -2 \\
+x \leq -4
+\end{cases}$$
+
+$x \geq -2 \Rightarrow x \in [-2; +\infty)$
+
+$x \leq -4 \Rightarrow x \in (-\infty; -4]$
+
+Пересечение: $[-2; +\infty) \cap (-\infty; -4] = \varnothing$
+
+**Ответ:** $\varnothing$ (решений нет)
+
+</Example>
+
+### Система 5
+
+<Example title="Решение системы (единственное решение)">
+$$\begin{cases}
+x \geq -3 \\
+x \leq -3
+\end{cases}$$
+
+$x \geq -3 \Rightarrow x \in [-3; +\infty)$
+
+$x \leq -3 \Rightarrow x \in (-\infty; -3]$
+
+Пересечение: $[-3; +\infty) \cap (-\infty; -3] = \{-3\}$
+
+**Ответ:** $x = -3$
+
+</Example>
+
+### Система 6
+
+<Example title="Решение системы (противоречие на границе)" variant="hard">
+$$\begin{cases}
+x \geq 5 \\
+x < 5
+\end{cases}$$
+
+$x \geq 5 \Rightarrow x \in [5; +\infty)$
+
+$x < 5 \Rightarrow x \in (-\infty; 5)$
+
+Пересечение: $[5; +\infty) \cap (-\infty; 5) = \varnothing$
+
+**Ответ:** $\varnothing$
+
+</Example>
+
+### Система 7
+
+<Example title="Решение системы (объединение условий)">
+$$\begin{cases}
+x \geq 2 \\
+x > 2
+\end{cases}$$
+
+$x \geq 2 \Rightarrow x \in [2; +\infty)$
+
+$x > 2 \Rightarrow x \in (2; +\infty)$
+
+Пересечение: $[2; +\infty) \cap (2; +\infty) = (2; +\infty)$
+
+**Ответ:** $x \in (2; +\infty)$
+
+</Example>
+
+### Система 8
+
+<Example title="Решение системы (полуинтервал)">
+$$\begin{cases}
+x \geq -2 \\
+x < 9
+\end{cases}$$
+
+$x \geq -2 \Rightarrow x \in [-2; +\infty)$
+
+$x < 9 \Rightarrow x \in (-\infty; 9)$
+
+Пересечение: $[-2; +\infty) \cap (-\infty; 9) = [-2; 9)$
+
+**Ответ:** $x \in [-2; 9)$
+
+</Example>
+
+### Система 9
+
+<Example title="Система с тождественно истинным неравенством">
+$$\begin{cases}
+0 \cdot x > -2 \\
+x \geq 4
+\end{cases}$$
+
+$0 \cdot x > -2 \Rightarrow 0 > -2$ (верно для любого $x$)
+
+$x \geq 4 \Rightarrow x \in [4; +\infty)$
+
+Пересечение: $\mathbb{R} \cap [4; +\infty) = [4; +\infty)$
+
+**Ответ:** $x \in [4; +\infty)$
+
+</Example>
+
+### Система 10
+
+<Example title="Система с двумя тождественно истинными неравенствами">
+$$\begin{cases}
+0 \cdot x \leq 4 \\
+0 \cdot x \geq -4
+\end{cases}$$
+
+$0 \cdot x \leq 4 \Rightarrow 0 \leq 4$ (верно для любого $x$)
+
+$0 \cdot x \geq -4 \Rightarrow 0 \geq -4$ (верно для любого $x$)
+
+Пересечение: $\mathbb{R} \cap \mathbb{R} = \mathbb{R}$
+
+**Ответ:** $x \in \mathbb{R}$
+
+</Example>
+
+---
+
+## Совокупности неравенств
+
+<Definition>
+**Определение:**
+
+Совокупность неравенств — это набор неравенств, из которых должно выполняться **хотя бы одно** (логическая операция "ИЛИ").
+
+$$
+\left[\begin{array}{l}
+f_1(x) > g_1(x) \\
+f_2(x) < g_2(x) \\
+\vdots \\
+f_n(x) > g_n(x)
+\end{array}\right.
+$$
+
+**Решение совокупности:** Находится как **объединение** решений всех неравенств, входящих в совокупность.
+
+</Definition>
+
+### Совокупность 1
+
+<Example title="Решение совокупности">
+$$\left[\begin{array}{l}
+x > -3 \\
+x > -5
+\end{array}\right.$$
+
+$x > -3 \Rightarrow x \in (-3; +\infty)$
+
+$x > -5 \Rightarrow x \in (-5; +\infty)$
+
+Объединение: $(-3; +\infty) \cup (-5; +\infty) = (-5; +\infty)$
+
+**Ответ:** $x \in (-5; +\infty)$
+
+</Example>
+
+### Совокупность 2
+
+<Example title="Решение совокупности (объединение интервалов)">
+$$\left[\begin{array}{l}
+x > -3 \\
+x < 5
+\end{array}\right.$$
+
+$x > -3 \Rightarrow x \in (-3; +\infty)$
+
+$x < 5 \Rightarrow x \in (-\infty; 5)$
+
+Объединение: $(-3; +\infty) \cup (-\infty; 5) = \mathbb{R}$
+
+**Ответ:** $x \in \mathbb{R}$ (любое число)
+
+</Example>
+
+### Совокупность 3
+
+<Example title="Решение совокупности (объединение множеств)">
+$$\left[\begin{array}{l}
+x \geq -3 \\
+x \leq 5
+\end{array}\right.$$
+
+$x \geq -3 \Rightarrow x \in [-3; +\infty)$
+
+$x \leq 5 \Rightarrow x \in (-\infty; 5]$
+
+Объединение: $[-3; +\infty) \cup (-\infty; 5] = \mathbb{R}$
+
+**Ответ:** $x \in \mathbb{R}$
+
+</Example>
+
+### Совокупность 4
+
+<Example title="Решение совокупности (непересекающиеся множества)">
+$$\left[\begin{array}{l}
+x \geq -2 \\
+x \leq -4
+\end{array}\right.$$
+
+$x \geq -2 \Rightarrow x \in [-2; +\infty)$
+
+$x \leq -4 \Rightarrow x \in (-\infty; -4]$
+
+Объединение: $[-2; +\infty) \cup (-\infty; -4] = (-\infty; -4] \cup [-2; +\infty)$
+
+**Ответ:** $x \in (-\infty; -4] \cup [-2; +\infty)$
+
+</Example>
+
+### Совокупность 5
+
+<Example title="Решение совокупности (объединение с общей точкой)">
+$$\left[\begin{array}{l}
+x \geq -3 \\
+x \leq -3
+\end{array}\right.$$
+
+$x \geq -3 \Rightarrow x \in [-3; +\infty)$
+
+$x \leq -3 \Rightarrow x \in (-\infty; -3]$
+
+Объединение: $[-3; +\infty) \cup (-\infty; -3] = \mathbb{R}$
+
+**Ответ:** $x \in \mathbb{R}$
+
+</Example>
+
+### Совокупность 6
+
+<Example title="Решение совокупности (все числа)">
+$$\left[\begin{array}{l}
+x \geq 5 \\
+x < 5
+\end{array}\right.$$
+
+$x \geq 5 \Rightarrow x \in [5; +\infty)$
+
+$x < 5 \Rightarrow x \in (-\infty; 5)$
+
+Объединение: $[5; +\infty) \cup (-\infty; 5) = \mathbb{R}$
+
+**Ответ:** $x \in \mathbb{R}$
+
+</Example>
+
+### Совокупность 7
+
+<Example title="Решение совокупности (вложенные множества)">
+$$\left[\begin{array}{l}
+x \geq 2 \\
+x > 2
+\end{array}\right.$$
+
+$x \geq 2 \Rightarrow x \in [2; +\infty)$
+
+$x > 2 \Rightarrow x \in (2; +\infty)$
+
+Объединение: $[2; +\infty) \cup (2; +\infty) = [2; +\infty)$
+
+**Ответ:** $x \in [2; +\infty)$
+
+</Example>
+
+### Совокупность 8
+
+<Example title="Решение совокупности (все действительные числа)">
+$$\left[\begin{array}{l}
+x \geq -2 \\
+x < 9
+\end{array}\right.$$
+
+$x \geq -2 \Rightarrow x \in [-2; +\infty)$
+
+$x < 9 \Rightarrow x \in (-\infty; 9)$
+
+Объединение: $[-2; +\infty) \cup (-\infty; 9) = \mathbb{R}$
+
+**Ответ:** $x \in \mathbb{R}$
+
+</Example>
+
+### Совокупность 9
+
+<Example title="Совокупность с тождественно истинным неравенством">
+$$\left[\begin{array}{l}
+0 \cdot x > -2 \\
+x \geq 4
+\end{array}\right.$$
+
+$0 \cdot x > -2 \Rightarrow 0 > -2$ (верно для любого $x \in \mathbb{R}$)
+
+$x \geq 4 \Rightarrow x \in [4; +\infty)$
+
+Объединение: $\mathbb{R} \cup [4; +\infty) = \mathbb{R}$
+
+**Ответ:** $x \in \mathbb{R}$
+
+</Example>
+
+### Совокупность 10
+
+<Example title="Совокупность с двумя тождественно истинными неравенствами">
+$$\left[\begin{array}{l}
+0 \cdot x \leq 4 \\
+0 \cdot x \geq -4
+\end{array}\right.$$
+
+$0 \cdot x \leq 4 \Rightarrow 0 \leq 4$ (верно для любого $x \in \mathbb{R}$)
+
+$0 \cdot x \geq -4 \Rightarrow 0 \geq -4$ (верно для любого $x \in \mathbb{R}$)
+
+Объединение: $\mathbb{R} \cup \mathbb{R} = \mathbb{R}$
+
+**Ответ:** $x \in \mathbb{R}$
+
+</Example>
+
+---
+
+## Сравнение систем и совокупностей
+
+| Характеристика       | Система                        | Совокупность                               |
+| -------------------- | ------------------------------ | ------------------------------------------ |
+| Обозначение          | $\begin{cases} \\ \end{cases}$ | $\left[\begin{array}{l}\end{array}\right.$ |
+| Логическая операция  | И (AND)                        | ИЛИ (OR)                                   |
+| Как находить решение | Пересечение ($\cap$)           | Объединение ($\cup$)                       |
+| Должны выполняться   | Все неравенства                | Хотя бы одно                               |

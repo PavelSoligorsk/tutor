@@ -1,0 +1,63 @@
+@import 'tailwindcss';
+
+:root {
+  --background: #f5f9ff;
+  --foreground: #2c3e50;
+  --primary: #3498db;
+  --primary-dark: #2980b9;
+  --heading: #2c3e50;
+  --success: #2ecc71;
+  --danger: #e74c3c;
+  --warning: #ffc107;
+  --section-bg: #f8fafd;
+  --definition-bg: #e8f4fc;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-heading: var(--heading);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+  --color-section: var(--section-bg);
+  --color-definition: var(--definition-bg);
+  --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* KaTeX overrides */
+.katex {
+  font-size: 1.1em;
+}
+
+.katex-display {
+  margin: 1rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* MDX content styles */
+.mdx-content {
+  line-height: 1.7;
+}
+
+.mdx-content > *:first-child {
+  margin-top: 0;
+}
+
+/* Math container */
+.math-container {
+  background: #f8fafd;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
