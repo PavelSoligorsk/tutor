@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 
-import { MDXRemote, type MDXRemoteProps } from 'next-mdx-remote/rsc';
+import { compileMDX, type MDXRemoteProps } from 'next-mdx-remote/rsc';
 import rehypeKatex from 'rehype-katex';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
@@ -13,6 +13,29 @@ import {
   LessonSection,
   MathFormula,
 } from '@/shared/ui';
+
+import { remarkImageLinks } from './remark-image-links';
+
+interface MdxImgProps {
+  src?: string;
+  alt?: string;
+  width?: number | string;
+  height?: number | string;
+  className?: string;
+}
+
+function parseOptionalNumber(value: unknown): number | undefined {
+  if (typeof value === 'number') {
+    return Number.isFinite(value) ? value : undefined;
+  }
+
+  if (typeof value === 'string') {
+    const parsed = Number.parseInt(value, 10);
+    return Number.isFinite(parsed) ? parsed : undefined;
+  }
+
+  return undefined;
+}
 
 const components = {
   LessonSection,
@@ -27,6 +50,25 @@ const components = {
   Def: Definition,
   Ex: Example,
   Img: ImageContainer,
+  // Markdown/HTML изображения: ![alt](src) и <img src="..." />
+  img: ({ src, alt, width, height, className }: MdxImgProps) => {
+    if (!src) {
+      return null;
+    }
+
+    const parsedWidth = parseOptionalNumber(width);
+    const parsedHeight = parseOptionalNumber(height);
+
+    return (
+      <ImageContainer
+        src={src}
+        alt={alt ?? ''}
+        width={parsedWidth}
+        height={parsedHeight}
+        className={className}
+      />
+    );
+  },
   // HTML элементы с кастомными стилями
   h1: ({ children }: { children: ReactNode }) => (
     <h1 className="mb-6 text-3xl font-bold text-heading">{children}</h1>
@@ -86,17 +128,50 @@ interface MDXContentProps {
   source: string;
 }
 
-export function MDXContent({ source }: MDXContentProps) {
+export async function MDXContent({ source }: MDXContentProps) {
   const options: MDXRemoteProps['options'] = {
     mdxOptions: {
-      remarkPlugins: [remarkGfm, remarkMath],
+      remarkPlugins: [remarkGfm, remarkMath, remarkImageLinks],
       rehypePlugins: [rehypeKatex],
     },
   };
 
-  return (
-    <div className="mdx-content">
-      <MDXRemote source={source} components={components} options={options} />
-    </div>
-  );
+  try {
+    const { content } = await compileMDX({
+      source,
+      components,
+      options,
+    });
+
+    return <div className="mdx-content">{content}</div>;
+  } catch (error) {
+    // Не валим весь рендер страницы из-за опечатки в MDX.
+    console.error('[MDX] compile error:', error);
+
+    let details: string | null = null;
+    if (process.env.NODE_ENV !== 'production') {
+      if (error instanceof Error) {
+        details = error.message;
+      } else {
+        details = String(error);
+      }
+    }
+
+    return (
+      <div className="mdx-content">
+        <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-900">
+          <div className="mb-1 font-semibold">Не удалось отобразить урок</div>
+          <div className="text-red-800">
+            В контенте урока есть ошибка разметки MDX. Исправьте файл в папке{' '}
+            <code className="rounded bg-white/60 px-1 py-0.5">content/</code>.
+          </div>
+          {details && (
+            <pre className="mt-3 whitespace-pre-wrap rounded bg-white/60 p-3 text-xs text-red-950">
+              {details}
+            </pre>
+          )}
+        </div>
+      </div>
+    );
+  }
 }

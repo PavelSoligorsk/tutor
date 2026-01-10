@@ -18,15 +18,14 @@ export function ImageContainer({
   className,
 }: ImageContainerProps) {
   return (
-    <div className={cn('my-5 flex justify-center', className)}>
+    <span className={cn('my-5 flex justify-center', className)}>
       <Image
         src={src}
         alt={alt}
         width={width}
         height={height}
         className="max-w-full rounded-lg shadow-md"
-        unoptimized={src.startsWith('http')}
       />
-    </div>
+    </span>
   );
 }
