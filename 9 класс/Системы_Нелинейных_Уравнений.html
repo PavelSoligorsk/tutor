@@ -210,13 +210,41 @@ button:disabled {
     color: #7f8c8d;
     font-size: 0.9em; /* Меньше для подвала */
 }
+/* Нижняя навигация */
+        .bottom-nav {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 8px 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            z-index: 999;
+            width: 90%;
+            max-width: 300px;
+        }
+
+        .bottom-nav select {
+            width: 100%;
+            font-size: 16px;
+            padding: 8px;
+            cursor: pointer;
+            border: 1px solid #3498db;
+            border-radius: 6px;
+        }
+
     </style>
 			</head>
 			<body>
 				<div class="container">
 
-					<h1>Системы нелинейных уравнений</h1>
-					<div class="lesson-section"> <h2>Что такое система уравнений и ее решение</h2> <div class="definition"> <p><strong>Система уравнений</strong> — это набор двух или более уравнений, которые рассматриваются одновременно.</p> <p><strong>Решение системы уравнений</strong> — это упорядоченная пара чисел (x; y), которая удовлетворяет всем уравнениям системы одновременно.</p> <p>Геометрически решение системы представляет собой <strong>точку пересечения графиков</strong> уравнений, входящих в систему.</p> </div> </div><div class="lesson-section"> <h2>Метод подстановки</h2> <div class="definition"> <p><strong>Метод подстановки</strong> — метод решения систем уравнений, при котором из одного уравнения выражают одну переменную через другую и подставляют это выражение в другое уравнение.</p> </div>
+					<h1 id="1">Системы нелинейных уравнений</h1>
+					<div class="lesson-section"> <h2>Что такое система уравнений и ее решение</h2> <div class="definition"> <p><strong>Система уравнений</strong> — это набор двух или более уравнений, которые рассматриваются одновременно.</p> <p><strong>Решение системы уравнений</strong> — это упорядоченная пара чисел (x; y), которая удовлетворяет всем уравнениям системы одновременно.</p> <p>Геометрически решение системы представляет собой <strong>точку пересечения графиков</strong> уравнений, входящих в систему.</p> </div> </div>
+                    					<h1 id="2">Метод подстановки</h1>
+
+                    <div class="lesson-section"> <h2>Метод подстановки</h2> <div class="definition"> <p><strong>Метод подстановки</strong> — метод решения систем уравнений, при котором из одного уравнения выражают одну переменную через другую и подставляют это выражение в другое уравнение.</p> </div>
 <div class="problem">
     <h3>Пример: Решение системы методом подстановки</h3>
     <p>Решите систему уравнений:</p>
@@ -319,7 +347,10 @@ button:disabled {
     <p><strong>Ответ:</strong> (3; 0) и (0; 3)</p>
 </div>
 
-</div><div class="lesson-section"> <h2>Метод сложения</h2> <div class="definition"> <p><strong>Метод сложения (исключения)</strong> — метод решения систем уравнений, при котором уравнения системы складывают или вычитают таким образом, чтобы исключить одну из переменных.</p> </div>
+</div>
+                    					<h1 id="3">Метод сложения</h1>
+
+                    <div class="lesson-section"> <h2>Метод сложения</h2> <div class="definition"> <p><strong>Метод сложения (исключения)</strong> — метод решения систем уравнений, при котором уравнения системы складывают или вычитают таким образом, чтобы исключить одну из переменных.</p> </div>
 
 <div class="problem">
     <h3>Пример: Решение системы методом сложения</h3>
@@ -481,7 +512,10 @@ button:disabled {
     <p><strong>Ответ:</strong> (11; -1) и (49/6; -3/2)</p>
 </div>
 
-</div><div class="lesson-section"> <h2>Графический метод</h2> <div class="definition"> <p><strong>Графический метод</strong> — метод решения систем уравнений, при котором строят графики уравнений, входящих в систему, и находят точки их пересечения.</p> </div>
+</div>
+                    					<h1 id="4">Графический метод</h1>
+
+                    <div class="lesson-section"> <h2>Графический метод</h2> <div class="definition"> <p><strong>Графический метод</strong> — метод решения систем уравнений, при котором строят графики уравнений, входящих в систему, и находят точки их пересечения.</p> </div>
 
 <div class="problem">
     <h3>Пример: Решение системы графическим методом</h3>
@@ -585,7 +619,30 @@ button:disabled {
     <p><strong>Ответ:</strong> (-2; 0) и (1; 3)</p>
 </div>
 
-</div><div class="lesson-section"> <h2>Сравнение методов решения систем уравнений</h2> <div class="comparison-table"> <table> <thead> <tr> <th>Метод</th> <th>Преимущества</th> <th>Недостатки</th> <th>Когда применять</th> </tr> </thead> <tbody> <tr> <td><strong>Подстановки</strong></td> <td>Простой и понятный<br>Всегда применим</td> <td>Может приводить к сложным вычислениям</td> <td>Когда легко выразить одну переменную через другую</td> </tr> <tr> <td><strong>Сложения</strong></td> <td>Удобен при наличии одинаковых коэффициентов<br>Позволяет избежать дробей</td> <td>Не всегда применим напрямую</td> <td>Когда коэффициенты при переменных кратны друг другу</td> </tr> <tr> <td><strong>Графический</strong></td> <td>Наглядность<br>Позволяет видеть количество решений</td> <td>Неточность при приближенном построении<br>Трудоемкость</td> <td>Для проверки решений, полученных аналитически</td> </tr> </tbody> </table> </div> </div>
+</div>
+
+                    <div class="bottom-nav">
+                        <select onchange="goToSection(this.value)">
+        <option value="0">Назад</option>
+        <option value="1">Системы уравнений</option>
+        <option value="2">Метод подстановки</option>
+        <option value="3">Метод сложения</option>
+        <option value="4">Графический метод</option>
+
+                        </select></div>
+<script>
+function goToSection(id) {
+    if (id === "0")
+    {
+        window.history.back() // Замените на нужный URL
+        return;}
+    document.getElementById(id).scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+</script>
+
 </div>
 
 

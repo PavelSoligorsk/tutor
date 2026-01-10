@@ -19,6 +19,31 @@ body {
     font-size: 16px; /* Базовый размер шрифта */
 }
 
+/* Нижняя навигация */
+        .bottom-nav {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 8px 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            z-index: 999;
+            width: 90%;
+            max-width: 300px;
+        }
+
+        .bottom-nav select {
+            width: 100%;
+            font-size: 16px;
+            padding: 8px;
+            cursor: pointer;
+            border: 1px solid #3498db;
+            border-radius: 6px;
+        }
+
 .container {
     max-width: 2000px;
     margin: 0 auto;
@@ -83,19 +108,22 @@ h2 {
     color: #e74c3c;
 }
 
-.math-container {
+.math-formula {
+    /* Базовые стили для формулы */
     background-color: white;
     padding: 15px;
     border-radius: 8px;
     border: 1px solid #ddd;
     margin: 15px 0;
     overflow-x: auto;
-}
-
-.math-formula {
-    font-size: 1.1em; /* Чуть больше для формул */
+    font-size: 1.1em;
     text-align: center;
-    padding: 10px;
+
+    /* Если формула находится внутри math-container,
+       можно добавить специфические правки здесь */
+    .math-container & {
+        border-color: #007bff; /* Пример: синяя рамка, если есть контейнер */
+    }
 }
 
 .explanation {
@@ -157,7 +185,7 @@ button:disabled {
 			<body>
 				<div class="container">
 
-					<h1>Рациональная дробь</h1>
+					<h1 id="1">Рациональная дробь</h1>
 
                     <div class="lesson-section">
     <h2>Рациональные дроби: основные понятия</h2>
@@ -365,6 +393,8 @@ button:disabled {
     </div>
 </div>
 
+</div>
+                    <h1 id="2">Сокращение дробей</h1>
 <div class="lesson-section">
     <h2>Сокращение рациональных дробей</h2>
 
@@ -481,7 +511,7 @@ button:disabled {
         </div>
     </div>
 </div>
-
+<h1 id="3">Сложение и вычитание рациональных дробей</h1>
 <div class="lesson-section">
     <h2>Сложение и вычитание рациональных дробей</h2>
 
@@ -1049,8 +1079,7 @@ button:disabled {
         </div>
     </div>
 </div>
-</div>
-
+                                        <h1 id="4">Умножение, деление дробей</h1>
 <div class="lesson-section">
     <h2>Умножение, деление и возведение в степень рациональных дробей</h2>
 
@@ -1169,14 +1198,29 @@ button:disabled {
 </div>
 
 
+<div class="bottom-nav">
+    <select onchange="goToSection(this.value)">
+        <option value="">Перейти к теме…</option>
+        <option value="1">Рациональная дробь</option>
+        <option value="2">Сокращение дробей</option>
+        <option value="3">Сложение и вычитание рациональных дробей</option>
+        <option value="4">Умножение, деление дробей</option>
 
+    </select>
+</div>
+
+<script>
+function goToSection(id) {
+    if (id === "0")
+    {
+        window.location.href = "/index.html"; // Замените на нужный URL
+        return;}
+    document.getElementById(id).scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+</script>
 				</div>
-			</div>
-			<script>
-        document.getElementById('nextLesson').addEventListener('click', function() {
-            alert('Это последний готовый урок в текущей серии. Для продолжения запросите следующий урок.');
-        });
-    </script>
-		</div>
 	</body>
 </html>
