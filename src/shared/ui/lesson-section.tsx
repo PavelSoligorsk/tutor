@@ -1,18 +1,20 @@
 import { type ReactNode } from 'react';
 
-import { cn } from '../lib/utils';
+import { cn, slugify } from '../lib/utils';
 
 interface LessonSectionProps {
-  id: string;
+  id?: string;
   title: string;
   children: ReactNode;
   className?: string;
 }
 
 export function LessonSection({ id, title, children, className }: LessonSectionProps) {
+  const finalId = id ?? slugify(title);
+
   return (
     <section
-      id={id}
+      id={finalId}
       className={cn(
         'mb-8 rounded-lg border-l-4 border-primary bg-section p-6 shadow-sm',
         className

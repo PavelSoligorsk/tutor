@@ -3,7 +3,46 @@ import path from 'path';
 
 import matter from 'gray-matter';
 
+import { slugify } from './utils';
+
 const contentDirectory = path.join(process.cwd(), 'content');
+
+function extractSectionsFromContent(content: string): { id: string; title: string }[] {
+  const sections: { id: string; title: string }[] = [];
+
+  const sectionTagRegex = /<(?:Section|LessonSection)\b([^>]*)>/g;
+  let tagMatch: RegExpExecArray | null;
+  while ((tagMatch = sectionTagRegex.exec(content))) {
+    const attrs = tagMatch[1] ?? '';
+    const idMatch = /id\s*=\s*["']([^"']+)["']/.exec(attrs);
+    const titleMatch = /title\s*=\s*["']([^"']+)["']/.exec(attrs);
+
+    if (titleMatch?.[1]) {
+      const title = titleMatch[1];
+      const id = idMatch?.[1] ?? slugify(title);
+      sections.push({ id, title });
+    }
+  }
+
+  if (sections.length > 0) {
+    return sections;
+  }
+
+  // Fallback: extract H2 headings
+  const headingRegex = /^##\s+(.+)$/gm;
+  let headingMatch: RegExpExecArray | null;
+  while ((headingMatch = headingRegex.exec(content))) {
+    const rawTitle = headingMatch[1]?.trim() ?? '';
+    if (!rawTitle) {
+      continue;
+    }
+    const title = rawTitle.replace(/[*_`[\]~]/g, '').trim();
+    const id = slugify(title);
+    sections.push({ id, title });
+  }
+
+  return sections;
+}
 
 export interface LessonMeta {
   title: string;
@@ -42,8 +81,14 @@ export function getLessonBySlug(grade: string, slug: string): LessonContent | nu
   const fileContents = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(fileContents);
 
+  const sectionsFromMeta = data.sections as LessonMeta['sections'] | undefined;
+  const extracted = extractSectionsFromContent(content);
+  const sections = sectionsFromMeta ?? (extracted.length > 0 ? extracted : undefined);
+
+  const meta = { ...(data as LessonMeta), ...(sections ? { sections } : {}) };
+
   return {
-    meta: data as LessonMeta,
+    meta,
     content,
     slug,
   };

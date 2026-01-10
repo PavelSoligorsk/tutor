@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+import { type ReactNode, isValidElement, type ReactElement } from 'react';
 
 import { compileMDX, type MDXRemoteProps } from 'next-mdx-remote/rsc';
 import rehypeKatex from 'rehype-katex';
@@ -15,6 +15,7 @@ import {
 } from '@/shared/ui';
 
 import { remarkImageLinks } from './remark-image-links';
+import { slugify } from './utils';
 
 interface MdxImgProps {
   src?: string;
@@ -35,6 +36,21 @@ function parseOptionalNumber(value: unknown): number | undefined {
   }
 
   return undefined;
+}
+
+function getPlainText(node: ReactNode): string {
+  if (typeof node === 'string' || typeof node === 'number') {
+    return String(node);
+  }
+  if (Array.isArray(node)) {
+    return node.map(getPlainText).join('');
+  }
+  if (isValidElement(node)) {
+    const element = node as ReactElement;
+    const maybeProps = element as unknown as { props?: { children?: ReactNode } };
+    return getPlainText(maybeProps.props?.children);
+  }
+  return '';
 }
 
 const components = {
@@ -70,15 +86,46 @@ const components = {
     );
   },
   // HTML элементы с кастомными стилями
-  h1: ({ children }: { children: ReactNode }) => (
-    <h1 className="mb-6 text-3xl font-bold text-heading">{children}</h1>
-  ),
-  h2: ({ children }: { children: ReactNode }) => (
-    <h2 className="mb-4 mt-8 text-2xl font-bold text-heading">{children}</h2>
-  ),
-  h3: ({ children }: { children: ReactNode }) => (
-    <h3 className="mb-3 mt-6 text-xl font-semibold text-heading">{children}</h3>
-  ),
+  h1: ({
+    children,
+    id,
+    ...props
+  }: { children: ReactNode; id?: string } & React.HTMLAttributes<HTMLHeadingElement>) => {
+    const text = getPlainText(children);
+    const computedId = id ?? slugify(text);
+    return (
+      <h1 id={computedId} {...props} className="mb-6 text-3xl font-bold text-heading">
+        {children}
+      </h1>
+    );
+  },
+  h2: ({
+    children,
+    id,
+    ...props
+  }: { children: ReactNode; id?: string } & React.HTMLAttributes<HTMLHeadingElement>) => {
+    const text = getPlainText(children);
+    const computedId = id ?? slugify(text);
+    return (
+      <h2 id={computedId} {...props} className="mb-4 mt-8 text-2xl font-bold text-heading">
+        {children}
+      </h2>
+    );
+  },
+  h3: ({
+    children,
+    id,
+    ...props
+  }: { children: ReactNode; id?: string } & React.HTMLAttributes<HTMLHeadingElement>) => {
+    const text = getPlainText(children);
+    const computedId = id ?? slugify(text);
+    return (
+      <h3 id={computedId} {...props} className="mb-3 mt-6 text-xl font-semibold text-heading">
+        {children}
+      </h3>
+    );
+  },
+
   p: ({ children }: { children: ReactNode }) => (
     <p className="my-4 leading-relaxed text-gray-700">{children}</p>
   ),
