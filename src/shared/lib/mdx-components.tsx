@@ -193,15 +193,20 @@ export async function MDXContent({ source }: MDXContentProps) {
     return <div className="mdx-content">{content}</div>;
   } catch (error) {
     // Не валим весь рендер страницы из-за опечатки в MDX.
-    console.error('[MDX] compile error:', error);
-
     let details: string | null = null;
-    if (process.env.NODE_ENV !== 'production') {
-      if (error instanceof Error) {
+
+    if (error instanceof Error) {
+      // Для ошибок JS — показываем сообщение и логируем сам Error.
+      if (process.env.NODE_ENV !== 'production') {
         details = error.message;
-      } else {
-        details = String(error);
       }
+      console.error('[MDX] compile error:', error);
+    } else {
+      const errorText = String(error);
+      if (process.env.NODE_ENV !== 'production') {
+        details = errorText;
+      }
+      console.error('[MDX] compile error:', errorText);
     }
 
     return (
