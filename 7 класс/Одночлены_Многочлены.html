@@ -5,6 +5,29 @@
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 				<title>Одночлены. Многочлены</title>
 				<style>
+                     .bottom-nav {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 8px 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            z-index: 999;
+            width: 90%;
+            max-width: 300px;
+        }
+
+        .bottom-nav select {
+            width: 100%;
+            font-size: 16px;
+            padding: 8px;
+            cursor: pointer;
+            border: 1px solid #3498db;
+            border-radius: 6px;
+        }
    * {
   box-sizing: border-box;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -494,88 +517,52 @@ button:disabled {
   }
 }
   </style>
+        <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$']]
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 			</head>
 			<body>
 				<div class="container">
                     <h1>Одночлены. Многочлены</h1>
-
+<h1 id="1">Одночлены</h1>
 <div class="lesson-section">
     <h2>Одночлены: определение и основные понятия</h2>
 
     <div class="definition">
         <p><strong>Определение одночлена:</strong></p>
         <p>Одночленом называется выражение, которое представляет собой:</p>
+
         <div class="math-container">
             <div class="math-formula">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mrow>
-                        <mtext>1) произведение чисел и переменных</mtext>
-                    </mrow>
-                </math>
+                \( 1)\ \text{произведение чисел и переменных} \)
             </div>
         </div>
+
         <div class="math-container">
             <div class="math-formula">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mrow>
-                        <mtext>2) натуральные степени переменных</mtext>
-                    </mrow>
-                </math>
+                \( 2)\ \text{натуральные степени переменных} \)
             </div>
         </div>
+
         <div class="math-container">
             <div class="math-formula">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mrow>
-                        <mtext>3) отдельное число или переменная</mtext>
-                    </mrow>
-                </math>
+                \( 3)\ \text{отдельное число или переменная} \)
             </div>
         </div>
     </div>
 
     <div class="example">
         <div class="example-title">Примеры одночленов:</div>
+
         <div class="math-container">
             <div class="math-formula">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mrow>
-                        <mn>5</mn>
-                        <msup>
-                            <mi>x</mi>
-                            <mn>2</mn>
-                        </msup>
-                        <mi>y</mi>
-                        <mo>,</mo>
-                        <mspace width="1em"/>
-                        <mo>-</mo>
-                        <mn>3.7</mn>
-                        <msup>
-                            <mi>a</mi>
-                            <mn>3</mn>
-                        </msup>
-                        <mo>,</mo>
-                        <mspace width="1em"/>
-                        <mfrac>
-                            <mn>2</mn>
-                            <mn>5</mn>
-                        </mfrac>
-                        <msup>
-                            <mi>m</mi>
-                            <mn>4</mn>
-                        </msup>
-                        <msup>
-                            <mi>n</mi>
-                            <mn>2</mn>
-                        </msup>
-                        <mo>,</mo>
-                        <mspace width="1em"/>
-                        <mn>12</mn>
-                        <mo>,</mo>
-                        <mspace width="1em"/>
-                        <mi>k</mi>
-                    </mrow>
-                </math>
+                \( 5x^2y,\ -3.7a^3,\ \frac{2}{5}m^4n^2,\ 12,\ k \)
             </div>
         </div>
     </div>
@@ -585,73 +572,30 @@ button:disabled {
 
         <div class="math-container">
             <div class="math-formula">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mrow>
-                        <mn>2</mn>
-                        <mi>x</mi>
-                        <mo>+</mo>
-                        <mn>3</mn>
-                        <mi>y</mi>
-                        <mspace width="2em"/>
-                        <mo>←</mo>
-                        <mtext>содержит сложение</mtext>
-                    </mrow>
-                </math>
+                \( 2x + 3y \;\leftarrow\; \text{содержит сложение} \)
             </div>
         </div>
 
         <div class="math-container">
             <div class="math-formula">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mrow>
-                        <mfrac>
-                            <mn>4</mn>
-                            <mi>x</mi>
-                        </mfrac>
-                        <mspace width="2em"/>
-                        <mo>←</mo>
-                        <mtext>деление на переменную</mtext>
-                    </mrow>
-                </math>
+                \( \frac{4}{x} \;\leftarrow\; \text{деление на переменную} \)
             </div>
         </div>
 
         <div class="math-container">
             <div class="math-formula">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mrow>
-                        <msup>
-                            <mi>x</mi>
-                            <mrow>
-                                <mo>-</mo>
-                                <mn>2</mn>
-                            </mrow>
-                        </msup>
-                        <mspace width="2em"/>
-                        <mo>←</mo>
-                        <mtext>отрицательная степень</mtext>
-                    </mrow>
-                </math>
+                \( x^{-2} \;\leftarrow\; \text{отрицательная степень} \)
             </div>
         </div>
 
         <div class="math-container">
             <div class="math-formula">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mrow>
-                        <msqrt>
-                            <mi>x</mi>
-                        </msqrt>
-                        <mspace width="2em"/>
-                        <mo>←</mo>
-                        <mtext>корень (не натуральная степень)</mtext>
-                    </mrow>
-                </math>
+                \( \sqrt{x} \;\leftarrow\; \text{корень (не натуральная степень)} \)
             </div>
         </div>
     </div>
 </div>
-
+<h1 id="2">Стандартный вид одночлена</h1>
 <div class="lesson-section">
     <h2>Стандартный вид одночлена</h2>
 
@@ -670,92 +614,19 @@ button:disabled {
 
         <div class="math-container">
             <div class="math-formula">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mrow>
-                        <mn>4</mn>
-                        <mi>x</mi>
-                        <mo>·</mo>
-                        <mn>2</mn>
-                        <mi>x</mi>
-                        <mi>y</mi>
-                        <mo>=</mo>
-                        <mn>8</mn>
-                        <msup>
-                            <mi>x</mi>
-                            <mn>2</mn>
-                        </msup>
-                        <mi>y</mi>
-                    </mrow>
-                </math>
+                \( 4x \cdot 2xy = 8x^2y \)
             </div>
         </div>
 
         <div class="math-container">
             <div class="math-formula">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mrow>
-                        <mo>-</mo>
-                        <mn>5</mn>
-                        <msup>
-                            <mi>a</mi>
-                            <mn>3</mn>
-                        </msup>
-                        <mi>x</mi>
-                        <mo>·</mo>
-                        <mn>4</mn>
-                        <mi>c</mi>
-                        <mo>=</mo>
-                        <mo>-</mo>
-                        <mn>20</mn>
-                        <msup>
-                            <mi>a</mi>
-                            <mn>3</mn>
-                        </msup>
-                        <mi>x</mi>
-                        <mi>c</mi>
-                    </mrow>
-                </math>
+                \( -5a^3x \cdot 4c = -20a^3xc \)
             </div>
         </div>
 
         <div class="math-container">
             <div class="math-formula">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mrow>
-                        <mo>-</mo>
-                        <mn>2</mn>
-                        <msup>
-                            <mi>a</mi>
-                            <mn>2</mn>
-                        </msup>
-                        <msup>
-                            <mi>y</mi>
-                            <mn>2</mn>
-                        </msup>
-                        <mo>(</mo>
-                        <mo>-</mo>
-                        <mn>5</mn>
-                        <msup>
-                            <mi>a</mi>
-                            <mn>3</mn>
-                        </msup>
-                        <msup>
-                            <mi>y</mi>
-                            <mn>5</mn>
-                        </msup>
-                        <mo>)</mo>
-                        <mo>=</mo>
-                        <mn>10</mn>
-                        <msup>
-                            <mi>a</mi>
-                            <mn>5</mn>
-                        </msup>
-                        <msup>
-                            <mi>y</mi>
-                            <mn>7</mn>
-                        </msup>
-                    </mrow>
-                </math>
+                \( -2a^2y^2(-5a^3y^5) = 10a^5y^7 \)
             </div>
         </div>
     </div>
@@ -766,123 +637,33 @@ button:disabled {
 
         <div class="math-container">
             <div class="math-formula">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mrow>
-                        <mtable>
-                            <mtr>
-                                <mtd>
-                                    <mo>-</mo>
-                                    <mn>15</mn>
-                                    <msup>
-                                        <mi>a</mi>
-                                        <mn>3</mn>
-                                    </msup>
-                                    <msup>
-                                        <mi>x</mi>
-                                        <mn>4</mn>
-                                    </msup>
-                                    <msup>
-                                        <mi>c</mi>
-                                        <mn>3</mn>
-                                    </msup>
-                                </mtd>
-                                <mtd>
-                                    <mo>→</mo>
-                                </mtd>
-                                <mtd>
-                                    <mtext>коэффициент = </mtext>
-                                    <mo>-</mo>
-                                    <mn>15</mn>
-                                </mtd>
-                            </mtr>
-                            <mtr>
-                                <mtd>
-                                    <mfrac>
-                                        <mn>2</mn>
-                                        <mn>7</mn>
-                                    </mfrac>
-                                    <msup>
-                                        <mi>x</mi>
-                                        <mn>3</mn>
-                                    </msup>
-                                    <mi>y</mi>
-                                </mtd>
-                                <mtd>
-                                    <mo>→</mo>
-                                </mtd>
-                                <mtd>
-                                    <mtext>коэффициент = </mtext>
-                                    <mfrac>
-                                        <mn>2</mn>
-                                        <mn>7</mn>
-                                    </mfrac>
-                                </mtd>
-                            </mtr>
-                            <mtr>
-                                <mtd>
-                                    <msup>
-                                        <mi>a</mi>
-                                        <mn>5</mn>
-                                    </msup>
-                                    <msup>
-                                        <mi>y</mi>
-                                        <mn>7</mn>
-                                    </msup>
-                                </mtd>
-                                <mtd>
-                                    <mo>→</mo>
-                                </mtd>
-                                <mtd>
-                                    <mtext>коэффициент = </mtext>
-                                    <mn>1</mn>
-                                </mtd>
-                            </mtr>
-                            <mtr>
-                                <mtd>
-                                    <mo>-</mo>
-                                    <msup>
-                                        <mi>x</mi>
-                                        <mn>2</mn>
-                                    </msup>
-                                </mtd>
-                                <mtd>
-                                    <mo>→</mo>
-                                </mtd>
-                                <mtd>
-                                    <mtext>коэффициент = </mtext>
-                                    <mo>-</mo>
-                                    <mn>1</mn>
-                                </mtd>
-                            </mtr>
-                        </mtable>
-                    </mrow>
-                </math>
+
+                \begin{array}{rcl}
+                -15a^3x^4c^3 &\rightarrow& \text{коэффициент } = -15 \\
+                \frac{2}{7}x^3y &\rightarrow& \text{коэффициент } = \frac{2}{7} \\
+                a^5y^7 &\rightarrow& \text{коэффициент } = 1 \\
+                -x^2 &\rightarrow& \text{коэффициент } = -1
+                \end{array}
+
             </div>
         </div>
     </div>
 </div>
-
+<h1 id="3">Степень одночлена</h1>
 <div class="lesson-section">
     <h2>Степень одночлена</h2>
 
     <div class="definition">
         <p><strong>Определение степени одночлена:</strong></p>
-        <p>Степенью одночлена с коэффициентом, отличным от нуля, называется сумма показателей степеней всех переменных, входящих в этот одночлен.</p>
+        <p>
+            Степенью одночлена с коэффициентом, отличным от нуля,
+            называется сумма показателей степеней всех переменных,
+            входящих в этот одночлен.
+        </p>
 
         <div class="math-container">
             <div class="math-formula">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mrow>
-                        <mtext>Степень одночлена = </mtext>
-                        <munder>
-                            <mo>∑</mo>
-                            <mrow>
-                                <mtext>всех переменных</mtext>
-                            </mrow>
-                        </munder>
-                        <mtext>показатель степени</mtext>
-                    </mrow>
-                </math>
+                \( \text{Степень одночлена} = \sum \text{показателей степеней всех переменных} \)
             </div>
         </div>
     </div>
@@ -892,148 +673,50 @@ button:disabled {
 
         <div class="math-container">
             <div class="math-formula">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mrow>
-                        <mn>5</mn>
-                        <msup>
-                            <mi>a</mi>
-                            <mn>2</mn>
-                        </msup>
-                        <msup>
-                            <mi>b</mi>
-                            <mn>3</mn>
-                        </msup>
-                        <mi>c</mi>
-                        <mspace width="1em"/>
-                        <mo>→</mo>
-                        <mspace width="1em"/>
-                        <mn>2</mn>
-                        <mo>+</mo>
-                        <mn>3</mn>
-                        <mo>+</mo>
-                        <mn>1</mn>
-                        <mo>=</mo>
-                        <mn>6</mn>
-                        <mspace width="1em"/>
-                        <mtext>(6-я степень)</mtext>
-                    </mrow>
-                </math>
+                \( 5a^2b^3c \;\rightarrow\; 2 + 3 + 1 = 6 \;\text{(6-я степень)} \)
             </div>
         </div>
 
         <div class="math-container">
             <div class="math-formula">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mrow>
-                        <mn>10</mn>
-                        <msup>
-                            <mi>a</mi>
-                            <mn>5</mn>
-                        </msup>
-                        <msup>
-                            <mi>y</mi>
-                            <mn>7</mn>
-                        </msup>
-                        <mspace width="1em"/>
-                        <mo>→</mo>
-                        <mspace width="1em"/>
-                        <mn>5</mn>
-                        <mo>+</mo>
-                        <mn>7</mn>
-                        <mo>=</mo>
-                        <mn>12</mn>
-                        <mspace width="1em"/>
-                        <mtext>(12-я степень)</mtext>
-                    </mrow>
-                </math>
+                \( 10a^5y^7 \;\rightarrow\; 5 + 7 = 12 \;\text{(12-я степень)} \)
             </div>
         </div>
 
         <div class="math-container">
             <div class="math-formula">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mrow>
-                        <mo>-</mo>
-                        <mn>4</mn>
-                        <msup>
-                            <mi>x</mi>
-                            <mn>5</mn>
-                        </msup>
-                        <mspace width="1em"/>
-                        <mo>→</mo>
-                        <mspace width="1em"/>
-                        <mn>5</mn>
-                        <mspace width="1em"/>
-                        <mtext>(5-я степень)</mtext>
-                    </mrow>
-                </math>
+                \( -4x^5 \;\rightarrow\; 5 \;\text{(5-я степень)} \)
             </div>
         </div>
 
         <div class="math-container">
             <div class="math-formula">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mrow>
-                        <mn>25</mn>
-                        <mi>x</mi>
-                        <mspace width="1em"/>
-                        <mo>→</mo>
-                        <mspace width="1em"/>
-                        <mn>1</mn>
-                        <mspace width="1em"/>
-                        <mtext>(1-я степень)</mtext>
-                    </mrow>
-                </math>
+                \( 25x \;\rightarrow\; 1 \;\text{(1-я степень)} \)
             </div>
         </div>
 
         <div class="math-container">
             <div class="math-formula">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mrow>
-                        <mn>7</mn>
-                        <mspace width="1em"/>
-                        <mo>→</mo>
-                        <mspace width="1em"/>
-                        <mn>0</mn>
-                        <mspace width="1em"/>
-                        <mtext>(0-я степень)</mtext>
-                    </mrow>
-                </math>
+                \( 7 \;\rightarrow\; 0 \;\text{(0-я степень)} \)
             </div>
         </div>
     </div>
 
     <div class="example hard-example">
         <div class="example-title">Важное правило:</div>
-        <p>Если одночлен не содержит переменных (это просто число), то его степень равна нулю.</p>
+        <p>
+            Если одночлен не содержит переменных (это просто число),
+            то его степень равна нулю.
+        </p>
 
         <div class="math-container">
             <div class="math-formula">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mrow>
-                        <mn>1024</mn>
-                        <mo>,</mo>
-                        <mspace width="1em"/>
-                        <mo>-</mo>
-                        <mn>3.7</mn>
-                        <mo>,</mo>
-                        <mspace width="1em"/>
-                        <mfrac>
-                            <mn>2</mn>
-                            <mn>5</mn>
-                        </mfrac>
-                        <mspace width="1em"/>
-                        <mo>→</mo>
-                        <mspace width="1em"/>
-                        <mtext>степень = 0</mtext>
-                    </mrow>
-                </math>
+                \( 1024,\ -3.7,\ \frac{2}{5} \;\rightarrow\; \text{степень } = 0 \)
             </div>
         </div>
     </div>
 </div>
-
+<h1 id="4">Действия с одночленами</h1>
 <div class="lesson-section">
     <h2>Действия с одночленами</h2>
 
@@ -1258,7 +941,7 @@ button:disabled {
         </div>
     </div>
 </div>
-
+<h1 id="5">Подобные одночлены</h1>
 <div class="lesson-section">
     <h2>Подобные одночлены</h2>
 
@@ -1528,7 +1211,7 @@ button:disabled {
         </div>
     </div>
 </div>
-
+<h1 id="6">Многочлены</h1>
 <div class="lesson-section">
     <h2>Многочлены: определение и основные понятия</h2>
 
@@ -1726,7 +1409,7 @@ button:disabled {
         <p>Степень многочлена = 9 (максимум из 5+4=9, 5+1=6, 6=6)</p>
     </div>
 </div>
-
+<h1 id="7">Действия с многочленами</h1>
 <div class="lesson-section">
     <h2>Действия с многочленами</h2>
 
@@ -1935,7 +1618,7 @@ button:disabled {
         </div>
     </div>
 </div>
-
+<h1 id="8">Формулы сокращенного умножения</h1>
 <div class="lesson-section">
     <h2>Формулы сокращенного умножения</h2>
 
@@ -2147,7 +1830,7 @@ button:disabled {
         </div>
     </div>
 </div>
-
+<h1 id="9">Разложение многочлена на множители</h1>
 <div class="lesson-section">
     <h2>Разложение многочленов на множители</h2>
 
@@ -2372,56 +2055,32 @@ button:disabled {
         </div>
     </div>
 </div>
-
-<div class="lesson-section">
-    <h2>Сводная таблица: одночлены и многочлены</h2>
-
-    <div class="summary">
-        <h4>Ключевые понятия</h4>
-        <div class="table-container">
-            <table class="sign-table">
-                <thead>
-                    <tr>
-                        <th>Понятие</th>
-                        <th>Определение</th>
-                        <th>Пример</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Одночлен</td>
-                        <td>Произведение чисел и натуральных степеней переменных</td>
-                        <td><math><mrow><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mi>y</mi></mrow></math></td>
-                    </tr>
-                    <tr>
-                        <td>Коэффициент</td>
-                        <td>Числовой множитель в стандартном виде одночлена</td>
-                        <td><math><mrow><mo>-</mo><mn>5</mn></mrow></math> в <math><mrow><mo>-</mo><mn>5</mn><msup><mi>a</mi><mn>2</mn></msup></mrow></math></td>
-                    </tr>
-                    <tr>
-                        <td>Степень одночлена</td>
-                        <td>Сумма показателей степеней всех переменных</td>
-                        <td><math><mrow><mn>2</mn><mo>+</mo><mn>1</mn><mo>=</mo><mn>3</mn></mrow></math> для <math><mrow><msup><mi>x</mi><mn>2</mn></msup><mi>y</mi></mrow></math></td>
-                    </tr>
-                    <tr>
-                        <td>Подобные одночлены</td>
-                        <td>Одночлены с одинаковой буквенной частью</td>
-                        <td><math><mrow><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mi>y</mi></mrow></math> и <math><mrow><mo>-</mo><mn>5</mn><msup><mi>x</mi><mn>2</mn></msup><mi>y</mi></mrow></math></td>
-                    </tr>
-                    <tr>
-                        <td>Многочлен</td>
-                        <td>Сумма одночленов</td>
-                        <td><math><mrow><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>2</mn><mi>x</mi><mi>y</mi><mo>+</mo><mn>5</mn></mrow></math></td>
-                    </tr>
-                    <tr>
-                        <td>Степень многочлена</td>
-                        <td>Наибольшая степень среди его членов</td>
-                        <td>2 для <math><mrow><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>5</mn></mrow></math></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+                    <div class="bottom-nav">
+    <select onchange="goToSection(this.value)">
+        <option value="0">Назад</option>
+        <option value="1">Одночлены</option>
+        <option value="2">Стандартный вид одночлена</option>
+        <option value="3">Степень одночлена</option>
+        <option value="4">Действия с одночленами</option>
+        <option value="5">Подобные одночлены</option>
+        <option value="6">Многочлены</option>
+        <option value="7">Действия с многочленами</option>
+        <option value="8">Формулы сокращенного умножения</option>
+        <option value="9">Разложение многочлена на множители</option>
+    </select>
 </div>
+<script>
+function goToSection(id) {
+    if (id === "0")
+    {
+        window.history.back() // Замените на нужный URL
+        return;}
+    document.getElementById(id).scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+</script>
+                </div>
             </body>
 																				</html>

@@ -211,223 +211,135 @@ button:disabled {
     font-size: 0.9em; /* Меньше для подвала */
 }
     </style>
+        <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$']]
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
 			</head>
+
 			<body>
 				<div class="container">
 
 					<h1>Дробно-рациональные уравнения</h1>
- <div class="lesson-section"> <h2>Основное свойство: равенство дроби нулю</h2> <div class="definition"> <p><strong>Дробь равна нулю тогда и только тогда, когда её числитель равен нулю, а знаменатель не равен нулю.</strong></p>
+                    <div class="lesson-section">
+  <h2>Основное свойство: равенство дроби нулю</h2>
+
+  <div class="definition">
+    <p><strong>Дробь равна нулю тогда и только тогда, когда её числитель равен нулю, а знаменатель не равен нулю.</strong></p>
 
     <div class="math-container">
-        <div class="math-formula">
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <mrow>
-                    <mfrac>
-                        <mrow><mi>P</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow>
-                        <mrow><mi>Q</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow>
-                    </mfrac>
-                    <mo>=</mo>
-                    <mn>0</mn>
-                    <mo>⇔</mo>
-                    <mo>{</mo>
-                    <mtable>
-                        <mtr>
-                            <mtd><mi>P</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mn>0</mn></mtd>
-                        </mtr>
-                        <mtr>
-                            <mtd><mi>Q</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>≠</mo><mn>0</mn></mtd>
-                        </mtr>
-                    </mtable>
-                </mrow>
-            </math>
-        </div>
+      <div class="math-formula">
+        $$
+        \frac{P(x)}{Q(x)} = 0
+        \;\Longleftrightarrow\;
+        \begin{cases}
+        P(x) = 0 \\
+        Q(x) \neq 0
+        \end{cases}
+        $$
+      </div>
     </div>
-
-    <p>Это ключевое свойство, которое позволяет решать дробно-рациональные уравнения.</p>
+  </div>
 </div>
 
-</div><div class="lesson-section"> <h2>Пример 1: Простое дробно-рациональное уравнение</h2> <div class="example"> <p class="example-title">Решите уравнение: <math><mrow><mfrac><mrow><mi>x</mi><mo>-</mo><mn>6</mn></mrow><mrow><mi>x</mi><mo>+</mo><mn>6</mn></mrow></mfrac><mo>=</mo><mn>0</mn></mrow></math></p>
+<div class="lesson-section">
+  <h2>Пример 1: Простое дробно-рациональное уравнение</h2>
+
+  <div class="example">
+    <p class="example-title">
+      Решите уравнение:
+      $$
+      \frac{x-6}{x+6} = 0
+      $$
+    </p>
+
     <div class="math-container">
-        <div class="math-formula">
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <mrow>
-                    <mfrac>
-                        <mrow><mi>x</mi><mo>-</mo><mn>6</mn></mrow>
-                        <mrow><mi>x</mi><mo>+</mo><mn>6</mn></mrow>
-                    </mfrac>
-                    <mo>=</mo>
-                    <mn>0</mn>
-                    <mo>⇔</mo>
-                    <mo>{</mo>
-                    <mtable>
-                        <mtr>
-                            <mtd><mi>x</mi><mo>-</mo><mn>6</mn><mo>=</mo><mn>0</mn></mtd>
-                        </mtr>
-                        <mtr>
-                            <mtd><mi>x</mi><mo>+</mo><mn>6</mn><mo>≠</mo><mn>0</mn></mtd>
-                        </mtr>
-                    </mtable>
-                    <mo>⇔</mo>
-                    <mo>{</mo>
-                    <mtable>
-                        <mtr>
-                            <mtd><mi>x</mi><mo>=</mo><mn>6</mn></mtd>
-                        </mtr>
-                        <mtr>
-                            <mtd><mi>x</mi><mo>≠</mo><mo>-</mo><mn>6</mn></mtd>
-                        </mtr>
-                    </mtable>
-                    <mo>⇔</mo>
-                    <mi>x</mi><mo>=</mo><mn>6</mn>
-                </mrow>
-            </math>
-        </div>
+      <div class="math-formula">
+        $$
+        \begin{cases}
+        x - 6 = 0 \\
+        x + 6 \neq 0
+        \end{cases}
+        \Longleftrightarrow
+        \begin{cases}
+        x = 6 \\
+        x \neq -6
+        \end{cases}
+        $$
+      </div>
     </div>
 
-    <p><strong>Ответ:</strong> <math><mrow><mi>x</mi><mo>=</mo><mn>6</mn></mrow></math></p>
+    <p><strong>Ответ:</strong> $x = 6$</p>
+  </div>
 </div>
+<div class="lesson-section">
+  <h2>Пример 2: Уравнение с разложением на множители</h2>
 
-</div><div class="lesson-section"> <h2>Пример 2: Уравнение с разложением на множители</h2> <div class="example"> <p class="example-title">Решите уравнение: <math><mrow><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>36</mn></mrow><mrow><mi>x</mi><mo>-</mo><mn>6</mn></mrow></mfrac><mo>=</mo><mn>0</mn></mrow></math></p>
-    <div class="math-container">
-        <div class="math-formula">
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <mrow>
-                    <mfrac>
-                        <mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>36</mn></mrow>
-                        <mrow><mi>x</mi><mo>-</mo><mn>6</mn></mrow>
-                    </mfrac>
-                    <mo>=</mo>
-                    <mn>0</mn>
-                    <mo>⇔</mo>
-                    <mo>{</mo>
-                    <mtable>
-                        <mtr>
-                            <mtd><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>36</mn><mo>=</mo><mn>0</mn></mtd>
-                        </mtr>
-                        <mtr>
-                            <mtd><mi>x</mi><mo>-</mo><mn>6</mn><mo>≠</mo><mn>0</mn></mtd>
-                        </mtr>
-                    </mtable>
-                </mrow>
-            </math>
-        </div>
-    </div>
-
-    <p>Разложим числитель на множители:</p>
+  <div class="example">
+    <p class="example-title">
+      $$
+      \frac{x^2 - 36}{x - 6} = 0
+      $$
+    </p>
 
     <div class="math-container">
-        <div class="math-formula">
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <mrow>
-                    <msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>36</mn><mo>=</mo><mn>0</mn>
-                    <mo>⇔</mo>
-                    <mo>(</mo><mi>x</mi><mo>-</mo><mn>6</mn><mo>)</mo><mo>(</mo><mi>x</mi><mo>+</mo><mn>6</mn><mo>)</mo><mo>=</mo><mn>0</mn>
-                    <mo>⇔</mo>
-                    <mi>x</mi><mo>=</mo><mn>6</mn><mspace width="1em"/><mtext>или</mtext><mspace width="1em"/><mi>x</mi><mo>=</mo><mo>-</mo><mn>6</mn>
-                </mrow>
-            </math>
-        </div>
+      <div class="math-formula">
+        $$
+        x^2 - 36 = 0
+        \Longleftrightarrow
+        (x-6)(x+6)=0
+        $$
+      </div>
     </div>
-
-    <p>Учитываем ограничение:</p>
 
     <div class="math-container">
-        <div class="math-formula">
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <mrow>
-                    <mi>x</mi><mo>-</mo><mn>6</mn><mo>≠</mo><mn>0</mn><mo>⇒</mo><mi>x</mi><mo>≠</mo><mn>6</mn>
-                </mrow>
-            </math>
-        </div>
+      <div class="math-formula">
+        $$
+        x \neq 6
+        $$
+      </div>
     </div>
 
-    <p>Из двух корней оставляем только тот, который удовлетворяет ограничению:</p>
-
-    <div class="math-container">
-        <div class="math-formula">
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <mrow>
-                    <mi>x</mi><mo>=</mo><mo>-</mo><mn>6</mn>
-                </mrow>
-            </math>
-        </div>
-    </div>
-
-    <p><strong>Ответ:</strong> <math><mrow><mi>x</mi><mo>=</mo><mo>-</mo><mn>6</mn></mrow></math></p>
+    <p><strong>Ответ:</strong> $x = -6$</p>
+  </div>
 </div>
+<div class="lesson-section">
+  <h2>Пример 3: Уравнение с двумя корнями</h2>
 
-</div><div class="lesson-section"> <h2>Пример 3: Уравнение с двумя корнями</h2> <div class="example"> <p class="example-title">Решите уравнение: <math><mrow><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>6</mn><mi>x</mi></mrow><mrow><mi>x</mi><mo>+</mo><mn>6</mn></mrow></mfrac><mo>=</mo><mn>0</mn></mrow></math></p>
-
-    <div class="math-container">
-        <div class="math-formula">
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <mrow>
-                    <mfrac>
-                        <mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>6</mn><mi>x</mi></mrow>
-                        <mrow><mi>x</mi><mo>+</mo><mn>6</mn></mrow>
-                    </mfrac>
-                    <mo>=</mo>
-                    <mn>0</mn>
-                    <mo>⇔</mo>
-                    <mo>{</mo>
-                    <mtable>
-                        <mtr>
-                            <mtd><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>6</mn><mi>x</mi><mo>=</mo><mn>0</mn></mtd>
-                        </mtr>
-                        <mtr>
-                            <mtd><mi>x</mi><mo>+</mo><mn>6</mn><mo>≠</mo><mn>0</mn></mtd>
-                        </mtr>
-                    </mtable>
-                </mrow>
-            </math>
-        </div>
-    </div>
-
-    <p>Решаем уравнение числителя:</p>
+  <div class="example">
+    <p class="example-title">
+      $$
+      \frac{x^2 - 6x}{x + 6} = 0
+      $$
+    </p>
 
     <div class="math-container">
-        <div class="math-formula">
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <mrow>
-                    <msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>6</mn><mi>x</mi><mo>=</mo><mn>0</mn>
-                    <mo>⇔</mo>
-                    <mi>x</mi><mo>(</mo><mi>x</mi><mo>-</mo><mn>6</mn><mo>)</mo><mo>=</mo><mn>0</mn>
-                    <mo>⇔</mo>
-                    <mi>x</mi><mo>=</mo><mn>0</mn><mspace width="1em"/><mtext>или</mtext><mspace width="1em"/><mi>x</mi><mo>=</mo><mn>6</mn>
-                </mrow>
-            </math>
-        </div>
+      <div class="math-formula">
+        $$
+        x(x-6)=0 \Rightarrow x=0 \;\text{или}\; x=6
+        $$
+      </div>
     </div>
-
-    <p>Проверяем ограничение:</p>
 
     <div class="math-container">
-        <div class="math-formula">
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <mrow>
-                    <mi>x</mi><mo>+</mo><mn>6</mn><mo>≠</mo><mn>0</mn><mo>⇒</mo><mi>x</mi><mo>≠</mo><mo>-</mo><mn>6</mn>
-                </mrow>
-            </math>
-        </div>
+      <div class="math-formula">
+        $$
+        x \neq -6
+        $$
+      </div>
     </div>
 
-    <p>Оба корня удовлетворяют ограничению (ни 0, ни 6 не равны -6).</p>
-
-    <div class="math-container">
-        <div class="math-formula">
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <mrow>
-                    <mi>x</mi><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="1em"/><mi>x</mi><mo>=</mo><mn>6</mn>
-                </mrow>
-            </math>
-        </div>
-    </div>
-
-    <p><strong>Ответ:</strong> <math><mrow><mi>x</mi><mo>=</mo><mn>0</mn><mo>;</mo><mspace width="1em"/><mi>x</mi><mo>=</mo><mn>6</mn></mrow></math></p>
+    <p><strong>Ответ:</strong> $x=0,\; x=6$</p>
+  </div>
 </div>
-
-</div>
-                    <div class="lesson-section"> <h2>Пример 4: Уравнение без решений</h2> <div class="example hard-example"> <p class="example-title">Решите уравнение: <math><mrow><mfrac><mrow><mi>x</mi><mo>+</mo><mn>6</mn></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>36</mn></mrow></mfrac><mo>=</mo><mn>0</mn></mrow></math></p>
+                    <div class="lesson-section">
+                        <h2>Пример 4: Уравнение без решений</h2> <div class="example hard-example"> <p class="example-title">Решите уравнение: <math><mrow><mfrac><mrow><mi>x</mi><mo>+</mo><mn>6</mn></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>36</mn></mrow></mfrac><mo>=</mo><mn>0</mn></mrow></math></p>
     <div class="math-container">
         <div class="math-formula">
             <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -499,7 +411,7 @@ button:disabled {
 </div>
 
 </div>
-<div class="lesson-section">
+                    <div class="lesson-section">
     <h2>Пример 5: Уравнение с несколькими дробями (подробное решение)</h2>
     <div class="example">
         <p class="example-title">Решите уравнение: <math><mrow><mfrac><mi>x</mi><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>5</mn><mi>x</mi><mo>+</mo><mn>6</mn></mrow></mfrac><mo>+</mo><mfrac><mn>3</mn><mrow><mi>x</mi><mo>-</mo><mn>2</mn></mrow></mfrac><mo>=</mo><mfrac><mn>2</mn><mrow><mi>x</mi><mo>-</mo><mn>3</mn></mrow></mfrac></mrow></math></p>
@@ -796,7 +708,8 @@ button:disabled {
             </ol>
         </div>
     </div>
-</div><div class="lesson-section">
+</div>
+                    <div class="lesson-section">
     <h2>Пример 6: Нахождение нулей функции с разложением на множители</h2>
     <div class="example">
         <p class="example-title">Найдите нули функции: <math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mfrac><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>-</mo><mn>7</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>12</mn><mi>x</mi></mrow><mrow><mi>x</mi><mo>-</mo><mn>4</mn></mrow></mfrac></mrow></math></p>
